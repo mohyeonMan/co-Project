@@ -1,0 +1,7 @@
+master 폴더에서 git bash 열기
+co-Project 레포지토리 origin으로 설정
+git clone origin 으로 초기 파일 받아오기.
+본인 이름 작성 후 저장.
+수정 후 add, commit, push.
+
+박지훈
