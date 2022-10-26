@@ -5,5 +5,5 @@ git clone origin 으로 초기 파일 받아오기.
 수정 후 add, commit, push.
 
 박지훈
-이용식
+이용식 가나다라마바사아자차카타파하
 박샘
