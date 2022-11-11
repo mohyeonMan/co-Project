@@ -13,8 +13,6 @@
 <div id="header">
 <jsp:include page="./main/header.jsp"></jsp:include>
 </div>
-wqkdnwqlkfdn
-wadiwaod
-widhnw
+<div><a href="./detailedPage/detailedPage_1.jsp">상세페이지</a></div>
 </body>
 </html>
