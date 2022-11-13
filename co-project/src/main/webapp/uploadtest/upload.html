@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<form method="post" action="uploadOk.php" enctype="multipart/form-data" autocomplete="off">
+	<p><input class=textform type=text size=25 name=title placeholder="제목" required></p>
+	<p><textarea class=textform cols=35 rows=15 name=content placeholder="내용을 입력하세요."></textarea></p>
+	<p><input class=file id="input-file" type=file name=file></p>
+	<p><input class=write type="submit" value="글쓰기"></p>
+</form>
+
+<script type="text/javascript">
+$('#uploadBtn').click(function(){
+	
+	
+		
+		$.ajax({
+			url : '/co-project/uploadtest/upload.do',
+			type : 'post',
+			enctype : 'multipart/form-data',
+			data : $('#uploadForm').serialize(),// 주소창과 같이 데이터 담기
+			success: function(){
+					alert("전송");
+					
+				},
+				error : function(err){
+					console.log(err);
+				}
+		});
+		
+	
+});
+</script>
+</body>
+</html>

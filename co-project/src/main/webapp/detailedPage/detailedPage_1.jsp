@@ -47,7 +47,8 @@
 		  <img src="../images/original.gif" class="card-img-top" alt="...">
 		  <div class="card-body">
 		    <h5 class="card-title">상품명</h5>
-		    <p class="card-text"> <div class="timer" id="newcountdown3"></div></p>
+		    <p class="card-text"> 
+		    <div class="timer" id="newcountdown3"></div></p>
 		    <br>
 		    <a href="#" class="btn btn-primary" onclick="location.href='./detailedPage_2.jsp'">응찰하러가기</a>
 		    </div>
