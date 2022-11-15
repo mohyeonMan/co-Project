@@ -13,7 +13,7 @@
 	
 		<div class="col-lg-12 col-sm-12 col-md-12">
 
-			<form name='detailePageWriteForm' id='detailePageWriteForm' action='' method=post enctype='multipart/form-data'>
+			<form name='detailePageWriteForm' id='detailePageWriteForm' >
 
 				<div style='font-size:0.9em;width:100%'>
 					<div style='width:15%;float:left'>물품</div>
@@ -94,7 +94,7 @@
 				<div style='font-size:0.9em;width:100%'>
 					<div style='width:15%;float:left'>물품정보</div>
 					<div style='width:85%;float:left'>
-						<textarea  class="form-control" id="content" name="content" style='min-height:200px' required placeholder="하자를 포함하여 물품정보를 상세하게 입력해주시고, 직거래 시 직거래 가능 지역을 물품정보에 입력하세요."></textarea> 
+						<textarea cols="40" rows="5 class="form-control" id="content" name="content" style='min-height:200px' required placeholder="하자를 포함하여 물품정보를 상세하게 입력해주시고, 직거래 시 직거래 가능 지역을 물품정보에 입력하세요."></textarea> 
 					</div>
 					<div style='clear:both;font-size:0;height:1px;width:1px'></div>
 				</div>
@@ -122,7 +122,7 @@
 				<div style='font-size:0.9em;width:100%'>
 					<div style='width:15%;float:left'>희망가</div>
 					<div style='width:140px;float:left'>
-						<input type="text" class="form-control" id="hopePrice" name="hopePrice" placeholder="희망가 (원)">
+						<input type="text" class="form-control" id="hopeprice" name="hopeprice" placeholder="희망가 (원)">
 					</div>
 					<div style='clear:both;font-size:0;height:1px;width:1px'></div>
 				</div>
@@ -136,7 +136,7 @@
 				<div style='font-size:0.9em;width:100%'>
 					<div style='width:15%;float:left'>시작가</div>
 					<div style='width:140px;float:left'>
-						<input type="text" class="form-control" id="startPrice" name="startPrice" placeholder="시작가 (원)">
+						<input type="text" class="form-control" id="startprice" name="startprice" placeholder="시작가 (원)">
 					</div>									
 					<div style='clear:both;font-size:0;height:1px;width:1px'></div>
 				</div>
@@ -151,9 +151,9 @@
 					<div style='width:15%;float:left'>호가</div>
 					<div style='width:85%;float:left'>
 						<div style='width:140px;float:left'>
-							<input type="text" class="form-control" id="unitPrice" name="unitPrice" placeholder="호가 (원)" onkeyup="inputNumberFormat(this)" value='' required>
+							<input type="text" class="form-control" id="unitprice" name="unitprice" placeholder="호가 (원)" onkeyup="inputNumberFormat(this)" value='' required>
 						</div>
-						<div style='width:140px;float:left;margin-top:7px'>응찰 시 올리는 금액</div><!--응찰 시 올리는 금액-->	
+						<div style='width:140px;float:left;margin-top:7px;margin-left:15px;'>응찰 시 올리는 금액</div><!--응찰 시 올리는 금액-->	
 					</div>
 					<div style='clear:both;font-size:0;height:1px;width:1px'></div>
 				</div>
@@ -190,13 +190,13 @@
 					<div style='width:15%;float:left'>경매종료</div>
 					<div style='width:85%;float:left'>
 					<div style='width:50%;float:left'>
-						<select id="endDays_year" name="endDays_year" class="form-control">
+						<select id="enddays_year" name="enddays_year" class="form-control">
 							<option value="">년도선택</option>
 							<option value="2022" selected>2022</option>
 							<option value="2023">2023</option>
 							<option value="2024">2024</option>
 						</select>
-						<select id="endDays_month" name="endDays_month" class="form-control">
+						<select id="enddays_month" name="enddays_month" class="form-control">
 							<option value="">월선택</option>
 							<option value="1">1월</option>
 							<option value="2">2월</option>
@@ -211,9 +211,9 @@
 							<option value="11">11월</option>
 							<option value="12">12월</option>
 						</select>
-						<input type="text" id="endDays_day" name="endDays_day" placeholder="일 입력" >
-						<input type="text" id="endDays_hour" name="endDays_hour" placeholder="시간 입력" >
-						<input type="text" id="endDays_min" name="endDays_min" placeholder="분 입력" >
+						<input type="text" id="enddays_day" name="enddays_day" placeholder="일 입력" >
+						<input type="text" id="enddays_hour" name="enddays_hour" placeholder="시간 입력" >
+						<input type="text" id="enddays_min" name="enddays_min" placeholder="분 입력" >
 					</div>
 					</div>
 					
@@ -240,7 +240,6 @@
 				<div class='sp10'></div>
 				<div align='center'>
 					<input type="button" value="경매등록" id="productWriteBtn">
-					<button type="submit" style='background-color:#000000;border-radius:0;border-color:#000000;padding:5px;color:#FFFFFF;font-size:1.0em;cursor:pointer'>경매등록</button><!--경매등록-->
 				</div>
 
 				<div class="clearfix"></div>
@@ -251,6 +250,29 @@
 	</div> <!-- row -->
 </div><!--</container>-->
 
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script type="text/javascript">
+
+$('#productWriteBtn').click(function(){
+	
+		
+		$.ajax({
+			url : '/co-project/detailedPage/getDetailedPage.do',
+			type : 'post',
+			data : $('#detailePageWriteForm').serialize(),// 주소창과 같이 데이터 담기
+			success: function(){
+					alert("글작성 완료");
+					location.href = '/co-project/detailedPage/detailedPage_1.jsp';
+				},
+				error : function(err){
+					console.log(err);
+				}
+		});
+		
+	
+});
+</script>
 
 </body>
 </html>

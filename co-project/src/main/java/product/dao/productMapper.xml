@@ -4,8 +4,11 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="productSQL">
-  <insert id="inset" parameterType="board">
-		INSERT INTO board(seq, id, name, email, subject, content, ref) 
-		VALUES (seq_board.nextval,#{id},#{name},#{email},#{subject},#{content},seq_board.nextval)
+  <insert id="productWrite" parameterType="product">
+		INSERT INTO product(subject, category, content, hopeprice, startprice, unitprice, trade_way, enddays_year, enddays_month, enddays_day, enddays_hour, enddays_min, id, product_seq) 
+		VALUES (#{subject},#{category},#{content},#{hopeprice},#{startprice},#{unitprice},#{trade_way},#{enddays_year},#{enddays_month},#{enddays_day},#{enddays_hour},#{enddays_min},#{id},product_seq.nextval)
 	</insert>
+	<select id="getList" resultType="product">
+		SELECT * FROM product ORDER by product_seq DESC
+	</select>
   </mapper>
