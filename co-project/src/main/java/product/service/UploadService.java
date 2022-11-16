@@ -17,7 +17,7 @@ public class UploadService implements CommandProcess {
 		String nada = request.getParameter("nada");
 		System.out.println(nada);
 		
-		String path = request.getRealPath("uploadedFiles");
+		String path = "/Users/leeyongshik/git/co-Project/co-project/src/main/webapp/uploadFiles";
 	    int size = 1024 * 1024 * 20; //20MB
 	    String str, filename, original_filename;
 	    try{
