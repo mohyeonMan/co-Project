@@ -6,8 +6,22 @@
   <mapper namespace="productSQL">
   <insert id="productWrite" parameterType="product">
 		INSERT INTO product(subject, category, content, hopeprice, startprice, unitprice, trade_way, enddays_year, enddays_month, enddays_day, enddays_hour, enddays_min, id, product_seq) 
-		VALUES (#{subject},#{category},#{content},#{hopeprice},#{startprice},#{unitprice},#{trade_way},#{enddays_year},#{enddays_month},#{enddays_day},#{enddays_hour},#{enddays_min},#{id},product_seq.nextval)
+		VALUES (#{subject}
+				,#{category}
+				,#{content}
+				,#{hopeprice}
+				,#{startprice}
+				,#{unitprice}
+				,#{trade_way}
+				,#{enddays_year}
+				,#{enddays_month}
+				,#{enddays_day}
+				,#{enddays_hour}
+				,#{enddays_min}
+				,#{id}
+				,product_seq.nextval)
 	</insert>
+	
 	<select id="getList" resultType="product">
 		SELECT * FROM product ORDER by product_seq DESC
 	</select>
