@@ -13,7 +13,7 @@
 	
 		<div class="col-lg-12 col-sm-12 col-md-12">
 
-			<form name='detailePageWriteForm' id='detailePageWriteForm' >
+			<form name='detailePageWriteForm' id='detailePageWriteForm' action="/co-project/detailedPage/getDetailedPage.do" method="post" enctype="multipart/form-data">
 
 				<div style='font-size:0.9em;width:100%'>
 					<div style='width:15%;float:left'>물품</div>
@@ -59,7 +59,7 @@
 					<div style='width:85%;float:left'>
 						<div style='float:left; width:50px' id='View_area1'></div>
 						<div style='float:left; width:210px'>
-							<input type="file" id="mainimg" name="mainimg" style='font-size:0.9em' required placeholder="이미지1" onchange="previewImage(this,'View_area1')">
+							<input type="file" id="file" name="file" style='font-size:0.9em' placeholder="이미지1">
 						</div>
 					</div>
 					<div style='clear:both;font-size:0;height:1px;width:1px'></div>
@@ -151,7 +151,7 @@
 					<div style='width:15%;float:left'>호가</div>
 					<div style='width:85%;float:left'>
 						<div style='width:140px;float:left'>
-							<input type="text" class="form-control" id="unitprice" name="unitprice" placeholder="호가 (원)" onkeyup="inputNumberFormat(this)" value='' required>
+							<input type="text" class="form-control" id="unitprice" name="unitprice" placeholder="호가 (원)">
 						</div>
 						<div style='width:140px;float:left;margin-top:7px;margin-left:15px;'>응찰 시 올리는 금액</div><!--응찰 시 올리는 금액-->	
 					</div>
@@ -252,14 +252,18 @@
 
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js" integrity="sha384-qlmct0AOBiA2VPZkMY3+2WqkHtIQ9lSdAsAn5RUJD/3vA5MKDgSGcdmIv4ycVxyn" crossorigin="anonymous"></script>
 <script type="text/javascript">
 
 $('#productWriteBtn').click(function(){
 	
 		
-		$.ajax({
+		$('#detailePageWriteForm').ajaxSubmit({
 			url : '/co-project/detailedPage/getDetailedPage.do',
 			type : 'post',
+			processData: false,
+			contentType: false, 
 			data : $('#detailePageWriteForm').serialize(),// 주소창과 같이 데이터 담기
 			success: function(){
 					alert("글작성 완료");

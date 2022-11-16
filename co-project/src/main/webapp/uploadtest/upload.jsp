@@ -1,54 +1,41 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="EUC-KR">
 <title>Insert title here</title>
 </head>
 <body>
 
-<fieldset>
-     <legend>íŒŒì¼ ì—…ë¡œë“œ</legend>
-     <form id="uploadForm">
-     <table>
-          <tr>
-              <td>ê¸€ì“´ì´ : </td>
-              <td><input type="text" name="author"/><div id="authorDiv"></div></td>
-          </tr>
-          <tr>
-              <td>ì œëª© : </td>
-              <td><input type="text" name="title"/><div id="titleDiv"></div></td>
-          </tr>
-          <tr>
-              <td>ê¸€ì“´ì´ : </td>
-              <td><input type="file" value="íŒŒì¼ ì„ íƒ" name="file"/><div id="fileDiv"></div></td>
-          </tr>
-          <tr>
-              <td colspan="2"><input type="button" value="ì—…ë¡œë“œ" id="uploadBtn"/></td>
-          </tr>
-     </table>
-          </form>
-</fieldset>
+<form id="uploadForm">
+		<input type="file" name="file" id="file" multiple><br>
+		<input type="text" name="nada" id="nada">
+		<input type="button" value="Upload"  id="uploadBtn">
+</form>
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js" integrity="sha384-qlmct0AOBiA2VPZkMY3+2WqkHtIQ9lSdAsAn5RUJD/3vA5MKDgSGcdmIv4ycVxyn" crossorigin="anonymous"></script>
 <script type="text/javascript">
 $('#uploadBtn').click(function(){
 	
 		
-		$.ajax({
+		$('#uploadForm').ajaxSubmit({
 			url : '/co-project/uploadtest/upload.do',
 			type : 'post',
-			enctype : "multipart/form-data",
-			data : $('#uploadForm').serialize(),// ì£¼ì†Œì°½ê³¼ ê°™ì´ ë°ì´í„° ë‹´ê¸°
+			processData: false,
+			contentType: false, 
+			data : $('#uploadForm').serialize(),// ÁÖ¼ÒÃ¢°ú °°ÀÌ µ¥ÀÌÅÍ ´ã±â
 			success: function(){
-					alert("ì„±ê³µ");
+					alert("¼º°ø");
 					
 				},
 				error : function(err){
 					console.log(err);
 				}
 		});
+		
 		
 	
 });
