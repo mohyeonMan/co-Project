@@ -5,6 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+ul{
+	list-style: none;
+}
+</style>
 </head>
 <body>
 <div class="container">
@@ -79,7 +84,13 @@
 					<div style='width:85%;float:left'>
 						<div style='float:left; width:50px' id='View_area5'></div>
 						<div style='float:left; width:210px'>
-							<input type="file" class="form-control" id="image5" name="image5"  style='font-size:0.9em' placeholder="이미지5" onchange="previewImage(this,'View_area5')">
+							<ul class="__add"> 
+								<li>
+									<input type="file" id="QnA03" name="file_path" class="files">
+									<button  type="button"class="_add" style="vertical-align: sub">추가</button>
+								</li> 
+							</ul>
+							<!-- <input type="file" class="form-control" id="image5" name="image5"  style='font-size:0.9em' placeholder="이미지5" onchange="previewImage(this,'View_area5')"> -->
 						</div>
 					</div>
 					<div style='clear:both;font-size:0;height:1px;width:1px'></div>
@@ -255,6 +266,24 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js" integrity="sha384-qlmct0AOBiA2VPZkMY3+2WqkHtIQ9lSdAsAn5RUJD/3vA5MKDgSGcdmIv4ycVxyn" crossorigin="anonymous"></script>
 <script type="text/javascript">
+
+var maxAppend = 1;
+
+$('.__add ._add').on('click',function(){ 
+   if(maxAppend >= 3){
+      alert("파일 업로드 최대 개수는 3개 입니다.");
+      return;
+   }else{
+       $('.__add').append('<li><input type="file"name="file_path" class="files"> <button type="button" class="_add" onclick="addDel(this);">삭제</button></li>'); 
+       maxAppend ++;
+   }
+   
+ });
+ 
+ function addDel(a){ 
+    $(a).closest('li').remove(); 
+    maxAppend --;
+ }
 
 $('#productWriteBtn').click(function(){
 	

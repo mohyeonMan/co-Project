@@ -14,14 +14,14 @@ public class UploadService implements CommandProcess {
 
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
-		String nada = request.getParameter("nada");
-		System.out.println(nada);
 		
 		String path = "/Users/leeyongshik/git/co-Project/co-project/src/main/webapp/uploadFiles";
 	    int size = 1024 * 1024 * 20; //20MB
 	    String str, filename, original_filename;
 	    try{
 	    	MultipartRequest multiRequest = new MultipartRequest(request, path, size, "EUC-KR", new DefaultFileRenamePolicy());
+	    	String nada = multiRequest.getParameter("nada");
+	    	System.out.println(nada);
 	    	
 	    	Enumeration files = multiRequest.getFileNames();
 	    	str = (String)files.nextElement();

@@ -83,7 +83,7 @@ $(document).ready(function(){
 												.append($('<p/>',{class:'card-text',text:items.content})
 													.append($('<br>'))
 													.append($('<div/>',{class:'timer',id:items.product_seq})))
-												.append($('<a/>',{href:'#',class:'btn btn-primary',text:'응찰하러가기'})))).appendTo($('#row'));
+												.append($('<a/>',{href:'./detailedPage_2.do?product_seq='+items.product_seq,class:'btn btn-primary',text:'응찰하러가기'})))).appendTo($('#row'));
 				CountDownTimer(time, items.product_seq)
 			});
 			
