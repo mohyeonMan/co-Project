@@ -55,6 +55,14 @@ public class ProductDAO {
 		sqlSession.close();
 		return productDTO;
 	}
+
+	public List<ProductDTO> getList2() {
+		List<ProductDTO> list =null;
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		list = sqlSession.selectList("productSQL.getList2");
+		sqlSession.close();
+		return list;
+	}
 	
 	
 }

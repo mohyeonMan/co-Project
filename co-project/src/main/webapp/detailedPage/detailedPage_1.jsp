@@ -14,7 +14,11 @@
 </style>
 </head>
 <body>
-
+<select id="filter">
+	<option value="0">최신순</option>
+	<option value="1">현재가 낮은순</option>
+	<option value="2">종료임박순</option>
+</select>
 <br><br><br>
 
 <div class="container text-center">
@@ -64,34 +68,71 @@ function CountDownTimer(dt, id)
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-	
-	$.ajax({
-		url : '/co-project/product/getProductList.do',
-		type: 'post',
-		dataType : 'json',
-		success : function(data){
-			//alert(JSON.stringify(data));
-			//alert(data.list[0].id);
-			
-			$.each(data.list,function(index, items){
-				var time = items.enddays_month+ '/' +items.enddays_day+ '/' +items.enddays_year+' '+items.enddays_hour+':'+items.enddays_min
-				console.log(time);
-				$('<div/>',{class:'col'}).append($('<div/>',{class: 'card',style:'width: 18rem;'})
-											.append($('<img>',{src:'../images/original.gif',class:'card-img-top'}))
-											.append($('<div/>',{class:'card-body'})
-												.append($('<h5/>',{class:'card-title',text:items.subject}))
-												.append($('<p/>',{class:'card-text',text:items.content})
-													.append($('<br>'))
-													.append($('<div/>',{class:'timer',id:items.product_seq})))
-												.append($('<a/>',{href:'./detailedPage_2.do?product_seq='+items.product_seq,class:'btn btn-primary',text:'응찰하러가기'})))).appendTo($('#row'));
-				CountDownTimer(time, items.product_seq)
+/* 	// 정렬
+	$(document).on('change', '#sortThis', function(e){
+	    var selectedSort = $(this).val();
+		var sort = "Y";
+        var minPrice = $("#minPrice").val();
+		var maxPrice = $("#maxPrice").val();
+		var search_Filed = $("#search_Filed").val();
+		var keyword = $("#keyword").val();
+		var cid = "";
+	    var cs = "";
+		var zkcode = $("#zkcode").val();
+       // var sort = $("#sort").val(sort);
+        var mode = "sort";
+		//var lType= $("#lType").val();
+		var duedate = $("#duedate").val();
+
+      //  e.preventDefault();
+            if(selectedSort==""){
+
+			}else{
+
+			$.ajax({
+			url: "./modules/search_auction_v1.php",
+			type: "POST",
+			data: 'mode='+mode+'&minPrice='+minPrice+'&maxPrice='+maxPrice+'&search_Filed='+search_Filed+'&keyword='+keyword+'&zkcode='+zkcode+'&sort='+sort+'&ob='+selectedSort+'&duedate='+duedate,
+			dataType: 'html',
+			cache: false,
+			processData:false,
+			success: function(data){
+			$("#loadDataItems").html(data);
+			},
+			error: function(){} 	        
 			});
-			
-		},
-		error : function(err){
-			console.log(err);
-		}
-	});
+            }
+
+	  }); */
+
+		
+			$.ajax({
+				url : '/co-project/product/getProductList.do',
+				type: 'post',
+				dataType : 'json',
+				success : function(data){
+					//alert(JSON.stringify(data));
+					//alert(data.list[0].id);
+					
+					$.each(data.list,function(index, items){
+						var time = items.enddays_month+ '/' +items.enddays_day+ '/' +items.enddays_year+' '+items.enddays_hour+':'+items.enddays_min
+						console.log(time);
+						$('<div/>',{class:'col'}).append($('<div/>',{class: 'card',style:'width: 18rem;'})
+													.append($('<img>',{src:'../images/original.gif',class:'card-img-top'}))
+													.append($('<div/>',{class:'card-body'})
+														.append($('<h5/>',{class:'card-title',text:items.subject}))
+														.append($('<p/>',{class:'card-text',text:'시작가 : '+items.startprice})
+															.append($('<br>'))
+															.append($('<div/>',{class:'timer',id:items.product_seq})))
+														.append($('<a/>',{href:'./detailedPage_2.do?product_seq='+items.product_seq,class:'btn btn-primary',text:'응찰하러가기'})))).appendTo($('#row'));
+						CountDownTimer(time, items.product_seq)
+					});
+					
+				},
+				error : function(err){
+					console.log(err);
+				}
+			});
 });
 
 </script>
