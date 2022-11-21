@@ -40,8 +40,8 @@ public class MybatisConfiguration {
 	public SqlSessionFactory sqlSessionFactory() throws Exception{
 		SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
 		sqlSessionFactoryBean.setDataSource(dataSource());
-		sqlSessionFactoryBean.setConfigLocation(new ClassPathResource("spring/mybatis-config.xml"));
-		sqlSessionFactoryBean.setMapperLocations(new ClassPathResource("product/dao/productMapper.xml"));
+		sqlSessionFactoryBean.setConfigLocation(new ClassPathResource("com/bit/team_project/mybatis/mybatis-config.xml"));
+		sqlSessionFactoryBean.setMapperLocations(new ClassPathResource("com/bit/team_project/mapper/productMapper.xml"));
 		return sqlSessionFactoryBean.getObject();
 	}
 
