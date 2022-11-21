@@ -50,9 +50,15 @@
           </ul>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="/team_project/product/productWriteForm">
-            글쓰기
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Product
           </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/team_project/product/productWriteForm">글쓰기</a></li>
+            <li><a class="dropdown-item" href="/team_project/product/productList">리스트</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
         </li>
       </ul>
       <form class="d-flex" role="search">

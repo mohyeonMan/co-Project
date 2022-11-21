@@ -1,9 +1,13 @@
 package com.bit.team_project.productDAO;
 
+import java.util.List;
+
 import com.bit.team_project.DTO.ProductDTO;
 
 public interface ProductDAO {
 
-	void write(ProductDTO productDTO);
+	public void write(ProductDTO productDTO);
+
+	public List<ProductDTO> getList();
 
 }
