@@ -5,11 +5,34 @@
   
   <mapper namespace="productSQL">
   <insert id="productWrite" parameterType="product">
-		INSERT INTO product(subject, category, content, hopeprice, startprice, unitprice, trade_way, enddays_year, enddays_month, enddays_day, enddays_hour, enddays_min, id, product_seq) 
+		INSERT INTO producttable(subject, 
+								 category_1, 
+								  
+								 content, 
+								 hopeprice, 
+								 startprice, 
+								 nowprice,
+								 unitprice, 
+								 trade_way, 
+								 enddays_year, 
+								 enddays_month, 
+								 enddays_day, 
+								 enddays_hour, 
+								 enddays_min, 
+								 id, 
+								 product_seq, 
+								 img1, 
+								 img2, 
+								 img3, 
+								 img4, 
+								 logdate, 
+								 hit) 
 		VALUES (#{subject}
-				,#{category}
+				,#{category_1}
+				
 				,#{content}
 				,#{hopeprice}
+				,#{startprice}
 				,#{startprice}
 				,#{unitprice}
 				,#{trade_way}
@@ -19,7 +42,13 @@
 				,#{enddays_hour}
 				,#{enddays_min}
 				,#{id}
-				,product_seq.nextval)
+				,product_seq.nextval
+				,#{img1}
+				,#{img2}
+				,#{img3}
+				,#{img4}
+				,sysdate
+				,0)
 	</insert>
 	
 	<select id="getList" resultType="product">
