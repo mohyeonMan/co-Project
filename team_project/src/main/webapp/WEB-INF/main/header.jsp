@@ -61,6 +61,11 @@
             <li><a class="dropdown-item" href="#">Category4-3</a></li>
           </ul>
         </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="/team_project/product/productWriteForm">
+            글쓰기
+          </a>
+        </li>
       </ul>
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

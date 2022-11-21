@@ -1,12 +1,17 @@
 package com.bit.team_project.DTO;
 
+import java.util.List;
+
+
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.Getter;
 import lombok.Setter;
 
 @Setter@Getter
 public class ProductDTO {
 	private String subject;
-	private String category;
+	private String category_1;
 	private String content;
 	private int hopeprice;
 	private int startprice;
@@ -19,5 +24,10 @@ public class ProductDTO {
 	private int enddays_min;
 	private String id;
 	private int product_seq;
+	private List<MultipartFile> file;
+	private String img1;
+	private String img2;
+	private String img3;
+	private String img4;
 	
 }
