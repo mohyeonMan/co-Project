@@ -1,4 +1,4 @@
-package com.bit.team_project.controller.productController;
+package com.bit.team_project.controller;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
