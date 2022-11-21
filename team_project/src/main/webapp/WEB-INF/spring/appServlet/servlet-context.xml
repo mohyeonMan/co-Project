@@ -9,7 +9,7 @@
 <!-- controller bean injection xml -->
 
 
-	<context:component-scan base-package="com.bit.team_project"></context:component-scan>
+	<context:component-scan base-package="com.bit.team_project.controller"></context:component-scan>
 <!-- 	<context:component-scan base-package="user.controller"></context:component-scan>
 	<context:component-scan base-package="product.controller"></context:component-scan> -->
 	
