@@ -4,7 +4,7 @@
 
 
 <div id="header_1">
-	<img alt="main" src="./img/logo.png" onclick="location.href='/mini_project'">
+	<img alt="main" src="/resources/img/logo.png" onclick="location.href='/team_project'">
 </div>
 <div id="header_2">
 	<a href="/mini_project/user/loginForm">로그인</a>
