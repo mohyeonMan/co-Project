@@ -52,12 +52,12 @@
 	</insert>
 	
 	<select id="getList" resultType="product">
-		SELECT * FROM product ORDER by product_seq DESC
+		SELECT * FROM producttable ORDER by product_seq DESC
 	</select>
 	<select id="getList2" resultType="product">
-		SELECT * FROM product ORDER by startprice DESC
+		SELECT * FROM producttable ORDER by startprice DESC
 	</select>
 	<select id="getView" parameterType="int" resultType="product">
-		select * from product where product_seq=#{product_seq}
+		select * from producttable where product_seq=#{product_seq}
 	</select>
   </mapper>

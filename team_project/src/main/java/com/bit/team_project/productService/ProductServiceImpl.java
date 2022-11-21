@@ -81,4 +81,9 @@ public class ProductServiceImpl implements ProductService {
 				productDAO.write(productDTO);
 	}
 
+	@Override
+	public List<ProductDTO> getList() {
+		return productDAO.getList();
+	}
+
 }
