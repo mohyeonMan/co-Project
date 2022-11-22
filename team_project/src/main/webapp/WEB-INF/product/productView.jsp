@@ -211,7 +211,7 @@ $('#bidBtn').click(function () {
 		url : '/team_project/product/setBid',
 		type: 'post',
 		data : 'id=hong&product_seq='+$('#product_seq').val()+'&bidprice='+$('#bidprice').val(),
-		success : function(data){
+		success : function(){
 			alert("성공");
 		},
 		error : function(err){
