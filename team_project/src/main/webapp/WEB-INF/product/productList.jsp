@@ -8,7 +8,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 </head>
 <body>
-
+<button id="tcheck">시간확인</button>
 <div id="wrap" style="display:block; width:80%; margin: auto;">
 	<div id="fix_header">
 		<jsp:include page="/WEB-INF/main/header.jsp"></jsp:include>
@@ -32,15 +32,29 @@ function CountDownTimer(dt, id)
     var _hour = _minute * 60;
     var _day = _hour * 24;
     var timer;
-
+    
     function showRemaining() {
         var now = new Date();
         var distance = end - now;
         if (distance < 0) {
-
             clearInterval(timer);
             document.getElementById(id).innerHTML = '응찰이 종료되었습니다!';
+            //최고입찰
+			$(function () {
+				$.ajax({
+					url : '/team_project/bid/bidGet',
+					type: 'post',
+					data: 'product_seq='+id,
+					dataType : 'json',
+					success : function(data){
+						console.log(id);
+					},
+					error : function(err){
+						console.log(err);
+					}
+				})
 
+			})
             return;
         }
         var days = Math.floor(distance / _day);
@@ -68,8 +82,7 @@ $(document).ready(function(){
 			
 			 $.each(data,function(index, items){
 				var time = items.enddays_month+ '/' +items.enddays_day+ '/' +items.enddays_year+' '+items.enddays_hour+':'+items.enddays_min
-				CountDownTimer(time, items.product_seq)
-				console.log(time);
+				CountDownTimer(time, items.product_seq);
 				$('<div/>',{class:'col'}).append($('<div/>',{class: 'card',style:'width: 18rem; margin-top : 20px;'})
 											.append($('<img>',{src:'/team_project/resources/img/'+items.img1, class:'card-img-top', width : '270', height : '250'}))
 											.append($('<div/>',{class:'card-body'})
@@ -77,7 +90,8 @@ $(document).ready(function(){
 												.append($('<p/>',{class:'card-text',text:items.content})
 													.append($('<br>'))
 													.append($('<div/>',{class:'timer',id:items.product_seq})))
-												.append($('<a/>',{href:'/team_project/product/productView?product_seq='+items.product_seq,class:'btn btn-primary',text:'응찰하러가기'})))).appendTo($('#row'));
+												.append($('<a/>',{href:'/team_project/product/productView?product_seq='+items.product_seq+'&hit='+(items.hit+1),class:'btn btn-primary',text:'응찰하러가기'})))).appendTo($('#row'));
+				
 			}); 
 			
 		},
@@ -86,6 +100,13 @@ $(document).ready(function(){
 		}
 	});
 });
+
+
+
+$('#tcheck').click(function () {
+	alert($('.timer').text())
+})
+
 </script>
 </body>
 </html>

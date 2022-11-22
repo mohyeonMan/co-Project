@@ -20,4 +20,12 @@ public class BidServiceImpl implements BidService {
 	}
 
 	
+
+	@Override
+	public void bidGet(Map<String, String> map) {
+		bidDAO.bidGet(map);
+		
+	}
+
+	
 }

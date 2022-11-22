@@ -39,4 +39,10 @@ public class ProductDAOMybatis implements ProductDAO {
 		return sqlSession.selectOne("productSQL.getView", product_seq);
 	}
 
+	@Override
+	public void updateHit(Map<String, Integer> map) {
+		sqlSession.update("productSQL.updateHit",map);
+		
+	}
+
 }

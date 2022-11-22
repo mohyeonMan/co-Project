@@ -30,6 +30,7 @@ public class ProductDTO {
 	private String img2;
 	private String img3;
 	private String img4;
+	private int hit;
 	
 	
 }
