@@ -26,7 +26,7 @@ div{
 			<div id="section_1-1" style="display:inline-block; width:75%;">
 				<jsp:include page="/WEB-INF/main/grid.jsp"></jsp:include>
 			</div>
-			<div id="section_1-2" style="display:inline-block; width:20%;">
+			<div id="section_1-2" style="display:inline-block; width:20%; height:1000px;">
 				<jsp:include page="/WEB-INF/user/loginForm.jsp"></jsp:include>
 			</div>
 		</div>

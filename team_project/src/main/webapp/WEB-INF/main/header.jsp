@@ -9,6 +9,19 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms+20 me-auto mb-2 mb-lg-0">
+      
+<!-- 전체 -->
+        <li class="nav-item">
+          <a class="nav-link" href="/team_project/product/productList" role="button" >
+            전체 매물
+          </a>
+          <!-- <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/team_project/product/productWriteForm">글쓰기</a></li>
+            <li><a class="dropdown-item" href="/team_project/product/productList">리스트</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul> -->
+        </li>
 <!-- dropdown1 -->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -41,7 +54,7 @@
             Category 3
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Category3-1</a></li>
+            <li><a class="dropdown-item" id="3-1">Category3-1</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">Category3-2</a></li>
             <li><hr class="dropdown-divider"></li>
@@ -61,17 +74,8 @@
             <li><a class="dropdown-item" href="#">Category4-3</a></li>
           </ul>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Product
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="/team_project/product/productWriteForm">글쓰기</a></li>
-            <li><a class="dropdown-item" href="/team_project/product/productList">리스트</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
+
+
       </ul>
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -80,3 +84,12 @@
     </div>
   </div>
 </nav>
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.6.1.min.js"></script>
+
+<script>
+$('.dropdown-item').click(function(){
+	var category = $(this).attr('id');
+		
+})
+
+</script>
