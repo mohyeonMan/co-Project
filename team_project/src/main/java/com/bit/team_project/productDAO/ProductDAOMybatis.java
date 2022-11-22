@@ -26,4 +26,10 @@ public class ProductDAOMybatis implements ProductDAO {
 		return sqlSession.selectList("productSQL.getList");
 	}
 
+	@Override
+	public ProductDTO getProductView(int product_seq) {
+		
+		return sqlSession.selectOne("productSQL.getView", product_seq);
+	}
+
 }

@@ -86,4 +86,10 @@ public class ProductServiceImpl implements ProductService {
 		return productDAO.getList();
 	}
 
+	@Override
+	public ProductDTO getProductView(int product_seq) {
+		
+		return productDAO.getProductView(product_seq);
+	}
+
 }

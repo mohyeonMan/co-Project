@@ -10,4 +10,6 @@ public interface ProductDAO {
 
 	public List<ProductDTO> getList();
 
+	public ProductDTO getProductView(int product_seq);
+
 }
