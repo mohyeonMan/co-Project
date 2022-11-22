@@ -1,0 +1,6 @@
+CREATE TABLE bidtable (
+id varchar2(50),
+product_seq number(10),
+bidprice number(20),
+bidtime date
+);
