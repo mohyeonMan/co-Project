@@ -64,7 +64,6 @@ public class ProductController {
 	@PostMapping(value = "updateHit")
 	@ResponseBody
 	public String updateHit(@RequestParam String hit,int product_seq) {
-		System.out.println(hit);
 		Map<String, Integer>map = new HashMap<String, Integer>();
 		map.put("hit", Integer.parseInt(hit));
 		map.put("product_seq", product_seq);
