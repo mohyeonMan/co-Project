@@ -13,9 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.bit.team_project.DTO.BidDTO;
 import com.bit.team_project.DTO.ProductDTO;
-import com.bit.team_project.productService.BidService;
 import com.bit.team_project.productService.ProductService;
 
 @Component
@@ -23,8 +21,6 @@ import com.bit.team_project.productService.ProductService;
 public class ProductController {
 	@Autowired
 	private ProductService productService;
-	@Autowired
-	private BidService bidService;
 
 	@GetMapping(value = "/productWriteForm")
 	public String productWriteForm() {
@@ -63,12 +59,6 @@ public class ProductController {
 	@ResponseBody
 	public ProductDTO getProductView(@RequestParam int product_seq) {
 		return productService.getProductView(product_seq);
-	}
-	
-	@PostMapping(value = "/setBid")
-	@RequestMapping
-	public void setBid(@ModelAttribute BidDTO bidDTO) {
-		bidService.setBid(bidDTO);
 	}
 	
 	
