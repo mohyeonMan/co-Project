@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bit.team_project.DTO.BidDTO;
 import com.bit.team_project.DTO.ProductDTO;
+import com.bit.team_project.productService.BidService;
 import com.bit.team_project.productService.ProductService;
 
 @Component
@@ -58,8 +59,8 @@ public class ProductController {
 	
 	@PostMapping(value = "/setBid")
 	@RequestMapping
-	public BidDTO setBid(@ModelAttribute BidDTO bidDTO) {
-		return null;
+	public void setBid(@ModelAttribute BidDTO bidDTO) {
+		bidService.setBid(bidDTO);
 	}
 	
 	
