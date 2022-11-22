@@ -8,4 +8,6 @@
 	<context:component-scan base-package="com.bit.team_project.productDAO"/>
 	<context:component-scan base-package="com.bit.team_project.productService"/>
 	<context:component-scan base-package="com.bit.team_project.mybatis"/>
+	<context:component-scan base-package="com.bit.team_project.bidDAO"/>
+	<context:component-scan base-package="com.bit.team_project.bidService"/>
 </beans>

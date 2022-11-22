@@ -12,7 +12,6 @@ div{
 	margin:5px;
 	border:1px dotted gray;
 }
-
 </style>
 </head>
 <body>
