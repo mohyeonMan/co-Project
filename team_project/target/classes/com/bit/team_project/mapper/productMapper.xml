@@ -57,7 +57,8 @@
 	<select id="getList2" resultType="product">
 		SELECT * FROM producttable ORDER by startprice DESC
 	</select>
-	<select id="getView" parameterType="int" resultType="product">
+	<select id="getView" parameterType="map" resultType="product">
 		select * from producttable where product_seq=#{product_seq}
 	</select>
+	
   </mapper>

@@ -61,8 +61,7 @@ $(document).ready(function(){
 		type: 'post',
 		dataType : 'json',
 		success : function(data){
-			//alert(JSON.stringify(data));
-			//alert(data.list[0].id);
+
 			
 			 $.each(data,function(index, items){
 				var time = items.enddays_month+ '/' +items.enddays_day+ '/' +items.enddays_year+' '+items.enddays_hour+':'+items.enddays_min

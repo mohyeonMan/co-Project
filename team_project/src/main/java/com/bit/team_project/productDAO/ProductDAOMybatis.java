@@ -1,6 +1,7 @@
 package com.bit.team_project.productDAO;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.bit.team_project.DTO.ProductDTO;
 
-@Repository
+@Repository("productMapper")
 @Transactional
 public class ProductDAOMybatis implements ProductDAO {
 	@Autowired
@@ -24,6 +25,12 @@ public class ProductDAOMybatis implements ProductDAO {
 	@Override
 	public List<ProductDTO> getList() {
 		return sqlSession.selectList("productSQL.getList");
+	}
+	
+	@Override	
+	public ProductDTO getOne(Map<String, String>map) {
+		return  sqlSession.selectOne("productSQL.getView",map);
+		
 	}
 
 	@Override
