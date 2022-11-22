@@ -3,11 +3,14 @@ package com.bit.team_project.productService;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.bit.team_project.DTO.ProductDTO;
@@ -21,7 +24,7 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public void write(ProductDTO productDTO) {
 		//서버에서 저장 할 경로
-				String uploadFolder = "/Users/leeyongshik/git/team/team_project/src/main/webapp/resources/img";
+				String uploadFolder = "/team/team_project/src/main/webapp/resources/img";
 				List<MultipartFile> list = productDTO.getFile();
 				List<String> list2 = new ArrayList<String>();
 				
@@ -84,6 +87,13 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public List<ProductDTO> getList() {
 		return productDAO.getList();
+	}
+	
+	@Override
+	public ProductDTO getView(ModelMap modelMap) {
+		Map<String, String>map = new HashMap<String, String>();
+		map.put("product_seq", (String) modelMap.get("product_seq"));
+		return productDAO.getOne(map);
 	}
 
 }

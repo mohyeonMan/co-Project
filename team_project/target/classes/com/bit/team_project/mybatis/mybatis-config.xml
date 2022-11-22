@@ -6,6 +6,7 @@
 
 	<typeAliases>
 			<typeAlias type="com.bit.team_project.DTO.ProductDTO" alias="product" />
+			<typeAlias type="com.bit.team_project.DTO.BidDTO" alias="bid" />
 	</typeAliases>
 
 	

@@ -58,7 +58,6 @@ $(document).ready(function(){
 		type: 'post',
 		dataType : 'json',
 		success : function(data){
-			alert(JSON.stringify(data));
 			//alert(data.list[0].id);
 			
 			 $.each(data,function(index, items){
@@ -71,7 +70,7 @@ $(document).ready(function(){
 												.append($('<p/>',{class:'card-text',text:items.content})
 													.append($('<br>'))
 													.append($('<div/>',{class:'timer',id:items.product_seq})))
-												.append($('<a/>',{href:'#',class:'btn btn-primary',text:'응찰하러가기'})))).appendTo($('#row'));
+												.append($('<a/>',{href:'../bid/bidSetForm?product_seq='+items.product_seq,class:'btn btn-primary',text:'응찰하러가기'})))).appendTo($('#row'));
 				
 				CountDownTimer(time, items.product_seq)
 			}); 
