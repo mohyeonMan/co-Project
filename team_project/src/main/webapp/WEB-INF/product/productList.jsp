@@ -8,8 +8,11 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 </head>
 <body>
-<div class="container text-center">
-	<div class="row" id="row">
+<div style="display: block; width: 1050px; margin: auto;">
+	<div class="container text-center" >
+		<div class="row" id="row">
+		</div>
+		<br>
 	</div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
@@ -58,20 +61,21 @@ $(document).ready(function(){
 		type: 'post',
 		dataType : 'json',
 		success : function(data){
-			alert(JSON.stringify(data));
+			//alert(JSON.stringify(data));
 			//alert(data.list[0].id);
 			
 			 $.each(data,function(index, items){
 				var time = items.enddays_month+ '/' +items.enddays_day+ '/' +items.enddays_year+' '+items.enddays_hour+':'+items.enddays_min
 				console.log(time);
-				$('<div/>',{class:'col'}).append($('<div/>',{class: 'card',style:'width: 18rem;'})
+				$('<div/>',{class:'col'}).append($('<div/>',{class: 'card',style:'width: 18rem; margin-top : 20px;'})
 											.append($('<img>',{src:'/team_project/resources/img/'+items.img1, class:'card-img-top', width : '270', height : '250'}))
 											.append($('<div/>',{class:'card-body'})
 												.append($('<h5/>',{class:'card-title',text:items.subject}))
 												.append($('<p/>',{class:'card-text',text:items.content})
 													.append($('<br>'))
 													.append($('<div/>',{class:'timer',id:items.product_seq})))
-												.append($('<a/>',{href:'#',class:'btn btn-primary',text:'응찰하러가기'})))).appendTo($('#row'));
+												.append($('<a/>',{href:'/team_project/product/productView?product_seq='+items.product_seq,class:'btn btn-primary',text:'응찰하러가기'})))).appendTo($('#row'));
+				
 				
 				CountDownTimer(time, items.product_seq)
 			}); 
