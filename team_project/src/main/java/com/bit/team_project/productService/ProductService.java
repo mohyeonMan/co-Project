@@ -14,4 +14,6 @@ public interface ProductService {
 	
 	public ProductDTO getView(ModelMap modelMap);
 
+	public ProductDTO getProductView(int product_seq);
+
 }

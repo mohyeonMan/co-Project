@@ -15,6 +15,7 @@ public class ProductDTO {
 	private String content;
 	private int hopeprice;
 	private int startprice;
+	private int nowprice;
 	private int unitprice;
 	private int trade_way;
 	private int enddays_year;

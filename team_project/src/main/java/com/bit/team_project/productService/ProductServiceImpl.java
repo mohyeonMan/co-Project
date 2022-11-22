@@ -96,4 +96,10 @@ public class ProductServiceImpl implements ProductService {
 		return productDAO.getOne(map);
 	}
 
+	@Override
+	public ProductDTO getProductView(int product_seq) {
+		
+		return productDAO.getProductView(product_seq);
+	}
+
 }

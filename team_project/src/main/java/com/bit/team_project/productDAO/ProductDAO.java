@@ -13,4 +13,6 @@ public interface ProductDAO {
 	
 	public ProductDTO getOne(Map<String, String>map);
 
+	public ProductDTO getProductView(int product_seq);
+
 }
