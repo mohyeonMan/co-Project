@@ -114,27 +114,26 @@ h1 {
 </head>
 <body>
 <input type="text" value="${param.product_seq}" name="product_seq" id="product_seq">
+
 <div class="container">
 	<div class="container_left">
-		<img alt="" src="../uploadFiles/222.gif" width="100%" height="100%" style="border-radius: 10px;">
+		<img alt="이미지" id="img" width="100%" height="100%" style="border-radius: 10px;">
 	</div>
 	<div class="container_right">
 		<hr>
 		제목 : <span id="subject" name="subject"></span> <br>
 		<hr>
-		희망가 : ${hopeprice}<br>
-		시작가 : ${startprice}<br>
-		현재가 : ${startprice}<br>
-		거래방식 : 
-		<c:if test="${trade_way==1}">택배</c:if>
-		<c:if test="${trade_way==2}">직거</c:if>
+		희망가 : <span id="hopeprice" name="hopeprice"></span><br>
+		시작가 : <span id="startprice" name="startprice"></span><br>
+		현재가 : <span id="nowprice" name="nowprice"></span><br>
+		거래방식 : <span id="trade_way" name="trade_way"></span>
 		<br>
 		남은시간 : 추후 추가 예정<br>
 		응찰 : 응찰건수 ** 회 (마우스 오버시 응찰 내역)<br>
-		호가(증액) : ${unitprice}<br>
+		호가(증액) : <span id="unitprice" name="unitprice"></span><br>
 		응찰가격 : 
 		<input type="button" value="-" id="minus">
-		<input type="text" value="${startprice}" name="bidprice" id="bidprice" style="text-align: center; width: 150px;">
+		<input type="text" name="bidprice" id="bidprice" style="text-align: center; width: 150px;">
 		<input type="button" value="+" id="plus"><br>
 		<input type="button" value="응찰하기" name="bidBtn" id="bidBtn">
 	</div>
@@ -143,7 +142,7 @@ h1 {
 <br>
 <h3>상세정보</h3>
 <hr>
-${content}
+<pre id="content"></pre>
 </div>
 <div id="container">
 <hr>
@@ -168,12 +167,48 @@ ${content}
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script type="text/javascript">
-	$.ajax({});
+	$.ajax({
+		type : 'post',
+		url : '/team_project/product/getProductView',
+		data : 'product_seq='+$('#product_seq').val(),
+		dataType : 'json',
+		success : function (data) {
+			//alert(JSON.stringify(data));
+			
+			$('#img').attr('src','/team_project/resources/img/'+data.img1);
+			$('#subject').text(data.subject);
+			$('#hopeprice').text(data.hopeprice);
+			$('#startprice').text(data.startprice);
+			$('#nowprice').text(data.nowprice);
+			$('#unitprice').text(data.unitprice);
+			$('#content').text(data.content);
+			$('#bidprice').val(data.nowprice);
+		},
+		error : function (err) {
+			
+		}
+	});
 </script>
-<!-- <script type="text/javascript">
+<script type="text/javascript">
+
+
+
+$('#plus').click(function () {
+	var nowprice = eval($('#bidprice').val()+' + '+$('#unitprice').text()); 
+	console.log(nowprice);
+	
+	$('#bidprice').val(nowprice);
+});
+$('#minus').click(function () {
+	var nowprice = eval($('#bidprice').val()+' - '+$('#unitprice').text());
+	console.log(nowprice);
+	$('#bidprice').val(nowprice);
+});
+
+/* 응찰하기 버튼 */
 $('#bidBtn').click(function () {
 	$.ajax({
-		url : '/co-project/product/setBid.do',
+		url : '/team_project/product/setBid',
 		type: 'post',
 		data : 'id=hong&product_seq='+$('#product_seq').val()+'&bidprice='+$('#bidprice').val(),
 		success : function(data){
@@ -184,17 +219,7 @@ $('#bidBtn').click(function () {
 		}
 	});
 });
-$('#plus').click(function () {
-	var nowprice = eval($('#nowprice').val()+' + '+$('#unitprice').val());
-	console.log(nowprice);
-	$('#nowprice').val(nowprice);
-});
-$('#minus').click(function () {
-	var nowprice = eval($('#nowprice').val()+' - '+$('#unitprice').val());
-	console.log(nowprice);
-	$('#nowprice').val(nowprice);
-});
-</script> -->
+</script>
 <!-- <script type="text/javascript">
 $(function () {
 	$('#comment_form').submit(function () {

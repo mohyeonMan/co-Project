@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.bit.team_project.DTO.BidDTO;
 import com.bit.team_project.DTO.ProductDTO;
 import com.bit.team_project.productService.ProductService;
 
@@ -45,6 +46,18 @@ public class ProductController {
 	@RequestMapping(value = "/productView")
 	public String productView(@RequestParam int product_seq) {
 		return "/product/productView";
+	}
+	
+	@PostMapping(value = "/getProductView")
+	@ResponseBody
+	public ProductDTO getProductView(@RequestParam int product_seq) {
+		return productService.getProductView(product_seq);
+	}
+	
+	@PostMapping(value = "/setBid")
+	@RequestMapping
+	public BidDTO setBid(@ModelAttribute BidDTO bidDTO) {
+		return null;
 	}
 	
 	
