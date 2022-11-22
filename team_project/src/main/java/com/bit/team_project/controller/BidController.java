@@ -1,5 +1,6 @@
 package com.bit.team_project.controller;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,5 +32,15 @@ public class BidController {
 	public void setBid(@ModelAttribute BidDTO bidDTO) {
 		System.out.println(bidDTO);
 		bidService.setBid(bidDTO);
+	}
+	@PostMapping(value="bidGet")
+	@ResponseBody
+	public void bidGet(@RequestParam String product_seq) {
+		Map<String, String>map = new HashMap<String, String>();
+		map.put("product_seq1", product_seq);
+		map.put("product_seq2", product_seq);
+		System.out.println("감");
+		System.out.println(product_seq);
+		bidService.bidGet(map);
 	}
 }

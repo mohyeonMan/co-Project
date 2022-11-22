@@ -1,6 +1,7 @@
 package com.bit.team_project.productService;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.ui.ModelMap;
 
@@ -15,5 +16,7 @@ public interface ProductService {
 	public ProductDTO getView(ModelMap modelMap);
 
 	public ProductDTO getProductView(int product_seq);
+
+	public void updateHit(Map<String, Integer> map);
 
 }

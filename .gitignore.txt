@@ -1,5 +1,0 @@
-.pom.properties
-
-/META-INF/
-
-/.metadata/

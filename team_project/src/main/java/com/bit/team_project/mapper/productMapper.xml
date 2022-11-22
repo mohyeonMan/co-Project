@@ -7,7 +7,7 @@
   <insert id="productWrite" parameterType="product">
 		INSERT INTO producttable(subject, 
 								 category_1, 
-								  
+								 category_2,
 								 content, 
 								 hopeprice, 
 								 startprice, 
@@ -29,7 +29,7 @@
 								 hit) 
 		VALUES (#{subject}
 				,#{category_1}
-				
+				,#{category_2}
 				,#{content}
 				,#{hopeprice}
 				,#{startprice}
@@ -60,5 +60,7 @@
 	<select id="getView" parameterType="map" resultType="product">
 		select * from producttable where product_seq=#{product_seq}
 	</select>
-	
+	<update id="updateHit" parameterType="map">
+		update  producttable set hit = #{hit} where product_seq = #{product_seq}
+	</update>
   </mapper>

@@ -14,5 +14,7 @@ public interface ProductDAO {
 	public ProductDTO getOne(Map<String, String>map);
 
 	public ProductDTO getProductView(int product_seq);
+	
+	public void updateHit(Map<String, Integer> map);
 
 }

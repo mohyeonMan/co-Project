@@ -1,5 +1,6 @@
 package com.bit.team_project.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -30,7 +31,7 @@ public class ProductController {
 	@PostMapping(value = "/write")
 	public String write(@ModelAttribute ProductDTO productDTO) {
 		productService.write(productDTO);
-		return "/product/write";
+		return "/product/productList";
 	}
 	
 	@RequestMapping(value = "/productList")
@@ -59,6 +60,15 @@ public class ProductController {
 	@ResponseBody
 	public ProductDTO getProductView(@RequestParam int product_seq) {
 		return productService.getProductView(product_seq);
+	}
+	@PostMapping(value = "updateHit")
+	@ResponseBody
+	public String updateHit(@RequestParam String hit,int product_seq) {
+		Map<String, Integer>map = new HashMap<String, Integer>();
+		map.put("hit", Integer.parseInt(hit));
+		map.put("product_seq", product_seq);
+		productService.updateHit(map);
+		return "/product/productList";
 	}
 	
 	
