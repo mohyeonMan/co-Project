@@ -12,6 +12,7 @@ import lombok.Setter;
 public class ProductDTO {
 	private String subject;
 	private String category_1;
+	private String category_2;
 	private String content;
 	private int hopeprice;
 	private int startprice;

@@ -7,7 +7,7 @@
   <insert id="productWrite" parameterType="product">
 		INSERT INTO producttable(subject, 
 								 category_1, 
-								  
+								 category_2,
 								 content, 
 								 hopeprice, 
 								 startprice, 
@@ -29,7 +29,7 @@
 								 hit) 
 		VALUES (#{subject}
 				,#{category_1}
-				
+				,#{category_2}
 				,#{content}
 				,#{hopeprice}
 				,#{startprice}

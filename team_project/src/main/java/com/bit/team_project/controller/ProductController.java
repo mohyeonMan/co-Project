@@ -30,7 +30,7 @@ public class ProductController {
 	@PostMapping(value = "/write")
 	public String write(@ModelAttribute ProductDTO productDTO) {
 		productService.write(productDTO);
-		return "/product/write";
+		return "/product/productList";
 	}
 	
 	@RequestMapping(value = "/productList")

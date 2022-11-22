@@ -24,7 +24,7 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public void write(ProductDTO productDTO) {
 		//서버에서 저장 할 경로
-				String uploadFolder = "/team/team_project/src/main/webapp/resources/img";
+				String uploadFolder = "/Users/leeyongshik/git/team/team_project/src/main/webapp/resources/img";
 				List<MultipartFile> list = productDTO.getFile();
 				List<String> list2 = new ArrayList<String>();
 				

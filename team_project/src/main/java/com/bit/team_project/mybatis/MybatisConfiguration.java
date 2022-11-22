@@ -13,7 +13,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-@MapperScan(basePackages = {"com/bit/team_project/mapper/"})
+
 @Configuration
 @PropertySource("classpath:com/bit/team_project/mybatis/db.properties")
 @EnableTransactionManagement //<tx:annotation-driven transaction-manager="transactionManager"/>
