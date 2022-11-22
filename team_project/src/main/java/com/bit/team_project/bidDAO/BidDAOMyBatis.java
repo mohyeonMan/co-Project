@@ -1,5 +1,7 @@
 package com.bit.team_project.bidDAO;
 
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -21,5 +23,9 @@ public class BidDAOMyBatis implements BidDAO{
 	 * 
 	 * return sqlSession.selectOne("bidSQL.mybid"); }
 	 */
+	@Override
+	public void bidGet(Map<String, String>map) {
+		sqlSession.update("bidSQL.bidGet",map);
+	}
 
 }

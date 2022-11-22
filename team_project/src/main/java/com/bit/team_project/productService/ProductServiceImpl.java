@@ -102,4 +102,9 @@ public class ProductServiceImpl implements ProductService {
 		return productDAO.getProductView(product_seq);
 	}
 
+	@Override
+	public void updateHit(Map<String, Integer> map) {
+		productDAO.updateHit(map);
+	}
+
 }

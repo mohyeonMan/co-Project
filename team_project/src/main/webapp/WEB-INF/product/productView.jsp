@@ -114,6 +114,7 @@ h1 {
 </head>
 <body>
 <input type="text" value="${param.product_seq}" name="product_seq" id="product_seq">
+<input type="text" value="${param.hit}" name="hit" id="hit">
 
 <div class="container">
 	<div class="container_left">
@@ -188,6 +189,20 @@ h1 {
 			
 		}
 	});
+	//조회수
+	$.ajax({
+		type : 'post',
+		url : '/team_project/product/updateHit',
+		data : 'product_seq='+$('#product_seq').val()+'&hit='+$('#hit').val(),
+		dataType : 'text',
+		success : function (data) {
+			alert('업뎃성공')
+		},
+		error : function (err) {
+			alert('ss')
+		}
+	});
+	
 </script>
 <script type="text/javascript">
 
@@ -208,9 +223,9 @@ $('#minus').click(function () {
 /* 응찰하기 버튼 */
 $('#bidBtn').click(function () {
 	$.ajax({
-		url : '/team_project/product/setBid',
+		url : '/team_project/bid/setBid',
 		type: 'post',
-		data : 'id=hong&product_seq='+$('#product_seq').val()+'&bidprice='+$('#bidprice').val(),
+		data : 'id=testman&product_seq='+$('#product_seq').val()+'&bidprice='+$('#bidprice').val()+'&subject='+$('#subject').text(),
 		success : function(){
 			alert("성공");
 		},
