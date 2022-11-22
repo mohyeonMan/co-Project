@@ -2,9 +2,8 @@
 	pageEncoding="UTF-8"%>
 
 
-<nav class="navbar navbar-expand-lg bg-light">
+<nav class="navbar navbar-expand-lg bg-light" id="nav-bar-opacity">
 	<div class="container-fluid">
-		<div id="logo">
 			<img src="/team_project/resources/img/logo.png"
 				onclick="location.href='/team_project/'">
 			<button class="navbar-toggler" type="button"
@@ -13,9 +12,8 @@
 				aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-		</div>
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<ul class="navbar-nav ms+20 me-auto mb-2 mb-lg-0">
+			<ul class="navbar-nav ms+20 me-auto mb-2 mb-lg-0" id="nav-bar-center">
 
 				<!-- 전체 -->
 				<li class="nav-item"><a class="nav-link"
