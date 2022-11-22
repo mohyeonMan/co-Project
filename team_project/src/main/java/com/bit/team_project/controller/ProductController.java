@@ -20,6 +20,8 @@ import com.bit.team_project.productService.ProductService;
 public class ProductController {
 	@Autowired
 	private ProductService productService;
+	@Autowired
+	private BidService bidService;
 
 	@GetMapping(value = "/productWriteForm")
 	public String productWriteForm() {
