@@ -11,9 +11,12 @@ ul{
 	list-style: none;
 }
 </style>
+<link rel="stylesheet" href="/team_project/resources/css/collapse.css">
+<link rel="stylesheet" href="/team_project/resources/css/reset.css">
 </head>
 <body>
-<div class="container">
+
+
 
 
 
