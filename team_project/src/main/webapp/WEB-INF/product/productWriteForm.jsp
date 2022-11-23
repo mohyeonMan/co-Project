@@ -4,11 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"><title>Insert title here</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+<link rel="stylesheet" href="/team_project/resources/css/collapse.css">
+<link rel="stylesheet" href="/team_project/resources/css/reset.css">
 <style type="text/css">
-@import url("/team_project/resources/css/reset.css");
-ul{
-	list-style: none;
+div{
+	border:1px dotted gray;
 }
 </style>
 <link rel="stylesheet" href="/team_project/resources/css/collapse.css">
@@ -17,7 +19,9 @@ ul{
 <body>
 
 
-
+<div id="fix_header" >
+	<jsp:include page="/WEB-INF/main/header.jsp"></jsp:include>
+</div>
 
 
 			<form action="write" method="post" enctype="multipart/form-data">

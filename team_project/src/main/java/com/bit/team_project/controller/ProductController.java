@@ -71,6 +71,14 @@ public class ProductController {
 		return "/product/productList";
 	}
 	
+	@PostMapping(value = "/getProductSort")
+	@ResponseBody
+	public List<ProductDTO> getProductSort(@RequestParam String sort){
+		Map<String, String>map = new HashMap<String, String>();
+		map.put("sort",sort);
+		return productService.getProductSort(map);
+	}
+	
 	
 }
 

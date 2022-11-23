@@ -107,4 +107,11 @@ public class ProductServiceImpl implements ProductService {
 		productDAO.updateHit(map);
 	}
 
+	@Override
+	public List<ProductDTO> getProductSort(Map<String, String> map) {
+		return productDAO.getProductSort(map);
+	}
+
+	
+
 }

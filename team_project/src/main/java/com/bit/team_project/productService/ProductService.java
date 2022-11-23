@@ -19,4 +19,8 @@ public interface ProductService {
 
 	public void updateHit(Map<String, Integer> map);
 
+	public List<ProductDTO> getProductSort(Map<String, String> map);
+
+	
+
 }
