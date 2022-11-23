@@ -110,6 +110,7 @@ div{
 							<input type="text" id="enddays_day" name="enddays_day" placeholder="일 입력" >
 							<input type="text" id="enddays_hour" name="enddays_hour" placeholder="시간 입력" >
 							<input type="text" id="enddays_min" name="enddays_min" placeholder="분 입력" >
+							<input type="date"  ><input type="time"  >
 						</td>
 					</tr>
 				
