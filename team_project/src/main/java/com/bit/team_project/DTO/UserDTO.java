@@ -1,6 +1,5 @@
 package com.bit.team_project.DTO;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 

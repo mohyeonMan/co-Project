@@ -6,4 +6,6 @@ public interface UserService {
 
 	void write(UserDTO userDTO);
 
+	String checkId(String id);
+
 }

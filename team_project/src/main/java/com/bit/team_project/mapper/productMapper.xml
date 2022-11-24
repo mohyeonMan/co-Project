@@ -27,6 +27,7 @@
 								 img4, 
 								 logdate, 
 								 hit,
+								 testnum,
 								 enddate) 
 		VALUES (#{subject}
 				,#{category_1}
@@ -49,7 +50,9 @@
 				,#{img3}
 				,#{img4}
 				,sysdate
-				,0)
+				,0
+				,0
+				,#{endDate})
 	</insert>
 	
 	<select id="getList" resultType="product">

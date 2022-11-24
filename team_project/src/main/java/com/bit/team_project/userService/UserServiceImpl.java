@@ -8,12 +8,17 @@ import com.bit.team_project.userDAO.UserDAO;
 
 @Service
 public class UserServiceImpl implements UserService{
-	@Autowired	
+	@Autowired
 	private UserDAO userDAO;
 	
 	@Override
 	public void write(UserDTO userDTO) {
 		userDAO.write(userDTO);
+	}
+
+	@Override
+	public String checkId(String id) {
+		return userDAO.checkId(id);
 	}
 
 }
