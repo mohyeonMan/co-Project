@@ -45,4 +45,9 @@ public class ProductDAOMybatis implements ProductDAO {
 		
 	}
 
+	@Override
+	public List<ProductDTO> getIndexGrid() {
+		return sqlSession.selectList("productSQL.getIndexGrid");
+	}
+
 }

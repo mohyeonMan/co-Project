@@ -26,7 +26,8 @@
 								 img3, 
 								 img4, 
 								 logdate, 
-								 hit) 
+								 hit,
+								 enddate) 
 		VALUES (#{subject}
 				,#{category_1}
 				,#{category_2}

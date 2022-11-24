@@ -67,7 +67,7 @@ ul{
 						<td width="400"><input type="text" placeholder='호가(원)' id="unitprice" name="unitprice" ></td>
 					</tr>
 					<tr>
-						<td width="200"><font size="2pt">경매방식(*)</font></td>
+						<td width="200"><font size="2pt">거래방식(*)</font></td>
 						<td width="400">
 							<select id="trade_way" name="trade_way" class="form-control" required >
 								<option value="">선택하세요</option>

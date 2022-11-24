@@ -31,7 +31,7 @@ div{
 				<div class="section_1" id="section_1-1">
 					<jsp:include page="/WEB-INF/main/grid.jsp"></jsp:include>
 				</div>
-				<div class="section_1" id="section_1-2">
+				<div class="section_1" id="section_1-2"style="display:hidden;">
 					<jsp:include page="/WEB-INF/user/loginForm.jsp"></jsp:include>
 				</div>
 			</div>
@@ -44,4 +44,13 @@ div{
 
 
 </body>
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	if(!sessionStorage.getItem('userid')){
+		$('#section_1-2').show();
+	}
+	
+})
+</script>
 </html>

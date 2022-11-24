@@ -71,6 +71,11 @@ public class ProductController {
 		return "/product/productList";
 	}
 	
+	@PostMapping(value = "getIndexGrid")
+	@ResponseBody
+	public List<ProductDTO> getIndexGrid() {
+		return productService.getIndexGrid();
+	}
 	
 }
 

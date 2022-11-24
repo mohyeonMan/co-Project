@@ -17,4 +17,6 @@ public interface ProductDAO {
 	
 	public void updateHit(Map<String, Integer> map);
 
+	public List<ProductDTO> getIndexGrid();
+
 }
