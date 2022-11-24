@@ -39,8 +39,6 @@ public class BidController {
 		Map<String, String>map = new HashMap<String, String>();
 		map.put("product_seq1", product_seq);
 		map.put("product_seq2", product_seq);
-		System.out.println("감");
-		System.out.println(product_seq);
 		bidService.bidGet(map);
 	}
 }

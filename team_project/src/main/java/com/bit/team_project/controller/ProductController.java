@@ -71,11 +71,22 @@ public class ProductController {
 		return "/product/productList";
 	}
 	
+<<<<<<< HEAD
 	@PostMapping(value = "getIndexGrid")
 	@ResponseBody
 	public List<ProductDTO> getIndexGrid() {
 		return productService.getIndexGrid();
 	}
+=======
+	@PostMapping(value = "/getProductSort")
+	@ResponseBody
+	public List<ProductDTO> getProductSort(@RequestParam String sort){
+		Map<String, String>map = new HashMap<String, String>();
+		map.put("sort",sort);
+		return productService.getProductSort(map);
+	}
+	
+>>>>>>> 247abee333248d34ea660f7fb8ed1deac1f3123e
 	
 }
 

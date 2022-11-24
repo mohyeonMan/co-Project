@@ -108,8 +108,17 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
+<<<<<<< HEAD
 	public List<ProductDTO> getIndexGrid() {
 		return productDAO.getIndexGrid();
 	}
 
+=======
+	public List<ProductDTO> getProductSort(Map<String, String> map) {
+		return productDAO.getProductSort(map);
+	}
+
+	
+
+>>>>>>> 247abee333248d34ea660f7fb8ed1deac1f3123e
 }

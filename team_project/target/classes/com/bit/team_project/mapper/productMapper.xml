@@ -61,6 +61,9 @@
 	<select id="getView" parameterType="map" resultType="product">
 		select * from producttable where product_seq=#{product_seq}
 	</select>
+	<select id="getProductSort" parameterType="map" resultType="product">
+		SELECT * FROM producttable ORDER by ${sort}
+	</select>
 	<update id="updateHit" parameterType="map">
 		update  producttable set hit = #{hit} where product_seq = #{product_seq}
 	</update>

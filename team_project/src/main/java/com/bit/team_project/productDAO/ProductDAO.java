@@ -17,6 +17,12 @@ public interface ProductDAO {
 	
 	public void updateHit(Map<String, Integer> map);
 
+<<<<<<< HEAD
 	public List<ProductDTO> getIndexGrid();
+=======
+	public List<ProductDTO> getProductSort(Map<String, String> map);
+
+	
+>>>>>>> 247abee333248d34ea660f7fb8ed1deac1f3123e
 
 }
