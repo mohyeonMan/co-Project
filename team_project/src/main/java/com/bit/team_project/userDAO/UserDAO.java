@@ -16,5 +16,5 @@ public interface UserDAO {
 	public List<BidDTO> getMyBidList1(Map<String, String> map);
 
 	public List<BidDTO> getMyBidList2(Map<String, String> map);
-
+	void write(UserDTO userDTO);
 }

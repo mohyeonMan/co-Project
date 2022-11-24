@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.bit.team_project.DTO.BidDTO;
 import com.bit.team_project.DTO.UserDTO;
+
 @Repository("userMapper")
 @Transactional
 public class UserDAOMybatis implements UserDAO{
@@ -33,6 +34,10 @@ public class UserDAOMybatis implements UserDAO{
 	public List<BidDTO> getMyBidList2(Map<String, String> map) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList("userSQL.myBidList2",map);
+	}
+	@Override
+	public void write(UserDTO userDTO) {
+		sqlSession.insert("userSQL.write",userDTO);
 	}
 
 }

@@ -17,4 +17,7 @@ public interface UserService {
 
 	public List<BidDTO> getMyBidList2(Map<String, String> map);
 
+
+	void write(UserDTO userDTO);
+
 }

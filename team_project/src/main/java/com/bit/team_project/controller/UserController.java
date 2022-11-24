@@ -7,12 +7,16 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bit.team_project.DTO.BidDTO;
+import com.bit.team_project.DTO.UserDTO;
+import com.bit.team_project.userService.UserService;
+
 import com.bit.team_project.DTO.UserDTO;
 import com.bit.team_project.userService.UserService;
 
@@ -30,9 +34,14 @@ public class UserController {
 	public String agreement() {
 		return "/user/agreement";
 	}
-	@GetMapping(value = "signIn")
+	@GetMapping(value = "writeForm")
 	public String sign_in() {
-		return "/user/signIn";
+		return "/user/writeForm";
+	}
+	@PostMapping(value = "write")
+	public String write(@ModelAttribute UserDTO userDTO) {
+		userService.write(userDTO);
+		return "/";
 	}
 	@GetMapping(value = "myPage")
 	public String myPage() {

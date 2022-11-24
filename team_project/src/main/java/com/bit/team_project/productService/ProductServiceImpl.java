@@ -24,7 +24,7 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public void write(ProductDTO productDTO) {
 		//서버에서 저장 할 경로
-				String uploadFolder = "/team/team_project/src/main/webapp/resources/img";
+				String uploadFolder = "D:\\Projects\\co-Project\\team_project\\src\\main\\webapp\\resources\\img";
 				List<MultipartFile> list = productDTO.getFile();
 				List<String> list2 = new ArrayList<String>();
 				
@@ -111,6 +111,13 @@ public class ProductServiceImpl implements ProductService {
 	public void test() {
 		productDAO.test();
 		
+	}
+	public List<ProductDTO> getIndexGrid() {
+		return productDAO.getIndexGrid();
+	}
+
+	public List<ProductDTO> getProductSort(Map<String, String> map) {
+		return productDAO.getProductSort(map);
 	}
 
 }

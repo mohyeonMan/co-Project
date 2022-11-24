@@ -1,5 +1,6 @@
 package com.bit.team_project.productDAO;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -49,5 +50,16 @@ public class ProductDAOMybatis implements ProductDAO {
 	public void test() {
 		sqlSession.update("productSQL.test");
 	}
+
+	public List<ProductDTO> getIndexGrid() {
+		return sqlSession.selectList("productSQL.getIndexGrid");
+	}
+
+	public List<ProductDTO> getProductSort(Map<String, String> map) {
+		System.out.println(map.get("sort"));
+		return  sqlSession.selectList("productSQL.getProductSort",map);
+	}
+
+	
 
 }

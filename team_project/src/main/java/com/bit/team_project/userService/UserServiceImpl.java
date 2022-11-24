@@ -42,5 +42,9 @@ public class UserServiceImpl implements UserService {
 		return userDAO.getMyBidList2(map);
 	}
 
-
+	
+	@Override
+	public void write(UserDTO userDTO) {
+		userDAO.write(userDTO);
+	}
 }

@@ -32,7 +32,7 @@ public class ProductController {
 	@PostMapping(value = "/write")
 	public String write(@ModelAttribute ProductDTO productDTO) {
 		productService.write(productDTO);
-		return "/product/write";
+		return "/product/productList";
 	}
 	
 	@RequestMapping(value = "/productList")
@@ -65,7 +65,6 @@ public class ProductController {
 	@PostMapping(value = "updateHit")
 	@ResponseBody
 	public String updateHit(@RequestParam String hit,int product_seq) {
-		System.out.println(hit);
 		Map<String, Integer>map = new HashMap<String, Integer>();
 		map.put("hit", Integer.parseInt(hit));
 		map.put("product_seq", product_seq);
@@ -76,6 +75,20 @@ public class ProductController {
 	@Scheduled(fixedDelay = 3000)  //3초마다 
 	public void testset() {
 		productService.test();
+	}
+	
+	@PostMapping(value = "getIndexGrid")
+	@ResponseBody
+	public List<ProductDTO> getIndexGrid() {
+		return productService.getIndexGrid();
+	}
+	
+	@PostMapping(value = "/getProductSort")
+	@ResponseBody
+	public List<ProductDTO> getProductSort(@RequestParam String sort){
+		Map<String, String>map = new HashMap<String, String>();
+		map.put("sort",sort);
+		return productService.getProductSort(map);
 	}
 	
 	
