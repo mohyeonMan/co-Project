@@ -68,16 +68,24 @@
 		update  producttable set hit = #{hit} where product_seq = #{product_seq}
 	</update>
 	<update id="test"><!--  -->
-		update  producttable 
-		set prdstatus = 
+		       update  producttable  
+                    set prdstatus = 
+                 case
+                     WHEN enddate <![CDATA[ < ]]> TO_CHAR(SYSDATE,'YYYY-MM-DD HH24:MI') AND get_id IS NOT NULL 
+                    THEN '낙찰'
+                     WHEN enddate  <![CDATA[ < ]]>  TO_CHAR(SYSDATE,'YYYY-MM-DD HH24:MI') AND get_id IS NULL 
+                    THEN '유찰'
+                    end 
+					where enddate is not null
+		<!-- update  producttable set prdstatus = 
 		case
     		WHEN enddate <![CDATA[ < ]]> sysdate AND get_id IS NOT NULL 
     		THEN '낙찰'
     		WHEN enddate <![CDATA[ < ]]> sysdate AND get_id IS NULL 
     		THEN '유찰'
-    		when enddate<![CDATA[ > ]]>sysdate  then '진행중'  
+    		when enddate<![CDATA[ > ]]>sysdate  then '진행중' 
     		end 
-    		WHERE  prdstatus != '낙찰' and prdstatus != '유찰'
+    		WHERE enddate is not null and prdstatus != '낙찰' and prdstatus != '유찰' -->
     		
 <!-- 			update  producttable 
 				set testnum = 

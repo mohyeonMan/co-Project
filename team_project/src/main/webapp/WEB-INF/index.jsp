@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="EUC-KR"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,7 +28,7 @@ div{
 	<div id="floatMenu">
 		<ul>
 			<li><a href="/team_project/product/productWriteForm">글쓰기</a></li>
-			<li><a href="#">마이페이지</a></li>
+			<li><a href="/team_project/user/myPage?id=">마이페이지</a></li>
 			<li><a href="#">Q&A</a></li>
 			<li><a href="#">공지사항</a></li>
 			<li><a href="#">경매방법</a></li>

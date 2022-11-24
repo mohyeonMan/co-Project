@@ -65,13 +65,6 @@
 						<option value="naver.com">naver.com</option>
 						<option value="daum.com">daum.com</option>
 					</datalist>
-					
-<!-- 					<select id="email3" name="email3" onchange="change()">
-						<option value="">직접입력</option>
-						<option value="gmail.com">gmail.com</option>
-						<option value="naver.com">naver.com</option>
-						<option value="daum.com">daum.com</option>
-					</select> -->
 				</td>
 			</tr>
 			<tr>

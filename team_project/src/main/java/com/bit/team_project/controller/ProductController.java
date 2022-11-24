@@ -75,6 +75,7 @@ public class ProductController {
 	@Scheduled(fixedDelay = 3000)  //3초마다 
 	public void testset() {
 		productService.test();
+		System.out.println();
 	}
 	
 	@PostMapping(value = "getIndexGrid")
