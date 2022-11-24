@@ -49,7 +49,7 @@
 				,#{img4}
 				,sysdate
 				,0)
-	</insert>
+	</insert> 
 	
 	<select id="getList" resultType="product">
 		SELECT * FROM producttable ORDER by product_seq DESC
@@ -62,5 +62,32 @@
 	</select>
 	<update id="updateHit" parameterType="map">
 		update  producttable set hit = #{hit} where product_seq = #{product_seq}
+	</update>
+	<update id="test"><!--  -->
+		update  producttable 
+		set prdstatus = 
+		case
+    		WHEN enddate <![CDATA[ < ]]> sysdate AND get_id IS NOT NULL 
+    		THEN '낙찰'
+    		WHEN enddate <![CDATA[ < ]]> sysdate AND get_id IS NULL 
+    		THEN '유찰'
+    		when enddate<![CDATA[ > ]]>sysdate  then '진행중'  
+    		end 
+    		WHERE  prdstatus != '낙찰' and prdstatus != '유찰'
+    		
+<!-- 			update  producttable 
+				set testnum = 
+				case
+				    WHEN logdate < sysdate
+			         AND get_id IS NOT NULL THEN
+			        3
+			    WHEN logdate < sysdate
+			         AND get_id IS NULL THEN
+			        2
+			    when logdate>sysdate  then 1  
+			    end 
+			    WHERE testnum != 3 and testnum != 2;
+			    		 -->
+    		
 	</update>
   </mapper>

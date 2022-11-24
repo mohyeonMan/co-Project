@@ -6,3 +6,4 @@
 <br><br>
 <input type="button" value="로그인">
 <input type="button" value="회원가입" onClick="location.href='/team_project/user/agreement'">
+<input type="button" value="마이페이지" onClick="location.href='/team_project/user/myPage?id='"><!-- 테스트버튼 -->

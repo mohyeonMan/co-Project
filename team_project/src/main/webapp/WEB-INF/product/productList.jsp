@@ -39,22 +39,6 @@ function CountDownTimer(dt, id)
         if (distance < 0) {
             clearInterval(timer);
             document.getElementById(id).innerHTML = '응찰이 종료되었습니다!';
-            //최고입찰
-			$(function () {
-				$.ajax({
-					url : '/team_project/bid/bidGet',
-					type: 'post',
-					data: 'product_seq='+id,
-					dataType : 'json',
-					success : function(data){
-						console.log(id);
-					},
-					error : function(err){
-						console.log(err);
-					}
-				})
-
-			})
             return;
         }
         var days = Math.floor(distance / _day);
@@ -67,8 +51,10 @@ function CountDownTimer(dt, id)
         document.getElementById(id).innerHTML += minutes + '분 ';
         document.getElementById(id).innerHTML += seconds + '초';
     }
-
+	
     timer = setInterval(showRemaining, 1000);
+    /* if(timer = setTimeout()) */
+    
 }
 </script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.1.min.js"></script>
@@ -103,9 +89,7 @@ $(document).ready(function(){
 
 
 
-$('#tcheck').click(function () {
-	alert($('.timer').text())
-})
+
 
 </script>
 </body>

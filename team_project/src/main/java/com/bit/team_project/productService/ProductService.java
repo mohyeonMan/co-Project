@@ -19,4 +19,6 @@ public interface ProductService {
 
 	public void updateHit(Map<String, Integer> map);
 
+	public void test();
+
 }

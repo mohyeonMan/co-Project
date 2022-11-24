@@ -45,4 +45,9 @@ public class ProductDAOMybatis implements ProductDAO {
 		
 	}
 
+	@Override
+	public void test() {
+		sqlSession.update("productSQL.test");
+	}
+
 }

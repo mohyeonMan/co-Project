@@ -24,8 +24,12 @@ public class BidDAOMyBatis implements BidDAO{
 	 * return sqlSession.selectOne("bidSQL.mybid"); }
 	 */
 	@Override
-	public void bidGet(Map<String, String>map) {
-		sqlSession.update("bidSQL.bidGet",map);
+	public void bidSetHigh(Map<String, String>map) {
+		sqlSession.update("bidSQL.bidSetHigh",map);
+	}
+	@Override
+	public String getBidCount(Map<String, String> map) {
+		return sqlSession.selectOne("bidSQL.getBidCount",map);
 	}
 
 }

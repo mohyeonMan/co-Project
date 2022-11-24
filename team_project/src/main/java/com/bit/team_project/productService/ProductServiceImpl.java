@@ -107,4 +107,10 @@ public class ProductServiceImpl implements ProductService {
 		productDAO.updateHit(map);
 	}
 
+	@Override
+	public void test() {
+		productDAO.test();
+		
+	}
+
 }

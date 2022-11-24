@@ -42,7 +42,8 @@ public class MybatisConfiguration {
 		SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
 		sqlSessionFactoryBean.setDataSource(dataSource());
 		sqlSessionFactoryBean.setConfigLocation(new ClassPathResource("com/bit/team_project/mybatis/mybatis-config.xml"));
-		sqlSessionFactoryBean.setMapperLocations(new ClassPathResource("com/bit/team_project/mapper/productMapper.xml"),new ClassPathResource("com/bit/team_project/mapper/bidMapper.xml"));
+		sqlSessionFactoryBean.setMapperLocations(new ClassPathResource("com/bit/team_project/mapper/productMapper.xml"),new ClassPathResource("com/bit/team_project/mapper/bidMapper.xml"),
+																		new ClassPathResource("com/bit/team_project/mapper/userMapper.xml"));
 		return sqlSessionFactoryBean.getObject();
 	}
 

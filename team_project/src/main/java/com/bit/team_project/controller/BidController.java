@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,17 +31,26 @@ public class BidController {
 	@PostMapping(value="setBid")
 	@ResponseBody
 	public void setBid(@ModelAttribute BidDTO bidDTO) {
-		System.out.println(bidDTO);
 		bidService.setBid(bidDTO);
 	}
-	@PostMapping(value="bidGet")
+
+	/*
+	 * @Scheduled(fixedDelay = 3000) public void name() { System.out.println("3ch");
+	 * }
+	 */
+	@PostMapping(value="bidSetHigh")
 	@ResponseBody
-	public void bidGet(@RequestParam String product_seq) {
+	public void bidbidSetHigh(@RequestParam String product_seq) {
 		Map<String, String>map = new HashMap<String, String>();
 		map.put("product_seq1", product_seq);
 		map.put("product_seq2", product_seq);
-		System.out.println("감");
-		System.out.println(product_seq);
-		bidService.bidGet(map);
+		bidService.bidSetHigh(map);
+	}
+	@PostMapping(value="getBidCount")
+	@ResponseBody
+	public String getBidCount(@RequestParam String product_seq) {
+		Map<String, String>map = new HashMap<String, String>();
+		map.put("product_seq", product_seq);
+		return bidService.getBidCount(map);
 	}
 }

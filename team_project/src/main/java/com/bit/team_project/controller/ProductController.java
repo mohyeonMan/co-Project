@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -70,6 +71,11 @@ public class ProductController {
 		map.put("product_seq", product_seq);
 		productService.updateHit(map);
 		return "/product/productList";
+	}
+
+	@Scheduled(fixedDelay = 3000)  //3초마다 
+	public void testset() {
+		productService.test();
 	}
 	
 	

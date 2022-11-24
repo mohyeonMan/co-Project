@@ -8,4 +8,5 @@ public class BidDTO {
 	private String id;
 	private int product_seq;
 	private int bidprice;
+	private String bidtime;
 }

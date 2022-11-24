@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="userSQL">
+  	<select id="myBidList" parameterType="map" resultType="bid" >
+  		
+  		<!-- 물건 번호순,안에서 시간순으로 정렬 -->
+  		select * from bid where id = #{id} order by product_seq,bidtime
+  		
+  		<!-- select * from bid where id = #{id} order by bidprice 전체 시간 -->
+  	</select>
+  	<select id="userDetail" parameterType="map" resultType="user">
+  	select * from usertable where id = #{id}
+  	</select>
+  		<select id="myBidList1" parameterType="map" resultType="bid" >
+  		
+  		<!-- 최신 상품순,안에서 시간순으로 정렬 -->
+  		select * from bid where id = #{id} order by product_seq desc,bidtime
+  		
+  		<!-- select * from bid where id = #{id} order by bidprice 전체 시간 -->
+  	</select>
+  		<select id="myBidList2" parameterType="map" resultType="bid" >
+  		
+  		
+  		<!-- 높은 입찰가 순,안에서 시간순으로 정렬 -->
+  		select * from bid where id = #{id} order by bidprice desc,product_seq
+  		
+  		<!-- select * from bid where id = #{id} order by bidprice 전체 시간 -->
+  	</select>
+  </mapper>
+  
+  <!-- select id,product_seq,bidprice,bidtime,subject,row_number()over(partition by product_seq order by bidtime)
+  			 from bid where id = #{id} 
+  			 	-->
+  

@@ -130,7 +130,7 @@ h1 {
 		거래방식 : <span id="trade_way" name="trade_way"></span>
 		<br>
 		남은시간 : 추후 추가 예정<br>
-		응찰 : 응찰건수 ** 회 (마우스 오버시 응찰 내역)<br>
+		응찰 :  응찰건수 <span id="bidstatus" name="bidstatus">**</span> 회 (마우스 오버시 응찰 내역)<br>
 		호가(증액) : <span id="unitprice" name="unitprice"></span><br>
 		응찰가격 : 
 		<input type="button" value="-" id="minus">
@@ -168,6 +168,7 @@ h1 {
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script type="text/javascript">
+//출력
 	$.ajax({
 		type : 'post',
 		url : '/team_project/product/getProductView',
@@ -196,7 +197,6 @@ h1 {
 		data : 'product_seq='+$('#product_seq').val()+'&hit='+$('#hit').val(),
 		dataType : 'text',
 		success : function (data) {
-			alert('업뎃성공')
 		},
 		error : function (err) {
 			alert('ss')
@@ -225,15 +225,47 @@ $('#bidBtn').click(function () {
 	$.ajax({
 		url : '/team_project/bid/setBid',
 		type: 'post',
-		data : 'id=testman&product_seq='+$('#product_seq').val()+'&bidprice='+$('#bidprice').val()+'&subject='+$('#subject').text(),
+		data : 'id=check22&product_seq='+$('#product_seq').val()+'&bidprice='+$('#bidprice').val()+'&subject='+$('#subject').text(),
 		success : function(){
 			alert("성공");
+			$(function () {
+				$.ajax({
+					url : '/team_project/bid/bidGet',
+					type: 'post',
+					data: 'product_seq='+$('#product_seq').val(),
+					dataType : 'json',
+					success : function(data){
+						console.log(id);
+					},
+					error : function(err){
+						console.log(err);
+					}
+				})
+
+			})
+			
 		},
 		error : function(err){
 			console.log(err);
 		}
 	});
 });
+$('#bidstatus').click(function() {
+	$.ajax({
+		url:'/team_project/bid/getBidCount',
+		type: 'post',
+		data : 'product_seq='+$('#product_seq').val(),
+		dataType:'text',
+		success : function(data){
+			$('#bidstatus').html(data)
+		},
+		error : function(err){
+			alert(err)
+		}
+	})
+})
+
+
 </script>
 <!-- <script type="text/javascript">
 $(function () {
