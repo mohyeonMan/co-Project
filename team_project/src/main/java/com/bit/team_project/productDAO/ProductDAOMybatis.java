@@ -47,12 +47,10 @@ public class ProductDAOMybatis implements ProductDAO {
 	}
 
 	@Override
-<<<<<<< HEAD
 	public List<ProductDTO> getIndexGrid() {
 		return sqlSession.selectList("productSQL.getIndexGrid");
 	}
 
-=======
 	public List<ProductDTO> getProductSort(Map<String, String> map) {
 		System.out.println(map.get("sort"));
 		return  sqlSession.selectList("productSQL.getProductSort",map);
@@ -60,5 +58,4 @@ public class ProductDAOMybatis implements ProductDAO {
 
 	
 
->>>>>>> 247abee333248d34ea660f7fb8ed1deac1f3123e
 }

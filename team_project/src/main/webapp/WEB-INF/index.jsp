@@ -27,11 +27,11 @@ div{
 <body>
 	<div id="floatMenu">
 		<ul>
-			<li><a href="/team_project/product/productWriteForm">湲��곌린</a></li>
-			<li><a href="#">留��댄���댁�</a></li>
+			<li><a href="/team_project/product/productWriteForm">글쓰기</a></li>
+			<li><a href="#">마이페이지</a></li>
 			<li><a href="#">Q&A</a></li>
-			<li><a href="#">怨듭��ы��</a></li>
-			<li><a href="#">寃쎈ℓ諛⑸�</a></li>
+			<li><a href="#">공지사항</a></li>
+			<li><a href="#">경매방법</a></li>
 		</ul>
 	</div>
 	
@@ -63,16 +63,16 @@ div{
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 <script type="text/javascript">
 $(document).ready(function() {
-	// 湲곗〈 css���� ��濡��� 諛곕�� ��移�(top)媛��� 媛��몄�� ���ν����.
+	// 기존 css에서 플로팅 배너 위치(top)값을 가져와 저장한다.
 	var floatPosition = parseInt($("#floatMenu").css('top'));
-	// 250px �대�곗���쇰� 媛��몄�ㅻ��濡� �ш린�� �レ��留� 媛��몄�⑤��. parseInt( 媛� );
+	// 250px 이런식으로 가져오므로 여기서 숫자만 가져온다. parseInt( 값 );
  
 	$(window).scroll(function() {
-		// ���� �ㅽ�щ· ��移�瑜� 媛��몄�⑤��.
+		// 현재 스크롤 위치를 가져온다.
 		var scrollTop = $(window).scrollTop();
 		var newPosition = scrollTop + floatPosition + "px";
  
-		/* ����硫��댁�� ���� 諛�濡� �곕�쇨�
+		/* 애니메이션 없이 바로 따라감
 		 $("#floatMenu").css('top', newPosition);
 		 */
  
