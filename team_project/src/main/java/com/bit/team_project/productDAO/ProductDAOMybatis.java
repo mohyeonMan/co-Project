@@ -56,8 +56,13 @@ public class ProductDAOMybatis implements ProductDAO {
 	}
 
 	public List<ProductDTO> getProductSort(Map<String, String> map) {
-		System.out.println(map.get("sort"));
 		return  sqlSession.selectList("productSQL.getProductSort",map);
+	}
+
+	@Override
+	public void gomsg() {
+		sqlSession.insert("productSQL.gomsg");
+		
 	}
 
 	

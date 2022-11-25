@@ -22,6 +22,8 @@ public interface ProductDAO {
 
 	public List<ProductDTO> getProductSort(Map<String, String> map);
 
+	public void gomsg();
+
 	
 
 }

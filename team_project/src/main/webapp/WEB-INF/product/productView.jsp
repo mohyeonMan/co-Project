@@ -134,7 +134,7 @@ h1 {
 		호가(증액) : <span id="unitprice" name="unitprice"></span><br>
 		응찰가격 : 
 		<input type="button" value="-" id="minus">
-		<input type="text" name="bidprice" id="bidprice" style="text-align: center; width: 150px;">
+		<input type="number" name="bidprice" id="bidprice" style="text-align: center; width: 150px;">
 		<input type="button" value="+" id="plus"><br>
 		<input type="button" value="응찰하기" name="bidBtn" id="bidBtn">
 	</div>
@@ -191,7 +191,7 @@ h1 {
 		}
 	});
 	//조회수
-	$.ajax({
+	/* $.ajax({
 		type : 'post',
 		url : '/team_project/product/updateHit',
 		data : 'product_seq='+$('#product_seq').val()+'&hit='+$('#hit').val(),
@@ -201,7 +201,7 @@ h1 {
 		error : function (err) {
 			alert('ss')
 		}
-	});
+	}); */
 	
 </script>
 <script type="text/javascript">
@@ -220,6 +220,9 @@ $('#minus').click(function () {
 	$('#bidprice').val(nowprice);
 });
 
+
+$('#bidprice').on("change",$('#bidprice').val(),function () {
+})
 /* 응찰하기 버튼 */
 $('#bidBtn').click(function () {
 	$.ajax({
@@ -230,7 +233,7 @@ $('#bidBtn').click(function () {
 			alert("성공");
 			$(function () {
 				$.ajax({
-					url : '/team_project/bid/bidGet',
+					url : '/team_project/bid/bidSetHigh',
 					type: 'post',
 					data: 'product_seq='+$('#product_seq').val(),
 					dataType : 'json',

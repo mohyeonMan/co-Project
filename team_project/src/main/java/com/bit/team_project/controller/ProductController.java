@@ -75,7 +75,8 @@ public class ProductController {
 	@Scheduled(fixedDelay = 3000)  //3초마다 
 	public void testset() {
 		productService.test();
-		System.out.println();
+		productService.gomsg();
+		
 	}
 	
 	@PostMapping(value = "getIndexGrid")
@@ -91,6 +92,11 @@ public class ProductController {
 		map.put("sort",sort);
 		return productService.getProductSort(map);
 	}
+	@RequestMapping(value = "/successedPrd")
+	public String successedPrd() {
+		return "/product/successedPrd";
+	}
+	
 	
 	
 }

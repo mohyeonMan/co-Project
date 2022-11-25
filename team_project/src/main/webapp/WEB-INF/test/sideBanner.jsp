@@ -34,6 +34,7 @@ ul{
 		<li><a href="#">Q&A</a></li>
 		<li><a href="#">공지사항</a></li>
 		<li><a href="#">경매방법</a></li>
+		<li><a href="#">낙찰된 물품 보기</a></li>
 	</ul>
 </div>
 

@@ -120,4 +120,13 @@ public class ProductServiceImpl implements ProductService {
 		return productDAO.getProductSort(map);
 	}
 
+	@Override
+	public void gomsg() {
+		//메세지
+		productDAO.gomsg();
+		
+	}
+
+	
+
 }

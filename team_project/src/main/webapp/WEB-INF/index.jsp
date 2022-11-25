@@ -32,6 +32,7 @@ div{
 			<li><a href="#">Q&A</a></li>
 			<li><a href="#">공지사항</a></li>
 			<li><a href="#">경매방법</a></li>
+			<li><a href="/team_project/product/successedPrd">낙찰물품 확인하기</a></li>
 		</ul>
 	</div>
 	

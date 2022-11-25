@@ -23,4 +23,7 @@ public interface ProductService {
 	public List<ProductDTO> getIndexGrid();
 	public List<ProductDTO> getProductSort(Map<String, String> map);
 
+	public void gomsg();
+
+
 }
