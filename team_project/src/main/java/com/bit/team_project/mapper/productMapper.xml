@@ -27,8 +27,8 @@
 								 img4, 
 								 logdate, 
 								 hit,
-								 testnum,
-								 enddate) 
+								 enddate,
+								 prdstatus) 
 		VALUES (#{subject}
 				,#{category_1}
 				,#{category_2}
@@ -51,8 +51,8 @@
 				,#{img4}
 				,sysdate
 				,0
-				,0
-				,#{endDate})
+				,#{endDate}
+				,'진행중')
 	</insert>
 	
 	<select id="getList" resultType="product">
