@@ -277,7 +277,7 @@
 						<p class="label-txt">모바일/디카</p>
 					</a>
 				</dd>
-			</dl>
+			</dl> 
 			<dl>
 				<dt class="on">
 					<p class="label-txt"> <i class="bi bi-globe2"></i> 아웃도어/스포츠 </p>
