@@ -12,9 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.condition.ProducesRequestCondition;
 
 import com.bit.team_project.DTO.ProductDTO;
+import com.bit.team_project.DTO.SoketDTO;
 import com.bit.team_project.productDAO.ProductDAO;
 
 @Service
@@ -118,6 +118,12 @@ public class ProductServiceImpl implements ProductService {
 
 	public List<ProductDTO> getProductSort(Map<String, String> map) {
 		return productDAO.getProductSort(map);
+	}
+
+	@Override
+	public void saveNotify(SoketDTO soketDTO) {
+		productDAO.saveNotify(soketDTO);
+		
 	}
 
 	

@@ -70,4 +70,8 @@
 	<update id="updateHit" parameterType="map">
 		update  producttable set hit = #{hit} where product_seq = #{product_seq}
 	</update>
+	<insert id="saveNotify" parameterType="soket">
+		INSERT INTO soket VALUES (#{target},#{content},#{type},#{url})
+	</insert>
+	
   </mapper>

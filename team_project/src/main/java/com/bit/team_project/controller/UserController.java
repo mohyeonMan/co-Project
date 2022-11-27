@@ -1,5 +1,10 @@
 package com.bit.team_project.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -40,5 +45,28 @@ public class UserController {
 	@ResponseBody
 	public String checkId(@RequestParam String id) {
 		return userService.checkId(id);
+	}
+	
+	@PostMapping(value = "/login")
+	@ResponseBody
+	public String login(@RequestParam String id, @RequestParam String pwd, HttpSession session) {
+		
+		Map<String, String>map = new HashMap<String, String>();
+		map.put("id", id);
+		map.put("pwd", pwd);
+		UserDTO userDTO = userService.login(map);
+		
+		if(userDTO != null) {
+			session.setAttribute("id", id);
+			session.setAttribute("name", userDTO.getName());
+			return "ok";
+		}
+		else return "fail";
+	}
+	
+	@PostMapping(value = "/logout")
+	@ResponseBody
+	public void logout(HttpSession session) {
+		session.invalidate();
 	}
 }
