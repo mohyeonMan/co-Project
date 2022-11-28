@@ -226,7 +226,7 @@
 							<a href="/forgot-password">아이디 또는 비밀번호를 잊으셨나요?</a>
 						</div>
 						<div class="login_api">
-							<a href="https://kauth.kakao.com/oauth/authorize?client_id=d860d38c992ca8bf5f07dcc3fd5122b9&redirect_uri=http://localhost:9090/member/auth/kakao/callback&response_type=code"><img src="/team_project/resources/img/kakao_login_medium_narrow.png" style="width: 200px; height: 45px;"></a>
+							<a href="https://kauth.kakao.com/oauth/authorize?client_id=268b20cd927776992bc7f4192b57984b&redirect_uri=http://localhost:8080/team_project/user/kakaoLogin&response_type=code"><img src="/team_project/resources/img/kakao_login_medium_narrow.png" style="width: 200px; height: 45px;"></a>
 						</div>
 						<div class="login_api">
 							<a href="/oauth2/authorization/google"><img src="/team_project/resources/img/naverlogin.png" style="width: 200px; height: 45px; margin-top: 8px;"></a>
@@ -406,7 +406,19 @@
 
 						
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script type="text/javascript">
+//카카오로그인
+
+
+
+
+
+
+
+
+
+
 $(document).ready(function() {
 	 
 	// 기존 css에서 플로팅 배너 위치(top)값을 가져와 저장한다.
@@ -430,7 +442,7 @@ $(document).ready(function() {
  
 });
 </script>
-<script language="JavaScript">
+<script lang="JavaScript">
 function printTime() {
 var clock = document.getElementById("clock");
 var now = new Date();

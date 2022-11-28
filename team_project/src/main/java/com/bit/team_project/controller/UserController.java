@@ -66,7 +66,19 @@ public class UserController {
 	
 	@PostMapping(value = "/logout")
 	@ResponseBody
-	public void logout(HttpSession session) {
+	public void logout(HttpSession session){
 		session.invalidate();
 	}
+
+	@GetMapping(value = "/kakaoLogin")
+	public String kakaoLogin(@RequestParam String code, HttpSession session) {
+		System.out.println("인가코드 : "+code);
+		String token = userService.getKakaoAccessToken(code);
+		Map<String, String> map = userService.createKakaoUser(token);
+		session.setAttribute("id", map.get("id"));
+		session.setAttribute("name", "good");
+
+		return "/index";
+	}
+	
 }
