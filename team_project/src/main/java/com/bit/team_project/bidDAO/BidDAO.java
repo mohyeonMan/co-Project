@@ -8,6 +8,8 @@ public interface BidDAO {
 
 	public void set(BidDTO bidDTO);
 
-	public void bidGet(Map<String, String> map);
+	public void bidSetHigh(Map<String, String> map);
+
+	public String getBidCount(Map<String, String> map);
 	
 }

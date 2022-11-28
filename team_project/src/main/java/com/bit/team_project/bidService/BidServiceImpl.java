@@ -22,9 +22,16 @@ public class BidServiceImpl implements BidService {
 	
 
 	@Override
-	public void bidGet(Map<String, String> map) {
-		bidDAO.bidGet(map);
+	public void bidSetHigh(Map<String, String> map) {
+		bidDAO.bidSetHigh(map);
 		
+	}
+
+
+
+	@Override
+	public String getBidCount(Map<String, String> map) {
+		return bidDAO.getBidCount(map);
 	}
 
 	

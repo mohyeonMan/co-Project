@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -73,6 +74,13 @@ public class ProductController {
 		productService.updateHit(map);
 		return "/product/productList";
 	}
+
+	@Scheduled(fixedDelay = 3000)  //3초마다 
+	public void testset() {
+		productService.test();
+		productService.gomsg();
+		
+	}
 	
 	@PostMapping(value = "getIndexGrid")
 	@ResponseBody
@@ -87,6 +95,11 @@ public class ProductController {
 		map.put("sort",sort);
 		return productService.getProductSort(map);
 	}
+	@RequestMapping(value = "/successedPrd")
+	public String successedPrd() {
+		return "/product/successedPrd";
+	}
+	
 	
 	
 }

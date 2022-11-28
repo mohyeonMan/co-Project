@@ -18,10 +18,12 @@ public interface ProductDAO {
 	
 	public void updateHit(Map<String, Integer> map);
 
+	public void test();
 	public List<ProductDTO> getIndexGrid();
 
 	public List<ProductDTO> getProductSort(Map<String, String> map);
 
+	public void gomsg();
 	public void saveNotify(SoketDTO soketDTO);
 
 	

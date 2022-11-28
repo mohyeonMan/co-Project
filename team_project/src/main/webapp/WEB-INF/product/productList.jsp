@@ -56,8 +56,10 @@ function CountDownTimer(dt, id)
         document.getElementById(id).innerHTML += minutes + '분 ';
         document.getElementById(id).innerHTML += seconds + '초';
     }
-
+	
     timer = setInterval(showRemaining, 1000);
+    /* if(timer = setTimeout()) */
+    
 }
 
 /* 3단위마다 콤마 */
@@ -105,6 +107,13 @@ $(document).ready(function(){
 				
 				
 				/* $('<div/>',{class:'col-4'}).append($('<div/>',{class: 'card',style:'width: 18rem; margin-top : 20px; border-color: #EDEDED'})
+			
+			 $.each(data,function(index, items){
+				var end = new Date(items.endDate);
+				var time=end.getMonth()+1+'/'+end.getDate()+'/'+end.getFullYear()+' '+end.getHours()+':'+end.getMinutes();
+				console.log(time);
+				/* if(items.prdstatus=='진행중'){}  진행중만 띄우기*/
+				$('<div/>',{class:'col-4'}).append($('<div/>',{class: 'card',style:'width: 18rem; margin-top : 20px; border-color: #EDEDED'})
 											.append($('<img>',{src:'/team_project/resources/img/'+items.img1, class:'card-img-top', width : '100%', height : '250', alt : '대표이미지'}))
 											.append($('<div/>',{class:'card-body'})
 											.append($('<h5/>',{class:'card-title',text:items.subject}))
@@ -129,9 +138,7 @@ $(document).ready(function(){
 });
 </script>
 <script type="text/javascript">
-$('#tcheck').click(function () {
-	alert($('.timer').text())
-});
+
 
 $(document).on('change','#sort', function () {
 	var selectSort = $('#sort').val();
@@ -172,7 +179,7 @@ $(document).on('change','#sort', function () {
 		}
 	});
 });
-	
+
 </script>
 
 

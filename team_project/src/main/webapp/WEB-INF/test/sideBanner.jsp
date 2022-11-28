@@ -352,53 +352,12 @@
 
 <div class="quick-menu" id="quick-menu">
 	<ul>
-		<li>
-		
-			<a href="#"> 
-			
-				<span class="icon badge-container">
-					<i class="bi bi-info-circle"></i>
-				</span> 
-				<span class="label">경매방법</span>
-			</a>
-			<hr width="80%">
-		</li>
-		<li>
-			<a href="/team_project/product/productWriteForm"> 
-				<span class="icon badge-container">
-					<i class="bi bi-clipboard2"></i>
-				</span> 
-				<span class="label">글쓰기</span>
-			</a>
-			<hr width="80%">
-		</li>
-		<li>
-			<a href="#" id="messageBtn"> 
-				<span class="icon badge-container">
-					<i class="bi bi-envelope"></i>
-					<span class="badge">99</span>
-				</span> 
-				<span class="label">메세지함</span>
-			</a>
-			<hr width="80%">
-		</li>
-		<li>
-			<a href="#"> 
-				<span class="icon badge-container">
-					<i class="bi bi-person"></i>
-				</span> 
-				<span class="label">마이페이지</span>
-			</a>
-			<hr width="80%">
-		</li>
-		<li>
-			<a href="#"> 
-				<span class="icon badge-container">
-					<i class="bi bi-question-circle"></i>
-				</span> 
-				<span class="label">Q&A</span>
-			</a>
-		</li>
+		<li><a href="#">글쓰기</a></li>
+		<li><a href="../user/myPage">마이페이지</a></li>
+		<li><a href="#">Q&A</a></li>
+		<li><a href="#">공지사항</a></li>
+		<li><a href="#">경매방법</a></li>
+		<li><a href="../product/successedPrd">낙찰된 물품 보기</a></li>
 	</ul>
 </div>
 

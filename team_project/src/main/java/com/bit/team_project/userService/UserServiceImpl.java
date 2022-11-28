@@ -6,29 +6,54 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.net.ssl.HttpsURLConnection;
-import javax.swing.text.html.parser.Parser;
 
-import org.apache.commons.collections.map.HashedMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.bit.team_project.DTO.BidDTO;
 import com.bit.team_project.DTO.UserDTO;
 import com.bit.team_project.userDAO.UserDAO;
-import com.fasterxml.jackson.core.JsonParser;
 import com.google.gson.JsonElement;
-
-import net.sf.json.JSONObject;
 
 @Service
 public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserDAO userDAO;
+
+	
+	
+	@Override
+	public List<BidDTO> getMyBidList(Map<String, String> map) {
+		// TODO Auto-generated method stub
+		return userDAO.getMyBidList(map);
+	}
+
+
+	@Override
+	public UserDTO getUserDetail(Map<String, String> map) {
+		// TODO Auto-generated method stub
+		return userDAO.getUserDetail(map);
+	}
+
+
+	@Override
+	public List<BidDTO> getMyBidList1(Map<String, String> map) {
+		// TODO Auto-generated method stub
+		return userDAO.getMyBidList1(map);
+	}
+
+
+	@Override
+	public List<BidDTO> getMyBidList2(Map<String, String> map) {
+		// TODO Auto-generated method stub
+		return userDAO.getMyBidList2(map);
+	}
 
 	@Override
 	public void write(UserDTO userDTO) {
@@ -145,7 +170,6 @@ public class UserServiceImpl implements UserService {
 			System.out.println("id : " + id);
 //			System.out.println("nick : " + nick);
 			map.put("id", id); // 임시로 name
-//			map.put("nick", nick);
 			
 			reader.close();
 
@@ -153,6 +177,11 @@ public class UserServiceImpl implements UserService {
 			e.printStackTrace();
 		}
 		return map;
+	}
+	
+	@Override
+	public void update(UserDTO userDTO) {
+		userDAO.update(userDTO);
 	}
 
 }

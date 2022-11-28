@@ -31,7 +31,6 @@
 </style>
 </head>
 <body>
-
 <%-- <jsp:include page="/WEB-INF/product/productList.jsp"/> --%>
 <div id="container">
 	<div class="main-ranking">
@@ -383,7 +382,7 @@
 			<hr width="80%">
 		</li>
 		<li>
-			<a href="#"> 
+			<a href="myPage"> 
 				<span class="icon badge-container">
 					<i class="bi bi-person"></i>
 				</span> 

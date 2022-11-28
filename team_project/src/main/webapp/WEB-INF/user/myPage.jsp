@@ -6,21 +6,20 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+
 <body>
-	<form id="writeForm">
-		<table border ="1" width="500" cellpadding="10">
+	<Form name="myPage" id="myPage" >
+			<table border ="1" width="500" cellpadding="10">
 			<tr>
 				<td width="100" align="center">이름</td>
 				<td>
-					<input type="text" name="name" id="name" placeholder="이름 입력"/>
-					<div id="nameDiv"></div>
+					<input type="text" name="name" id="name" readonly="readonly"/>
 				</td>
 			</tr>
 			<tr>
 				<td width="100" align="center">아이디</td>
 				<td>
-					<input type="text" name="id" id="id" placeholder="아이디 입력"/>
-					<div id="idDiv"></div>
+					<input type="text" name="id" id="id" readonly="readonly"/>
 				</td>
 			</tr>
 			<tr>
@@ -37,7 +36,6 @@
 					<div id="repwdDiv"></div>
 				</td>
 			</tr>
-			
 			<tr>
 				<td width="100" align="center">핸드폰</td>
 				<td>
@@ -71,22 +69,55 @@
 					<input type="button" value="우편번호검색" onclick="checkPost()"/><br>
 					<input type="text" id="addr1" name="addr1" readonly placeholder="주소" style="width:330px; margin-bottom:5px;"/><br>
 					<input type="text" id="addr2" name="addr2" placeholder="상세주소" style="width:330px;"/>
-					
 				</td>
 			</tr>
 			<tr>
 				<td colspan="2" align="center">
-					<input type="button" value="회원가입" id="writeBtn"/>
-					<input type="reset" value="다시작성">
+					<input type="button" value="수정" id="updateBtn"/>
+					<input type="button" value="응찰이력 확인하기" onClick="location.href='/team_project/user/myBidList'"/><!--  -->
 				</td>
 			</tr>
-			
 		</table>
-	</form>
-	
-	<script type="text/javascript" src="http://code.jquery.com/jquery-3.6.1.min.js"></script>
-	<script type="text/javascript" src="/team_project/resources/js/post.js"></script>
-	<script type="text/javascript" src="/team_project/resources/js/write.js"></script>
-
+	</Form>
 </body>
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script type="text/javascript">
+$.ajax({
+	type : 'post',
+	url : '/team_project/user/getUserDetail',
+	data : 'id='+'${id}',
+	dataType : 'json',
+	success : function (data) {
+		$('input[name=name]').val(data.name);
+		$('input[name=id]').val(data.id);
+		$('input[name=email1]').val(data.email1);
+		$('input[name=email2]').val(data.email2);
+		$('input[name=tel1]').val(data.tel1);
+		$('input[name=tel2]').val(data.tel2);
+		$('input[name=tel3]').val(data.tel3);
+		$('input[name=zipcode]').val(data.zipcode);
+		$('input[name=addr1]').val(data.addr1);
+		$('input[name=addr2]').val(data.addr2);
+	},
+	error : function (err) {
+		
+	}
+})
+
+$('#updateBtn').click(function () {
+	alert($('#pwd').val())
+	$.ajax({
+		
+	url:'/team_project/user/update',
+	type:'post',
+	data : $('#myPage').serialize(),
+	success : function () {
+		alert("수정 성공")
+	},
+	error : function (err) {
+		alert("실패")
+	}
+	})
+})
+</script>
 </html>

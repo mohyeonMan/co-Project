@@ -130,11 +130,11 @@ h1 {
 		거래방식 : <span id="trade_way" name="trade_way"></span>
 		<br>
 		남은시간 : 추후 추가 예정<br>
-		응찰 : 응찰건수 ** 회 (마우스 오버시 응찰 내역)<br>
+		응찰 :  응찰건수 <span id="bidstatus" name="bidstatus">**</span> 회 (마우스 오버시 응찰 내역)<br>
 		호가(증액) : <span id="unitprice" name="unitprice"></span><br>
 		응찰가격 : 
 		<input type="button" value="-" id="minus">
-		<input type="text" name="bidprice" id="bidprice" style="text-align: center; width: 150px;">
+		<input type="number" name="bidprice" id="bidprice" style="text-align: center; width: 150px;">
 		<input type="button" value="+" id="plus"><br>
 		<input type="button" value="응찰하기" name="bidBtn" id="bidBtn">
 	</div>
@@ -168,6 +168,7 @@ h1 {
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script type="text/javascript">
+//출력
 	$.ajax({
 		type : 'post',
 		url : '/team_project/product/getProductView',
@@ -190,18 +191,17 @@ h1 {
 		}
 	});
 	//조회수
-	$.ajax({
+	/* $.ajax({
 		type : 'post',
 		url : '/team_project/product/updateHit',
 		data : 'product_seq='+$('#product_seq').val()+'&hit='+$('#hit').val(),
 		dataType : 'text',
 		success : function (data) {
-			alert('업뎃성공')
 		},
 		error : function (err) {
 			alert('ss')
 		}
-	});
+	}); */
 	
 </script>
 <script type="text/javascript">
@@ -211,99 +211,69 @@ h1 {
 $('#plus').click(function () {
 	var nowprice = eval($('#bidprice').val()+' + '+$('#unitprice').text()); 
 	console.log(nowprice);
-	
+	if(nowprice>$('#hopeprice').text()){
+		alert('입찰가는 희망가를 초과할 수 없습니다')	
+	}else{
 	$('#bidprice').val(nowprice);
+	}
 });
 $('#minus').click(function () {
 	var nowprice = eval($('#bidprice').val()+' - '+$('#unitprice').text());
 	console.log(nowprice);
+	if(nowprice<$('#nowprice').text()){
+		alert('입찰가는 현재가 미만으로 설정할수 없습니다')	
+	}else{
 	$('#bidprice').val(nowprice);
+	}
 });
+
 
 /* 응찰하기 버튼 */
 $('#bidBtn').click(function () {
 	$.ajax({
 		url : '/team_project/bid/setBid',
 		type: 'post',
-		data : 'id=testman&product_seq='+$('#product_seq').val()+'&bidprice='+$('#bidprice').val()+'&subject='+$('#subject').text(),
+		data : 'id='+'${id}'+'&product_seq='+$('#product_seq').val()+'&bidprice='+$('#bidprice').val()+'&subject='+$('#subject').text(),
 		success : function(){
 			alert("성공");
+			$(function () {
+				$.ajax({
+					url : '/team_project/bid/bidSetHigh',
+					type: 'post',
+					data: 'product_seq='+$('#product_seq').val(),
+					dataType : 'json',
+					success : function(data){
+						console.log(id);
+					},
+					error : function(err){
+						console.log(err);
+					}
+				})
+
+			})
+			
 		},
 		error : function(err){
 			console.log(err);
 		}
 	});
 });
+$('#bidstatus').click(function() {
+	$.ajax({
+		url:'/team_project/bid/getBidCount',
+		type: 'post',
+		data : 'product_seq='+$('#product_seq').val(),
+		dataType:'text',
+		success : function(data){
+			$('#bidstatus').html(data)
+		},
+		error : function(err){
+			alert(err)
+		}
+	})
+})
+
+
 </script>
-<!-- <script type="text/javascript">
-$(function () {
-	$('#comment_form').submit(function () {
-		
-		if(!$('#comment').val()){
-			alert('내용을 입력하세요.');
-			$('#comment').focus();
-			return false;
-		}
-		
-		var date = new Date();
-		var yy = date.getFullYear();
-		var mm = date.getMonth()+1;
-		var dd = date.getDate();
-		var hh = date.getHours();
-		var mi = date.getMinutes();
-		var ss = date.getSeconds();
-		
-		if(mm<10) { mm="0"+mm};
-		if(dd<10) { dd="0"+dd};
-		if(hh<10) { hh="0"+hh};
-		if(mi<10) { mi="0"+mi};
-		if(ss<10) { ss="0"+ss};
-		
-		var today = yy+"-"+mm+"-"+dd+" "+hh+":"+mi+":"+ss;
-		
-		//<li class='comment_item'>
-		var new_li = $('<li>');
-		new_li.addClass('comment_item');
-		
-		var write_p = $('<p>');
-		write_p.addClass('writer');
-		
-		var name_span = $('<span>');
-		name_span.addClass('name');
-		name_span.html($('#user_name').val()+'님');
-		
-		var date_span = $('<span>');
-		date_span.html(' / '+today + ' ');
-		
-		var del_input = $('<input>');
-		del_input.attr({
-			'type' : 'button',
-			'value' : '삭제하기'
-		});
-		del_input.addClass('delete_btn');
-		
-		var content_p = $('<p>');
-		content_p.html($('#comment').val());
-		
-		write_p.append(name_span)
-				.append(date_span)
-				.append(del_input);
-		
-		new_li.append(write_p).append(content_p);
-		
-		$('#comment_list').append(new_li);
-		$('#user_name').val('');
-		$('#comment').val('');
-		
-		return false;
-	});
-	//삭제하기
-	$(document).on('click', '.delete_btn', function () {
-		if(confirm('선택하신 항목을 삭제하시겠습니까?')){
-			$(this).parents('.comment_item').remove();
-		}
-	});
-});
-</script> -->
 </body>
 </html>

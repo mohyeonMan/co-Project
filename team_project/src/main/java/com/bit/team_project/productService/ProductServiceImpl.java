@@ -111,7 +111,6 @@ public class ProductServiceImpl implements ProductService {
 		productDAO.updateHit(map);
 	}
 
-	@Override
 	public List<ProductDTO> getIndexGrid() {
 		return productDAO.getIndexGrid();
 	}
@@ -121,6 +120,14 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
+	public void test() {
+		productDAO.test();
+		
+	}
+	@Override
+	public void gomsg() {
+		productDAO.gomsg();
+	}
 	public void saveNotify(SoketDTO soketDTO) {
 		productDAO.saveNotify(soketDTO);
 		
