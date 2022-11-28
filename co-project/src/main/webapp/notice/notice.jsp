@@ -22,34 +22,7 @@
 				<td width = "80px" align="center">조회수</td>
 				<td width = "120px" align="center">작성일</td>
 			</tr>
-			<tr>
-				<td width = "100px" align="center">글번호</td>
-				<td width = "350px" align="center">제목</td>
-				<td width = "100px" align="center">작성자</td>
-				<td width = "80px" align="center">조회수</td>
-				<td width = "120px" align="center">작성일</td>
-			</tr>
-			<tr>
-				<td width = "100px" align="center">글번호</td>
-				<td width = "350px" align="center">제목</td>
-				<td width = "100px" align="center">작성자</td>
-				<td width = "80px" align="center">조회수</td>
-				<td width = "120px" align="center">작성일</td>
-			</tr>
-			<tr>
-				<td width = "100px" align="center">글번호</td>
-				<td width = "350px" align="center">제목</td>
-				<td width = "100px" align="center">작성자</td>
-				<td width = "80px" align="center">조회수</td>
-				<td width = "120px" align="center">작성일</td>
-			</tr>
-			<tr>
-				<td width = "100px" align="center">글번호</td>
-				<td width = "350px" align="center">제목</td>
-				<td width = "100px" align="center">작성자</td>
-				<td width = "80px" align="center">조회수</td>
-				<td width = "120px" align="center">작성일</td>
-			</tr>
+			
 			
 			
 			<!-- 동적처리 -->
@@ -58,6 +31,7 @@
 			
 		</table>
 		<input type="button" value="글쓰기">
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.6.1.min.js"></script>
 
 </body>
 </html>
