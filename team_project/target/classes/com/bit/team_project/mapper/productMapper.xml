@@ -27,6 +27,7 @@
 								 img4, 
 								 logdate, 
 								 hit,
+								 testnum,
 								 enddate) 
 		VALUES (#{subject}
 				,#{category_1}
@@ -49,8 +50,10 @@
 				,#{img3}
 				,#{img4}
 				,sysdate
-				,0)
-	</insert> 
+				,0
+				,0
+				,#{endDate})
+	</insert>
 	
 	<select id="getList" resultType="product">
 		SELECT * FROM producttable ORDER by product_seq DESC
@@ -87,4 +90,8 @@
         where p.prdstatus = '낙찰' and 
         not exists(select product_seq from message where product_seq=p.product_seq)
 	</insert>
+	<insert id="saveNotify" parameterType="soket">
+		INSERT INTO soket VALUES (#{target},#{content},#{type},#{url})
+	</insert>
+	
   </mapper>

@@ -40,4 +40,14 @@ public class UserDAOMybatis implements UserDAO{
 		sqlSession.insert("userSQL.write",userDTO);
 	}
 
+	@Override
+	public String checkId(String id) {
+		return sqlSession.selectOne("userSQL.checkId",id)+"";
+	}
+
+	@Override
+	public UserDTO login(Map<String, String> map) {
+		return sqlSession.selectOne("userSQL.login",map);
+	}
+
 }

@@ -2,7 +2,6 @@ package com.bit.team_project.userService;
 
 import java.util.List;
 import java.util.Map;
-
 import com.bit.team_project.DTO.BidDTO;
 import com.bit.team_project.DTO.UserDTO;
 
@@ -18,6 +17,10 @@ public interface UserService {
 	public List<BidDTO> getMyBidList2(Map<String, String> map);
 
 
-	void write(UserDTO userDTO);
+	public void write(UserDTO userDTO);
+
+	public String checkId(String id);
+
+	public UserDTO login(Map<String, String> map);
 
 }

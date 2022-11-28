@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form name="writeForm" id="writeForm">
+	<form id="writeForm">
 		<table border ="1" width="500" cellpadding="10">
 			<tr>
 				<td width="100" align="center">이름</td>
@@ -20,7 +20,6 @@
 				<td width="100" align="center">아이디</td>
 				<td>
 					<input type="text" name="id" id="id" placeholder="아이디 입력"/>
-					<input type="text" name="check" id="check">
 					<div id="idDiv"></div>
 				</td>
 			</tr>
@@ -38,13 +37,7 @@
 					<div id="repwdDiv"></div>
 				</td>
 			</tr>
-			<tr>
-				<td width="100" align="center">성별</td>
-				<td>
-					<input type="radio" name="gender"  value="0" checked/>남
-					<input type="radio" name="gender"  value="1" />여
-				</td>
-			</tr>
+			
 			<tr>
 				<td width="100" align="center">핸드폰</td>
 				<td>
@@ -90,5 +83,10 @@
 			
 		</table>
 	</form>
+	
+	<script type="text/javascript" src="http://code.jquery.com/jquery-3.6.1.min.js"></script>
+	<script type="text/javascript" src="/team_project/resources/js/post.js"></script>
+	<script type="text/javascript" src="/team_project/resources/js/write.js"></script>
+
 </body>
 </html>

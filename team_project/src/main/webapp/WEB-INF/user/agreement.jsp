@@ -372,6 +372,6 @@
 </textarea><br>
 
 <input type="button" value="취소">
-<input type="button" value="확인" onclick="location.href='/team_project/user/signIn'">
+<input type="button" value="확인" onclick="location.href='/team_project/user/writeForm'">
 </body>
 </html>

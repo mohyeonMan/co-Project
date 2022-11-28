@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.ui.ModelMap;
 
 import com.bit.team_project.DTO.ProductDTO;
+import com.bit.team_project.DTO.SoketDTO;
 
 public interface ProductService {
 
@@ -25,5 +26,8 @@ public interface ProductService {
 
 	public void gomsg();
 
+	public void saveNotify(SoketDTO soketDTO);
+
+	
 
 }

@@ -211,18 +211,23 @@ h1 {
 $('#plus').click(function () {
 	var nowprice = eval($('#bidprice').val()+' + '+$('#unitprice').text()); 
 	console.log(nowprice);
-	
+	if(nowprice<$('#nowprice').val()){
+		alert('입찰가는 현재가 미만으로 설정할수 없습니다')	
+	}else{
 	$('#bidprice').val(nowprice);
+	}
 });
 $('#minus').click(function () {
 	var nowprice = eval($('#bidprice').val()+' - '+$('#unitprice').text());
 	console.log(nowprice);
+	if(nowprice>$('#hopeprice').val()){
+		alert('입찰가는 희망가를 초과할 수 없습니다')	
+	}else{
 	$('#bidprice').val(nowprice);
+	}
 });
 
 
-$('#bidprice').on("change",$('#bidprice').val(),function () {
-})
 /* 응찰하기 버튼 */
 $('#bidBtn').click(function () {
 	$.ajax({
@@ -270,75 +275,5 @@ $('#bidstatus').click(function() {
 
 
 </script>
-<!-- <script type="text/javascript">
-$(function () {
-	$('#comment_form').submit(function () {
-		
-		if(!$('#comment').val()){
-			alert('내용을 입력하세요.');
-			$('#comment').focus();
-			return false;
-		}
-		
-		var date = new Date();
-		var yy = date.getFullYear();
-		var mm = date.getMonth()+1;
-		var dd = date.getDate();
-		var hh = date.getHours();
-		var mi = date.getMinutes();
-		var ss = date.getSeconds();
-		
-		if(mm<10) { mm="0"+mm};
-		if(dd<10) { dd="0"+dd};
-		if(hh<10) { hh="0"+hh};
-		if(mi<10) { mi="0"+mi};
-		if(ss<10) { ss="0"+ss};
-		
-		var today = yy+"-"+mm+"-"+dd+" "+hh+":"+mi+":"+ss;
-		
-		//<li class='comment_item'>
-		var new_li = $('<li>');
-		new_li.addClass('comment_item');
-		
-		var write_p = $('<p>');
-		write_p.addClass('writer');
-		
-		var name_span = $('<span>');
-		name_span.addClass('name');
-		name_span.html($('#user_name').val()+'님');
-		
-		var date_span = $('<span>');
-		date_span.html(' / '+today + ' ');
-		
-		var del_input = $('<input>');
-		del_input.attr({
-			'type' : 'button',
-			'value' : '삭제하기'
-		});
-		del_input.addClass('delete_btn');
-		
-		var content_p = $('<p>');
-		content_p.html($('#comment').val());
-		
-		write_p.append(name_span)
-				.append(date_span)
-				.append(del_input);
-		
-		new_li.append(write_p).append(content_p);
-		
-		$('#comment_list').append(new_li);
-		$('#user_name').val('');
-		$('#comment').val('');
-		
-		return false;
-	});
-	//삭제하기
-	$(document).on('click', '.delete_btn', function () {
-		if(confirm('선택하신 항목을 삭제하시겠습니까?')){
-			$(this).parents('.comment_item').remove();
-		}
-	});
-});
-</script> -->
 </body>
 </html>

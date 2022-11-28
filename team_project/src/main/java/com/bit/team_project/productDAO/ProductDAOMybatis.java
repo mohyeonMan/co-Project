@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.bit.team_project.DTO.ProductDTO;
+import com.bit.team_project.DTO.SoketDTO;
 
 @Repository("productMapper")
 @Transactional
@@ -62,6 +63,9 @@ public class ProductDAOMybatis implements ProductDAO {
 	@Override
 	public void gomsg() {
 		sqlSession.insert("productSQL.gomsg");
+	}
+	public void saveNotify(SoketDTO soketDTO) {
+		sqlSession.insert("productSQL.saveNotify", soketDTO);
 		
 	}
 

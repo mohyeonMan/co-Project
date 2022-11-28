@@ -34,10 +34,7 @@ public class BidController {
 		bidService.setBid(bidDTO);
 	}
 
-	/*
-	 * @Scheduled(fixedDelay = 3000) public void name() { System.out.println("3ch");
-	 * }
-	 */
+	
 	@PostMapping(value="bidSetHigh")
 	@ResponseBody
 	public void bidbidSetHigh(@RequestParam String product_seq) {

@@ -14,6 +14,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.bit.team_project.DTO.ProductDTO;
+import com.bit.team_project.DTO.SoketDTO;
 import com.bit.team_project.productDAO.ProductDAO;
 
 @Service
@@ -80,7 +81,10 @@ public class ProductServiceImpl implements ProductService {
 				
 				}
 				productDTO.setId("hong");
-				
+				productDTO.setEndDate(productDTO.getEndDay()+" "+productDTO.getEndTime());
+				System.out.println(productDTO.getEndDate());
+						
+						
 				productDAO.write(productDTO);
 	}
 
@@ -122,8 +126,10 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public void gomsg() {
-		//메세지
 		productDAO.gomsg();
+	}
+	public void saveNotify(SoketDTO soketDTO) {
+		productDAO.saveNotify(soketDTO);
 		
 	}
 
