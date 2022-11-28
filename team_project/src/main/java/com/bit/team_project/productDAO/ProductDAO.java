@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.bit.team_project.DTO.ProductDTO;
+import com.bit.team_project.DTO.SoketDTO;
 
 public interface ProductDAO {
 
@@ -20,6 +21,8 @@ public interface ProductDAO {
 	public List<ProductDTO> getIndexGrid();
 
 	public List<ProductDTO> getProductSort(Map<String, String> map);
+
+	public void saveNotify(SoketDTO soketDTO);
 
 	
 

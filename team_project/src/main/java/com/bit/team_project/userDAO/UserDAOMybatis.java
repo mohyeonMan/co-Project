@@ -1,5 +1,7 @@
 package com.bit.team_project.userDAO;
 
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -21,6 +23,11 @@ public class UserDAOMybatis implements UserDAO{
 	@Override
 	public String checkId(String id) {
 		return sqlSession.selectOne("userSQL.checkId",id)+"";
+	}
+
+	@Override
+	public UserDTO login(Map<String, String> map) {
+		return sqlSession.selectOne("userSQL.login",map);
 	}
 
 }

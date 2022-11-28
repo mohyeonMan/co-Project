@@ -1,0 +1,7 @@
+CREATE TABLE message (
+product_seq number(10),
+subject varchar2(100),
+hit number(10) DEFAULT 0,
+content varchar2(100) DEFAULT '응찰하신 상품이 낙찰 되었습니다.',
+id varchar2(50)
+);

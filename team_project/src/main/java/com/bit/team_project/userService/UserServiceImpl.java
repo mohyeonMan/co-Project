@@ -1,5 +1,7 @@
 package com.bit.team_project.userService;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +21,11 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public String checkId(String id) {
 		return userDAO.checkId(id);
+	}
+
+	@Override
+	public UserDTO login(Map<String, String> map) {
+		return userDAO.login(map);
 	}
 
 }

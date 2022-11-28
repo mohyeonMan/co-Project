@@ -86,12 +86,12 @@ hr{
 	cursor: pointer;
 }
 #header h1{
-	left: 150px;
+	left: 170px;
 	top : 22px;
 	display: inline-block;
 	line-height: 110%;
-	font-size: 16px;
-	font-weight: 700;
+	font-size: 13px;
+	font-weight: 500;
 	color: #fff;
 	padding: 0;
 	margin: 0;
@@ -100,8 +100,22 @@ hr{
 	position: absolute;
 }
 #header #clock{
-	left: 250px;
+	left: 320px;
 	top : 25px;
+	display: inline-block;
+	line-height: 110%;
+	font-size: 10px;
+	font-weight: 100;
+	color: #848788;
+	padding: 0;
+	margin: 0;
+	vertical-align: middle;
+	z-index: 3001;
+	position: absolute;
+}
+#header #headerRight_login{
+	right: 50px;
+	top : 15px;
 	display: inline-block;
 	line-height: 110%;
 	font-size: 12px;
@@ -113,9 +127,9 @@ hr{
 	z-index: 3001;
 	position: absolute;
 }
-#header #headerRight{
+#header #headerRight_logout{
 	right: 50px;
-	top : 15px;
+	top : 17px;
 	display: inline-block;
 	line-height: 110%;
 	font-size: 12px;
