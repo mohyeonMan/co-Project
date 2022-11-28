@@ -111,11 +111,6 @@ public class ProductServiceImpl implements ProductService {
 		productDAO.updateHit(map);
 	}
 
-	@Override
-	public void test() {
-		productDAO.test();
-		
-	}
 	public List<ProductDTO> getIndexGrid() {
 		return productDAO.getIndexGrid();
 	}
@@ -124,6 +119,11 @@ public class ProductServiceImpl implements ProductService {
 		return productDAO.getProductSort(map);
 	}
 
+	@Override
+	public void test() {
+		productDAO.test();
+		
+	}
 	@Override
 	public void gomsg() {
 		productDAO.gomsg();

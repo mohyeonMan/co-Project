@@ -2,7 +2,7 @@ $(function(){
 	$.ajax({
 			url:'/team_project/user/getMyBidList',
 			type:'post', 
-			data: 'id='+$('#id').val(),
+			data: 'id='+'${id}' ,
 			dataType:'json',
 			success:function(data){
 				$.each(data,function(index,items){
@@ -36,7 +36,7 @@ $('#opt').change(function () {
 		$.ajax({
 			url:'/team_project/user/getMyBidList',
 			type:'post', 
-			data: 'id='+$('#id').val(),
+			data: 'id='+'${id}',
 			dataType:'json',
 			success:function(data){
 				$.each(data,function(index,items){
@@ -67,7 +67,7 @@ $('#opt').change(function () {
 		$.ajax({
 			url:'/team_project/user/getMyBidList1',
 			type:'post', 
-			data: 'id='+$('#id').val(),
+			data: 'id='+'${id}',
 			dataType:'json',
 			success:function(data){
 				$.each(data,function(index,items){
@@ -98,7 +98,7 @@ $('#opt').change(function () {
 		$.ajax({
 			url:'/team_project/user/getMyBidList2',
 			type:'post', 
-			data: 'id='+$('#id').val(),
+			data: 'id='+'${id}',
 			dataType:'json',
 			success:function(data){
 				$.each(data,function(index,items){

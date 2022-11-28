@@ -84,7 +84,7 @@ $(document).ready(function(){
 				var end = new Date(items.endDate);
 				var time=end.getMonth()+1+'/'+end.getDate()+'/'+end.getFullYear()+' '+end.getHours()+':'+end.getMinutes();
 				console.log(time);
- 			
+				/* if(items.prdstatus=='진행중'){}  진행중만 띄우기*/
 				$('<div/>',{class:'col-4'}).append($('<div/>',{class: 'card',style:'width: 18rem; margin-top : 20px; border-color: #EDEDED'})
 											.append($('<img>',{src:'/team_project/resources/img/'+items.img1, class:'card-img-top', width : '100%', height : '250', alt : '대표이미지'}))
 											.append($('<div/>',{class:'card-body'})

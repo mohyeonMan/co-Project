@@ -58,4 +58,10 @@ public class UserServiceImpl implements UserService {
 		return userDAO.login(map);
 	}
 
+
+	@Override
+	public void update(UserDTO userDTO) {
+		userDAO.update(userDTO);
+	}
+
 }

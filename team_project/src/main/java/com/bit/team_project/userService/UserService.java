@@ -23,4 +23,6 @@ public interface UserService {
 
 	public UserDTO login(Map<String, String> map);
 
+	public void update(UserDTO userDTO);
+
 }

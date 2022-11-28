@@ -353,11 +353,11 @@
 <div class="quick-menu" id="quick-menu">
 	<ul>
 		<li><a href="#">글쓰기</a></li>
-		<li><a href="#">마이페이지</a></li>
+		<li><a href="../user/myPage">마이페이지</a></li>
 		<li><a href="#">Q&A</a></li>
 		<li><a href="#">공지사항</a></li>
 		<li><a href="#">경매방법</a></li>
-		<li><a href="#">낙찰된 물품 보기</a></li>
+		<li><a href="../product/successedPrd">낙찰된 물품 보기</a></li>
 	</ul>
 </div>
 

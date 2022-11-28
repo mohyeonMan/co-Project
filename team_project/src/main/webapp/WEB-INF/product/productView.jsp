@@ -211,8 +211,8 @@ h1 {
 $('#plus').click(function () {
 	var nowprice = eval($('#bidprice').val()+' + '+$('#unitprice').text()); 
 	console.log(nowprice);
-	if(nowprice<$('#nowprice').val()){
-		alert('입찰가는 현재가 미만으로 설정할수 없습니다')	
+	if(nowprice>$('#hopeprice').text()){
+		alert('입찰가는 희망가를 초과할 수 없습니다')	
 	}else{
 	$('#bidprice').val(nowprice);
 	}
@@ -220,8 +220,8 @@ $('#plus').click(function () {
 $('#minus').click(function () {
 	var nowprice = eval($('#bidprice').val()+' - '+$('#unitprice').text());
 	console.log(nowprice);
-	if(nowprice>$('#hopeprice').val()){
-		alert('입찰가는 희망가를 초과할 수 없습니다')	
+	if(nowprice<$('#nowprice').text()){
+		alert('입찰가는 현재가 미만으로 설정할수 없습니다')	
 	}else{
 	$('#bidprice').val(nowprice);
 	}
@@ -233,7 +233,7 @@ $('#bidBtn').click(function () {
 	$.ajax({
 		url : '/team_project/bid/setBid',
 		type: 'post',
-		data : 'id=check22&product_seq='+$('#product_seq').val()+'&bidprice='+$('#bidprice').val()+'&subject='+$('#subject').text(),
+		data : 'id='+'${id}'+'&product_seq='+$('#product_seq').val()+'&bidprice='+$('#bidprice').val()+'&subject='+$('#subject').text(),
 		success : function(){
 			alert("성공");
 			$(function () {

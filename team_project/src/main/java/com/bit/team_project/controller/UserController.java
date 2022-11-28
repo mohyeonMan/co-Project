@@ -67,7 +67,7 @@ public class UserController {
 	public void logout(HttpSession session) {
 		session.invalidate();
 	}
-	@GetMapping(value = "myPage")
+	@GetMapping(value = "/myPage")
 	public String myPage() {
 		return "/user/myPage";
 	}
@@ -78,6 +78,7 @@ public class UserController {
 	@PostMapping(value = "getMyBidList")
 	@ResponseBody
 	public List<BidDTO> getMyBidList(@RequestParam String id) {
+		System.out.println(id);
 		Map<String, String>map = new HashMap<String, String>();
 		map.put("id",id);
 		return userService.getMyBidList(map);
@@ -103,5 +104,10 @@ public class UserController {
 		map.put("id",id);
 		return userService.getMyBidList2(map);
 	}
-	
+	@PostMapping(value = "update")
+	@ResponseBody
+	public void update(@ModelAttribute UserDTO userDTO) {
+		System.out.println(userDTO);
+		userService.update(userDTO);
+	}
 }

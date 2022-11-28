@@ -49,5 +49,9 @@ public class UserDAOMybatis implements UserDAO{
 	public UserDTO login(Map<String, String> map) {
 		return sqlSession.selectOne("userSQL.login",map);
 	}
+	@Override
+	public void update(UserDTO userDTO) {
+		sqlSession.update("userSQL.update",userDTO);
+	}
 
 }

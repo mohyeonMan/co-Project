@@ -24,10 +24,10 @@
  		select count(*) from usertable where id=#{id}
  	</select>
  	
- 	<update id="update" parameterType="java.util.Map">
+<!--  	<update id="update" parameterType="java.util.Map">
  	update usertable set name=#{name}, pwd=#{pwd} where id=#{id}
  	</update>
- 	
+ --> 	
  	<delete id="delete" parameterType="user">
  	delete from usertable where id=#{id} and name=#{name} and pwd=#{pwd}
  	</delete>
@@ -59,4 +59,9 @@
   		
   		<!-- select * from bid where id = #{id} order by bidprice 전체 시간 -->
   	</select>
+  	<update id="update" parameterType="user">
+  		update usertable set pwd = #{pwd} ,  
+  							tel1 = #{tel1} , tel2 = #{tel2} , tel3 = #{tel3} , email1 = #{email1}
+  							,email2 = #{email2},zipcode = #{zipcode},addr1 = #{addr1},addr2 = #{addr2} where id = #{id}
+  	</update>
 </mapper>

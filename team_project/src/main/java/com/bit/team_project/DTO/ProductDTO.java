@@ -35,4 +35,5 @@ public class ProductDTO {
 	private String endDay;
 	private String endTime;
 	private String endDate;
+	private String prdstatus;
 }

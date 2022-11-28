@@ -6,8 +6,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+
 <body>
-	<table id="myPage" border ="1" width="500" cellpadding="10">
+	<Form name="myPage" id="myPage" >
+			<table border ="1" width="500" cellpadding="10">
 			<tr>
 				<td width="100" align="center">이름</td>
 				<td>
@@ -32,13 +34,6 @@
 				<td>
 					<input type="password" id="repwd"/>
 					<div id="repwdDiv"></div>
-				</td>
-			</tr>
-			<tr>
-				<td width="100" align="center">성별</td>
-				<td>
-					<input type="radio" name="gender"  value="0" checked/>남
-					<input type="radio" name="gender"  value="1" />여
 				</td>
 			</tr>
 			<tr>
@@ -79,20 +74,20 @@
 			<tr>
 				<td colspan="2" align="center">
 					<input type="button" value="수정" id="updateBtn"/>
-					<input type="button" value="응찰이력 확인하기" onClick="location.href='/team_project/user/myBidList?id='+$('#id').val()"/><!--  -->
+					<input type="button" value="응찰이력 확인하기" onClick="location.href='/team_project/user/myBidList'"/><!--  -->
 				</td>
 			</tr>
 		</table>
+	</Form>
 </body>
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script type="text/javascript">
 $.ajax({
 	type : 'post',
 	url : '/team_project/user/getUserDetail',
-	data : 'id='/* 세션아이디 */,
+	data : 'id='+'${id}',
 	dataType : 'json',
 	success : function (data) {
-		alert(data)
 		$('input[name=name]').val(data.name);
 		$('input[name=id]').val(data.id);
 		$('input[name=email1]').val(data.email1);
@@ -103,16 +98,26 @@ $.ajax({
 		$('input[name=zipcode]').val(data.zipcode);
 		$('input[name=addr1]').val(data.addr1);
 		$('input[name=addr2]').val(data.addr2);
-		if(data.gender==1){
-			$('input[name="gender"]:eq(1)').attr("checked",true);
-		}
 	},
 	error : function (err) {
 		
 	}
 })
+
 $('#updateBtn').click(function () {
-	
+	alert($('#pwd').val())
+	$.ajax({
+		
+	url:'/team_project/user/update',
+	type:'post',
+	data : $('#myPage').serialize(),
+	success : function () {
+		alert("수정 성공")
+	},
+	error : function (err) {
+		alert("실패")
+	}
+	})
 })
 </script>
 </html>
