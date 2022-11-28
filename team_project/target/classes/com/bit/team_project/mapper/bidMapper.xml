@@ -5,7 +5,7 @@
   
   <mapper namespace="bidSQL">
 	<insert id="setBid" parameterType="bid">
-		insert into bid(id,product_seq,bidprice,subject,bidtime) values(#{id},#{product_seq},#{bidprice},#{subject},sysdate)
+		insert into bid(id,product_seq,bidprice,subject) values(#{id},#{product_seq},#{bidprice},#{subject})
 	</insert>
 	<!-- <update id="updateBid" parameterType="map">
 		update bid set bid_price = #{bid_price} where id = #{id}, product_seq =#{product_seq}
@@ -13,27 +13,8 @@
 	<select id="myBid" resultType="bid" parameterType="String">
 		select * from bid where where id = #{id}
 	</select> -->
-	<update id="bidSetHigh" parameterType="map"><!-- 현재가도 갱신 -->
-		update producttable set 
-		(get_id ,nowprice) = (select id,bidprice from(select id,bidprice,product_seq,row_number()over(Partition by product_seq order by bidprice desc)rnum
-			from bid)where 
-			rnum = 1 and 
-			product_seq = #{product_seq1})
-			where
-			product_seq = #{product_seq2}
+	<update id="bidGet" parameterType="map">
+		update producttable set get_id = (select id from(select id,bidprice,product_seq,row_number()over(Partition by product_seq order by bidprice desc)rnum
+			from bid)where rnum = 1 and product_seq = #{product_seq1})where product_seq = #{product_seq2}
 	</update>
-	<select id="getBidCount" parameterType="map" resultType="String">
-		select count(product_seq) from bid where product_seq = #{product_seq}
-	</select>
-	<update id="test2"><!-- 현재가 == 희망가 일때 낙찰시키기  -->
-		       update  producttable  
-                    set prdstatus = 
-                 case
-                     WHEN hopeprice = nowprice AND get_id IS NOT NULL 
-                    THEN '낙찰'
-                    end 
-					where  prdstatus = '진행중'
-	</update>
-	
-	
   </mapper>
