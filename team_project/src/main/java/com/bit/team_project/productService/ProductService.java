@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.ui.ModelMap;
 
 import com.bit.team_project.DTO.ProductDTO;
+import com.bit.team_project.DTO.SoketDTO;
 
 public interface ProductService {
 
@@ -18,5 +19,12 @@ public interface ProductService {
 	public ProductDTO getProductView(int product_seq);
 
 	public void updateHit(Map<String, Integer> map);
+
+	public List<ProductDTO> getIndexGrid();
+	public List<ProductDTO> getProductSort(Map<String, String> map);
+
+	public void saveNotify(SoketDTO soketDTO);
+
+	
 
 }

@@ -4,8 +4,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -31,7 +34,7 @@ public class ProductController {
 	@PostMapping(value = "/write")
 	public String write(@ModelAttribute ProductDTO productDTO) {
 		productService.write(productDTO);
-		return "/product/write";
+		return "/product/productList";
 	}
 	
 	@RequestMapping(value = "/productList")
@@ -64,12 +67,25 @@ public class ProductController {
 	@PostMapping(value = "updateHit")
 	@ResponseBody
 	public String updateHit(@RequestParam String hit,int product_seq) {
-		System.out.println(hit);
 		Map<String, Integer>map = new HashMap<String, Integer>();
 		map.put("hit", Integer.parseInt(hit));
 		map.put("product_seq", product_seq);
 		productService.updateHit(map);
 		return "/product/productList";
+	}
+	
+	@PostMapping(value = "getIndexGrid")
+	@ResponseBody
+	public List<ProductDTO> getIndexGrid() {
+		return productService.getIndexGrid();
+	}
+	
+	@PostMapping(value = "/getProductSort")
+	@ResponseBody
+	public List<ProductDTO> getProductSort(@RequestParam String sort){
+		Map<String, String>map = new HashMap<String, String>();
+		map.put("sort",sort);
+		return productService.getProductSort(map);
 	}
 	
 	

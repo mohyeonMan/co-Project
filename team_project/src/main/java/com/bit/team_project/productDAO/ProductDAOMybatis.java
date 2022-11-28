@@ -1,5 +1,6 @@
 package com.bit.team_project.productDAO;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.bit.team_project.DTO.ProductDTO;
+import com.bit.team_project.DTO.SoketDTO;
 
 @Repository("productMapper")
 @Transactional
@@ -44,5 +46,23 @@ public class ProductDAOMybatis implements ProductDAO {
 		sqlSession.update("productSQL.updateHit",map);
 		
 	}
+
+	@Override
+	public List<ProductDTO> getIndexGrid() {
+		return sqlSession.selectList("productSQL.getIndexGrid");
+	}
+
+	public List<ProductDTO> getProductSort(Map<String, String> map) {
+		System.out.println(map.get("sort"));
+		return  sqlSession.selectList("productSQL.getProductSort",map);
+	}
+
+	@Override
+	public void saveNotify(SoketDTO soketDTO) {
+		sqlSession.insert("productSQL.saveNotify", soketDTO);
+		
+	}
+
+	
 
 }

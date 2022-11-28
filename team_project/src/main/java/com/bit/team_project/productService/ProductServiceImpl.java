@@ -14,6 +14,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.bit.team_project.DTO.ProductDTO;
+import com.bit.team_project.DTO.SoketDTO;
 import com.bit.team_project.productDAO.ProductDAO;
 
 @Service
@@ -24,7 +25,7 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public void write(ProductDTO productDTO) {
 		//서버에서 저장 할 경로
-				String uploadFolder = "/team/team_project/src/main/webapp/resources/img";
+				String uploadFolder = "D:\\Projects\\co-Project\\team_project\\src\\main\\webapp\\resources\\img";
 				List<MultipartFile> list = productDTO.getFile();
 				List<String> list2 = new ArrayList<String>();
 				
@@ -80,7 +81,10 @@ public class ProductServiceImpl implements ProductService {
 				
 				}
 				productDTO.setId("hong");
-				
+				productDTO.setEndDate(productDTO.getEndDay()+" "+productDTO.getEndTime());
+				System.out.println(productDTO.getEndDate());
+						
+						
 				productDAO.write(productDTO);
 	}
 
@@ -106,5 +110,22 @@ public class ProductServiceImpl implements ProductService {
 	public void updateHit(Map<String, Integer> map) {
 		productDAO.updateHit(map);
 	}
+
+	@Override
+	public List<ProductDTO> getIndexGrid() {
+		return productDAO.getIndexGrid();
+	}
+
+	public List<ProductDTO> getProductSort(Map<String, String> map) {
+		return productDAO.getProductSort(map);
+	}
+
+	@Override
+	public void saveNotify(SoketDTO soketDTO) {
+		productDAO.saveNotify(soketDTO);
+		
+	}
+
+	
 
 }

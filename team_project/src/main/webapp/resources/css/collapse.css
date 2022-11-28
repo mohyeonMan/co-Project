@@ -1,2 +1,27 @@
 @charset "UTF-8";
-@import url("/team_project/resources/css/header.css");
+#header{
+	height: 300px;
+}
+#container{
+	display: block;
+	width: 1200px;
+	height: 2000px;
+	margin: auto;
+}
+
+#face_header{
+	height:200px;
+}
+.section_1{
+	display:inline-block;
+}
+#section_1-1{
+	width:75%;
+	height:100%
+}
+#section_1-2{
+	width:75%;
+}
+#section_2{
+	height:1000px;
+}

@@ -1,0 +1,102 @@
+@charset "UTF-8";
+*{
+	box-sizing: border-box;
+}
+body{
+	
+}
+a{
+	color: inherit;
+	text-decoration: none;
+}
+button, a{
+	cursor: pointer;
+}
+
+ul, ol, dl{
+	width: 100%;
+	height: auto;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	cursor: default;
+	position: relative;
+}
+ul:after, ol:after, dl:after{
+	content: '';
+	display: table;
+	clear: both;
+}
+ul{
+	display: block;
+}
+hr{
+	margin: auto;
+}
+.quick-menu{
+	position:absolute;
+	top: 100px;
+	right: 16px;
+	display: inline-block;
+	width: auto;
+	height: auto;
+	z-index: 100;
+	background-color: #f8f8f8;
+	box-shadow: 0 3px 6px 0 rgb(0 0 0 / 16%);
+	border-radius: 4px;
+}
+.quick-menu ul{
+	overflow: visible;
+}
+.quick-menu ul li a{
+	display: inline-block;
+	padding: 12px 8px;
+	text-align: center;
+	width: 80px;
+	
+}
+.quick-menu ul li a:hover{
+	background-color: #e8e8e8;;
+}
+.quick-menu ul li a .icon{
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+	color: #101314;
+}
+.quick-menu ul li a .icon i{
+	display: inline-block;
+	width: 24px;
+}
+
+.quick-menu ul li a .icon + .label{
+	margin-top: 6px;
+}
+.quick-menu ul li a .label{
+	display: block;
+	font-size: 11px;
+	color: #161616;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+.badge-container{
+	position: relative;
+}
+.badge-container > .badge{
+	position: absolute;
+	top: -5px;
+	left: calc(100% - 10px);
+}
+.badge{
+	display: inline-block;
+	width: auto;
+	border-radius: 9px;
+	background-color: #e54e2b;
+	color: #f8f8f8;
+	font-size: 11px;
+	font-weight: 18px;
+	line-height: 18px;
+	padding: 0 5.74px;
+	box-shadow: 0 2px 4px 0 rgb(229 78 43 / 30%);
+}

@@ -13,7 +13,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-@MapperScan(basePackages = {"com/bit/team_project/mapper/"})
+
 @Configuration
 @PropertySource("classpath:com/bit/team_project/mybatis/db.properties")
 @EnableTransactionManagement //<tx:annotation-driven transaction-manager="transactionManager"/>
@@ -42,7 +42,10 @@ public class MybatisConfiguration {
 		SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
 		sqlSessionFactoryBean.setDataSource(dataSource());
 		sqlSessionFactoryBean.setConfigLocation(new ClassPathResource("com/bit/team_project/mybatis/mybatis-config.xml"));
-		sqlSessionFactoryBean.setMapperLocations(new ClassPathResource("com/bit/team_project/mapper/productMapper.xml"),new ClassPathResource("com/bit/team_project/mapper/bidMapper.xml"));
+		sqlSessionFactoryBean.setMapperLocations(new ClassPathResource("com/bit/team_project/mapper/productMapper.xml")
+												,new ClassPathResource("com/bit/team_project/mapper/bidMapper.xml")
+												,new ClassPathResource("com/bit/team_project/mapper/userMapper.xml")
+												);
 		return sqlSessionFactoryBean.getObject();
 	}
 

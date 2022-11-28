@@ -7,7 +7,7 @@
   <insert id="productWrite" parameterType="product">
 		INSERT INTO producttable(subject, 
 								 category_1, 
-								  
+								 category_2,
 								 content, 
 								 hopeprice, 
 								 startprice, 
@@ -26,10 +26,12 @@
 								 img3, 
 								 img4, 
 								 logdate, 
-								 hit) 
+								 hit,
+								 testnum,
+								 enddate) 
 		VALUES (#{subject}
 				,#{category_1}
-				
+				,#{category_2}
 				,#{content}
 				,#{hopeprice}
 				,#{startprice}
@@ -48,7 +50,9 @@
 				,#{img3}
 				,#{img4}
 				,sysdate
-				,0)
+				,0
+				,0
+				,#{endDate})
 	</insert>
 	
 	<select id="getList" resultType="product">
@@ -60,7 +64,14 @@
 	<select id="getView" parameterType="map" resultType="product">
 		select * from producttable where product_seq=#{product_seq}
 	</select>
+	<select id="getProductSort" parameterType="map" resultType="product">
+		SELECT * FROM producttable ORDER by ${sort}
+	</select>
 	<update id="updateHit" parameterType="map">
 		update  producttable set hit = #{hit} where product_seq = #{product_seq}
 	</update>
+	<insert id="saveNotify" parameterType="soket">
+		INSERT INTO soket VALUES (#{target},#{content},#{type},#{url})
+	</insert>
+	
   </mapper>
