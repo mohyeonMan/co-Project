@@ -68,6 +68,23 @@ return num.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
 </script>
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script type="text/javascript" src="/team_project/resources/js/jquery.tmpl.min.js"></script>
+<script type="text/x-jquery-tmpl" id="itemTemplate">
+	<div class="card" style="width: 18rem; margin-top : 20px; border-color: #EDEDED">
+		<img src="/team_project/resources/img/${img1}" class="card-img-top" alt="대표이미지" style="width: 100%; height: 250px;">
+		<div class="card-body">
+			<h5 class="card-title">${subject}</h5>
+			<p class="card-text">
+				${content}<br>
+				<span id="startprice">시작가 : ${startprice}원</span><br>
+				<span>현재가 : ${nowprice}원</span><br>
+				<span>호가 : ${unitprice}원</span>
+				<div class="timer" id="${product_seq}"></div>
+			</p>
+			<a href="/team_project/product/productView?product_seq=${product_seq}" class="btn btn-primary">응찰하러가기</a>
+		</div>
+	</div>
+</script>
 <script type="text/javascript">
 
 
@@ -77,13 +94,17 @@ $(document).ready(function(){
 		type: 'post',
 		dataType : 'json',
 		success : function(data){
-			
-			 $.each(data,function(index, items){
-				var end = new Date(items.endDate);
-				var time=end.getMonth()+1+'/'+end.getDate()+'/'+end.getFullYear()+' '+end.getHours()+':'+end.getMinutes();
-				console.log(time);
+			 //$.each(data,function(index, items){
+			console.log(JSON.stringify(data));
+				//var end = new Date(items.endDate);
+				//var time=end.getMonth()+1+'/'+end.getDate()+'/'+end.getFullYear()+' '+end.getHours()+':'+end.getMinutes();
  			
-				$('<div/>',{class:'col-4'}).append($('<div/>',{class: 'card',style:'width: 18rem; margin-top : 20px; border-color: #EDEDED'})
+				//CountDownTimer(time, items.product_seq) 
+				var tmpl = $('#itemTemplate').tmpl(data);
+				$('#row').append(tmpl);
+				
+				
+				/* $('<div/>',{class:'col-4'}).append($('<div/>',{class: 'card',style:'width: 18rem; margin-top : 20px; border-color: #EDEDED'})
 											.append($('<img>',{src:'/team_project/resources/img/'+items.img1, class:'card-img-top', width : '100%', height : '250', alt : '대표이미지'}))
 											.append($('<div/>',{class:'card-body'})
 											.append($('<h5/>',{class:'card-title',text:items.subject}))
@@ -96,8 +117,8 @@ $(document).ready(function(){
 											.append($('<span>',{text: '호가 : '+comma(items.unitprice)+'원'}))
 											.append($('<div/>',{class:'timer',id:items.product_seq})))
 											.append($('<a/>',{href:'/team_project/product/productView?product_seq='+items.product_seq,class:'btn btn-primary',text:'응찰하러가기'})))).appendTo($('#row'));
-				CountDownTimer(time, items.product_seq)
-			 }); 
+				*/
+			 //}); 
 			
 		},
 		error : function(err){
@@ -124,7 +145,7 @@ $(document).on('change','#sort', function () {
 		success : function(data){
 			
 			 $.each(data,function(index, items){
-				var time = items.enddays_month+ '/' +items.enddays_day+ '/' +items.enddays_year+' '+items.enddays_hour+':'+items.enddays_min
+				var time = end.getMonth()+1+'/'+end.getDate()+'/'+end.getFullYear()+' '+end.getHours()+':'+end.getMinutes();
 				
 				$('<div/>',{class:'col-4'}).append($('<div/>',{class: 'card',style:'width: 18rem; margin-top : 20px; border-color: #EDEDED'})
 											.append($('<img>',{src:'/team_project/resources/img/'+items.img1, class:'card-img-top', width : '100%', height : '250', alt : '대표이미지'}))

@@ -135,16 +135,23 @@ var tMonth = parse(today.getMonth()+1);
 var tDate = parse(today.getDate());
 var tHour = parse(today.getHours());	
 var tMinutes = parse(today.getMinutes());
-
-	console.log((tHour+3)+':'+tMinutes)
+var tSeconds = parse(today.getSeconds());
+	//21시 이후 다음날로 넘어갈것
+	if((tHour+3)>23){
+		tHour -= 24;
+		tDate += 1;
+	}
+var minHour = parse(tHour+3);
+	
 	$('#endDay').prop({
 		value:tYear+'-'+tMonth+'-'+tDate,
 		min:tYear+'-'+tMonth+'-'+tDate
 	});
+	console.log(parse(tHour+3)+':'+tMinutes+':'+tSeconds);
 	$('#endTime').prop({
-		value:(tHour+3)+':'+tMinutes,
-		min:(tHour+3)+':'+tMinutes,
-		max:'23:59'
+		value:minHour+':'+tMinutes,
+		min:minHour+':'+tMinutes,
+		max:'23:59:59'
 	})
 	
 })
