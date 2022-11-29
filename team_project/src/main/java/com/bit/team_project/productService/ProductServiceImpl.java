@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.ModelMap;
@@ -25,7 +27,7 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public void write(ProductDTO productDTO) {
 		//서버에서 저장 할 경로
-				String uploadFolder = "D:\\Projects\\co-Project\\team_project\\src\\main\\webapp\\resources\\img";
+				String uploadFolder = "/Users/leeyongshik/git/team/team_project/src/main/webapp/resources/img";
 				List<MultipartFile> list = productDTO.getFile();
 				List<String> list2 = new ArrayList<String>();
 				
@@ -80,7 +82,7 @@ public class ProductServiceImpl implements ProductService {
 				productDTO.setImg4(list2.get(3));
 				
 				}
-				productDTO.setId("hong");
+				
 				productDTO.setEndDate(productDTO.getEndDay()+" "+productDTO.getEndTime());
 				System.out.println(productDTO.getEndDate());
 						
@@ -131,6 +133,11 @@ public class ProductServiceImpl implements ProductService {
 	public void saveNotify(SoketDTO soketDTO) {
 		productDAO.saveNotify(soketDTO);
 		
+	}
+
+	@Override
+	public List<ProductDTO> getProductNew() {
+		return productDAO.getProductNew();
 	}
 
 	

@@ -23,6 +23,9 @@
  	<select id="checkId" parameterType="String" resultType="int"> <!-- parameter, return 꼼꼼히 확인할것.... -->
  		select count(*) from usertable where id=#{id}
  	</select>
+ 	<select id="getMessageCount" parameterType="String" resultType="int">
+ 		SELECT count(*) FROM soket WHERE target=#{id} and hit=0
+ 	</select>
  	
 <!--  	<update id="update" parameterType="java.util.Map">
  	update usertable set name=#{name}, pwd=#{pwd} where id=#{id}

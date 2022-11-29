@@ -9,6 +9,9 @@
 </head>
 <body>
 
+<div id="writer"></div>
+<div id="receiver"></div>
+
 <div class="modal" tabindex="-1">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -30,8 +33,47 @@
 
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.5/sockjs.min.js"></script>
 <script type="text/javascript">
+
+
+
+
+var socket = null;
+connect();
+
+function connect() {
+	var ws = new WebSocket("ws://localhost:8080/test/soketSend");
+	socket = ws;
+	//이벤트 헨들러
+	ws.onopen = function() {
+		console.log('Info: connection opened.');
+	};
+	
+	//소켓에 메시지를 보냈을 때(sess.sendMessage) 여기서 받아짐 
+	ws.onmessage = function (event) {
+		var sm = event.data;
+		var sl = sm.split(',');
+		$("#writer").text("보내는 이 : " + sl[0]);
+		$("#receiver").text("받는 이 : " + sl[1]);
+		$("#content").text("내용: " + sl[2]);
+		
+		console.log("ReceiveMessage:" + event.data+'\n');
+	};
+	
+	ws.onclose = function (event) { 
+		console.log('Info: connection closed'); 
+		//setTimeout( function() {connect(); }, 1000); // retry connection!!
+	};
+	
+	ws.onerror = function (err) { console.log('Error:', err); };
+}
+
+
+
+
+
+
 
 
 //notifySend

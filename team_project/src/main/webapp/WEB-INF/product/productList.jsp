@@ -126,7 +126,7 @@ $(document).ready(function(){
 											.append($('<span>',{text: '호가 : '+comma(items.unitprice)+'원'}))
 											.append($('<div/>',{class:'timer',id:items.product_seq})))
 											.append($('<a/>',{href:'/team_project/product/productView?product_seq='+items.product_seq,class:'btn btn-primary',text:'응찰하러가기'})))).appendTo($('#row'));
-				*/
+				
 			 //}); 
 			
 		},

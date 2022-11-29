@@ -67,6 +67,9 @@
 	<select id="getProductSort" parameterType="map" resultType="product">
 		SELECT * FROM producttable ORDER by ${sort}
 	</select>
+	
+	
+	
 	<update id="updateHit" parameterType="map">
 		update  producttable set hit = #{hit} where product_seq = #{product_seq}
 	</update>
@@ -90,8 +93,10 @@
         where p.prdstatus = '낙찰' and 
         not exists(select product_seq from message where product_seq=p.product_seq)
 	</insert>
+	<!-- 실시간 알림 -->
 	<insert id="saveNotify" parameterType="soket">
-		INSERT INTO soket VALUES (#{target},#{content},#{type},#{url})
+		INSERT INTO soket VALUES (#{target},#{content},#{type},#{url},#{msgseq},0)
 	</insert>
+	
 	
   </mapper>

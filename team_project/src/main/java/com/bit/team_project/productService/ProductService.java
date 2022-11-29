@@ -28,6 +28,8 @@ public interface ProductService {
 
 	public void saveNotify(SoketDTO soketDTO);
 
+	public List<ProductDTO> getProductNew();
+
 	
 
 }

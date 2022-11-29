@@ -5,6 +5,63 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="/team_project/resources/css/reset.css">
+<style type="text/css">
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    user-select: none;
+}
+body {
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    overflow: auto;
+    font-size: 14px;
+    font-weight: 400;
+    color: #2a3138;
+    /* background: #f8f8f8; */
+    background: #E9E9E9;
+    word-break: keep-all;
+    position: relative;
+    overflow-scrolling: touch;
+    font-feature-settings: 'liga';
+}
+.table {
+    width: 100%;
+    max-width: 100%;
+    border-collapse: collapse;
+    background-color: #f8f8f8;
+}
+thead {
+    display: table-header-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+button, input {
+    overflow: visible;
+}
+button, input, select, textarea {
+    font: inherit;
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    border-radius: 0;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+}
+</style>
 </head>
 <body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" bgcolor="#E1EEF5">
 
@@ -14,23 +71,8 @@
 			
 <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
 	<tbody><tr height="30" bgcolor="#5A5A5A">
-		<td width="35%" style="color:#FFFC00;padding-left:7px;">
+		<td width="35%" style="color:#FFFC00;padding-left:7px;padding-top: 10px;">
 			<b>${name}</b>님
-		</td>
-		<td width="65%" align="right" style="color:#ffffff;padding-right:7px;">
-			<a href="#" style="color:#FF9900;">받은쪽지</a>
-			|
-			<a href="#" style="color:#ffffff;">보낸쪽지</a>
-			
-			|
-			<a href="#" style="color:#ffffff;">보관쪽지</a>
-			
-			|
-			<a href="#" style="color:#ffffff;">친구목록</a>
-			<!--
-			|
-			<a href="./list_glass.asp" style="color:yellow">CP안경</a>
-			-->
 		</td>
 	</tr>
 </tbody></table>
@@ -51,23 +93,34 @@
 				</tr>
 			</tbody></table>
 
-			<table width="550" border="0" cellspacing="0" cellpadding="0" align="center" class="stex">
-				<tbody><tr align="center" height="25">
+			<table width="550" border="0" cellspacing="0" cellpadding="0" align="center" class="stex" >
+				<tbody>
+				<tr align="center" height="25">
 					<td width="30">
 						<input type="checkbox" onclick="this.value=check(this.form.elements,1)">
 					</td>
-					<td width="330">
+					<td width="300">
 						<b>제목</b>
 					</td>
 					<td width="140">
 						<b>보낸이</b>
 					</td>
 					<td width="50">
-						<b>날짜</b>
+						<b>상태</b>
 					</td>
 				</tr>
-				<tr bgcolor="#808080"><td height="1" colspan="4"></td></tr>
-				<tr bgcolor="#DFE9EC"><td height="3" colspan="4"></td></tr>
+				<tr bgcolor="#808080" height="20px" align="center" valign="middle">
+					<td height="1">1</td>
+					<td height="1">응찰하신 스위치팔아요~ 상품이 낙찰되었습니다.</td>
+					<td height="1">관리자</td>
+					<td height="1">읽지않음</td>
+				</tr>
+				<tr bgcolor="#DFE9EC">
+					<td height="3">1</td>
+					<td height="3">응찰하신 스위치팔아요~ 상품이 낙찰되었습니다.</td>
+					<td height="3">관리자</td>
+					<td height="3">읽지않음</td>
+				</tr>
 			</tbody></table>
 
 			<table width="550" border="0" cellspacing="0" cellpadding="0" align="center" class="mtex">

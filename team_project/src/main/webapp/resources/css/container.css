@@ -3,10 +3,10 @@
 	margin-top: 80px;
 }
 #container .main-ranking {
-    background-color: #141414;
-    border-bottom: 1px solid #282828;
+    background-color: #eeeeee;
+    border-bottom: 1px solid #a1a1a1;
     width: 90%;
-    height: 573px;
+    height: 560px;
 }
 .main-ranking, .content, .notice-entire .inner, .footer-content {
     margin: auto;
@@ -36,7 +36,6 @@
 }
 #container .main-ranking .rolling-list .coordinates .title h1 {
     font-size: 20px;
-    color: white;
     font-weight: 400;
 }
 #container .main-ranking .rolling-list .coordinates .btn {
@@ -50,7 +49,6 @@
     margin-right: 30px;
 }
 #container .main-ranking .rolling-list .coordinates .btn .inner a {
-    color : white;
     padding: 6px 0;
 }
 prev.swiper-button-disabled {
@@ -133,7 +131,8 @@ a:link, a:visited {
     max-width: 100%;
 }
 #container .main-ranking .rolling-list .rolling-listed-item ul li {
-    width: 236.81px;
+    width: 300px;
+    
     max-width: 100%;
     float: left;
     margin-right: 16px;
@@ -144,7 +143,7 @@ a:link, a:visited {
     width: 100%;
     max-width: 100%;
     overflow: hidden;
-    padding-top: 140%;
+    padding-top: 80%;
     display: block;
     border-radius: 3px;
 }
@@ -160,6 +159,9 @@ a:link, a:visited {
     left: 0;
     top: 0;
 }
+#container .main-ranking .rolling-list .rolling-listed-item ul li .thumb img:hover {
+	transform:scale(1.1);
+}
 #container .main-ranking .rolling-list .rolling-listed-item ul li .thumb::after {
     content: "";
     display: block;
@@ -173,9 +175,12 @@ a:link, a:visited {
 }
 #container .main-ranking .rolling-list .rolling-listed-item ul li .posted-info {
     position: relative;
-    display: flex;
     flex-direction: column;
     padding-top: 15px;
+    text-align: center;
+    background-color: #232d31;
+    padding-bottom: 15px;
+    
 }
 #container .main-ranking .rolling-list .rolling-listed-item ul li .posted-info .subject {
     font-size: 15px;
@@ -186,7 +191,7 @@ a:link, a:visited {
     word-break: break-all;
 }
 #container .main-ranking .rolling-list .rolling-listed-item ul li .posted-info .subject a {
-    color: white;
+    color : black;
     display: -webkit-box;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
@@ -196,13 +201,16 @@ a:link, a:visited {
 }
 #container .main-ranking .rolling-list .rolling-listed-item ul li .posted-info .tag {
     color: #b6b6b6;
-    padding-top: 6px;
+    padding-top: 2px;
+    display: inline-block;
 }
 #container .main-ranking .rolling-list .rolling-listed-item ul li .posted-info .like {
-    display: flex;
+    display: block;
     align-items: center;
     text-align: left;
     padding-top: 8px;
+    margin-left: 31%;
+    margin-bottom: 10px;
 }
 #container .main-ranking .rolling-list .rolling-listed-item ul li .posted-info .like i {
     color: #b6b6b6;
@@ -213,4 +221,109 @@ a:link, a:visited {
     color: #b6b6b6;
     font-family: Tahoma;
     padding-left: 4px;
+}
+#container .content {
+    width: 90%;
+    max-width: 100%;
+    margin: 0 auto;
+    position: relative;
+    margin-bottom: 40px;
+    min-height: 600px;
+    background-color: #f6f6f6;
+}
+#container .content .main-default-video{
+    width: 1248px;
+    max-width: 100%;    
+    margin-left : 20px;
+    position: relative;
+    margin-bottom: 40px;
+    min-height: 600px;
+    background-color: #f6f6f6;
+}
+@media (max-width: 1660px)
+.main-ranking, .content, .notice-entire .inner, .footer-content {
+    padding-left: 60px !important;
+}
+#container .main-default-video .title {
+    padding-top: 45px;
+    padding-bottom: 45px;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+#container .main-default-video .title h1 {
+    font-size: 20px;
+    flex: 1;
+    font-weight: 400;
+}
+#container .main-default-video .title a.all-target {
+    color: #b6b6b6;
+    font-size: 16px;
+    margin-right: 20px;
+}
+#container .main-default-video .default-listed-item {
+    overflow: hidden;
+    position: relative;
+    padding-bottom: 20px;
+}
+#container .main-default-video .default-listed-item ul {
+    overflow: hidden;
+}
+#container .main-default-video .default-listed-item ul .flex-listed {
+    display: flex;
+    width: 100%;
+    max-width: 100%;
+}
+#container .main-default-video .default-listed-item ul li {
+    width: 236.81px;
+    max-width: 100%;
+    float: left;
+    margin-right: 16px;
+    transition: transform 0.3s;
+}
+#container .main-default-video .default-listed-item ul li .thumb {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    padding-top: 140%;
+    display: block;
+    border-radius: 3px;
+}
+#container .main-default-video .default-listed-item ul li .thumb img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+#container .main-default-video .default-listed-item ul li .thumb::after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    z-index: 1;
+    background: linear-gradient(transparent, rgba(20, 20, 20, 0) 20%, rgba(20, 20, 20, 0.2) 50%, rgba(20, 20, 20, 0.5));
+}
+#container .main-default-video .default-listed-item ul li .posted-info {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding-top: 15px;
+}
+#container .main-default-video .default-listed-item ul li .posted-info .subject {
+    font-size: 15px;
+}
+#container .main-default-video .default-listed-item ul li .posted-info .subject a {
+    color: #172126;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-decoration: none;
 }

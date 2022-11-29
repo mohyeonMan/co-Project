@@ -121,4 +121,11 @@ public class UserController {
 		System.out.println(userDTO);
 		userService.update(userDTO);
 	}
+	
+	@PostMapping(value = "/getMessageCount")
+	@ResponseBody
+	public int getMessageCount(@RequestParam String id) {
+		System.out.println(id);
+		return userService.getMessageCount(id);
+	}
 }

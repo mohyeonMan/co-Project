@@ -184,4 +184,10 @@ public class UserServiceImpl implements UserService {
 		userDAO.update(userDTO);
 	}
 
+
+	@Override
+	public int getMessageCount(String id) {
+		return userDAO.getMessageCount(id);
+	}
+
 }

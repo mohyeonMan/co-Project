@@ -22,4 +22,6 @@ public interface UserDAO {
 	public List<BidDTO> getMyBidList2(Map<String, String> map);
 
 	public void update(UserDTO userDTO);
+
+	public int getMessageCount(String id);
 }

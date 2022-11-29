@@ -29,4 +29,6 @@ public interface UserService {
 
 	public void update(UserDTO userDTO);
 
+	public int getMessageCount(String id);
+
 }
