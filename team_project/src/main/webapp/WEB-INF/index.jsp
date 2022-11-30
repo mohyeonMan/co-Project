@@ -45,7 +45,9 @@
 </head>
 <body>
 
-<%-- <jsp:include page="/WEB-INF/product/productList.jsp"/> --%>
+
+
+<jsp:include page="/WEB-INF/main/header.jsp"/> --%>
 <div id="container">
 	<input type="hidden" value="${id}" id="msgid">
 	<div class="main-ranking">
@@ -512,7 +514,7 @@
 
 
 
-<div id="header">
+<%-- <div id="header">
 	<div id="headerLeft">
 		<a id="categoryBtn">
 			<span class="list"><i class="bi bi-list"></i></span>
@@ -539,7 +541,7 @@
 		</div>
 	</div>
 	
-</div>
+</div> --%>
 
 
 
@@ -586,7 +588,7 @@
 
 
 
-<div class="sidebar-wrap">
+<!-- <div class="sidebar-wrap">
 	<aside id="sidebar" class="sidebar">
 		<nav>
 			<dl>
@@ -678,7 +680,7 @@
 			</dl>
 		</nav>
 	</aside>
-</div>
+</div> -->
 
 
 <div class="quick-menu" id="quick-menu">
@@ -740,6 +742,7 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.5/sockjs.min.js"></script>
 <script type="text/javascript" src="/team_project/resources/js/index.js"></script>
+<script type="text/javascript" src="/team_project/resources/js/header.js"></script>
 <script type="text/javascript">
 var socket  = null;
 $(document).ready(function() {
@@ -848,24 +851,6 @@ $(function () {
 
 <script type="text/javascript">
 $(function () {
-	
-	$('.close').hide();
-	$('#sidebar').hide();
-	$('.sidebar nav dd').hide();
-	$('#nameTag').hide();
-	$('#quick-menu').hide();
-	
-	
-	
-	$('#categoryBtn').click(function () {
-		$('.close').toggle();
-		$('.list').toggle();
-		$('#sidebar').toggle();
-	});
-	
-	$('#sidebar nav dt').click(function () {
-		$(this).next('dd').toggle();
-	});
 	
 	var id = "${sessionScope.id}";
 	if ( id == '') {

@@ -6,6 +6,13 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
+<link rel="stylesheet" href="/team_project/resources/css/sideBanner.css">
+<link rel="stylesheet" href="/team_project/resources/css/header.css">
+<link rel="stylesheet" href="/team_project/resources/css/sidebar.css">
+<link rel="stylesheet" href="/team_project/resources/css/container.css">
+<link rel="stylesheet" href="/team_project/resources/css/modal.css">
+<link rel="stylesheet" href="/team_project/resources/css/message.css">
 </head>
 <body>
 <!-- <button id="tcheck">시간확인</button> -->
@@ -18,6 +25,7 @@
 		<option value="nowprice desc">현재가 높은 순</option>
 		<option value="nowprice asc">현재가 낮은 순</option>
 	</select>
+	<input type="text" id="category" value="${category }">
 	<div class="container text-center" >
 	  <div class="row row" id="row">
 	  <!-- grid -->
@@ -26,7 +34,7 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-
+<script type="text/javascript" src="/team_project/resources/js/header.js"></script>
 <script type="text/javascript">
 function CountDownTimer(dt, id)
 {
@@ -90,60 +98,37 @@ return num.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
 
 
 $(document).ready(function(){
-	var selectSort = $('#sort').val();
-	
-	$.ajax({
-		url : '/team_project/product/getProductSort',
-		type: 'post',
-		data : 'sort='+selectSort,
-		dataType : 'json',
-		success : function(data){
-			$.each(data,function(index,items){
-				var end = new Date(items.endDate);
-				var time=end.getMonth()+1+'/'+end.getDate()+'/'+end.getFullYear()+' '+end.getHours()+':'+end.getMinutes();
-				
-				/* if(items.prdstatus=='진행중'){}  진행중만 띄우기*/
-				CountDownTimer(time, items.product_seq) 
-				var tmpl = $('#itemTemplate').tmpl(data[index]);
-				console.log(tmpl)
-				$('#row').append(tmpl);
- 				})
-			
-		},
-		error : function(err){
-			console.log(err);
-		}
-	});
-
-	$(document).on('change','#sort',function(){
-	var selectSort = $('#sort').val();
-
-	$('#row').empty();
-	
-	$.ajax({
-		url : '/team_project/product/getProductSort',
-		type: 'post',
-		data : 'sort='+selectSort,
-		dataType : 'json',
-		success : function(data){
-			$.each(data,function(index,items){
-				var end = new Date(items.endDate);
-				var time=end.getMonth()+1+'/'+end.getDate()+'/'+end.getFullYear()+' '+end.getHours()+':'+end.getMinutes();
-				
-				CountDownTimer(time, items.product_seq) 
-				var tmpl = $('#itemTemplate').tmpl(data[index]);
-				console.log(tmpl)
-				$('#row').append(tmpl);
- 				})
-			
-		},
-		error : function(err){
-			console.log(err);
-		}
-	});
-	})
-	
+	$('#sort').trigger('change');
 });
+
+$(document).on('change','#sort',function(){
+var selectSort = $('#sort').val();
+
+$('#row').empty();
+
+$.ajax({
+	url : '/team_project/product/getProductSort',
+	type: 'post',
+	data : 'sort='+selectSort,
+	dataType : 'json',
+	success : function(data){
+		$.each(data,function(index,items){
+			var end = new Date(items.endDate);
+			var time=end.getMonth()+1+'/'+end.getDate()+'/'+end.getFullYear()+' '+end.getHours()+':'+end.getMinutes();
+			
+			CountDownTimer(time, items.product_seq) 
+			var tmpl = $('#itemTemplate').tmpl(data[index]);
+			console.log(tmpl)
+			$('#row').append(tmpl);
+				})
+		
+	},
+	error : function(err){
+		console.log(err);
+	}
+});
+})
+	
 </script>
 
 </body>
