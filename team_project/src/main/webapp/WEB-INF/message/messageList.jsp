@@ -78,7 +78,7 @@ button, input, select, textarea {
 			
 <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
 	<tbody><tr height="30" bgcolor="#5A5A5A">
-		<td width="35%" style="color:#FFFC00;padding-left:7px;padding-top: 10px;">
+		<td width="35%" style="color:#FFFC00;padding-left:7px;">
 			<input type="hidden" id="id" value="${id}">
 			<b>${name}</b>님
 		</td>

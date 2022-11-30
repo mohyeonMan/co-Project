@@ -707,7 +707,7 @@
          <hr width="80%">
       </li>
       <li>
-         <a href="/team_project/product/productWriteForm"> 
+         <a href="#" id="writeFormBtn"> 
             <span class="icon badge-container">
                <i class="bi bi-clipboard2"></i>
             </span> 
@@ -754,6 +754,9 @@
 <script type="text/javascript" src="/team_project/resources/js/index.js"></script>
 <script type="text/javascript" src="/team_project/resources/js/jquery.tmpl.min.js"></script>
 <script type="text/javascript">
+$('#writeFormBtn').click(function () {
+	window.open('/team_project/product/productWriteForm','productWriteForm','width = 700, height = 700, top = 100, left = 200');
+});
 var socket  = null;
 $(document).ready(function() {
     
