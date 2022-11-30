@@ -15,8 +15,8 @@
 	</div>
 	<select id="sort" name="sort">
 		<option value="product_seq desc">최신순</option>
-		<option value="nowprice desc">현재가 낮은 순</option>
-		<option value="nowprice asc">현재가 높은 순</option>
+		<option value="nowprice desc">현재가 높은 순</option>
+		<option value="nowprice asc">현재가 낮은 순</option>
 	</select>
 	<div class="container text-center" >
 	  <div class="row row" id="row">
@@ -73,17 +73,16 @@ return num.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
 <script type="text/javascript" src="/team_project/resources/js/jquery.tmpl.min.js"></script>
 <script type="text/x-jquery-tmpl" id="itemTemplate">
 	<div class="card" style="width: 18rem; margin-top : 20px; border-color: #EDEDED">
-		<img src="/team_project/resources/img/${img1}" class="card-img-top" alt="대표이미지" style="width: 100%; height: 250px;">
+		<img src="/team_project/resources/img/\${img1}" class="card-img-top" alt="대표이미지" style="width: 100%; height: 250px;">
 		<div class="card-body">
-			<h5 class="card-title">${subject}</h5>
+			<h5 class="card-title">\${subject}</h5>
 			<p class="card-text">
-				${content}<br>
-				<span id="startprice">시작가 : ${startprice}원</span><br>
-				<span>현재가 : ${nowprice}원</span><br>
-				<span>호가 : ${unitprice}원</span>
-				<div class="timer" id="${product_seq}"></div>
+				<span id="startprice">시작가 : \${startprice}원</span><br>
+				<span>현재가 : \${nowprice}원</span><br>
+				<span>호가 : \${unitprice}원</span>
+				<div class="timer" id="\${product_seq}"></div>
 			</p>
-			<a href="/team_project/product/productView?product_seq=${product_seq}" class="btn btn-primary">응찰하러가기</a>
+			<a href="/team_project/product/productView?product_seq=\${product_seq}" class="btn btn-primary">응찰하러가기</a>
 		</div>
 	</div>
 </script>
@@ -91,57 +90,33 @@ return num.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
 
 
 $(document).ready(function(){
+	var selectSort = $('#sort').val();
+	
 	$.ajax({
-		url : '/team_project/product/getProductList',
+		url : '/team_project/product/getProductSort',
 		type: 'post',
+		data : 'sort='+selectSort,
 		dataType : 'json',
 		success : function(data){
-			 //$.each(data,function(index, items){
-			console.log(JSON.stringify(data));
-				//var end = new Date(items.endDate);
-				//var time=end.getMonth()+1+'/'+end.getDate()+'/'+end.getFullYear()+' '+end.getHours()+':'+end.getMinutes();
- 			
-				//CountDownTimer(time, items.product_seq) 
-				var tmpl = $('#itemTemplate').tmpl(data);
-				$('#row').append(tmpl);
-				
-				
-				/* $('<div/>',{class:'col-4'}).append($('<div/>',{class: 'card',style:'width: 18rem; margin-top : 20px; border-color: #EDEDED'})
-			
-			 $.each(data,function(index, items){
+			$.each(data,function(index,items){
 				var end = new Date(items.endDate);
 				var time=end.getMonth()+1+'/'+end.getDate()+'/'+end.getFullYear()+' '+end.getHours()+':'+end.getMinutes();
-				console.log(time);
-				/* if(items.prdstatus=='진행중'){}  진행중만 띄우기*/
-				$('<div/>',{class:'col-4'}).append($('<div/>',{class: 'card',style:'width: 18rem; margin-top : 20px; border-color: #EDEDED'})
-											.append($('<img>',{src:'/team_project/resources/img/'+items.img1, class:'card-img-top', width : '100%', height : '250', alt : '대표이미지'}))
-											.append($('<div/>',{class:'card-body'})
-											.append($('<h5/>',{class:'card-title',text:items.subject}))
-											.append($('<p/>',{class:'card-text',text:items.content})
-											.append($('<br>'))
-											.append($('<span>',{text:'시작가 : '+comma(items.startprice)+'원', id : 'startprice'}))
-											.append($('<br>'))
-											.append($('<span>',{text: '현재가 : '+comma(items.nowprice)+'원'}))
-											.append($('<br>'))
-											.append($('<span>',{text: '호가 : '+comma(items.unitprice)+'원'}))
-											.append($('<div/>',{class:'timer',id:items.product_seq})))
-											.append($('<a/>',{href:'/team_project/product/productView?product_seq='+items.product_seq,class:'btn btn-primary',text:'응찰하러가기'})))).appendTo($('#row'));
-				*/
-			 //}); 
+				
+				CountDownTimer(time, items.product_seq) 
+				var tmpl = $('#itemTemplate').tmpl(data[index]);
+				console.log(tmpl)
+				$('#row').append(tmpl);
+ 				})
 			
 		},
 		error : function(err){
 			console.log(err);
 		}
 	});
-	
-});
-</script>
-<script type="text/javascript">
 
-
-$(document).on('change','#sort', function () {
+	$(document).on('change','#sort',function(){
 	var selectSort = $('#sort').val();
+
 	$('#row').empty();
 	
 	$.ajax({
@@ -150,38 +125,25 @@ $(document).on('change','#sort', function () {
 		data : 'sort='+selectSort,
 		dataType : 'json',
 		success : function(data){
-			
-			 $.each(data,function(index, items){
-				var time = end.getMonth()+1+'/'+end.getDate()+'/'+end.getFullYear()+' '+end.getHours()+':'+end.getMinutes();
+			$.each(data,function(index,items){
+				var end = new Date(items.endDate);
+				var time=end.getMonth()+1+'/'+end.getDate()+'/'+end.getFullYear()+' '+end.getHours()+':'+end.getMinutes();
 				
-				$('<div/>',{class:'col-4'}).append($('<div/>',{class: 'card',style:'width: 18rem; margin-top : 20px; border-color: #EDEDED'})
-											.append($('<img>',{src:'/team_project/resources/img/'+items.img1, class:'card-img-top', width : '100%', height : '250', alt : '대표이미지'}))
-											.append($('<div/>',{class:'card-body'})
-												.append($('<h5/>',{class:'card-title',text:items.subject}))
-												.append($('<p/>',{class:'card-text',text:items.content})
-													.append($('<br>'))
-													.append($('<span>',{text:'시작가 : '+comma(items.startprice)+'원', id : 'startprice'}))
-													.append($('<br>'))
-													.append($('<span>',{text: '현재가 : '+comma(items.nowprice)+'원'}))
-													.append($('<br>'))
-													.append($('<span>',{text: '호가 : '+comma(items.unitprice)+'원'}))
-													.append($('<div/>',{class:'timer',id:items.product_seq})))
-												.append($('<a/>',{href:'/team_project/product/productView?product_seq='+items.product_seq,class:'btn btn-primary',text:'응찰하러가기'})))).appendTo($('#row'));
-				
-				CountDownTimer(time, items.product_seq)
-				
-				
-			 }); 
+				CountDownTimer(time, items.product_seq) 
+				var tmpl = $('#itemTemplate').tmpl(data[index]);
+				console.log(tmpl)
+				$('#row').append(tmpl);
+ 				})
 			
 		},
 		error : function(err){
 			console.log(err);
 		}
 	});
+	})
+	
 });
-
 </script>
-
 
 </body>
 </html>

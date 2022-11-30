@@ -382,7 +382,7 @@
 			<hr width="80%">
 		</li>
 		<li>
-			<a href="myPage"> 
+			<a href="/team_project/user/myPage"> 
 				<span class="icon badge-container">
 					<i class="bi bi-person"></i>
 				</span> 
