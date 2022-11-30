@@ -42,8 +42,13 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value = "/productList")
-	public String productList() {
-		return "/product/productList";
+	public String productList(Model model) {
+		model.addAttribute("display", "/WEB-INF/product/productList.jsp");
+		return "/index";
+	}
+	@RequestMapping(value = "/productList_")
+	public String productList_() {
+		return "/product/productList_";
 	}
 	
 	@PostMapping(value = "/getProductList")

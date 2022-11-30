@@ -44,471 +44,480 @@
 .flex-listed li .thumb img:hover{
 	transform : scale(1.1);
 }
+.card {
+    margin-left: 25px;
+}
 </style>
 </head>
 <body>
 
-<%-- <jsp:include page="/WEB-INF/product/productList.jsp"/> --%>
+
 <div id="container">
-   <input type="hidden" value="${id}" id="msgid">
-   <div class="main-ranking">
-      <div class="rolling-list">
-         <div class="coordinates">
-            <div class="title">
-               <h1>지금 나에게 필요한 인기 매물</h1>
-            </div>
-            <div class="btn">
-               <div class="inner">
-                  <a id="rightScroll">
-                     <i class="bi bi-caret-left"></i>
-                  </a>
-                  <a id="leftScroll">
-                     <i class="bi bi-caret-right"></i>
-                  </a>
-               </div>
-            </div>
-         </div>
-         
-         
-         <div class="rolling-listed-item swiper-container swiper-container-initialized swiper-container-horizontal">
-            <ul class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px);">
-               <div class="swiper-slide swiper-slide-active">
-                  <div class="flex-rolling">
-                     <li>
-                        <a href="#" class="thumb">
-                           <img src="/team_project/resources/img/tmdnlcl.jpeg" class="lazy" alt="대표이미지" style="display: block;">
-                        </a>
-                        <div class="posted-info">
-                           <p class="subject">
-                              <a href="#" style="color: white;">스위치 팔아요~ </a>
-                           </p>
-                           <span class="tag">현재가 : </span><span class="nowprice" style="color: white;"> 22 </span><br>
-                           <span class="tag">낙찰가 : </span><span class="endprice" style="color: white;"> 22 </span><br>
-                           <div class="like">
-                              <a href="/team_project/product/productView?product_seq=35" class="btn btn-primary" style="color: white; background-color: #172126; --bs-btn-border-color: white;">응찰하러가기</a>
-                           </div>
-                        </div>
-                     </li>
-                     <li>
-                        <a href="#" class="thumb">
-                           <img src="/team_project/resources/img/tmdnlcl.jpeg" class="lazy" alt="대표이미지" style="display: block;">
-                        </a>
-                        <div class="posted-info">
-                           <p class="subject">
-                              <a href="#" style="color: white;">스위치 팔아요~ </a>
-                           </p>
-                           <span class="tag">현재가 : </span><span class="nowprice" style="color: white;"> 22 </span><br>
-                           <span class="tag">낙찰가 : </span><span class="endprice" style="color: white;"> 22 </span><br>
-                           <div class="like">
-                              <a href="/team_project/product/productView?product_seq=35" class="btn btn-primary" style="color: white; background-color: #172126; --bs-btn-border-color: white;">응찰하러가기</a>
-                           </div>
-                        </div>
-                     </li>
-                     <li>
-                        <a href="#" class="thumb">
-                           <img src="/team_project/resources/img/tmdnlcl.jpeg" class="lazy" alt="대표이미지" style="display: block;">
-                        </a>
-                        <div class="posted-info">
-                           <p class="subject">
-                              <a href="#" style="color: white;">스위치 팔아요~ </a>
-                           </p>
-                           <span class="tag">현재가 : </span><span class="nowprice" style="color: white;"> 22 </span><br>
-                           <span class="tag">낙찰가 : </span><span class="endprice" style="color: white;"> 22 </span><br>
-                           <div class="like">
-                              <a href="/team_project/product/productView?product_seq=35" class="btn btn-primary" style="color: white; background-color: #172126; --bs-btn-border-color: white;">응찰하러가기</a>
-                           </div>
-                        </div>
-                     </li>
-                     <li>
-                        <a href="#" class="thumb">
-                           <img src="/team_project/resources/img/tmdnlcl.jpeg" class="lazy" alt="대표이미지" style="display: block;">
-                        </a>
-                        <div class="posted-info">
-                           <p class="subject">
-                              <a href="#" style="color: white;">스위치 팔아요~ </a>
-                           </p>
-                           <span class="tag">현재가 : </span><span class="nowprice" style="color: white;"> 22 </span><br>
-                           <span class="tag">낙찰가 : </span><span class="endprice" style="color: white;"> 22 </span><br>
-                           <div class="like">
-                              <a href="/team_project/product/productView?product_seq=35" class="btn btn-primary" style="color: white; background-color: #172126; --bs-btn-border-color: white;">응찰하러가기</a>
-                           </div>
-                        </div>
-                     </li>
-                     <li>
-                        <a href="#" class="thumb">
-                           <img src="/team_project/resources/img/tmdnlcl.jpeg" class="lazy" alt="대표이미지" style="display: block;">
-                        </a>
-                        <div class="posted-info">
-                           <p class="subject">
-                              <a href="#" style="color: white;">스위치 팔아요~ </a>
-                           </p>
-                           <span class="tag">현재가 : </span><span class="nowprice" style="color: white;"> 22 </span><br>
-                           <span class="tag">낙찰가 : </span><span class="endprice" style="color: white;"> 22 </span><br>
-                           <div class="like">
-                              <a href="/team_project/product/productView?product_seq=35" class="btn btn-primary" style="color: white; background-color: #172126; --bs-btn-border-color: white;">응찰하러가기</a>
-                           </div>
-                        </div>
-                     </li>
-                     <li>
-                        <a href="#" class="thumb">
-                           <img src="/team_project/resources/img/tmdnlcl.jpeg" class="lazy" alt="대표이미지" style="display: block;">
-                        </a>
-                        <div class="posted-info">
-                           <p class="subject">
-                              <a href="#" style="color: white;">스위치 팔아요~ </a>
-                           </p>
-                           <span class="tag">현재가 : </span><span class="nowprice" style="color: white;"> 22 </span><br>
-                           <span class="tag">낙찰가 : </span><span class="endprice" style="color: white;"> 22 </span><br>
-                           <div class="like">
-                              <a href="/team_project/product/productView?product_seq=35" class="btn btn-primary" style="color: white; background-color: #172126; --bs-btn-border-color: white;">응찰하러가기</a>
-                           </div>
-                        </div>
-                     </li>
-                     <li>
-                        <a href="#" class="thumb">
-                           <img src="/team_project/resources/img/tmdnlcl.jpeg" class="lazy" alt="대표이미지" style="display: block;">
-                        </a>
-                        <div class="posted-info">
-                           <p class="subject">
-                              <a href="#" style="color: white;">스위치 팔아요~ </a>
-                           </p>
-                           <span class="tag">현재가 : </span><span class="nowprice" style="color: white;"> 22 </span><br>
-                           <span class="tag">낙찰가 : </span><span class="endprice" style="color: white;"> 22 </span><br>
-                           <div class="like">
-                              <a href="/team_project/product/productView?product_seq=35" class="btn btn-primary" style="color: white; background-color: #172126; --bs-btn-border-color: white;">응찰하러가기</a>
-                           </div>
-                        </div>
-                     </li>
-                     <li>
-                        <a href="#" class="thumb">
-                           <img src="/team_project/resources/img/tmdnlcl.jpeg" class="lazy" alt="대표이미지" style="display: block;">
-                        </a>
-                        <div class="posted-info">
-                           <p class="subject">
-                              <a href="#" style="color: white;">스위치 팔아요~ </a>
-                           </p>
-                           <span class="tag">현재가 : </span><span class="nowprice" style="color: white;"> 22 </span><br>
-                           <span class="tag">낙찰가 : </span><span class="endprice" style="color: white;"> 22 </span><br>
-                           <div class="like">
-                              <a href="/team_project/product/productView?product_seq=35" class="btn btn-primary" style="color: white; background-color: #172126; --bs-btn-border-color: white;">응찰하러가기</a>
-                           </div>
-                        </div>
-                     </li>
-                     <li>
-                        <a href="#" class="thumb">
-                           <img src="/team_project/resources/img/tmdnlcl.jpeg" class="lazy" alt="대표이미지" style="display: block;">
-                        </a>
-                        <div class="posted-info">
-                           <p class="subject">
-                              <a href="#" style="color: white;">스위치 팔아요~ </a>
-                           </p>
-                           <span class="tag">현재가 : </span><span class="nowprice" style="color: white;"> 22 </span><br>
-                           <span class="tag">낙찰가 : </span><span class="endprice" style="color: white;"> 22 </span><br>
-                           <div class="like">
-                              <a href="/team_project/product/productView?product_seq=35" class="btn btn-primary" style="color: white; background-color: #172126; --bs-btn-border-color: white;">응찰하러가기</a>
-                           </div>
-                        </div>
-                     </li>
-                     <li>
-                        <a href="#" class="thumb">
-                           <img src="/team_project/resources/img/tmdnlcl.jpeg" class="lazy" alt="대표이미지" style="display: block;">
-                        </a>
-                        <div class="posted-info">
-                           <p class="subject">
-                              <a href="#" style="color: white;">스위치 팔아요~ </a>
-                           </p>
-                           <span class="tag">현재가 : </span><span class="nowprice" style="color: white;"> 22 </span><br>
-                           <span class="tag">낙찰가 : </span><span class="endprice" style="color: white;"> 22 </span><br>
-                           <div class="like">
-                              <a href="/team_project/product/productView?product_seq=35" class="btn btn-primary" style="color: white; background-color: #172126; --bs-btn-border-color: white;">응찰하러가기</a>
-                           </div>
-                        </div>
-                     </li>
-                     <li>
-                        <a href="#" class="thumb">
-                           <img src="/team_project/resources/img/tmdnlcl.jpeg" class="lazy" alt="대표이미지" style="display: block;">
-                        </a>
-                        <div class="posted-info">
-                           <p class="subject">
-                              <a href="#" style="color: white;">스위치 팔아요~ </a>
-                           </p>
-                           <span class="tag">현재가 : </span><span class="nowprice" style="color: white;"> 22 </span><br>
-                           <span class="tag">낙찰가 : </span><span class="endprice" style="color: white;"> 22 </span><br>
-                           <div class="like">
-                              <a href="/team_project/product/productView?product_seq=35" class="btn btn-primary" style="color: white; background-color: #172126; --bs-btn-border-color: white;">응찰하러가기</a>
-                           </div>
-                        </div>
-                     </li>
-                  </div>
-               </div>
-            </ul>
-         </div>
-      </div>
-   </div>
-   <br><br>
-   
-   
-   
-   <div class="content">
-      <div id="drama-update" class="main-default-video">
-      
-         
-         <div class="title">
-            <h1>최신 매물을 확인해 보세요.</h1>
-            <a href="https://noonoo.tv/drama" class="all-target"> 전체보기
-               <i class="fal fa-angle-right"></i>
-            </a>
-         </div>
-         <div class="default-listed-item">
-            <ul>
-               <div class="flex-listed">
-                  <li>
-                     <a href="#" class="thumb" style="border: 1px solid;">
-                        <img src="/team_project/resources/img/loading.gif" class="new" alt="대표이미지" style="display: block;">
-                     </a>
-                     <div class="posted-info">
-                        <p class="subject">
-                           <a href="#" class="new"> </a>
-                        </p>
-                     </div>
-                  </li>
-                  <li>
-                     <a href="#" class="thumb" style="border: 1px solid;">
-                        <img src="/team_project/resources/img/loading.gif" class="new" alt="대표이미지" style="display: block;">
-                     </a>
-                     <div class="posted-info">
-                        <p class="subject">
-                           <a href="#" class="new"> </a>
-                        </p>
-                     </div>
-                  </li>
-                  <li>
-                     <a href="#" class="thumb" style="border: 1px solid;">
-                        <img src="/team_project/resources/img/loading.gif" class="new" alt="대표이미지" style="display: block;">
-                     </a>
-                     <div class="posted-info">
-                        <p class="subject">
-                           <a href="#" class="new"> </a>
-                        </p>
-                     </div>
-                  </li>
-                  <li>
-                     <a href="#" class="thumb" style="border: 1px solid;">
-                        <img src="/team_project/resources/img/loading.gif" class="new" alt="대표이미지" style="display: block;">
-                     </a>
-                     <div class="posted-info">
-                        <p class="subject">
-                           <a href="#" class="new"> </a>
-                        </p>
-                     </div>
-                  </li>
-                  <li>
-                     <a href="#" class="thumb" style="border: 1px solid;">
-                        <img src="/team_project/resources/img/loading.gif" class="new" alt="대표이미지" style="display: block;">
-                     </a>
-                     <div class="posted-info">
-                        <p class="subject">
-                           <a href="#" class="new"> </a>
-                        </p>
-                     </div>
-                  </li>
-               </div>
-            </ul>
-         </div>
-         
-         
-         <div class="title">
-            <h1>디지털/가전</h1>
-            <a href="https://noonoo.tv/drama" class="all-target"> 전체보기
-               <i class="fal fa-angle-right"></i>
-            </a>
-         </div>
-         <div class="default-listed-item">
-            <ul>
-               <div class="flex-listed">
-                  <li>
-                     <a href="#" class="thumb">
-                        <img src="/team_project/resources/img/loading.gif" class="digital" alt="대표이미지" style="display: block; border: 1px solid;">
-                     </a>
-                     <div class="posted-info">
-                        <p class="subject">
-                           <a href="#" class="digital"></a>
-                        </p>
-                     </div>
-                  </li>
-                  <li>
-                     <a href="#" class="thumb">
-                        <img src="/team_project/resources/img/loading.gif" class="digital" alt="대표이미지" style="display: block;">
-                     </a>
-                     <div class="posted-info">
-                        <p class="subject">
-                           <a href="#" class="digital"></a>
-                        </p>
-                     </div>
-                  </li>
-                  <li>
-                     <a href="#" class="thumb">
-                        <img src="/team_project/resources/img/loading.gif" class="digital" alt="대표이미지" style="display: block;">
-                     </a>
-                     <div class="posted-info">
-                        <p class="subject">
-                           <a href="#" class="digital"></a>
-                        </p>
-                     </div>
-                  </li>
-                  <li>
-                     <a href="#" class="thumb">
-                        <img src="/team_project/resources/img/loading.gif" class="digital" alt="대표이미지" style="display: block;">
-                     </a>
-                     <div class="posted-info">
-                        <p class="subject">
-                           <a href="#" class="digital"></a>
-                        </p>
-                     </div>
-                  </li>
-                  <li>
-                     <a href="#" class="thumb">
-                        <img src="/team_project/resources/img/loading.gif" class="digital" alt="재벌집 막내아들" style="display: block;">
-                     </a>
-                     <div class="posted-info">
-                        <p class="subject">
-                           <a href="#" class="digital"></a>
-                        </p>
-                     </div>
-                  </li>
-               </div>
-            </ul>
-         </div>
-         
-         
-         <div class="title">
-            <h1>아웃도어/스포츠</h1>
-            <a href="https://noonoo.tv/drama" class="all-target"> 전체보기
-               <i class="fal fa-angle-right"></i>
-            </a>
-         </div>
-         <div class="default-listed-item">
-            <ul>
-               <div class="flex-listed">
-                  <li>
-                     <a href="#" class="thumb">
-                        <img src="/team_project/resources/img/loading.gif" class="sports" alt="대표이미지" style="display: block;">
-                     </a>
-                     <div class="posted-info">
-                        <p class="subject">
-                           <a href="#" class="sports"></a>
-                        </p>
-                     </div>
-                  </li>
-                  <li>
-                     <a href="#" class="thumb">
-                        <img src="/team_project/resources/img/loading.gif" class="sports" alt="대표이미지" style="display: block;">
-                     </a>
-                     <div class="posted-info">
-                        <p class="subject">
-                           <a href="#" class="sports"></a>
-                        </p>
-                     </div>
-                  </li>
-                  <li>
-                     <a href="#" class="thumb">
-                        <img src="/team_project/resources/img/loading.gif" class="sports" alt="대표이미지" style="display: block;">
-                     </a>
-                     <div class="posted-info">
-                        <p class="subject">
-                           <a href="#" class="sports"></a>
-                        </p>
-                     </div>
-                  </li>
-                  <li>
-                     <a href="#" class="thumb">
-                        <img src="/team_project/resources/img/loading.gif" class="sports" alt="대표이미지" style="display: block;">
-                     </a>
-                     <div class="posted-info">
-                        <p class="subject">
-                           <a href="#" class="sports"></a>
-                        </p>
-                     </div>
-                  </li>
-                  <li>
-                     <a href="#" class="thumb">
-                        <img src="/team_project/resources/img/loading.gif" class="sports" alt="재벌집 막내아들" style="display: block;">
-                     </a>
-                     <div class="posted-info">
-                        <p class="subject">
-                           <a href="#" class="sports"></a>
-                        </p>
-                     </div>
-                  </li>
-               </div>
-            </ul>
-         </div>
-         
-         
-         <div class="title">
-            <h1>홈/생활</h1>
-            <a href="https://noonoo.tv/drama" class="all-target"> 전체보기
-               <i class="fal fa-angle-right"></i>
-            </a>
-         </div>
-         <div class="default-listed-item">
-            <ul>
-               <div class="flex-listed">
-                  <li>
-                     <a href="#" class="thumb">
-                        <img src="https://images.nstatic.org/info/tv/153496/wFhRbJvcK5noXy3K3pBpw6UMDfQ.jpg" class="lazy" alt="재벌집 막내아들" style="display: block;">
-                     </a>
-                     <div class="posted-info">
-                        <p class="subject">
-                           <a href="#">재벌집 막내아들 </a>
-                        </p>
-                     </div>
-                  </li>
-                  <li>
-                     <a href="#" class="thumb">
-                        <img src="https://images.nstatic.org/info/tv/153496/wFhRbJvcK5noXy3K3pBpw6UMDfQ.jpg" class="lazy" alt="재벌집 막내아들" style="display: block;">
-                     </a>
-                     <div class="posted-info">
-                        <p class="subject">
-                           <a href="#">재벌집 막내아들 </a>
-                        </p>
-                     </div>
-                  </li>
-                  <li>
-                     <a href="#" class="thumb">
-                        <img src="https://images.nstatic.org/info/tv/153496/wFhRbJvcK5noXy3K3pBpw6UMDfQ.jpg" class="lazy" alt="재벌집 막내아들" style="display: block;">
-                     </a>
-                     <div class="posted-info">
-                        <p class="subject">
-                           <a href="#">재벌집 막내아들 </a>
-                        </p>
-                     </div>
-                  </li>
-                  <li>
-                     <a href="#" class="thumb">
-                        <img src="https://images.nstatic.org/info/tv/153496/wFhRbJvcK5noXy3K3pBpw6UMDfQ.jpg" class="lazy" alt="재벌집 막내아들" style="display: block;">
-                     </a>
-                     <div class="posted-info">
-                        <p class="subject">
-                           <a href="#">재벌집 막내아들 </a>
-                        </p>
-                     </div>
-                  </li>
-                  <li>
-                     <a href="#" class="thumb">
-                        <img src="https://images.nstatic.org/info/tv/153496/wFhRbJvcK5noXy3K3pBpw6UMDfQ.jpg" class="lazy" alt="재벌집 막내아들" style="display: block;">
-                     </a>
-                     <div class="posted-info">
-                        <p class="subject">
-                           <a href="#">재벌집 막내아들 </a>
-                        </p>
-                     </div>
-                  </li>
-               </div>
-            </ul>
-         </div>
-      </div>
-   </div>
+
+	<c:if test="${empty display }">
+	   <input type="hidden" value="${id}" id="msgid">
+	   <div class="main-ranking">
+	      <div class="rolling-list">
+	         <div class="coordinates">
+	            <div class="title">
+	               <h1>지금 나에게 필요한 인기 매물</h1>
+	            </div>
+	            <div class="btn">
+	               <div class="inner">
+	                  <a id="rightScroll">
+	                     <i class="bi bi-caret-left"></i>
+	                  </a>
+	                  <a id="leftScroll">
+	                     <i class="bi bi-caret-right"></i>
+	                  </a>
+	               </div>
+	            </div>
+	         </div>
+	         
+	         
+	         <div class="rolling-listed-item swiper-container swiper-container-initialized swiper-container-horizontal">
+	            <ul class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px);">
+	               <div class="swiper-slide swiper-slide-active">
+	                  <div class="flex-rolling">
+	                     <li>
+	                        <a href="#" class="thumb">
+	                           <img src="/team_project/resources/img/tmdnlcl.jpeg" class="lazy" alt="대표이미지" style="display: block;">
+	                        </a>
+	                        <div class="posted-info">
+	                           <p class="subject">
+	                              <a href="#" style="color: white;">스위치 팔아요~ </a>
+	                           </p>
+	                           <span class="tag">현재가 : </span><span class="nowprice" style="color: white;"> 22 </span><br>
+	                           <span class="tag">낙찰가 : </span><span class="endprice" style="color: white;"> 22 </span><br>
+	                           <div class="like">
+	                              <a href="/team_project/product/productView?product_seq=35" class="btn btn-primary" style="color: white; background-color: #172126; --bs-btn-border-color: white;">응찰하러가기</a>
+	                           </div>
+	                        </div>
+	                     </li>
+	                     <li>
+	                        <a href="#" class="thumb">
+	                           <img src="/team_project/resources/img/tmdnlcl.jpeg" class="lazy" alt="대표이미지" style="display: block;">
+	                        </a>
+	                        <div class="posted-info">
+	                           <p class="subject">
+	                              <a href="#" style="color: white;">스위치 팔아요~ </a>
+	                           </p>
+	                           <span class="tag">현재가 : </span><span class="nowprice" style="color: white;"> 22 </span><br>
+	                           <span class="tag">낙찰가 : </span><span class="endprice" style="color: white;"> 22 </span><br>
+	                           <div class="like">
+	                              <a href="/team_project/product/productView?product_seq=35" class="btn btn-primary" style="color: white; background-color: #172126; --bs-btn-border-color: white;">응찰하러가기</a>
+	                           </div>
+	                        </div>
+	                     </li>
+	                     <li>
+	                        <a href="#" class="thumb">
+	                           <img src="/team_project/resources/img/tmdnlcl.jpeg" class="lazy" alt="대표이미지" style="display: block;">
+	                        </a>
+	                        <div class="posted-info">
+	                           <p class="subject">
+	                              <a href="#" style="color: white;">스위치 팔아요~ </a>
+	                           </p>
+	                           <span class="tag">현재가 : </span><span class="nowprice" style="color: white;"> 22 </span><br>
+	                           <span class="tag">낙찰가 : </span><span class="endprice" style="color: white;"> 22 </span><br>
+	                           <div class="like">
+	                              <a href="/team_project/product/productView?product_seq=35" class="btn btn-primary" style="color: white; background-color: #172126; --bs-btn-border-color: white;">응찰하러가기</a>
+	                           </div>
+	                        </div>
+	                     </li>
+	                     <li>
+	                        <a href="#" class="thumb">
+	                           <img src="/team_project/resources/img/tmdnlcl.jpeg" class="lazy" alt="대표이미지" style="display: block;">
+	                        </a>
+	                        <div class="posted-info">
+	                           <p class="subject">
+	                              <a href="#" style="color: white;">스위치 팔아요~ </a>
+	                           </p>
+	                           <span class="tag">현재가 : </span><span class="nowprice" style="color: white;"> 22 </span><br>
+	                           <span class="tag">낙찰가 : </span><span class="endprice" style="color: white;"> 22 </span><br>
+	                           <div class="like">
+	                              <a href="/team_project/product/productView?product_seq=35" class="btn btn-primary" style="color: white; background-color: #172126; --bs-btn-border-color: white;">응찰하러가기</a>
+	                           </div>
+	                        </div>
+	                     </li>
+	                     <li>
+	                        <a href="#" class="thumb">
+	                           <img src="/team_project/resources/img/tmdnlcl.jpeg" class="lazy" alt="대표이미지" style="display: block;">
+	                        </a>
+	                        <div class="posted-info">
+	                           <p class="subject">
+	                              <a href="#" style="color: white;">스위치 팔아요~ </a>
+	                           </p>
+	                           <span class="tag">현재가 : </span><span class="nowprice" style="color: white;"> 22 </span><br>
+	                           <span class="tag">낙찰가 : </span><span class="endprice" style="color: white;"> 22 </span><br>
+	                           <div class="like">
+	                              <a href="/team_project/product/productView?product_seq=35" class="btn btn-primary" style="color: white; background-color: #172126; --bs-btn-border-color: white;">응찰하러가기</a>
+	                           </div>
+	                        </div>
+	                     </li>
+	                     <li>
+	                        <a href="#" class="thumb">
+	                           <img src="/team_project/resources/img/tmdnlcl.jpeg" class="lazy" alt="대표이미지" style="display: block;">
+	                        </a>
+	                        <div class="posted-info">
+	                           <p class="subject">
+	                              <a href="#" style="color: white;">스위치 팔아요~ </a>
+	                           </p>
+	                           <span class="tag">현재가 : </span><span class="nowprice" style="color: white;"> 22 </span><br>
+	                           <span class="tag">낙찰가 : </span><span class="endprice" style="color: white;"> 22 </span><br>
+	                           <div class="like">
+	                              <a href="/team_project/product/productView?product_seq=35" class="btn btn-primary" style="color: white; background-color: #172126; --bs-btn-border-color: white;">응찰하러가기</a>
+	                           </div>
+	                        </div>
+	                     </li>
+	                     <li>
+	                        <a href="#" class="thumb">
+	                           <img src="/team_project/resources/img/tmdnlcl.jpeg" class="lazy" alt="대표이미지" style="display: block;">
+	                        </a>
+	                        <div class="posted-info">
+	                           <p class="subject">
+	                              <a href="#" style="color: white;">스위치 팔아요~ </a>
+	                           </p>
+	                           <span class="tag">현재가 : </span><span class="nowprice" style="color: white;"> 22 </span><br>
+	                           <span class="tag">낙찰가 : </span><span class="endprice" style="color: white;"> 22 </span><br>
+	                           <div class="like">
+	                              <a href="/team_project/product/productView?product_seq=35" class="btn btn-primary" style="color: white; background-color: #172126; --bs-btn-border-color: white;">응찰하러가기</a>
+	                           </div>
+	                        </div>
+	                     </li>
+	                     <li>
+	                        <a href="#" class="thumb">
+	                           <img src="/team_project/resources/img/tmdnlcl.jpeg" class="lazy" alt="대표이미지" style="display: block;">
+	                        </a>
+	                        <div class="posted-info">
+	                           <p class="subject">
+	                              <a href="#" style="color: white;">스위치 팔아요~ </a>
+	                           </p>
+	                           <span class="tag">현재가 : </span><span class="nowprice" style="color: white;"> 22 </span><br>
+	                           <span class="tag">낙찰가 : </span><span class="endprice" style="color: white;"> 22 </span><br>
+	                           <div class="like">
+	                              <a href="/team_project/product/productView?product_seq=35" class="btn btn-primary" style="color: white; background-color: #172126; --bs-btn-border-color: white;">응찰하러가기</a>
+	                           </div>
+	                        </div>
+	                     </li>
+	                     <li>
+	                        <a href="#" class="thumb">
+	                           <img src="/team_project/resources/img/tmdnlcl.jpeg" class="lazy" alt="대표이미지" style="display: block;">
+	                        </a>
+	                        <div class="posted-info">
+	                           <p class="subject">
+	                              <a href="#" style="color: white;">스위치 팔아요~ </a>
+	                           </p>
+	                           <span class="tag">현재가 : </span><span class="nowprice" style="color: white;"> 22 </span><br>
+	                           <span class="tag">낙찰가 : </span><span class="endprice" style="color: white;"> 22 </span><br>
+	                           <div class="like">
+	                              <a href="/team_project/product/productView?product_seq=35" class="btn btn-primary" style="color: white; background-color: #172126; --bs-btn-border-color: white;">응찰하러가기</a>
+	                           </div>
+	                        </div>
+	                     </li>
+	                     <li>
+	                        <a href="#" class="thumb">
+	                           <img src="/team_project/resources/img/tmdnlcl.jpeg" class="lazy" alt="대표이미지" style="display: block;">
+	                        </a>
+	                        <div class="posted-info">
+	                           <p class="subject">
+	                              <a href="#" style="color: white;">스위치 팔아요~ </a>
+	                           </p>
+	                           <span class="tag">현재가 : </span><span class="nowprice" style="color: white;"> 22 </span><br>
+	                           <span class="tag">낙찰가 : </span><span class="endprice" style="color: white;"> 22 </span><br>
+	                           <div class="like">
+	                              <a href="/team_project/product/productView?product_seq=35" class="btn btn-primary" style="color: white; background-color: #172126; --bs-btn-border-color: white;">응찰하러가기</a>
+	                           </div>
+	                        </div>
+	                     </li>
+	                     <li>
+	                        <a href="#" class="thumb">
+	                           <img src="/team_project/resources/img/tmdnlcl.jpeg" class="lazy" alt="대표이미지" style="display: block;">
+	                        </a>
+	                        <div class="posted-info">
+	                           <p class="subject">
+	                              <a href="#" style="color: white;">스위치 팔아요~ </a>
+	                           </p>
+	                           <span class="tag">현재가 : </span><span class="nowprice" style="color: white;"> 22 </span><br>
+	                           <span class="tag">낙찰가 : </span><span class="endprice" style="color: white;"> 22 </span><br>
+	                           <div class="like">
+	                              <a href="/team_project/product/productView?product_seq=35" class="btn btn-primary" style="color: white; background-color: #172126; --bs-btn-border-color: white;">응찰하러가기</a>
+	                           </div>
+	                        </div>
+	                     </li>
+	                  </div>
+	               </div>
+	            </ul>
+	         </div>
+	      </div>
+	   </div>
+	   <br><br>
+	   
+	   
+	   
+	   <div class="content">
+	      <div id="drama-update" class="main-default-video">
+	      
+	         
+	         <div class="title">
+	            <h1>최신 매물을 확인해 보세요.</h1>
+	            <a href="/team_project/product/productList" class="all-target"> 전체보기
+	               <i class="fal fa-angle-right"></i>
+	            </a>
+	         </div>
+	         <div class="default-listed-item">
+	            <ul>
+	               <div class="flex-listed">
+	                  <li>
+	                     <a href="#" class="thumb" style="border: 1px solid;">
+	                        <img src="/team_project/resources/img/loading.gif" class="new" alt="대표이미지" style="display: block;">
+	                     </a>
+	                     <div class="posted-info">
+	                        <p class="subject">
+	                           <a href="#" class="new"> </a>
+	                        </p>
+	                     </div>
+	                  </li>
+	                  <li>
+	                     <a href="#" class="thumb" style="border: 1px solid;">
+	                        <img src="/team_project/resources/img/loading.gif" class="new" alt="대표이미지" style="display: block;">
+	                     </a>
+	                     <div class="posted-info">
+	                        <p class="subject">
+	                           <a href="#" class="new"> </a>
+	                        </p>
+	                     </div>
+	                  </li>
+	                  <li>
+	                     <a href="#" class="thumb" style="border: 1px solid;">
+	                        <img src="/team_project/resources/img/loading.gif" class="new" alt="대표이미지" style="display: block;">
+	                     </a>
+	                     <div class="posted-info">
+	                        <p class="subject">
+	                           <a href="#" class="new"> </a>
+	                        </p>
+	                     </div>
+	                  </li>
+	                  <li>
+	                     <a href="#" class="thumb" style="border: 1px solid;">
+	                        <img src="/team_project/resources/img/loading.gif" class="new" alt="대표이미지" style="display: block;">
+	                     </a>
+	                     <div class="posted-info">
+	                        <p class="subject">
+	                           <a href="#" class="new"> </a>
+	                        </p>
+	                     </div>
+	                  </li>
+	                  <li>
+	                     <a href="#" class="thumb" style="border: 1px solid;">
+	                        <img src="/team_project/resources/img/loading.gif" class="new" alt="대표이미지" style="display: block;">
+	                     </a>
+	                     <div class="posted-info">
+	                        <p class="subject">
+	                           <a href="#" class="new"> </a>
+	                        </p>
+	                     </div>
+	                  </li>
+	               </div>
+	            </ul>
+	         </div>
+	         
+	         
+	         <div class="title">
+	            <h1>디지털/가전</h1>
+	            <a href="https://noonoo.tv/drama" class="all-target"> 전체보기
+	               <i class="fal fa-angle-right"></i>
+	            </a>
+	         </div>
+	         <div class="default-listed-item">
+	            <ul>
+	               <div class="flex-listed">
+	                  <li>
+	                     <a href="#" class="thumb">
+	                        <img src="/team_project/resources/img/loading.gif" class="digital" alt="대표이미지" style="display: block; border: 1px solid;">
+	                     </a>
+	                     <div class="posted-info">
+	                        <p class="subject">
+	                           <a href="#" class="digital"></a>
+	                        </p>
+	                     </div>
+	                  </li>
+	                  <li>
+	                     <a href="#" class="thumb">
+	                        <img src="/team_project/resources/img/loading.gif" class="digital" alt="대표이미지" style="display: block;">
+	                     </a>
+	                     <div class="posted-info">
+	                        <p class="subject">
+	                           <a href="#" class="digital"></a>
+	                        </p>
+	                     </div>
+	                  </li>
+	                  <li>
+	                     <a href="#" class="thumb">
+	                        <img src="/team_project/resources/img/loading.gif" class="digital" alt="대표이미지" style="display: block;">
+	                     </a>
+	                     <div class="posted-info">
+	                        <p class="subject">
+	                           <a href="#" class="digital"></a>
+	                        </p>
+	                     </div>
+	                  </li>
+	                  <li>
+	                     <a href="#" class="thumb">
+	                        <img src="/team_project/resources/img/loading.gif" class="digital" alt="대표이미지" style="display: block;">
+	                     </a>
+	                     <div class="posted-info">
+	                        <p class="subject">
+	                           <a href="#" class="digital"></a>
+	                        </p>
+	                     </div>
+	                  </li>
+	                  <li>
+	                     <a href="#" class="thumb">
+	                        <img src="/team_project/resources/img/loading.gif" class="digital" alt="재벌집 막내아들" style="display: block;">
+	                     </a>
+	                     <div class="posted-info">
+	                        <p class="subject">
+	                           <a href="#" class="digital"></a>
+	                        </p>
+	                     </div>
+	                  </li>
+	               </div>
+	            </ul>
+	         </div>
+	         
+	         
+	         <div class="title">
+	            <h1>아웃도어/스포츠</h1>
+	            <a href="https://noonoo.tv/drama" class="all-target"> 전체보기
+	               <i class="fal fa-angle-right"></i>
+	            </a>
+	         </div>
+	         <div class="default-listed-item">
+	            <ul>
+	               <div class="flex-listed">
+	                  <li>
+	                     <a href="#" class="thumb">
+	                        <img src="/team_project/resources/img/loading.gif" class="sports" alt="대표이미지" style="display: block;">
+	                     </a>
+	                     <div class="posted-info">
+	                        <p class="subject">
+	                           <a href="#" class="sports"></a>
+	                        </p>
+	                     </div>
+	                  </li>
+	                  <li>
+	                     <a href="#" class="thumb">
+	                        <img src="/team_project/resources/img/loading.gif" class="sports" alt="대표이미지" style="display: block;">
+	                     </a>
+	                     <div class="posted-info">
+	                        <p class="subject">
+	                           <a href="#" class="sports"></a>
+	                        </p>
+	                     </div>
+	                  </li>
+	                  <li>
+	                     <a href="#" class="thumb">
+	                        <img src="/team_project/resources/img/loading.gif" class="sports" alt="대표이미지" style="display: block;">
+	                     </a>
+	                     <div class="posted-info">
+	                        <p class="subject">
+	                           <a href="#" class="sports"></a>
+	                        </p>
+	                     </div>
+	                  </li>
+	                  <li>
+	                     <a href="#" class="thumb">
+	                        <img src="/team_project/resources/img/loading.gif" class="sports" alt="대표이미지" style="display: block;">
+	                     </a>
+	                     <div class="posted-info">
+	                        <p class="subject">
+	                           <a href="#" class="sports"></a>
+	                        </p>
+	                     </div>
+	                  </li>
+	                  <li>
+	                     <a href="#" class="thumb">
+	                        <img src="/team_project/resources/img/loading.gif" class="sports" alt="재벌집 막내아들" style="display: block;">
+	                     </a>
+	                     <div class="posted-info">
+	                        <p class="subject">
+	                           <a href="#" class="sports"></a>
+	                        </p>
+	                     </div>
+	                  </li>
+	               </div>
+	            </ul>
+	         </div>
+	         
+	         
+	         <div class="title">
+	            <h1>홈/생활</h1>
+	            <a href="https://noonoo.tv/drama" class="all-target"> 전체보기
+	               <i class="fal fa-angle-right"></i>
+	            </a>
+	         </div>
+	         <div class="default-listed-item">
+	            <ul>
+	               <div class="flex-listed">
+	                  <li>
+	                     <a href="#" class="thumb">
+	                        <img src="https://images.nstatic.org/info/tv/153496/wFhRbJvcK5noXy3K3pBpw6UMDfQ.jpg" class="lazy" alt="재벌집 막내아들" style="display: block;">
+	                     </a>
+	                     <div class="posted-info">
+	                        <p class="subject">
+	                           <a href="#">재벌집 막내아들 </a>
+	                        </p>
+	                     </div>
+	                  </li>
+	                  <li>
+	                     <a href="#" class="thumb">
+	                        <img src="https://images.nstatic.org/info/tv/153496/wFhRbJvcK5noXy3K3pBpw6UMDfQ.jpg" class="lazy" alt="재벌집 막내아들" style="display: block;">
+	                     </a>
+	                     <div class="posted-info">
+	                        <p class="subject">
+	                           <a href="#">재벌집 막내아들 </a>
+	                        </p>
+	                     </div>
+	                  </li>
+	                  <li>
+	                     <a href="#" class="thumb">
+	                        <img src="https://images.nstatic.org/info/tv/153496/wFhRbJvcK5noXy3K3pBpw6UMDfQ.jpg" class="lazy" alt="재벌집 막내아들" style="display: block;">
+	                     </a>
+	                     <div class="posted-info">
+	                        <p class="subject">
+	                           <a href="#">재벌집 막내아들 </a>
+	                        </p>
+	                     </div>
+	                  </li>
+	                  <li>
+	                     <a href="#" class="thumb">
+	                        <img src="https://images.nstatic.org/info/tv/153496/wFhRbJvcK5noXy3K3pBpw6UMDfQ.jpg" class="lazy" alt="재벌집 막내아들" style="display: block;">
+	                     </a>
+	                     <div class="posted-info">
+	                        <p class="subject">
+	                           <a href="#">재벌집 막내아들 </a>
+	                        </p>
+	                     </div>
+	                  </li>
+	                  <li>
+	                     <a href="#" class="thumb">
+	                        <img src="https://images.nstatic.org/info/tv/153496/wFhRbJvcK5noXy3K3pBpw6UMDfQ.jpg" class="lazy" alt="재벌집 막내아들" style="display: block;">
+	                     </a>
+	                     <div class="posted-info">
+	                        <p class="subject">
+	                           <a href="#">재벌집 막내아들 </a>
+	                        </p>
+	                     </div>
+	                  </li>
+	               </div>
+	            </ul>
+	         </div>
+	      </div>
+	   </div>
+	</c:if>
+	<c:if test="${!empty display }">
+		<jsp:include page="${display}"/>
+	</c:if>
 </div>
 
 
@@ -743,6 +752,7 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.5/sockjs.min.js"></script>
 <script type="text/javascript" src="/team_project/resources/js/index.js"></script>
+<script type="text/javascript" src="/team_project/resources/js/jquery.tmpl.min.js"></script>
 <script type="text/javascript">
 var socket  = null;
 $(document).ready(function() {
@@ -828,6 +838,9 @@ $(document).ready(function() {
         });
         $('#msgContent').val('');   // textarea 초기화
     });
+  
+  
+  
 });
 </script>
 <script type="text/javascript">
@@ -849,7 +862,6 @@ $(function () {
 });
 
 </script>
-
 <script type="text/javascript">
 $(function () {
    
@@ -930,5 +942,118 @@ $(function () {
 });
 
 </script>
+
+<script type="text/x-jquery-tmpl" id="itemTemplate">
+	<div class="card" style="width: 18rem; margin-top : 20px; border-color: #EDEDED">
+		<img src="/team_project/resources/img/\${img1}" class="card-img-top" alt="대표이미지" style="width: 100%; height: 250px;">
+		<div class="card-body">
+			<h5 class="card-title">\${subject}</h5>
+			<p class="card-text">
+				<span id="startprice">시작가 : \${startprice}원</span><br>
+				<span>현재가 : \${nowprice}원</span><br>
+				<span>호가 : \${unitprice}원</span>
+				<div class="timer" id="\${product_seq}"></div>
+			</p>
+			<a href="/team_project/product/productView?product_seq=\${product_seq}" class="btn btn-primary">응찰하러가기</a>
+		</div>
+	</div>
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	var selectSort = $('#sort').val();
+	
+	$.ajax({
+		url : '/team_project/product/getProductSort',
+		type: 'post',
+		data : 'sort='+selectSort,
+		dataType : 'json',
+		success : function(data){
+			$.each(data,function(index,items){
+				var end = new Date(items.endDate);
+				var time=end.getMonth()+1+'/'+end.getDate()+'/'+end.getFullYear()+' '+end.getHours()+':'+end.getMinutes();
+				
+				/* if(items.prdstatus=='진행중'){}  진행중만 띄우기*/
+				CountDownTimer(time, items.product_seq) 
+				var tmpl = $('#itemTemplate').tmpl(data[index]);
+				console.log(tmpl)
+				$('#row').append(tmpl);
+ 				})
+			
+		},
+		error : function(err){
+			console.log(err);
+		}
+	});
+
+	$(document).on('change','#sort',function(){
+		var selectSort = $('#sort').val();
+	
+		$('#row').empty();
+		
+		$.ajax({
+			url : '/team_project/product/getProductSort',
+			type: 'post',
+			data : 'sort='+selectSort,
+			dataType : 'json',
+			success : function(data){
+				$.each(data,function(index,items){
+					var end = new Date(items.endDate);
+					var time=end.getMonth()+1+'/'+end.getDate()+'/'+end.getFullYear()+' '+end.getHours()+':'+end.getMinutes();
+					
+					CountDownTimer(time, items.product_seq) 
+					var tmpl = $('#itemTemplate').tmpl(data[index]);
+					console.log(tmpl)
+					$('#row').append(tmpl);
+	 				})
+				
+			},
+			error : function(err){
+				console.log(err);
+			}
+		});
+		
+	});
+	
+});
+</script>
+<script type="text/javascript">
+function CountDownTimer(dt, id)
+{
+    var end = new Date(dt);
+
+    var _second = 1000;
+    var _minute = _second * 60;
+    var _hour = _minute * 60;
+    var _day = _hour * 24;
+    var timer;
+    
+    function showRemaining() {
+        var now = new Date();
+        var distance = end - now;
+        if (distance < 0) {
+            clearInterval(timer);
+            document.getElementById(id).innerHTML = '응찰이 종료되었습니다!';
+            return; 
+        }
+        var days = Math.floor(distance / _day);
+        var hours = Math.floor((distance % _day) / _hour);
+        var minutes = Math.floor((distance % _hour) / _minute);
+        var seconds = Math.floor((distance % _minute) / _second);
+
+        document.getElementById(id).innerHTML = days + '일 ';
+        document.getElementById(id).innerHTML += hours + '시간 ';
+        document.getElementById(id).innerHTML += minutes + '분 ';
+        document.getElementById(id).innerHTML += seconds + '초';
+    }
+	
+    timer = setInterval(showRemaining, 1000);
+    /* if(timer = setTimeout()) */
+    
+}
+
+
+</script>
+
 </body>
 </html>

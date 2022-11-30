@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="/team_project/resources/css/reset.css">
+<title>Insert title here</title>
 <style type="text/css">
 .tab .tab-menu.tab-horizon:before {
     position: absolute;
@@ -44,7 +49,7 @@
 }
 .tab .tab-menu > ul > li.on > .tab-item {
     color: #E54E2B;
-    border-color: #172126;
+    border-color: #E54E2B;
 }
 .tab.tab-md .tab-menu > ul > li > .tab-item {
     line-height: 46px;
@@ -53,7 +58,7 @@
     display: inline-block;
     font-size: 14px;
     font-weight: 700;
-    color: #172126;
+    color: #4C4C4C;
     line-height: 46px;
     padding: 0 4px;
     border-bottom: 2px solid transparent;
@@ -71,55 +76,20 @@
     display: table;
     clear: both;
 }
-
-.productList{
-	width: 90%;
-	margin: auto;
-}
-.tab .tab-menu.tab-horizon:before {
-    /* position: absolute; */
-    bottom: 0;
-    left: -16px;
-    right: -16px;
-    height: 1px;
-    content: '';
-    background-color: #D8D8D8;
-}
-.mg-b-4u{
-	width: 90%;
-	margin: auto;
-}
-.mg-b-4u .tab-horizon ul{
-	text-align: center;
-}
-.mg-b-4u .tab-horizon ul li:hover{
-	border-color: #172126;
-}
 </style>
-
+</head>
+<body>
 <div class="tab tab-md mg-b-4u" id="c_size">
 	<!-- DeskTop -->
 	<div class="tab-menu tab-horizon">
 		<ul>
-			<li class="on"><a href="#" class="tab-item" data-tab-contents="Tab 1" data-tab-contents-group="A" style="color: #172126;">전체 매물</a></li>
-			<li class=""><a href="#" class="tab-item" data-tab-contents="Tab 2" data-tab-contents-group="A" style="color: #172126;">디지털/가전</a></li>
-			<li class=""><a href="#" class="tab-item" data-tab-contents="Tab 3" data-tab-contents-group="A" style="color: #172126;">아웃도어/스포츠</a></li>
-			<li class=""><a href="#" class="tab-item" data-tab-contents="Tab 3" data-tab-contents-group="A" style="color: #172126;">홈/생활</a></li>
+			<li class="on"><a href="#" class="tab-item" data-tab-contents="Tab 1" data-tab-contents-group="A">Tab 1</a></li>
+			<li class=""><a href="#" class="tab-item" data-tab-contents="Tab 2" data-tab-contents-group="A">Tab 2</a></li>
+			<li class=""><a href="#" class="tab-item" data-tab-contents="Tab 3" data-tab-contents-group="A">Tab 3</a></li>
+			<li class="disabled"><a href="#" class="tab-item" data-tab-contents="Tab 4" data-tab-contents-group="A" disabled="">Tab
+					4</a></li>
 		</ul>
 	</div>
 </div>
-
-<input type="hidden" value="${id}" id="msgid">
-<select id="sort" name="sort">
-	<option value="product_seq desc">최신순</option>
-	<option value="nowprice desc">현재가 높은 순</option>
-	<option value="nowprice asc">현재가 낮은 순</option>
-</select>
-<div class="productList">
-  <div class="row" id="row">
-  <!-- grid -->
-	</div>
-</div>
-
-
-
+</body>
+</html>

@@ -75,3 +75,9 @@ $('#rightScroll').click(function () {
 $('#messageBtn').click(function () {
 	window.open('/team_project/message/messageList','message','width = 600, height = 500, top = 100, left = 200');
 });
+
+/* 3단위마다 콤마 */
+function comma(num) {
+num = String(num);
+return num.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
+}
