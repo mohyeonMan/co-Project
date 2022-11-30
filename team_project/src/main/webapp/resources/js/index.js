@@ -37,7 +37,7 @@ $('#btn-login').click(function(){
 					$('#pwdDiv').text('아이디 또는 비밀번호가 맞지 않습니다.');
 					$('#pwdDiv').css('font-size','12pt');
 				} else {
-					location.href = '/team_project/test/sideBanner';
+					location.href = '/team_project/';
 				}
 			},
 			error : function(err){

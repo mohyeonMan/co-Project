@@ -21,6 +21,26 @@
 .rolling-listed-item{
 	scroll-behavior : smooth;
 }
+.modal-body{
+	margin: auto;
+}
+.member_login_input{
+	margin-top: 8px;
+}
+.member_login_btn{
+	margin-top: 8px;
+	margin-left: 8%;
+}
+#msgStack{
+	position: fixed;
+    bottom: 20px;
+    right: 10px;
+    z-index: 10000;
+}
+.toast-header .close{
+	position: absolute;
+	right: 10px;
+}
 </style>
 </head>
 <body>
@@ -223,11 +243,6 @@
 		</div>
 	</div>
 	<br><br>
-	
-	
-	
-	
-	
 	
 	
 	
@@ -515,37 +530,16 @@
 		<a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">로그인</a> / <a>회원가입</a> / <a>공지사항</a>
 	</div>
 	<div id="headerRight_logout">
-		
-		<!-- Button trigger modal -->
-		<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  			메세지 전송
-		</button>
-		<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <input type="text" value="${id}" id="msgId">
-        <textarea rows="" cols=""></textarea>
-        <input type="text" value="" id="msgseq">
-        
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" id="notifySendBtn">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
 		<a href="#" id="logoutBtn">로그아웃</a>
+		<div class="messageInput">
+			<input type="text" value="${id}" id="msgId">
+			<input type="text" id="msgContent">
+			<input type="text" id="msgSeq">
+			<button id="notifySendBtn">메세지</button>
+		</div>
 	</div>
 	
 </div>
-
 
 
 
@@ -577,7 +571,7 @@
 							<a href="/forgot-password">아이디 또는 비밀번호를 잊으셨나요?</a>
 						</div>
 						<div class="login_api">
-							<a href="https://kauth.kakao.com/oauth/authorize?client_id=d860d38c992ca8bf5f07dcc3fd5122b9&redirect_uri=http://localhost:9090/member/auth/kakao/callback&response_type=code"><img src="/team_project/resources/img/kakao_login_medium_narrow.png" style="width: 200px; height: 45px;"></a>
+							<a href="https://kauth.kakao.com/oauth/authorize?client_id=268b20cd927776992bc7f4192b57984b&redirect_uri=http://localhost:8080/team_project/user/kakaoLogin&response_type=code"><img src="/team_project/resources/img/kakao_login_medium_narrow.png" style="width: 200px; height: 45px;"></a>
 						</div>
 						<div class="login_api">
 							<a href="/oauth2/authorization/google"><img src="/team_project/resources/img/naverlogin.png" style="width: 200px; height: 45px; margin-top: 8px;"></a>
@@ -802,12 +796,13 @@ $(document).ready(function() {
     $('#notifySendBtn').click(function(e){
         
         
-        let modal = $('.modal-content').has(e.target);
+        
         let type = '70';
-        let target = modal.find('.modal-body #msgId').val();
-        let content = '응찰하신 '+modal.find('.modal-body textarea').val()+'상품이 낙찰되었습니다.';
-        let msgseq = modal.find('.modal-body #msgseq').val();
+        let target = $('#msgId').val();
+        let content = '응찰하신 '+$('#msgContent').val()+'상품이 낙찰되었습니다.';
+        let msgseq = $('#msgSeq').val();
         let url = '/team_project/message/messageList';
+        
         
         // 전송한 정보를 db에 저장	
         $.ajax({

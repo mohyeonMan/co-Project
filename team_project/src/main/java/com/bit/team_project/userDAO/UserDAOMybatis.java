@@ -58,5 +58,9 @@ public class UserDAOMybatis implements UserDAO{
 		
 		return sqlSession.selectOne("userSQL.getMessageCount",id);
 	}
+	@Override
+	public void kakaoWrite(Map<String, String> map) {
+		sqlSession.insert("userSQL.kakaoWrite",map);
+	}
 
 }
