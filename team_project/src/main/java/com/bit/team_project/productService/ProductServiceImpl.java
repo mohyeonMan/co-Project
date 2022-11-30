@@ -140,6 +140,11 @@ public class ProductServiceImpl implements ProductService {
 		return productDAO.getProductNew();
 	}
 
+	@Override
+	public List<SoketDTO> getMessageList(String id) {
+		return productDAO.getMessageList(id);
+	}
+
 	
 
 }

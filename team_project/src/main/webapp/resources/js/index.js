@@ -73,5 +73,5 @@ $('#rightScroll').click(function () {
 
 
 $('#messageBtn').click(function () {
-	window.open('/team_project/message/messageList','message','width = 550, height = 500, top = 100, left = 200');
+	window.open('/team_project/message/messageList','message','width = 600, height = 500, top = 100, left = 200');
 });

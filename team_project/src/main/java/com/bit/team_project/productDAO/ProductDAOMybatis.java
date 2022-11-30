@@ -75,6 +75,11 @@ public class ProductDAOMybatis implements ProductDAO {
 		return sqlSession.selectList("productSQL.getProductNew");
 	}
 
+	@Override
+	public List<SoketDTO> getMessageList(String id) {
+		return sqlSession.selectList("productSQL.getMessageList",id);
+	}
+
 	
 
 }
