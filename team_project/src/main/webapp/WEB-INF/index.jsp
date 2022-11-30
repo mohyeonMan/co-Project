@@ -382,7 +382,7 @@
 			<hr width="80%">
 		</li>
 		<li>
-			<a href="myPage"> 
+			<a href="/team_project/user/myPage"> 
 				<span class="icon badge-container">
 					<i class="bi bi-person"></i>
 				</span> 
@@ -397,6 +397,14 @@
 				</span> 
 				<span class="label">Q&A</span>
 			</a>
+		</li>
+		<li>
+			<a href="/team_project/product/successedPrd" id="o"> 
+				<span class="icon badge-container">
+				</span> 
+				<span class="label">경매끝난 물품 보기</span>
+			</a>
+			<hr width="80%">
 		</li>
 	</ul>
 </div>

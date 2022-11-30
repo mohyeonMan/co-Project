@@ -19,8 +19,12 @@
 		<option value="nowprice asc">낙찰가 낮은순</option>
 	</select>
 	<div class="container text-center" >
-	  <div class="row row" id="row">
-	  <!-- grid -->
+	  <div class="row row" id="row" name="success">
+	  	<div>낙찰된 물품</div>
+		</div>
+		<br>
+		<div class="row row" id="row" name="fail" >
+		<div>유찰된 물품</div>
 		</div>
 	</div>
 </div>
@@ -53,9 +57,20 @@ $(document).ready(function(){
 													.append($('<span>',{text:'시작가 : '+comma(items.startprice)+'원', id : 'startprice'}))
 													.append($('<br>'))
 													.append($('<span>',{text: '낙찰가 : '+comma(items.nowprice)+'원'})))
-												.append($('<a/>',{href:'/team_project/product/productView?product_seq='+items.product_seq,class:'btn btn-primary',text:'정보보기'})))).appendTo($('#row'))
+												.append($('<a/>',{href:'/team_project/product/productView?product_seq='+items.product_seq,class:'btn btn-primary',text:'정보보기'})))).appendTo($('div[name=success]'))
 				 }				
-				
+					 else if(items.prdstatus=='유찰'){
+						$('<div/>',{class:'col-4'}).append($('<div/>',{class: 'card',style:'width: 18rem; margin-top : 20px; border-color: #EDEDED'})
+													.append($('<img>',{src:'/team_project/resources/img/'+items.img1, class:'card-img-top', width : '100%', height : '250', alt : '대표이미지'}))
+													.append($('<div/>',{class:'card-body'})
+														.append($('<h5/>',{class:'card-title',text:items.subject}))
+														.append($('<p/>',{class:'card-text',text:items.content})
+															.append($('<br>'))
+															.append($('<span>',{text:'시작가 : '+comma(items.startprice)+'원', id : 'startprice'}))
+															.append($('<br>'))
+															.append($('<span>',{text: '낙찰가 : '+comma(items.nowprice)+'원'})))
+														.append($('<a/>',{href:'/team_project/product/productView?product_seq='+items.product_seq,class:'btn btn-primary',text:'정보보기'})))).appendTo($('div[name=fail]'))
+						 }		 		
 			 }); 
 			
 		},

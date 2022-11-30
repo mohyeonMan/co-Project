@@ -79,12 +79,11 @@ $(document).ready(function(){
 		type: 'post',
 		dataType : 'json',
 		success : function(data){
-			
+			console.log(JSON.stringify(data))
 			 $.each(data,function(index, items){
 				var end = new Date(items.endDate);
 				var time=end.getMonth()+1+'/'+end.getDate()+'/'+end.getFullYear()+' '+end.getHours()+':'+end.getMinutes();
-				console.log(time);
-				/* if(items.prdstatus=='진행중'){}  진행중만 띄우기*/
+				 if(items.prdstatus==null){
 				$('<div/>',{class:'col-4'}).append($('<div/>',{class: 'card',style:'width: 18rem; margin-top : 20px; border-color: #EDEDED'})
 											.append($('<img>',{src:'/team_project/resources/img/'+items.img1, class:'card-img-top', width : '100%', height : '250', alt : '대표이미지'}))
 											.append($('<div/>',{class:'card-body'})
@@ -97,8 +96,9 @@ $(document).ready(function(){
 											.append($('<br>'))
 											.append($('<span>',{text: '호가 : '+comma(items.unitprice)+'원'}))
 											.append($('<div/>',{class:'timer',id:items.product_seq})))
-											.append($('<a/>',{href:'/team_project/product/productView?product_seq='+items.product_seq,class:'btn btn-primary',text:'응찰하러가기'})))).appendTo($('#row'));
+											.append($('<a/>',{href:'/team_project/product/productView?product_seq='+items.product_seq, class:'btn btn-primary',text:'응찰하러가기' })))).appendTo($('#row'));
 				CountDownTimer(time, items.product_seq)
+			 }
 			 }); 
 			
 		},
@@ -110,8 +110,6 @@ $(document).ready(function(){
 });
 </script>
 <script type="text/javascript">
-
-
 $(document).on('change','#sort', function () {
 	var selectSort = $('#sort').val();
 	$('#row').empty();
@@ -122,10 +120,9 @@ $(document).on('change','#sort', function () {
 		data : 'sort='+selectSort,
 		dataType : 'json',
 		success : function(data){
-			
 			 $.each(data,function(index, items){
 				var time = items.enddays_month+ '/' +items.enddays_day+ '/' +items.enddays_year+' '+items.enddays_hour+':'+items.enddays_min
-				
+				if(items.prdstatus=='진행중'){
 				$('<div/>',{class:'col-4'}).append($('<div/>',{class: 'card',style:'width: 18rem; margin-top : 20px; border-color: #EDEDED'})
 											.append($('<img>',{src:'/team_project/resources/img/'+items.img1, class:'card-img-top', width : '100%', height : '250', alt : '대표이미지'}))
 											.append($('<div/>',{class:'card-body'})
@@ -141,7 +138,7 @@ $(document).on('change','#sort', function () {
 												.append($('<a/>',{href:'/team_project/product/productView?product_seq='+items.product_seq,class:'btn btn-primary',text:'응찰하러가기'})))).appendTo($('#row'));
 				
 				CountDownTimer(time, items.product_seq)
-				
+				}
 				
 			 }); 
 			

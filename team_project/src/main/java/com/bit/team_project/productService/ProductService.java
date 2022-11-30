@@ -3,14 +3,17 @@ package com.bit.team_project.productService;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.ui.ModelMap;
 
+import com.bit.team_project.DTO.PrdCommentDTO;
 import com.bit.team_project.DTO.ProductDTO;
 import com.bit.team_project.DTO.SoketDTO;
 
 public interface ProductService {
 
-	public void write(ProductDTO productDTO);
+	public void write(ProductDTO productDTO ,HttpSession session);
 
 	public List<ProductDTO> getList();
 	
@@ -27,6 +30,10 @@ public interface ProductService {
 	public void gomsg();
 
 	public void saveNotify(SoketDTO soketDTO);
+
+	public void commentSet(ModelMap modelMap);
+
+	public List<PrdCommentDTO> getComment(ModelMap modelMap);
 
 	
 

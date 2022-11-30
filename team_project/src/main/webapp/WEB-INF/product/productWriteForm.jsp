@@ -177,8 +177,8 @@ $('.subimgadd .addBtn').on('click',function(){
 		});
  
  
-/*   글쓰기 버튼 
- $('#productWriteBtn').click(function(){
+ 
+ /* $('#productWriteBtn').click(function(){
 	
 		
 		$('#detailePageWriteForm').ajaxSubmit({
@@ -196,7 +196,7 @@ $('.subimgadd .addBtn').on('click',function(){
 		});
 		
 	
-}); */
+});  */
  
 </script>
 </body>
