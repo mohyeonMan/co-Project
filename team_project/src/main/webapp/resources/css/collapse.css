@@ -25,3 +25,17 @@
 #section_2{
 	height:1000px;
 }
+.checking{
+	font-size: 0.6em;
+	color:red;
+	font-weight: strong;
+}
+tr td:first-child{
+	text-align: center;
+	font-weight: bold;
+}
+#popupHeader{
+	margin-bottom:30px;
+	height:80px;
+	background: black;
+}

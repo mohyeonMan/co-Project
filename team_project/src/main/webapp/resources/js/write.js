@@ -27,7 +27,7 @@ var primary = false
 		if(!primary){
 			$('#idDiv').text('중복확인이 필요합니다.')
 		}
-		if(name&&id&&pwd&&pwdCheck&&primary){ 
+		if(name&&id&&pwd&&pwdCheck&&primary){
 			$.ajax({
 				type: 'post',
 				url: '/team_project/user/write',

@@ -36,8 +36,6 @@ public class ProductServiceImpl implements ProductService {
 					System.out.println("파일"+productDTO.getFile());
 					System.out.println(list.size());
 					List<String> list2 = new ArrayList<String>();
-					
-				
 				for(int i = 0; i<list.size(); i++) {
 					
 					System.err.println(list.get(i));
@@ -156,6 +154,10 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public List<PrdCommentDTO> getComment(ModelMap modelMap) {
 		return productDAO.getComment(modelMap);
+	}	
+	@Override
+	public List<ProductDTO> getProductNew() {
+		return productDAO.getProductNew();
 	}
 
 	

@@ -23,6 +23,12 @@ public interface UserService {
 
 	public UserDTO login(Map<String, String> map);
 
+	public String getKakaoAccessToken(String code);
+
+	public Map<String, String> createKakaoUser(String token);
+
 	public void update(UserDTO userDTO);
+
+	public int getMessageCount(String id);
 
 }

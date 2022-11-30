@@ -67,6 +67,7 @@ public class ProductDAOMybatis implements ProductDAO {
 	public void gomsg() {
 		sqlSession.insert("productSQL.gomsg");
 	}
+	@Override
 	public void saveNotify(SoketDTO soketDTO) {
 		sqlSession.insert("productSQL.saveNotify", soketDTO);
 		
@@ -80,6 +81,11 @@ public class ProductDAOMybatis implements ProductDAO {
 	@Override
 	public List<PrdCommentDTO> getComment(ModelMap modelMap) {
 		return sqlSession.selectList("productSQL.getComment",modelMap);
+	}
+	
+	@Override
+	public List<ProductDTO> getProductNew() {
+		return sqlSession.selectList("productSQL.getProductNew");
 	}
 
 	

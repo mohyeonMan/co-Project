@@ -24,9 +24,11 @@ public interface ProductService {
 	public void updateHit(Map<String, Integer> map);
 
 	public List<ProductDTO> getIndexGrid();
+	
 	public List<ProductDTO> getProductSort(Map<String, String> map);
 
 	public void test();
+	
 	public void gomsg();
 
 	public void saveNotify(SoketDTO soketDTO);
@@ -34,6 +36,8 @@ public interface ProductService {
 	public void commentSet(ModelMap modelMap);
 
 	public List<PrdCommentDTO> getComment(ModelMap modelMap);
+	
+	public List<ProductDTO> getProductNew();
 
 	
 

@@ -57,12 +57,15 @@
 	<select id="getProductSort" parameterType="map" resultType="product">
 		SELECT * FROM producttable ORDER by ${sort}
 	</select>
+	
+	
+	
 	<update id="updateHit" parameterType="map">
 		update  producttable set hit = #{hit} where product_seq = #{product_seq}
 	</update>
 	<insert id="commentSet" parameterType="map">
-		insert  into prdcomment(comment_id,comment_content,product_seq,logtime)
-			values(#{comment_id},#{comment_content},#{product_seq},(SYSDATE+(INTERVAL '9'HOUR)))
+		insert  into prdcomment(comment_id,comment_content,product_seq,logtime,comment_seq)
+			values(#{comment_id},#{comment_content},#{product_seq},(SYSDATE+(INTERVAL '9'HOUR)),comment_seq.nextval)
 	</insert>
 	<select id="getComment" parameterType="map" resultType="comment">
 		select * from prdcomment where product_seq = #{product_seq} order by logtime desc
@@ -78,20 +81,19 @@
                     where   enddate  <  to_char((SYSDATE+(INTERVAL '9'HOUR)),('YYYY-MM-DD HH24:MI'))
 					]]>
 	</update>
-	<update id="nulltest">
-		update producttable set prdstatus = '진행중' where prdstatus is null
-	</update>
 	<!-- 낙찰 된 물품 찾아서 메세지 보내기 -->	
 	<insert id="gomsg">
 		insert into message (product_seq,subject,id) 
 		select
         p.product_seq,p.subject,p.get_id 
         from producttable p 
-        where p.prdstatus = '1' and 
+        where p.prdstatus = '낙찰' and 
         not exists(select product_seq from message where product_seq=p.product_seq)
 	</insert>
+	<!-- 실시간 알림 -->
 	<insert id="saveNotify" parameterType="soket">
-		INSERT INTO soket VALUES (#{target},#{content},#{type},#{url})
+		INSERT INTO soket VALUES (#{target},#{content},#{type},#{url},#{msgseq},0)
 	</insert>
+	
 	
   </mapper>

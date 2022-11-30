@@ -114,7 +114,6 @@ h1 {
 </head>
 <body>
 <input type="hidden" value="${param.product_seq}" name="product_seq" id="product_seq">
-
 <div class="container">
 	<div class="container_left">
 		<img alt="이미지" id="img" width="100%" height="100%" style="border-radius: 10px;">
@@ -138,6 +137,7 @@ h1 {
 		<input type="button" value="응찰하기" name="bidBtn" id="bidBtn">
 		<input type="hidden" name="productid" id="productid">
 	</div>
+	<input type="text" id="hit">
 </div>
 <div class="container_content">
 <br>
@@ -174,15 +174,12 @@ h1 {
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script type="text/javascript">
-//출력
 	$.ajax({
 		type : 'post',
 		url : '/team_project/product/getProductView',
 		data : 'product_seq='+$('#product_seq').val(),
 		dataType : 'json',
 		success : function (data) {
-			//alert(JSON.stringify(data));
-			
 			$('#img').attr('src','/team_project/resources/img/'+data.img1);
 			$('#subject').text(data.subject);
 			$('#hopeprice').text(data.hopeprice);
@@ -192,6 +189,7 @@ h1 {
 			$('#content').text(data.content);
 			$('#bidprice').val(data.nowprice);
 			$('#productid').val(data.id);
+			$('#hit').val(data.hit);
 		},
 		error : function (err) {
 			
@@ -204,12 +202,12 @@ h1 {
 		dataType : 'json',
 		success : function (data) {
 			 $.each(data,function(index, items){
-				 $('<tr/>',{text: items.comment_content,id : items.comment_content})
+				 $('<tr/>',{text: items.comment_content})
 				 .append($('<td>',{text:items.comment_id}))
 				 .append($('<td>',{text:items.comment_content}))
 				 .append($('<td>',{text:items.logtime}))
-				 .append($('<button>',{type:'button',id:items.comment_content, text :"수정",height:'30',width :'50', onclick :'updateComment(this.id)' }))
-				 .append($('<button>',{type:'button',id:items.comment_content, text :"삭제",height:'30',width :'50', onclick : 'deleteComment(this.id)'}))
+				 .append($('<button>',{type:'button',id:items.comment_seq, text :"수정",height:'30',width :'50', onclick :'updateComment(this.id)' }))
+				 .append($('<button>',{type:'button',id:items.comment_seq, text :"삭제",height:'30',width :'50', onclick : 'deleteComment(this.id)'}))
 				 .appendTo($('#commentA'))
 			 })
 		},
@@ -217,24 +215,24 @@ h1 {
 			
 		}
 	})
-	//조회수
-	/* $.ajax({
+	
+	 $.ajax({
 		type : 'post',
 		url : '/team_project/product/updateHit',
 		data : 'product_seq='+$('#product_seq').val()+'&hit='+$('#hit').val(),
 		dataType : 'text',
 		success : function (data) {
+				console.log('올라감')
 		},
 		error : function (err) {
-			alert('ss')
+			console.log('안올라감')
 		}
-	}); */
+	}); 
 	
 </script>
 <script type="text/javascript">
 $('#commentSubmit').click(function () {
-	alert($('#product_seq').val())
-	alert($('#comment').val())
+	if('${id}'!=''){
 	$.ajax({
 		url : '/team_project/product/commentSet',
 		type: 'post',
@@ -248,6 +246,9 @@ $('#commentSubmit').click(function () {
 		}
 	});
 	location.reload()
+	}else{
+		alert('댓글달려면 로그인ㅇ')
+	}
 })
 function updateComment(data) {
 	console.log(data)
@@ -279,6 +280,7 @@ $('#minus').click(function () {
 	$('#bidprice').val(nowprice);
 	}
 });
+
 
 
 /* 응찰하기 버튼 */

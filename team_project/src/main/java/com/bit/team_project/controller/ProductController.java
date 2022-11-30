@@ -68,14 +68,15 @@ public class ProductController {
 		return productService.getProductView(product_seq);
 	}
 
-	/*
-	 * @PostMapping(value = "updateHit")
-	 * 
-	 * @ResponseBody public String updateHit(@RequestParam String hit, int
-	 * product_seq) { Map<String, Integer> map = new HashMap<String, Integer>();
-	 * map.put("hit", Integer.parseInt(hit)); map.put("product_seq", product_seq);
-	 * productService.updateHit(map); return "/product/productList"; }
-	 */
+	
+	  @PostMapping(value = "updateHit")
+	  @ResponseBody 
+	  public void updateHit(@RequestParam String hit, int product_seq) { 
+		  Map<String, Integer> map = new HashMap<String, Integer>();
+	  map.put("hit", Integer.parseInt(hit)); map.put("product_seq", product_seq);
+	  productService.updateHit(map); 
+	  }
+	 
 
 	@Scheduled(fixedDelay = 3000) // 3초마다 잘되는데 한번이라도 오라클오류나면 유찰,낙찰빼고 null들어감
 	public void testset() {
@@ -117,6 +118,11 @@ public class ProductController {
 		modelMap.put("product_seq", map.get("product_seq"));
 		productService.getComment(modelMap);
 		return productService.getComment(modelMap);
+}
+	@PostMapping(value = "/getProductNew")
+	@ResponseBody
+	public List<ProductDTO> getProductNew(){
+		return productService.getProductNew();
 	}
 	
 	
