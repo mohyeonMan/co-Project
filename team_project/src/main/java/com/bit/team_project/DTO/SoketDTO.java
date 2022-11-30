@@ -9,4 +9,6 @@ public class SoketDTO {
     String content;
     String type;
     String url;
+    int msgseq;
+    int hit;
 }

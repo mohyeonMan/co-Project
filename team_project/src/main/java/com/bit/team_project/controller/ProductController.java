@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -33,7 +34,9 @@ public class ProductController {
 	}
 	
 	@PostMapping(value = "/write")
-	public String write(@ModelAttribute ProductDTO productDTO) {
+	public String write(@ModelAttribute ProductDTO productDTO, HttpSession session) {
+		String id = (String) session.getAttribute("id");
+		productDTO.setId(id);
 		productService.write(productDTO);
 		return "/product/productList";
 	}
@@ -100,6 +103,11 @@ public class ProductController {
 		return "/product/successedPrd";
 	}
 	
+	@PostMapping(value = "/getProductNew")
+	@ResponseBody
+	public List<ProductDTO> getProductNew(){
+		return productService.getProductNew();
+	}
 	
 	
 }

@@ -102,6 +102,7 @@ $(document).ready(function(){
 				var end = new Date(items.endDate);
 				var time=end.getMonth()+1+'/'+end.getDate()+'/'+end.getFullYear()+' '+end.getHours()+':'+end.getMinutes();
 				
+				/* if(items.prdstatus=='진행중'){}  진행중만 띄우기*/
 				CountDownTimer(time, items.product_seq) 
 				var tmpl = $('#itemTemplate').tmpl(data[index]);
 				console.log(tmpl)

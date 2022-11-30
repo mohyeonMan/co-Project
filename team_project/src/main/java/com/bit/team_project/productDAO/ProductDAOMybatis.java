@@ -69,6 +69,12 @@ public class ProductDAOMybatis implements ProductDAO {
 		
 	}
 
+	@Override
+	public List<ProductDTO> getProductNew() {
+		
+		return sqlSession.selectList("productSQL.getProductNew");
+	}
+
 	
 
 }

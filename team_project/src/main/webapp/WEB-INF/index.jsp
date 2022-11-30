@@ -13,31 +13,26 @@
 <link rel="stylesheet" href="/team_project/resources/css/header.css">
 <link rel="stylesheet" href="/team_project/resources/css/sidebar.css">
 <link rel="stylesheet" href="/team_project/resources/css/container.css">
+<link rel="stylesheet" href="/team_project/resources/css/modal.css">
+<link rel="stylesheet" href="/team_project/resources/css/message.css">
 
 <style type="text/css">
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css");
 .rolling-listed-item{
 	scroll-behavior : smooth;
 }
-.modal-body{
-	margin: auto;
-}
-.member_login_input{
-	margin-top: 8px;
-}
-.member_login_btn{
-	margin-top: 8px;
-}
 </style>
 </head>
 <body>
+
 <%-- <jsp:include page="/WEB-INF/product/productList.jsp"/> --%>
 <div id="container">
+	<input type="hidden" value="${id}" id="msgid">
 	<div class="main-ranking">
 		<div class="rolling-list">
 			<div class="coordinates">
 				<div class="title">
-					<h1>지금 나에게 필요한 인기 영상</h1>
+					<h1>지금 나에게 필요한 인기 매물</h1>
 				</div>
 				<div class="btn">
 					<div class="inner">
@@ -58,106 +53,166 @@
 						<div class="flex-rolling">
 							<li>
 								<a href="#" class="thumb">
-									<img src="https://images.nstatic.org/info/tv/208336/2uI87oGnS6sUORMVVZltZYAlrZh.jpg" class="lazy" alt="3인칭 복수" style="display: block;">
+									<img src="/team_project/resources/img/tmdnlcl.jpeg" class="lazy" alt="대표이미지" style="display: block;">
 								</a>
 								<div class="posted-info">
 									<p class="subject">
-										<a href="#">3인칭 복수 </a>
+										<a href="#" style="color: white;">스위치 팔아요~ </a>
 									</p>
-									<p class="tag">드라마</p>
+									<span class="tag">현재가 : </span><span class="nowprice" style="color: white;"> 22 </span><br>
+									<span class="tag">낙찰가 : </span><span class="endprice" style="color: white;"> 22 </span><br>
 									<div class="like">
-										<i class="fal fa-heart"></i>
-										<span class="like-count">202</span>
+										<a href="/team_project/product/productView?product_seq=35" class="btn btn-primary" style="color: white; background-color: #172126; --bs-btn-border-color: white;">응찰하러가기</a>
 									</div>
 								</div>
 							</li>
 							<li>
 								<a href="#" class="thumb">
-									<img src="https://images.nstatic.org/info/tv/194736/ilTsEVFY9m2yDgsMbpmAzkj9BU5.jpg" class="lazy" alt="커튼콜: 나무는 서서 죽는다" style="display: block;">
+									<img src="/team_project/resources/img/tmdnlcl.jpeg" class="lazy" alt="대표이미지" style="display: block;">
 								</a>
 								<div class="posted-info">
 									<p class="subject">
-										<a href="#">커튼콜: 나무는 서서 죽는다 </a>
+										<a href="#" style="color: white;">스위치 팔아요~ </a>
 									</p>
-									<p class="tag">드라마</p>
+									<span class="tag">현재가 : </span><span class="nowprice" style="color: white;"> 22 </span><br>
+									<span class="tag">낙찰가 : </span><span class="endprice" style="color: white;"> 22 </span><br>
 									<div class="like">
-										<i class="fal fa-heart"></i>
-										<span class="like-count">103</span>
+										<a href="/team_project/product/productView?product_seq=35" class="btn btn-primary" style="color: white; background-color: #172126; --bs-btn-border-color: white;">응찰하러가기</a>
 									</div>
 								</div>
 							</li>
 							<li>
 								<a href="#" class="thumb">
-									<img src="https://images.nstatic.org/info/tv/194736/ilTsEVFY9m2yDgsMbpmAzkj9BU5.jpg" class="lazy" alt="커튼콜: 나무는 서서 죽는다" style="display: block;">
+									<img src="/team_project/resources/img/tmdnlcl.jpeg" class="lazy" alt="대표이미지" style="display: block;">
 								</a>
 								<div class="posted-info">
 									<p class="subject">
-										<a href="#">커튼콜: 나무는 서서 죽는다 </a>
+										<a href="#" style="color: white;">스위치 팔아요~ </a>
 									</p>
-									<p class="tag">드라마</p>
+									<span class="tag">현재가 : </span><span class="nowprice" style="color: white;"> 22 </span><br>
+									<span class="tag">낙찰가 : </span><span class="endprice" style="color: white;"> 22 </span><br>
 									<div class="like">
-										<i class="fal fa-heart"></i>
-										<span class="like-count">103</span>
+										<a href="/team_project/product/productView?product_seq=35" class="btn btn-primary" style="color: white; background-color: #172126; --bs-btn-border-color: white;">응찰하러가기</a>
 									</div>
 								</div>
 							</li>
 							<li>
 								<a href="#" class="thumb">
-									<img src="https://images.nstatic.org/info/tv/194736/ilTsEVFY9m2yDgsMbpmAzkj9BU5.jpg" class="lazy" alt="커튼콜: 나무는 서서 죽는다" style="display: block;">
+									<img src="/team_project/resources/img/tmdnlcl.jpeg" class="lazy" alt="대표이미지" style="display: block;">
 								</a>
 								<div class="posted-info">
 									<p class="subject">
-										<a href="#">커튼콜: 나무는 서서 죽는다 </a>
+										<a href="#" style="color: white;">스위치 팔아요~ </a>
 									</p>
-									<p class="tag">드라마</p>
+									<span class="tag">현재가 : </span><span class="nowprice" style="color: white;"> 22 </span><br>
+									<span class="tag">낙찰가 : </span><span class="endprice" style="color: white;"> 22 </span><br>
 									<div class="like">
-										<i class="fal fa-heart"></i>
-										<span class="like-count">103</span>
+										<a href="/team_project/product/productView?product_seq=35" class="btn btn-primary" style="color: white; background-color: #172126; --bs-btn-border-color: white;">응찰하러가기</a>
 									</div>
 								</div>
 							</li>
 							<li>
 								<a href="#" class="thumb">
-									<img src="https://images.nstatic.org/info/tv/194736/ilTsEVFY9m2yDgsMbpmAzkj9BU5.jpg" class="lazy" alt="커튼콜: 나무는 서서 죽는다" style="display: block;">
+									<img src="/team_project/resources/img/tmdnlcl.jpeg" class="lazy" alt="대표이미지" style="display: block;">
 								</a>
 								<div class="posted-info">
 									<p class="subject">
-										<a href="#">커튼콜: 나무는 서서 죽는다 </a>
+										<a href="#" style="color: white;">스위치 팔아요~ </a>
 									</p>
-									<p class="tag">드라마</p>
+									<span class="tag">현재가 : </span><span class="nowprice" style="color: white;"> 22 </span><br>
+									<span class="tag">낙찰가 : </span><span class="endprice" style="color: white;"> 22 </span><br>
 									<div class="like">
-										<i class="fal fa-heart"></i>
-										<span class="like-count">103</span>
+										<a href="/team_project/product/productView?product_seq=35" class="btn btn-primary" style="color: white; background-color: #172126; --bs-btn-border-color: white;">응찰하러가기</a>
 									</div>
 								</div>
 							</li>
 							<li>
 								<a href="#" class="thumb">
-									<img src="https://images.nstatic.org/info/tv/194736/ilTsEVFY9m2yDgsMbpmAzkj9BU5.jpg" class="lazy" alt="커튼콜: 나무는 서서 죽는다" style="display: block;">
+									<img src="/team_project/resources/img/tmdnlcl.jpeg" class="lazy" alt="대표이미지" style="display: block;">
 								</a>
 								<div class="posted-info">
 									<p class="subject">
-										<a href="#">커튼콜: 나무는 서서 죽는다 </a>
+										<a href="#" style="color: white;">스위치 팔아요~ </a>
 									</p>
-									<p class="tag">드라마</p>
+									<span class="tag">현재가 : </span><span class="nowprice" style="color: white;"> 22 </span><br>
+									<span class="tag">낙찰가 : </span><span class="endprice" style="color: white;"> 22 </span><br>
 									<div class="like">
-										<i class="fal fa-heart"></i>
-										<span class="like-count">103</span>
+										<a href="/team_project/product/productView?product_seq=35" class="btn btn-primary" style="color: white; background-color: #172126; --bs-btn-border-color: white;">응찰하러가기</a>
 									</div>
 								</div>
 							</li>
 							<li>
 								<a href="#" class="thumb">
-									<img src="https://images.nstatic.org/info/tv/194736/ilTsEVFY9m2yDgsMbpmAzkj9BU5.jpg" class="lazy" alt="커튼콜: 나무는 서서 죽는다" style="display: block;">
+									<img src="/team_project/resources/img/tmdnlcl.jpeg" class="lazy" alt="대표이미지" style="display: block;">
 								</a>
 								<div class="posted-info">
 									<p class="subject">
-										<a href="#">커튼콜: 나무는 서서 죽는다 </a>
+										<a href="#" style="color: white;">스위치 팔아요~ </a>
 									</p>
-									<p class="tag">드라마</p>
+									<span class="tag">현재가 : </span><span class="nowprice" style="color: white;"> 22 </span><br>
+									<span class="tag">낙찰가 : </span><span class="endprice" style="color: white;"> 22 </span><br>
 									<div class="like">
-										<i class="fal fa-heart"></i>
-										<span class="like-count">103</span>
+										<a href="/team_project/product/productView?product_seq=35" class="btn btn-primary" style="color: white; background-color: #172126; --bs-btn-border-color: white;">응찰하러가기</a>
+									</div>
+								</div>
+							</li>
+							<li>
+								<a href="#" class="thumb">
+									<img src="/team_project/resources/img/tmdnlcl.jpeg" class="lazy" alt="대표이미지" style="display: block;">
+								</a>
+								<div class="posted-info">
+									<p class="subject">
+										<a href="#" style="color: white;">스위치 팔아요~ </a>
+									</p>
+									<span class="tag">현재가 : </span><span class="nowprice" style="color: white;"> 22 </span><br>
+									<span class="tag">낙찰가 : </span><span class="endprice" style="color: white;"> 22 </span><br>
+									<div class="like">
+										<a href="/team_project/product/productView?product_seq=35" class="btn btn-primary" style="color: white; background-color: #172126; --bs-btn-border-color: white;">응찰하러가기</a>
+									</div>
+								</div>
+							</li>
+							<li>
+								<a href="#" class="thumb">
+									<img src="/team_project/resources/img/tmdnlcl.jpeg" class="lazy" alt="대표이미지" style="display: block;">
+								</a>
+								<div class="posted-info">
+									<p class="subject">
+										<a href="#" style="color: white;">스위치 팔아요~ </a>
+									</p>
+									<span class="tag">현재가 : </span><span class="nowprice" style="color: white;"> 22 </span><br>
+									<span class="tag">낙찰가 : </span><span class="endprice" style="color: white;"> 22 </span><br>
+									<div class="like">
+										<a href="/team_project/product/productView?product_seq=35" class="btn btn-primary" style="color: white; background-color: #172126; --bs-btn-border-color: white;">응찰하러가기</a>
+									</div>
+								</div>
+							</li>
+							<li>
+								<a href="#" class="thumb">
+									<img src="/team_project/resources/img/tmdnlcl.jpeg" class="lazy" alt="대표이미지" style="display: block;">
+								</a>
+								<div class="posted-info">
+									<p class="subject">
+										<a href="#" style="color: white;">스위치 팔아요~ </a>
+									</p>
+									<span class="tag">현재가 : </span><span class="nowprice" style="color: white;"> 22 </span><br>
+									<span class="tag">낙찰가 : </span><span class="endprice" style="color: white;"> 22 </span><br>
+									<div class="like">
+										<a href="/team_project/product/productView?product_seq=35" class="btn btn-primary" style="color: white; background-color: #172126; --bs-btn-border-color: white;">응찰하러가기</a>
+									</div>
+								</div>
+							</li>
+							<li>
+								<a href="#" class="thumb">
+									<img src="/team_project/resources/img/tmdnlcl.jpeg" class="lazy" alt="대표이미지" style="display: block;">
+								</a>
+								<div class="posted-info">
+									<p class="subject">
+										<a href="#" style="color: white;">스위치 팔아요~ </a>
+									</p>
+									<span class="tag">현재가 : </span><span class="nowprice" style="color: white;"> 22 </span><br>
+									<span class="tag">낙찰가 : </span><span class="endprice" style="color: white;"> 22 </span><br>
+									<div class="like">
+										<a href="/team_project/product/productView?product_seq=35" class="btn btn-primary" style="color: white; background-color: #172126; --bs-btn-border-color: white;">응찰하러가기</a>
 									</div>
 								</div>
 							</li>
@@ -167,7 +222,277 @@
 			</div>
 		</div>
 	</div>
+	<br><br>
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="content">
+		<div id="drama-update" class="main-default-video">
+		
+			
+			<div class="title">
+				<h1>최신 매물을 확인해 보세요.</h1>
+				<a href="https://noonoo.tv/drama" class="all-target"> 전체보기
+					<i class="fal fa-angle-right"></i>
+				</a>
+			</div>
+			<div class="default-listed-item">
+				<ul>
+					<div class="flex-listed">
+						<li>
+							<a href="#" class="thumb" style="border: 1px solid;">
+								<img src="/team_project/resources/img/loading.gif" class="new" alt="대표이미지" style="display: block;">
+							</a>
+							<div class="posted-info">
+								<p class="subject">
+									<a href="#" class="new"> </a>
+								</p>
+							</div>
+						</li>
+						<li>
+							<a href="#" class="thumb" style="border: 1px solid;">
+								<img src="/team_project/resources/img/loading.gif" class="new" alt="대표이미지" style="display: block;">
+							</a>
+							<div class="posted-info">
+								<p class="subject">
+									<a href="#" class="new"> </a>
+								</p>
+							</div>
+						</li>
+						<li>
+							<a href="#" class="thumb" style="border: 1px solid;">
+								<img src="/team_project/resources/img/loading.gif" class="new" alt="대표이미지" style="display: block;">
+							</a>
+							<div class="posted-info">
+								<p class="subject">
+									<a href="#" class="new"> </a>
+								</p>
+							</div>
+						</li>
+						<li>
+							<a href="#" class="thumb" style="border: 1px solid;">
+								<img src="/team_project/resources/img/loading.gif" class="new" alt="대표이미지" style="display: block;">
+							</a>
+							<div class="posted-info">
+								<p class="subject">
+									<a href="#" class="new"> </a>
+								</p>
+							</div>
+						</li>
+						<li>
+							<a href="#" class="thumb" style="border: 1px solid;">
+								<img src="/team_project/resources/img/loading.gif" class="new" alt="대표이미지" style="display: block;">
+							</a>
+							<div class="posted-info">
+								<p class="subject">
+									<a href="#" class="new"> </a>
+								</p>
+							</div>
+						</li>
+					</div>
+				</ul>
+			</div>
+			
+			
+			<div class="title">
+				<h1>디지털/가전</h1>
+				<a href="https://noonoo.tv/drama" class="all-target"> 전체보기
+					<i class="fal fa-angle-right"></i>
+				</a>
+			</div>
+			<div class="default-listed-item">
+				<ul>
+					<div class="flex-listed">
+						<li>
+							<a href="#" class="thumb">
+								<img src="/team_project/resources/img/loading.gif" class="digital" alt="대표이미지" style="display: block; border: 1px solid;">
+							</a>
+							<div class="posted-info">
+								<p class="subject">
+									<a href="#" class="digital"></a>
+								</p>
+							</div>
+						</li>
+						<li>
+							<a href="#" class="thumb">
+								<img src="/team_project/resources/img/loading.gif" class="digital" alt="대표이미지" style="display: block;">
+							</a>
+							<div class="posted-info">
+								<p class="subject">
+									<a href="#" class="digital"></a>
+								</p>
+							</div>
+						</li>
+						<li>
+							<a href="#" class="thumb">
+								<img src="/team_project/resources/img/loading.gif" class="digital" alt="대표이미지" style="display: block;">
+							</a>
+							<div class="posted-info">
+								<p class="subject">
+									<a href="#" class="digital"></a>
+								</p>
+							</div>
+						</li>
+						<li>
+							<a href="#" class="thumb">
+								<img src="/team_project/resources/img/loading.gif" class="digital" alt="대표이미지" style="display: block;">
+							</a>
+							<div class="posted-info">
+								<p class="subject">
+									<a href="#" class="digital"></a>
+								</p>
+							</div>
+						</li>
+						<li>
+							<a href="#" class="thumb">
+								<img src="/team_project/resources/img/loading.gif" class="digital" alt="재벌집 막내아들" style="display: block;">
+							</a>
+							<div class="posted-info">
+								<p class="subject">
+									<a href="#" class="digital"></a>
+								</p>
+							</div>
+						</li>
+					</div>
+				</ul>
+			</div>
+			
+			
+			<div class="title">
+				<h1>아웃도어/스포츠</h1>
+				<a href="https://noonoo.tv/drama" class="all-target"> 전체보기
+					<i class="fal fa-angle-right"></i>
+				</a>
+			</div>
+			<div class="default-listed-item">
+				<ul>
+					<div class="flex-listed">
+						<li>
+							<a href="#" class="thumb">
+								<img src="/team_project/resources/img/loading.gif" class="sports" alt="대표이미지" style="display: block;">
+							</a>
+							<div class="posted-info">
+								<p class="subject">
+									<a href="#" class="sports"></a>
+								</p>
+							</div>
+						</li>
+						<li>
+							<a href="#" class="thumb">
+								<img src="/team_project/resources/img/loading.gif" class="sports" alt="대표이미지" style="display: block;">
+							</a>
+							<div class="posted-info">
+								<p class="subject">
+									<a href="#" class="sports"></a>
+								</p>
+							</div>
+						</li>
+						<li>
+							<a href="#" class="thumb">
+								<img src="/team_project/resources/img/loading.gif" class="sports" alt="대표이미지" style="display: block;">
+							</a>
+							<div class="posted-info">
+								<p class="subject">
+									<a href="#" class="sports"></a>
+								</p>
+							</div>
+						</li>
+						<li>
+							<a href="#" class="thumb">
+								<img src="/team_project/resources/img/loading.gif" class="sports" alt="대표이미지" style="display: block;">
+							</a>
+							<div class="posted-info">
+								<p class="subject">
+									<a href="#" class="sports"></a>
+								</p>
+							</div>
+						</li>
+						<li>
+							<a href="#" class="thumb">
+								<img src="/team_project/resources/img/loading.gif" class="sports" alt="재벌집 막내아들" style="display: block;">
+							</a>
+							<div class="posted-info">
+								<p class="subject">
+									<a href="#" class="sports"></a>
+								</p>
+							</div>
+						</li>
+					</div>
+				</ul>
+			</div>
+			
+			
+			<div class="title">
+				<h1>홈/생활</h1>
+				<a href="https://noonoo.tv/drama" class="all-target"> 전체보기
+					<i class="fal fa-angle-right"></i>
+				</a>
+			</div>
+			<div class="default-listed-item">
+				<ul>
+					<div class="flex-listed">
+						<li>
+							<a href="#" class="thumb">
+								<img src="https://images.nstatic.org/info/tv/153496/wFhRbJvcK5noXy3K3pBpw6UMDfQ.jpg" class="lazy" alt="재벌집 막내아들" style="display: block;">
+							</a>
+							<div class="posted-info">
+								<p class="subject">
+									<a href="#">재벌집 막내아들 </a>
+								</p>
+							</div>
+						</li>
+						<li>
+							<a href="#" class="thumb">
+								<img src="https://images.nstatic.org/info/tv/153496/wFhRbJvcK5noXy3K3pBpw6UMDfQ.jpg" class="lazy" alt="재벌집 막내아들" style="display: block;">
+							</a>
+							<div class="posted-info">
+								<p class="subject">
+									<a href="#">재벌집 막내아들 </a>
+								</p>
+							</div>
+						</li>
+						<li>
+							<a href="#" class="thumb">
+								<img src="https://images.nstatic.org/info/tv/153496/wFhRbJvcK5noXy3K3pBpw6UMDfQ.jpg" class="lazy" alt="재벌집 막내아들" style="display: block;">
+							</a>
+							<div class="posted-info">
+								<p class="subject">
+									<a href="#">재벌집 막내아들 </a>
+								</p>
+							</div>
+						</li>
+						<li>
+							<a href="#" class="thumb">
+								<img src="https://images.nstatic.org/info/tv/153496/wFhRbJvcK5noXy3K3pBpw6UMDfQ.jpg" class="lazy" alt="재벌집 막내아들" style="display: block;">
+							</a>
+							<div class="posted-info">
+								<p class="subject">
+									<a href="#">재벌집 막내아들 </a>
+								</p>
+							</div>
+						</li>
+						<li>
+							<a href="#" class="thumb">
+								<img src="https://images.nstatic.org/info/tv/153496/wFhRbJvcK5noXy3K3pBpw6UMDfQ.jpg" class="lazy" alt="재벌집 막내아들" style="display: block;">
+							</a>
+							<div class="posted-info">
+								<p class="subject">
+									<a href="#">재벌집 막내아들 </a>
+								</p>
+							</div>
+						</li>
+					</div>
+				</ul>
+			</div>
+		</div>
+	</div>
 </div>
+
 
 
 
@@ -186,9 +511,36 @@
 	</div>
 	
 	<div id="headerRight_login">
+		
 		<a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">로그인</a> / <a>회원가입</a> / <a>공지사항</a>
 	</div>
 	<div id="headerRight_logout">
+		
+		<!-- Button trigger modal -->
+		<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  			메세지 전송
+		</button>
+		<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <input type="text" value="${id}" id="msgId">
+        <textarea rows="" cols=""></textarea>
+        <input type="text" value="" id="msgseq">
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="notifySendBtn">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 		<a href="#" id="logoutBtn">로그아웃</a>
 	</div>
 	
@@ -225,7 +577,7 @@
 							<a href="/forgot-password">아이디 또는 비밀번호를 잊으셨나요?</a>
 						</div>
 						<div class="login_api">
-							<a href="https://kauth.kakao.com/oauth/authorize?client_id=268b20cd927776992bc7f4192b57984b&redirect_uri=http://localhost:8080/team_project/user/kakaoLogin&response_type=code"><img src="/team_project/resources/img/kakao_login_medium_narrow.png" style="width: 200px; height: 45px;"></a>
+							<a href="https://kauth.kakao.com/oauth/authorize?client_id=d860d38c992ca8bf5f07dcc3fd5122b9&redirect_uri=http://localhost:9090/member/auth/kakao/callback&response_type=code"><img src="/team_project/resources/img/kakao_login_medium_narrow.png" style="width: 200px; height: 45px;"></a>
 						</div>
 						<div class="login_api">
 							<a href="/oauth2/authorization/google"><img src="/team_project/resources/img/naverlogin.png" style="width: 200px; height: 45px; margin-top: 8px;"></a>
@@ -276,7 +628,7 @@
 						<p class="label-txt">모바일/디카</p>
 					</a>
 				</dd>
-			</dl>
+			</dl> 
 			<dl>
 				<dt class="on">
 					<p class="label-txt"> <i class="bi bi-globe2"></i> 아웃도어/스포츠 </p>
@@ -335,20 +687,6 @@
 </div>
 
 
-
-
-
-
-
-
-<div style="height: 5000px"></div>
-
-
-
-
-
-
-
 <div class="quick-menu" id="quick-menu">
 	<ul>
 		<li>
@@ -375,7 +713,7 @@
 			<a href="#" id="messageBtn"> 
 				<span class="icon badge-container">
 					<i class="bi bi-envelope"></i>
-					<span class="badge">99</span>
+					<span class="badge"></span>
 				</span> 
 				<span class="label">메세지함</span>
 			</a>
@@ -401,23 +739,15 @@
 	</ul>
 </div>
 
-
+<div id="msgStack"></div>
 
 						
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.1.min.js"></script>
-<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.5/sockjs.min.js"></script>
+<script type="text/javascript" src="/team_project/resources/js/index.js"></script>
 <script type="text/javascript">
-//카카오로그인
-
-
-
-
-
-
-
-
-
-
+var socket  = null;
 $(document).ready(function() {
 	 
 	// 기존 css에서 플로팅 배너 위치(top)값을 가져와 저장한다.
@@ -439,27 +769,88 @@ $(document).ready(function() {
  
 	}).scroll();
  
+	
+	
+	// 웹소켓 연결
+    sock = new SockJS("<c:url value="/echo-ws"/>");
+    socket = sock;
+
+    // 데이터를 전달 받았을때 
+    sock.onmessage = onMessage; // toast 생성
+	console.log(sock);
+    
+    
+ // toast생성 및 추가
+    function onMessage(evt){
+        var data = evt.data;
+        // toast
+        let toast = "<div class='toast' role='alert' aria-live='assertive' aria-atomic='true'>";
+        toast += "<div class='toast-header'><i class='fas fa-bell mr-2'></i><strong class='mr-auto'>알림</strong>";
+        toast += "<button type='button' class='ml-2 mb-1 close' data-dismiss='toast' aria-label='Close'>";
+        toast += "<span aria-hidden='true'>&times;</span></button>";
+        toast += "</div> <div class='toast-body' >" + data + "</div></div>";
+        $("#msgStack").append(toast);   // msgStack div에 생성한 toast 추가
+        $(".toast").toast({"animation": true, "autohide": false});
+        $('.toast').toast('show');
+    };	
+    
+    	$(document).on('click','.toast-header .close',function (){
+    		$(this).parents('.toast').remove();
+    	});
+    
+  //notifySend
+    $('#notifySendBtn').click(function(e){
+        
+        
+        let modal = $('.modal-content').has(e.target);
+        let type = '70';
+        let target = modal.find('.modal-body #msgId').val();
+        let content = '응찰하신 '+modal.find('.modal-body textarea').val()+'상품이 낙찰되었습니다.';
+        let msgseq = modal.find('.modal-body #msgseq').val();
+        let url = '/team_project/message/messageList';
+        
+        // 전송한 정보를 db에 저장	
+        $.ajax({
+            type: 'post',
+            url: '/team_project/test/saveNotify',
+            data: {
+                target: target,
+                content: content,
+                type: type,
+                url: url,
+                msgseq : msgseq
+            },
+            success: function(){    // db전송 성공시 실시간 알림 전송
+            	
+                // 소켓에 전달되는 메시지
+                // 위에 기술한 EchoHandler에서 ,(comma)를 이용하여 분리시킨다.
+                socket.send("관리자,"+target+","+content+","+url + ","+msgseq);
+            
+            }
+        });
+        modal.find('.modal-body textarea').val('');	// textarea 초기화
+    });
 });
 </script>
-<script lang="JavaScript">
-function printTime() {
-var clock = document.getElementById("clock");
-var now = new Date();
+<script type="text/javascript">
+$(function () {
+	$.ajax({
+ 		type : 'post',
+ 		url : '/team_project/user/getMessageCount',
+ 		data : 'id='+$('#msgid').val(),
+ 		dataType : 'text',
+ 		success : function (data) {
+			console.log(data)
+			$('.badge').text(data)
+		},
+		error : function (err) {
+			console.log(err)
+		}
+ 	});
+});
 
-clock.innerHTML = now.getFullYear() + ". " +
-(now.getMonth()+1) + ". " +
-now.getDate() + " " +
-now.getHours() + ":" +
-now.getMinutes() + ":" +
-now.getSeconds();
-
-setTimeout("printTime()", 1000);
-}
-
-window.onload = function() {
-printTime();
-};
 </script>
+
 <script type="text/javascript">
 $(function () {
 	
@@ -493,70 +884,52 @@ $(function () {
 		$('#nameTag').show();
 		$('#quick-menu').show();
 	}
-});
-
-</script>
-<script type="text/javascript">
-
-$('#btn-login').click(function(){
-	$('#idDiv').empty();
-	$('#pwdDiv').empty();
-	if($('#id').val() == ''){
-		$('#idDiv').text('아이디를 입력하세요.');
-		$('#id').focus;
-	}else if($('#pwd').val() == ''){
-		$('#pwdDiv').text('비밀번호를 입력하세요.');
-		$('#pwd').focus;
-	}else {
-		$.ajax({
-			url : '/team_project/user/login',
-			type : 'post',
-			data : $('#loginForm').serialize(), 
-			dataType:'text',
-			success: function(data){
-				if(data == 'fail'){
-					$('#pwdDiv').text('아이디 또는 비밀번호가 맞지 않습니다.');
-					$('#pwdDiv').css('font-size','12pt');
-				} else {
-					location.href = '/team_project/test/sideBanner';
-				}
-			},
-			error : function(err){
-				console.log(err);
-			}
-		});
-	}
-});
-
-$('#logoutBtn').click(function () {
+	
+	
 	$.ajax({
-		url : '/team_project/user/logout',
-		type : 'post',
-		success: function(){
-			location.href = '/team_project/test/sideBanner';
+		url : '/team_project/product/getProductList',
+		type: 'post',
+		dataType : 'json',
+		success : function(data){
+			//console.log(JSON.stringify(data));
+			var data1 = data.concat();
+			//최신 5개
+			$.each($('.posted-info .subject .new'),function(index, items){
+				$(items).text(data1[index].subject)
+				$(items).attr('href','/team_project/product/productView?product_seq='+data1[index].product_seq)
+			});
+			$.each($('.thumb .new'),function(index, items){
+				$(items).attr('src','/team_project/resources/img/'+data1[index].img1)
+			});
+			
+			
+			var data2 = data.filter(item => item.category_1 === '1');
+			// 가전/디지털 5개
+			 $.each($('.posted-info .subject .digital'),function(index, items){
+				$(items).text(data2[index].subject)
+				$(items).attr('href','/team_project/product/productView?product_seq='+data2[index].product_seq)
+			});
+			$.each($('.thumb .digital'),function(index, items){
+				$(items).attr('src','/team_project/resources/img/'+data2[index].img1)
+			}); 
+			
+			
+			var data3 = data.filter(item => item.category_1 === '2');
+			// 스포츠/아웃도어 5개
+			 $.each($('.posted-info .subject .sports'),function(index, items){
+				$(items).text(data3[index].subject)
+				$(items).attr('href','/team_project/product/productView?product_seq='+data3[index].product_seq)
+			});
+			$.each($('.thumb .sports'),function(index, items){
+				$(items).attr('src','/team_project/resources/img/'+data3[index].img1)
+			}); 
 		},
 		error : function(err){
 			console.log(err);
 		}
-	});
+	});	
 });
 
-$('#leftScroll').click(function () {
-	var scroll = $('.rolling-listed-item').scrollLeft();
-	$('.rolling-listed-item').scrollLeft(scroll + 1000);
-});
-
-$('#rightScroll').click(function () {
-	var scroll = $('.rolling-listed-item').scrollLeft();
-	$('.rolling-listed-item').scrollLeft(scroll - 1000);
-});
-
-
-$('#messageBtn').click(function () {
-	window.open('/team_project/message/messageList','message','width = 500, height = 500, top = 100, left = 200');
-});
 </script>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </body>
 </html>

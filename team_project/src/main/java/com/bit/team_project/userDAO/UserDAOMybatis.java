@@ -53,5 +53,10 @@ public class UserDAOMybatis implements UserDAO{
 	public void update(UserDTO userDTO) {
 		sqlSession.update("userSQL.update",userDTO);
 	}
+	@Override
+	public int getMessageCount(String id) {
+		
+		return sqlSession.selectOne("userSQL.getMessageCount",id);
+	}
 
 }

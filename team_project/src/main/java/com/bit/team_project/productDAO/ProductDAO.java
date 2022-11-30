@@ -26,6 +26,8 @@ public interface ProductDAO {
 	public void gomsg();
 	public void saveNotify(SoketDTO soketDTO);
 
+	public List<ProductDTO> getProductNew();
+
 	
 
 }
