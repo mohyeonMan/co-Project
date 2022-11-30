@@ -7,6 +7,12 @@
 	<insert id="setBid" parameterType="bid">
 		insert into bid(id,product_seq,bidprice,subject,bidtime) values(#{id},#{product_seq},#{bidprice},#{subject},(SYSDATE+(INTERVAL '9'HOUR)))
 	</insert>
+	<update id="updateBid" parameterType="map">
+		update bid set bid_price = #{bid_price} where id = #{id}, product_seq =#{product_seq}
+	</update>
+	<select id="myBid" resultType="bid" parameterType="String">
+		select * from bid where where id = #{id}
+	</select> 
 	<select id="getBidCount" parameterType="map" resultType="String">
 		select  count(product_seq) from bid where product_seq = #{product_seq}
 	</select>
@@ -18,4 +24,5 @@
 		where rnum = 1 and product_seq = #{product_seq1})
 		where product_seq = #{product_seq2}
 	</update>
+	
   </mapper>

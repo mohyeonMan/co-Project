@@ -155,9 +155,15 @@ public class ProductServiceImpl implements ProductService {
 	public List<PrdCommentDTO> getComment(ModelMap modelMap) {
 		return productDAO.getComment(modelMap);
 	}	
+	
 	@Override
 	public List<ProductDTO> getProductNew() {
 		return productDAO.getProductNew();
+	}
+
+	@Override
+	public List<ProductDTO> getHighList() {
+		return productDAO.getHighList();
 	}
 
 	

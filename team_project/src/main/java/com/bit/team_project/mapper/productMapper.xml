@@ -61,7 +61,7 @@
 	
 	
 	<update id="updateHit" parameterType="map">
-		update  producttable set hit = #{hit} where product_seq = #{product_seq}
+		update  producttable set hit = (#{hit}+1) where product_seq = #{product_seq}
 	</update>
 	<insert id="commentSet" parameterType="map">
 		insert  into prdcomment(comment_id,comment_content,product_seq,logtime,comment_seq)
@@ -95,5 +95,9 @@
 		INSERT INTO soket VALUES (#{target},#{content},#{type},#{url},#{msgseq},0)
 	</insert>
 	
+	<select id="getHighList" resultType="product">
+		SELECT * FROM (SELECT product_seq,img1,nowprice,hopeprice FROM producttable order by hit desc) WHERE ROWNUM <![CDATA[<]]>= 10
+		
+	</select>
 	
   </mapper>

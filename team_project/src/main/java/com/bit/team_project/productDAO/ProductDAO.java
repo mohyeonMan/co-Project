@@ -37,6 +37,8 @@ public interface ProductDAO {
 	
 	public List<ProductDTO> getProductNew();
 
+	public List<ProductDTO> getHighList();
+
 	
 
 }

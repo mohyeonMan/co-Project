@@ -180,6 +180,7 @@ h1 {
 		data : 'product_seq='+$('#product_seq').val(),
 		dataType : 'json',
 		success : function (data) {
+			console.log(data.hit)
 			$('#img').attr('src','/team_project/resources/img/'+data.img1);
 			$('#subject').text(data.subject);
 			$('#hopeprice').text(data.hopeprice);
@@ -190,6 +191,16 @@ h1 {
 			$('#bidprice').val(data.nowprice);
 			$('#productid').val(data.id);
 			$('#hit').val(data.hit);
+			 $.ajax({
+					type : 'post',
+					url : '/team_project/product/updateHit',
+					data : 'product_seq='+$('#product_seq').val()+'&hit='+$('#hit').val(),
+					dataType : 'json',
+					success : function (data) {
+					},
+					error : function (err) {
+					}
+				}); 
 		},
 		error : function (err) {
 			
@@ -216,18 +227,7 @@ h1 {
 		}
 	})
 	
-	 $.ajax({
-		type : 'post',
-		url : '/team_project/product/updateHit',
-		data : 'product_seq='+$('#product_seq').val()+'&hit='+$('#hit').val(),
-		dataType : 'text',
-		success : function (data) {
-				console.log('올라감')
-		},
-		error : function (err) {
-			console.log('안올라감')
-		}
-	}); 
+	
 	
 </script>
 <script type="text/javascript">

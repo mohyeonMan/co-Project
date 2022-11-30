@@ -4,7 +4,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -71,12 +73,39 @@ public class ProductController {
 	
 	  @PostMapping(value = "updateHit")
 	  @ResponseBody 
-	  public void updateHit(@RequestParam String hit, int product_seq) { 
+	  public void updateHit(@RequestParam String hit, int product_seq,HttpServletRequest request,HttpServletResponse response) { 
 		  Map<String, Integer> map = new HashMap<String, Integer>();
-	  map.put("hit", Integer.parseInt(hit)); map.put("product_seq", product_seq);
-	  productService.updateHit(map); 
+		  map.put("hit", Integer.parseInt(hit)); 
+		  map.put("product_seq", product_seq);
+	  	Cookie oldCookie = null;
+	    Cookie[] cookies = request.getCookies();
+	    for(int i =0; i<cookies.length; i++) {
+	    	System.out.println(cookies[i].getName());
+	    	
+	    }
+	    if (cookies != null) {
+	        for (Cookie cookie : cookies) {
+	            if (cookie.getName().equals("updateHit")) {
+	                oldCookie = cookie;
+	            }
+	        }
+	    }
+	    if (oldCookie != null) {
+	        if (!oldCookie.getValue().contains("[" + product_seq + "]")) {
+	        	productService.updateHit(map); 
+	            oldCookie.setValue(oldCookie.getValue() + "_[" + product_seq + "]");
+	            oldCookie.setPath("/");
+	            oldCookie.setMaxAge(60 * 60 * 24);
+	            response.addCookie(oldCookie);
+	        }
+	    } else {
+	    	productService.updateHit(map);
+	        Cookie newCookie = new Cookie("updateHit","[" + product_seq+ "]");
+	        newCookie.setPath("/");
+	        newCookie.setMaxAge(60 * 60 * 24);
+	        response.addCookie(newCookie);
+	    }
 	  }
-	 
 
 	@Scheduled(fixedDelay = 3000) // 3초마다 잘되는데 한번이라도 오라클오류나면 유찰,낙찰빼고 null들어감
 	public void testset() {
@@ -84,7 +113,7 @@ public class ProductController {
 		productService.gomsg();
 
 	}
-	 
+	
 	
 	@PostMapping(value = "getIndexGrid")
 	@ResponseBody
@@ -118,13 +147,18 @@ public class ProductController {
 		modelMap.put("product_seq", map.get("product_seq"));
 		productService.getComment(modelMap);
 		return productService.getComment(modelMap);
-}
+	}
 	@PostMapping(value = "/getProductNew")
 	@ResponseBody
 	public List<ProductDTO> getProductNew(){
 		return productService.getProductNew();
 	}
 	
+	@PostMapping(value = "/getHighList")
+	@ResponseBody
+	public List<ProductDTO> getHighList(){
+		return productService.getHighList();
+	}
 	
 }
 

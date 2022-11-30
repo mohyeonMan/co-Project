@@ -78,7 +78,7 @@ public class UserController {
 		return "/index";
 	}
 
-	@GetMapping(value = "/myPage")
+	@GetMapping(value = "myPage")
 	public String myPage() {
 		return "/user/myPage";
 	}

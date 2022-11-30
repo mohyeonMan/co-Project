@@ -39,6 +39,8 @@ public interface ProductService {
 	
 	public List<ProductDTO> getProductNew();
 
+	public List<ProductDTO> getHighList();
+
 	
 
 }
