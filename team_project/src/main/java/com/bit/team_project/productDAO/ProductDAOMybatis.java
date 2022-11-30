@@ -8,7 +8,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.ModelMap;
 
+import com.bit.team_project.DTO.PrdCommentDTO;
 import com.bit.team_project.DTO.ProductDTO;
 import com.bit.team_project.DTO.SoketDTO;
 
@@ -49,13 +51,14 @@ public class ProductDAOMybatis implements ProductDAO {
 
 	@Override
 	public void test() {
+		/* sqlSession.update("productSQL.nulltest"); */
 		sqlSession.update("productSQL.test");
 	}
-
+	
 	public List<ProductDTO> getIndexGrid() {
 		return sqlSession.selectList("productSQL.getIndexGrid");
 	}
-
+	
 	public List<ProductDTO> getProductSort(Map<String, String> map) {
 		return  sqlSession.selectList("productSQL.getProductSort",map);
 	}
@@ -67,6 +70,16 @@ public class ProductDAOMybatis implements ProductDAO {
 	public void saveNotify(SoketDTO soketDTO) {
 		sqlSession.insert("productSQL.saveNotify", soketDTO);
 		
+	}
+
+	@Override
+	public void commentSet(ModelMap modelMap) {
+		sqlSession.insert("productSQL.commentSet",modelMap);
+	}
+
+	@Override
+	public List<PrdCommentDTO> getComment(ModelMap modelMap) {
+		return sqlSession.selectList("productSQL.getComment",modelMap);
 	}
 
 	

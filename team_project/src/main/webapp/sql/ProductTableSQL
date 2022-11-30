@@ -21,4 +21,5 @@ img3 varchar2(100),
 img4 varchar2(100),
 keyword varchar2(1000),
 logdate date,
-hit NUMBER(10));
+hit NUMBER(10)
+prdstatus varchar2(20));

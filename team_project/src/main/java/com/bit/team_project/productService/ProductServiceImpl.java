@@ -8,11 +8,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.bit.team_project.DTO.PrdCommentDTO;
 import com.bit.team_project.DTO.ProductDTO;
 import com.bit.team_project.DTO.SoketDTO;
 import com.bit.team_project.productDAO.ProductDAO;
@@ -23,13 +27,19 @@ public class ProductServiceImpl implements ProductService {
 	private ProductDAO productDAO;
 
 	@Override
-	public void write(ProductDTO productDTO) {
-		//서버에서 저장 할 경로
-				String uploadFolder = "D:\\Projects\\co-Project\\team_project\\src\\main\\webapp\\resources\\img";
-				List<MultipartFile> list = productDTO.getFile();
-				List<String> list2 = new ArrayList<String>();
+	public void write(ProductDTO productDTO , HttpSession session) {
+		System.out.println(productDTO.getFile());
+				if(productDTO.getFile()!=null) {
+					//서버에서 저장 할 경로
+					String uploadFolder = "D:\\Projects\\co-Project\\team_project\\src\\main\\webapp\\resources\\img";
+					List<MultipartFile> list = productDTO.getFile();
+					System.out.println("파일"+productDTO.getFile());
+					System.out.println(list.size());
+					List<String> list2 = new ArrayList<String>();
+					
 				
 				for(int i = 0; i<list.size(); i++) {
+					
 					System.err.println(list.get(i));
 					
 					UUID uuid = UUID.randomUUID();
@@ -49,7 +59,10 @@ public class ProductServiceImpl implements ProductService {
 					File saveFile = new File(uploadFolder + "/"+ uniqueName + fileRealName);
 					
 					try {
+						if(!list.isEmpty()) {
+							
 						list.get(i).transferTo(saveFile);
+						}
 						
 					} catch (IllegalStateException e) {
 						// TODO Auto-generated catch block
@@ -80,10 +93,12 @@ public class ProductServiceImpl implements ProductService {
 				productDTO.setImg4(list2.get(3));
 				
 				}
-				productDTO.setId("hong");
+			}
+				String id = (String) session.getAttribute("id");
+				productDTO.setId(id);
 				productDTO.setEndDate(productDTO.getEndDay()+" "+productDTO.getEndTime());
 				System.out.println(productDTO.getEndDate());
-						
+			System.out.println(productDTO.toString());
 						
 				productDAO.write(productDTO);
 	}
@@ -131,6 +146,16 @@ public class ProductServiceImpl implements ProductService {
 	public void saveNotify(SoketDTO soketDTO) {
 		productDAO.saveNotify(soketDTO);
 		
+	}
+
+	@Override
+	public void commentSet(ModelMap modelMap) {
+		productDAO.commentSet(modelMap);
+	}
+
+	@Override
+	public List<PrdCommentDTO> getComment(ModelMap modelMap) {
+		return productDAO.getComment(modelMap);
 	}
 
 	

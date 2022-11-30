@@ -67,7 +67,7 @@ public class UserController {
 	public void logout(HttpSession session) {
 		session.invalidate();
 	}
-	@GetMapping(value = "/myPage")
+	@GetMapping(value = "myPage")
 	public String myPage() {
 		return "/user/myPage";
 	}

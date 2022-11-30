@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.bit.team_project.DTO.PrdCommentDTO;
 import com.bit.team_project.DTO.ProductDTO;
 import com.bit.team_project.productService.ProductService;
 
@@ -33,8 +35,8 @@ public class ProductController {
 	}
 	
 	@PostMapping(value = "/write")
-	public String write(@ModelAttribute ProductDTO productDTO) {
-		productService.write(productDTO);
+	public String write(@ModelAttribute ProductDTO productDTO, HttpSession session) {
+		productService.write(productDTO, session);
 		return "/product/productList";
 	}
 	
@@ -65,22 +67,23 @@ public class ProductController {
 	public ProductDTO getProductView(@RequestParam int product_seq) {
 		return productService.getProductView(product_seq);
 	}
-	@PostMapping(value = "updateHit")
-	@ResponseBody
-	public String updateHit(@RequestParam String hit,int product_seq) {
-		Map<String, Integer>map = new HashMap<String, Integer>();
-		map.put("hit", Integer.parseInt(hit));
-		map.put("product_seq", product_seq);
-		productService.updateHit(map);
-		return "/product/productList";
-	}
 
-	@Scheduled(fixedDelay = 3000)  //3초마다 
+	/*
+	 * @PostMapping(value = "updateHit")
+	 * 
+	 * @ResponseBody public String updateHit(@RequestParam String hit, int
+	 * product_seq) { Map<String, Integer> map = new HashMap<String, Integer>();
+	 * map.put("hit", Integer.parseInt(hit)); map.put("product_seq", product_seq);
+	 * productService.updateHit(map); return "/product/productList"; }
+	 */
+
+	@Scheduled(fixedDelay = 3000) // 3초마다 잘되는데 한번이라도 오라클오류나면 유찰,낙찰빼고 null들어감
 	public void testset() {
 		productService.test();
 		productService.gomsg();
-		
+
 	}
+	 
 	
 	@PostMapping(value = "getIndexGrid")
 	@ResponseBody
@@ -99,7 +102,22 @@ public class ProductController {
 	public String successedPrd() {
 		return "/product/successedPrd";
 	}
+	@RequestMapping(value = "/commentSet")
+	@ResponseBody
+	public void commentSet(@RequestParam Map<String, String>map, ModelMap modelMap) {
+		modelMap.put("comment_id", map.get("comment_id"));
+		modelMap.put("comment_content", map.get("comment_content"));
+		modelMap.put("product_seq", map.get("product_seq"));
+		productService.commentSet(modelMap);
+	}
 	
+	@RequestMapping(value = "/getComment")
+	@ResponseBody
+	public List<PrdCommentDTO> getComment(@RequestParam Map<String, String>map, ModelMap modelMap) {
+		modelMap.put("product_seq", map.get("product_seq"));
+		productService.getComment(modelMap);
+		return productService.getComment(modelMap);
+	}
 	
 	
 }

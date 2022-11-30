@@ -113,8 +113,7 @@ h1 {
 </style>
 </head>
 <body>
-<input type="text" value="${param.product_seq}" name="product_seq" id="product_seq">
-<input type="text" value="${param.hit}" name="hit" id="hit">
+<input type="hidden" value="${param.product_seq}" name="product_seq" id="product_seq">
 
 <div class="container">
 	<div class="container_left">
@@ -137,32 +136,39 @@ h1 {
 		<input type="number" name="bidprice" id="bidprice" style="text-align: center; width: 150px;">
 		<input type="button" value="+" id="plus"><br>
 		<input type="button" value="응찰하기" name="bidBtn" id="bidBtn">
+		<input type="hidden" name="productid" id="productid">
 	</div>
 </div>
 <div class="container_content">
 <br>
 <h3>상세정보</h3>
 <hr>
-<pre id="content"></pre>
+<div id="content"></div>
 </div>
+<br>
 <div id="container">
 <hr>
 	<div id="comment_write">
 		<form id="comment_form">
-			<!-- <div>
-				<label for="user_name"> 작성자 </label>
-				<input type="text" name="user_name" id="user_name">
-			</div> -->
 			<div>
 				<label for="comment"> 덧글 내용 </label>
 				<textarea name="comment" id="comment" style="width: 700px;"></textarea>
-				<input type="submit" value="저장하기">
+				<input type="button" id="commentSubmit" value="저장하기">
 			</div>
 		</form>
 	</div>
 	
-	<!-- 동적처리 -->
-	<ul id="comment_list"></ul>
+	<ul id="comment_list">
+		<table id="commentA">
+		<tr>
+			<th width="100">댓글 번호</th>
+			<th width="100">작성자</th>
+			<th width="400">내용</th>
+			<th width="100">작성시간</th>
+			<th width="50"></th>
+		</tr>
+	</table>
+	</ul>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
@@ -185,11 +191,32 @@ h1 {
 			$('#unitprice').text(data.unitprice);
 			$('#content').text(data.content);
 			$('#bidprice').val(data.nowprice);
+			$('#productid').val(data.id);
 		},
 		error : function (err) {
 			
 		}
 	});
+	$.ajax({
+		type : 'post',
+		url : '/team_project/product/getComment',
+		data : 'product_seq='+$('#product_seq').val(),
+		dataType : 'json',
+		success : function (data) {
+			 $.each(data,function(index, items){
+				 $('<tr/>',{text: items.comment_content,id : items.comment_content})
+				 .append($('<td>',{text:items.comment_id}))
+				 .append($('<td>',{text:items.comment_content}))
+				 .append($('<td>',{text:items.logtime}))
+				 .append($('<button>',{type:'button',id:items.comment_content, text :"수정",height:'30',width :'50', onclick :'updateComment(this.id)' }))
+				 .append($('<button>',{type:'button',id:items.comment_content, text :"삭제",height:'30',width :'50', onclick : 'deleteComment(this.id)'}))
+				 .appendTo($('#commentA'))
+			 })
+		},
+		error : function (err) {
+			
+		}
+	})
 	//조회수
 	/* $.ajax({
 		type : 'post',
@@ -205,14 +232,39 @@ h1 {
 	
 </script>
 <script type="text/javascript">
-
-
+$('#commentSubmit').click(function () {
+	alert($('#product_seq').val())
+	alert($('#comment').val())
+	$.ajax({
+		url : '/team_project/product/commentSet',
+		type: 'post',
+		data : 'comment_id='+'${id}'+'&product_seq='+$('#product_seq').val()+'&comment_content='+$('#comment').val(),
+		dataType : 'json',
+		success : function(data){
+				alert('덧글 작성 성공')
+		},
+		error : function(err){
+		console.log(err)
+		}
+	});
+	location.reload()
+})
+function updateComment(data) {
+	console.log(data)
+	var cc = data
+	var commentLine = $('tr $(cc)').attr("id")
+	console.log(commentLine)
+}
+function deleteComment(data) {
+	
+}
 
 $('#plus').click(function () {
 	var nowprice = eval($('#bidprice').val()+' + '+$('#unitprice').text()); 
 	console.log(nowprice);
 	if(nowprice>$('#hopeprice').text()){
 		alert('입찰가는 희망가를 초과할 수 없습니다')	
+		$('#bidprice').val($('#hopeprice').text());
 	}else{
 	$('#bidprice').val(nowprice);
 	}
@@ -222,6 +274,7 @@ $('#minus').click(function () {
 	console.log(nowprice);
 	if(nowprice<$('#nowprice').text()){
 		alert('입찰가는 현재가 미만으로 설정할수 없습니다')	
+		$('#bidprice').val($('#nowprice').text())
 	}else{
 	$('#bidprice').val(nowprice);
 	}
@@ -230,12 +283,15 @@ $('#minus').click(function () {
 
 /* 응찰하기 버튼 */
 $('#bidBtn').click(function () {
+	if(eval($('#bidprice').val())<eval($('#nowprice').text())){
+		alert("응찰가는 현재가보다 높아야 합니다")
+	}
+	else{
 	$.ajax({
 		url : '/team_project/bid/setBid',
 		type: 'post',
 		data : 'id='+'${id}'+'&product_seq='+$('#product_seq').val()+'&bidprice='+$('#bidprice').val()+'&subject='+$('#subject').text(),
 		success : function(){
-			alert("성공");
 			$(function () {
 				$.ajax({
 					url : '/team_project/bid/bidSetHigh',
@@ -243,20 +299,23 @@ $('#bidBtn').click(function () {
 					data: 'product_seq='+$('#product_seq').val(),
 					dataType : 'json',
 					success : function(data){
-						console.log(id);
+						
 					},
 					error : function(err){
-						console.log(err);
+						console.log(err)
 					}
 				})
 
 			})
-			
+			location.reload()
 		},
 		error : function(err){
 			console.log(err);
 		}
+		
 	});
+	
+}
 });
 $('#bidstatus').click(function() {
 	$.ajax({
@@ -265,7 +324,7 @@ $('#bidstatus').click(function() {
 		data : 'product_seq='+$('#product_seq').val(),
 		dataType:'text',
 		success : function(data){
-			$('#bidstatus').html(data)
+			$('#bidstatus').text(data)
 		},
 		error : function(err){
 			alert(err)
