@@ -93,6 +93,10 @@ public class ProductDAOMybatis implements ProductDAO {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList("productSQL.getHighList");
 	}
+	@Override
+	public List<SoketDTO> getMessageList(String id) {
+		return sqlSession.selectList("productSQL.getMessageList",id);
+	}
 
 	
 

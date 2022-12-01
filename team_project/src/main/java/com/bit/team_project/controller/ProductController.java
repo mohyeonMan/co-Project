@@ -46,10 +46,15 @@ public class ProductController {
 	public String productList() {
 		return "/product/productList";
 	}
+	@RequestMapping(value = "/productList_")
+	public String productList_() {
+		return "/product/productList_";
+	}
 	
 	@PostMapping(value = "/getProductList")
 	@ResponseBody
-	public List<ProductDTO> getProductList(){
+	public List<ProductDTO> getProductList( Model model){
+//		model.addAttribute("category",category);
 		return productService.getList();
 	}
 	@ResponseBody

@@ -19,7 +19,7 @@
 	
 	<mvc:annotation-driven/>
 	<mvc:resources mapping="/resources/**" location="/resources/" />
-	
+	<mvc:resources mapping="/test/**" location="/test/" />
 	<!-- resource를 위한 주소값에서 servlet으로 가지않게 mapping -->
 
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">

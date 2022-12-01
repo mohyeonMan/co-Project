@@ -40,6 +40,8 @@ public interface ProductService {
 	public List<ProductDTO> getProductNew();
 
 	public List<ProductDTO> getHighList();
+	
+	public List<SoketDTO> getMessageList(String id);
 
 	
 

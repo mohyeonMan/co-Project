@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="/team_project/resources/css/reset.css">
+
 <style type="text/css">
 * {
     box-sizing: border-box;
@@ -61,6 +61,13 @@ button, input, select, textarea {
     box-sizing: border-box;
     -webkit-appearance: none;
 }
+.list tr{
+	border-bottom: 1px solid;
+	padding: 10px;
+}
+.list tr td{
+	padding: 10px;
+}
 </style>
 </head>
 <body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" bgcolor="#E1EEF5">
@@ -71,7 +78,8 @@ button, input, select, textarea {
 			
 <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
 	<tbody><tr height="30" bgcolor="#5A5A5A">
-		<td width="35%" style="color:#FFFC00;padding-left:7px;padding-top: 10px;">
+		<td width="35%" style="color:#FFFC00;padding-left:7px;">
+			<input type="hidden" id="id" value="${id}">
 			<b>${name}</b>님
 		</td>
 	</tr>
@@ -83,45 +91,30 @@ button, input, select, textarea {
 		<td valign="top">
 			<table width="550" border="0" cellspacing="0" cellpadding="0" align="center" class="stex">
 				<tbody><tr height="65">
-					<td style="line-height:18px;padding:10px 0;">
-					* 쪽지를 받은 날로부터 <font color="red">10일</font>, 총 쪽지수 <font color="red">150개를 초과</font>하면 쪽지는 자동 삭제 됩니다. ( 복구불가 )<br>
-					* CP를 수령하지 않은 쪽지를 삭제할 시, 쪽지와 CP도 함께 삭제되니 유의하시길 바랍니다.<br>
-					* CP를 보낸 후, 거래가 완료되었다면<br>
-					  &nbsp;&nbsp;<font color="blue">[ CP알리미의 알림쪽지 ]</font>에서 <font color="red">[ 거래완료 ]</font> 버튼을 이용해서 거래를 종료할 수 있습니다.<br>
-					  &nbsp;&nbsp;<font color="red">[ 거래완료 ]</font> 버튼을 누르지 않으면, 상대방은 해당 CP를 <font color="blue">36시간 뒤에 사용</font>이 가능합니다.
+					<td style="line-height:18px;padding:10px 10px;">
+					* 낙찰 받으신 상품을 <font color="red">클릭</font>하면 <font color="blue">[결재창]</font>으로 이동합니다.<br>
+					* <font color="red">읽지 않음</font> 상태의 쪽지는 삭제가 <font color="red">불가능</font>합니다.<br>
+					* 삭제한 쪽지는 복구가 <font color="red">불가</font>합니다. <font color="red">쪽지 삭제시 유의 부탁드립니다.</font><br>
 					</td>
 				</tr>
 			</tbody></table>
 
-			<table width="550" border="0" cellspacing="0" cellpadding="0" align="center" class="stex" >
-				<tbody>
-				<tr align="center" height="25">
-					<td width="30">
-						<input type="checkbox" onclick="this.value=check(this.form.elements,1)">
-					</td>
-					<td width="300">
-						<b>제목</b>
-					</td>
-					<td width="140">
-						<b>보낸이</b>
-					</td>
-					<td width="50">
-						<b>상태</b>
-					</td>
-				</tr>
-				<tr bgcolor="#808080" height="20px" align="center" valign="middle">
-					<td height="1">1</td>
-					<td height="1">응찰하신 스위치팔아요~ 상품이 낙찰되었습니다.</td>
-					<td height="1">관리자</td>
-					<td height="1">읽지않음</td>
-				</tr>
-				<tr bgcolor="#DFE9EC">
-					<td height="3">1</td>
-					<td height="3">응찰하신 스위치팔아요~ 상품이 낙찰되었습니다.</td>
-					<td height="3">관리자</td>
-					<td height="3">읽지않음</td>
-				</tr>
-			</tbody></table>
+			<table width="550" cellspacing="0" cellpadding="0" align="center" class="stex" style="margin-left: 15px; margin-right: 15px; border-collapse: collapse">
+				<tbody class="list">
+					<tr align="center" height="25" style="border-bottom: 1px solid">
+						<td width="300" style="font-weight: 700; color: black;">
+							<b>제목</b>
+						</td>
+						<td width="70" style="font-weight: 700; color: black;">
+							<b>보낸이</b>
+						</td>
+						<td width="70" style="font-weight: 700; color: black;">
+							<b>상태</b>
+						</td>
+					</tr>
+
+				</tbody>
+			</table>
 
 			<table width="550" border="0" cellspacing="0" cellpadding="0" align="center" class="mtex">
 				
@@ -165,5 +158,24 @@ button, input, select, textarea {
 
 </tbody></table>
 
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script type="text/javascript">
+	$.ajax({
+		url : '/team_project/message/getMessageList',
+		data : 'id='+$('#id').val(),
+		type : 'post',
+		success : function (data) {
+			console.log(data)
+			$.each(data, function(index, items){
+				var status;
+				 if(items.hit == 0){status='읽지 않음'}
+				 else status='읽음'
+				$('<tr>').append($('<td>',{text:items.content})).append($('<td>',{text:'관리자', align:'center'})).append($('<td>',{text:status, align:'center'})).appendTo($('.list'))
+			});
+		}, error : function (err) {
+			console.log(err)
+		}
+	});
+</script>
 </body>
 </html>

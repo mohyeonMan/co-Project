@@ -67,7 +67,7 @@
   							tel1 = #{tel1} , tel2 = #{tel2} , tel3 = #{tel3} , email1 = #{email1}
   							,email2 = #{email2},zipcode = #{zipcode},addr1 = #{addr1},addr2 = #{addr2} where id = #{id}
   	</update>
-  	<select id="">
-  	
-  	</select>
+  	<insert id="kakaoWrite" parameterType="map"><!-- 풀쿼리네임 써주세요. -->
+ 	insert into usertable (name,id) values(#{name},#{id}) <!-- #{} ?와 똑같은 방법. 변수명과 같은 이름의 컬럼으로 알아서 들어간다.-->
+ 	</insert>
 </mapper>

@@ -24,4 +24,6 @@ public interface UserDAO {
 	public void update(UserDTO userDTO);
 
 	public int getMessageCount(String id);
+
+	public void kakaoWrite(Map<String, String> map);
 }

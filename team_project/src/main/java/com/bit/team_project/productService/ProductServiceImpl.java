@@ -141,6 +141,7 @@ public class ProductServiceImpl implements ProductService {
 	public void gomsg() {
 		productDAO.gomsg();
 	}
+	@Override
 	public void saveNotify(SoketDTO soketDTO) {
 		productDAO.saveNotify(soketDTO);
 		
@@ -164,6 +165,11 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public List<ProductDTO> getHighList() {
 		return productDAO.getHighList();
+	}
+	
+	@Override
+	public List<SoketDTO> getMessageList(String id) {
+		return productDAO.getMessageList(id);
 	}
 
 	

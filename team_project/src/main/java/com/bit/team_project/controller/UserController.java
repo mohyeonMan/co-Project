@@ -72,10 +72,11 @@ public class UserController {
 		System.out.println("인가코드 : "+code);
 		String token = userService.getKakaoAccessToken(code);
 		Map<String, String> map = userService.createKakaoUser(token);
+	
 		session.setAttribute("id", map.get("id"));
-		session.setAttribute("name", "good");
-
-		return "/index";
+		session.setAttribute("name", map.get("name"));
+		return "/user/kakaoLogin";
+		
 	}
 
 	@GetMapping(value = "myPage")

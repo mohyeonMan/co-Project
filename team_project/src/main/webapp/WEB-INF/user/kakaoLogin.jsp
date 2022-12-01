@@ -8,5 +8,10 @@
 </head>
 <body>
 
+<script type="text/javascript">
+window.onload=function(){
+	location.href="/team_project/"
+}
+</script>
 </body>
 </html>
