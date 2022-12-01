@@ -6,7 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
 <link rel="stylesheet" href="/team_project/resources/css/sideBanner.css">
@@ -15,7 +14,6 @@
 <link rel="stylesheet" href="/team_project/resources/css/container.css">
 <link rel="stylesheet" href="/team_project/resources/css/modal.css">
 <link rel="stylesheet" href="/team_project/resources/css/message.css">
-
 <style type="text/css">
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css");
 .rolling-listed-item{
@@ -54,7 +52,6 @@
 <jsp:include page="/WEB-INF/main/header.jsp"></jsp:include>
 
 <div id="container">
-
 	   <input type="hidden" value="${id}" id="msgid">
 	   <div class="main-ranking">
 	      <div class="rolling-list">
@@ -79,171 +76,6 @@
 	            <ul class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px);">
 	               <div class="swiper-slide swiper-slide-active">
 	                  <div class="flex-rolling">
-	                     <li>
-	                        <a href="#" class="thumb">
-	                           <img src="/team_project/resources/img/tmdnlcl.jpeg" class="lazy" alt="대표이미지" style="display: block;">
-	                        </a>
-	                        <div class="posted-info">
-	                           <p class="subject">
-	                              <a href="#" style="color: white;">스위치 팔아요~ </a>
-	                           </p>
-	                           <span class="tag">현재가 : </span><span class="nowprice" style="color: white;"> 22 </span><br>
-	                           <span class="tag">낙찰가 : </span><span class="endprice" style="color: white;"> 22 </span><br>
-	                           <div class="like">
-	                              <a href="/team_project/product/productView?product_seq=35" class="btn btn-primary" style="color: white; background-color: #172126; --bs-btn-border-color: white;">응찰하러가기</a>
-	                           </div>
-	                        </div>
-	                     </li>
-	                     <li>
-	                        <a href="#" class="thumb">
-	                           <img src="/team_project/resources/img/tmdnlcl.jpeg" class="lazy" alt="대표이미지" style="display: block;">
-	                        </a>
-	                        <div class="posted-info">
-	                           <p class="subject">
-	                              <a href="#" style="color: white;">스위치 팔아요~ </a>
-	                           </p>
-	                           <span class="tag">현재가 : </span><span class="nowprice" style="color: white;"> 22 </span><br>
-	                           <span class="tag">낙찰가 : </span><span class="endprice" style="color: white;"> 22 </span><br>
-	                           <div class="like">
-	                              <a href="/team_project/product/productView?product_seq=35" class="btn btn-primary" style="color: white; background-color: #172126; --bs-btn-border-color: white;">응찰하러가기</a>
-	                           </div>
-	                        </div>
-	                     </li>
-	                     <li>
-	                        <a href="#" class="thumb">
-	                           <img src="/team_project/resources/img/tmdnlcl.jpeg" class="lazy" alt="대표이미지" style="display: block;">
-	                        </a>
-	                        <div class="posted-info">
-	                           <p class="subject">
-	                              <a href="#" style="color: white;">스위치 팔아요~ </a>
-	                           </p>
-	                           <span class="tag">현재가 : </span><span class="nowprice" style="color: white;"> 22 </span><br>
-	                           <span class="tag">낙찰가 : </span><span class="endprice" style="color: white;"> 22 </span><br>
-	                           <div class="like">
-	                              <a href="/team_project/product/productView?product_seq=35" class="btn btn-primary" style="color: white; background-color: #172126; --bs-btn-border-color: white;">응찰하러가기</a>
-	                           </div>
-	                        </div>
-	                     </li>
-	                     <li>
-	                        <a href="#" class="thumb">
-	                           <img src="/team_project/resources/img/tmdnlcl.jpeg" class="lazy" alt="대표이미지" style="display: block;">
-	                        </a>
-	                        <div class="posted-info">
-	                           <p class="subject">
-	                              <a href="#" style="color: white;">스위치 팔아요~ </a>
-	                           </p>
-	                           <span class="tag">현재가 : </span><span class="nowprice" style="color: white;"> 22 </span><br>
-	                           <span class="tag">낙찰가 : </span><span class="endprice" style="color: white;"> 22 </span><br>
-	                           <div class="like">
-	                              <a href="/team_project/product/productView?product_seq=35" class="btn btn-primary" style="color: white; background-color: #172126; --bs-btn-border-color: white;">응찰하러가기</a>
-	                           </div>
-	                        </div>
-	                     </li>
-	                     <li>
-	                        <a href="#" class="thumb">
-	                           <img src="/team_project/resources/img/tmdnlcl.jpeg" class="lazy" alt="대표이미지" style="display: block;">
-	                        </a>
-	                        <div class="posted-info">
-	                           <p class="subject">
-	                              <a href="#" style="color: white;">스위치 팔아요~ </a>
-	                           </p>
-	                           <span class="tag">현재가 : </span><span class="nowprice" style="color: white;"> 22 </span><br>
-	                           <span class="tag">낙찰가 : </span><span class="endprice" style="color: white;"> 22 </span><br>
-	                           <div class="like">
-	                              <a href="/team_project/product/productView?product_seq=35" class="btn btn-primary" style="color: white; background-color: #172126; --bs-btn-border-color: white;">응찰하러가기</a>
-	                           </div>
-	                        </div>
-	                     </li>
-	                     <li>
-	                        <a href="#" class="thumb">
-	                           <img src="/team_project/resources/img/tmdnlcl.jpeg" class="lazy" alt="대표이미지" style="display: block;">
-	                        </a>
-	                        <div class="posted-info">
-	                           <p class="subject">
-	                              <a href="#" style="color: white;">스위치 팔아요~ </a>
-	                           </p>
-	                           <span class="tag">현재가 : </span><span class="nowprice" style="color: white;"> 22 </span><br>
-	                           <span class="tag">낙찰가 : </span><span class="endprice" style="color: white;"> 22 </span><br>
-	                           <div class="like">
-	                              <a href="/team_project/product/productView?product_seq=35" class="btn btn-primary" style="color: white; background-color: #172126; --bs-btn-border-color: white;">응찰하러가기</a>
-	                           </div>
-	                        </div>
-	                     </li>
-	                     <li>
-	                        <a href="#" class="thumb">
-	                           <img src="/team_project/resources/img/tmdnlcl.jpeg" class="lazy" alt="대표이미지" style="display: block;">
-	                        </a>
-	                        <div class="posted-info">
-	                           <p class="subject">
-	                              <a href="#" style="color: white;">스위치 팔아요~ </a>
-	                           </p>
-	                           <span class="tag">현재가 : </span><span class="nowprice" style="color: white;"> 22 </span><br>
-	                           <span class="tag">낙찰가 : </span><span class="endprice" style="color: white;"> 22 </span><br>
-	                           <div class="like">
-	                              <a href="/team_project/product/productView?product_seq=35" class="btn btn-primary" style="color: white; background-color: #172126; --bs-btn-border-color: white;">응찰하러가기</a>
-	                           </div>
-	                        </div>
-	                     </li>
-	                     <li>
-	                        <a href="#" class="thumb">
-	                           <img src="/team_project/resources/img/tmdnlcl.jpeg" class="lazy" alt="대표이미지" style="display: block;">
-	                        </a>
-	                        <div class="posted-info">
-	                           <p class="subject">
-	                              <a href="#" style="color: white;">스위치 팔아요~ </a>
-	                           </p>
-	                           <span class="tag">현재가 : </span><span class="nowprice" style="color: white;"> 22 </span><br>
-	                           <span class="tag">낙찰가 : </span><span class="endprice" style="color: white;"> 22 </span><br>
-	                           <div class="like">
-	                              <a href="/team_project/product/productView?product_seq=35" class="btn btn-primary" style="color: white; background-color: #172126; --bs-btn-border-color: white;">응찰하러가기</a>
-	                           </div>
-	                        </div>
-	                     </li>
-	                     <li>
-	                        <a href="#" class="thumb">
-	                           <img src="/team_project/resources/img/tmdnlcl.jpeg" class="lazy" alt="대표이미지" style="display: block;">
-	                        </a>
-	                        <div class="posted-info">
-	                           <p class="subject">
-	                              <a href="#" style="color: white;">스위치 팔아요~ </a>
-	                           </p>
-	                           <span class="tag">현재가 : </span><span class="nowprice" style="color: white;"> 22 </span><br>
-	                           <span class="tag">낙찰가 : </span><span class="endprice" style="color: white;"> 22 </span><br>
-	                           <div class="like">
-	                              <a href="/team_project/product/productView?product_seq=35" class="btn btn-primary" style="color: white; background-color: #172126; --bs-btn-border-color: white;">응찰하러가기</a>
-	                           </div>
-	                        </div>
-	                     </li>
-	                     <li>
-	                        <a href="#" class="thumb">
-	                           <img src="/team_project/resources/img/tmdnlcl.jpeg" class="lazy" alt="대표이미지" style="display: block;">
-	                        </a>
-	                        <div class="posted-info">
-	                           <p class="subject">
-	                              <a href="#" style="color: white;">스위치 팔아요~ </a>
-	                           </p>
-	                           <span class="tag">현재가 : </span><span class="nowprice" style="color: white;"> 22 </span><br>
-	                           <span class="tag">낙찰가 : </span><span class="endprice" style="color: white;"> 22 </span><br>
-	                           <div class="like">
-	                              <a href="/team_project/product/productView?product_seq=35" class="btn btn-primary" style="color: white; background-color: #172126; --bs-btn-border-color: white;">응찰하러가기</a>
-	                           </div>
-	                        </div>
-	                     </li>
-	                     <li>
-	                        <a href="#" class="thumb">
-	                           <img src="/team_project/resources/img/tmdnlcl.jpeg" class="lazy" alt="대표이미지" style="display: block;">
-	                        </a>
-	                        <div class="posted-info">
-	                           <p class="subject">
-	                              <a href="#" style="color: white;">스위치 팔아요~ </a>
-	                           </p>
-	                           <span class="tag">현재가 : </span><span class="nowprice" style="color: white;"> 22 </span><br>
-	                           <span class="tag">낙찰가 : </span><span class="endprice" style="color: white;"> 22 </span><br>
-	                           <div class="like">
-	                              <a href="/team_project/product/productView?product_seq=35" class="btn btn-primary" style="color: white; background-color: #172126; --bs-btn-border-color: white;">응찰하러가기</a>
-	                           </div>
-	                        </div>
-	                     </li>
 	                  </div>
 	               </div>
 	            </ul>
@@ -514,6 +346,7 @@
 	         </div>
 	      </div>
 	   </div>
+>>>>>>> a26afe7bc102d9fce7641d5c3c6ee0bd39fe4f4b
 </div>
 
 
@@ -615,7 +448,6 @@
 
 <div id="msgStack"></div> -->
 
-                  
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.5/sockjs.min.js"></script>
@@ -632,7 +464,7 @@ $(document).ready(function(){
 
 	    // 데이터를 전달 받았을때 
 	    sock.onmessage = onMessage; // toast 생성
-	   console.log(sock);
+	  	 console.log(sock);
 	    
 	    
 	 // toast생성 및 추가
@@ -651,31 +483,35 @@ $(document).ready(function(){
 	    
 	       $(document).on('click','.toast-header .close',function (){
 	          $(this).parents('.toast').remove();
+	       
 	       });
 	    
-	  //notifySend
-	    $('#notifySendBtn').click(function(e){
+	 setInterval(function()  {
+	   		$.ajax({
+	   	 		type : 'post',
+	   	 		url : '/team_project/product/showGettingPrd',
+	   	 		dataType : 'json',
+	   	 		success : function (data) {
+	   	 			console.log(JSON.stringify(data))
+	   	 			$('#msgSeq').val(data.product_seq)
+	   	 			let type = '70';
+	        		let target = data.get_id;
+	       			let content = "응찰하신 '"+data.subject+"' 상품이 낙찰되었습니다.";
+	       			let msgseq = data.product_seq
+	        		let url = '/team_project/message/messageList';
 	        
 	        
-	        
-	        let type = '70';
-	        let target = $('#msgId').val();
-	        let content = "응찰하신 '"+$('#msgContent').val()+"' 상품이 낙찰되었습니다.";
-	        let msgseq = $('#msgSeq').val();
-	        let url = '/team_project/message/messageList';
-	        
-	        
-	        // 전송한 정보를 db에 저장   
-	        $.ajax({
-	            type: 'post',
-	            url: '/team_project/test/saveNotify',
-	            data: {
-	                target: target,
-	                content: content,
-	                type: type,
-	                url: url,
-	                msgseq : msgseq
-	            },
+	        	// 전송한 정보를 db에 저장   
+	       		 	$.ajax({
+	            		type: 'post',
+	           	 		url: '/team_project/test/saveNotify',
+	            		data: {
+	               		target: target,
+	               	 	content: content,
+	                	type: type,
+	                	url: url,
+	                	msgseq : msgseq
+	           		 },
 	            success: function(){    // db전송 성공시 실시간 알림 전송
 	               
 	                // 소켓에 전달되는 메시지
@@ -685,10 +521,134 @@ $(document).ready(function(){
 	            }
 	        });
 	        $('#msgContent').val('');   // textarea 초기화
-	    });
+	   	 			
+	   			},
+	   			error : function (err) {
+	   			}
+	   	 	});
+	   	}, 3000);
+	        
+	        
+	        
+	        
+	    
 })
 </script>
-
-
+<script type="text/x-jquery-tmpl" id="highItemTemplate">
+		<li>
+								<a href="#" class="thumb">
+									<img src="/team_project/resources/img/\${img1}" class="lazy" alt="대표이미지" style="display: block;">
+								</a>
+								<div class="posted-info">
+									<p class="subject">
+										<a href="#" style="color: white;">\${subject}</a>
+									</p>
+									<span class="tag">현재가 : </span><span class="nowprice" style="color: white;">\${nowprice}원</span><br>
+									<span class="tag">희망가 : </span><span class="endprice" style="color: white;">\${hopeprice}원</span><br>
+									<div class="like">
+										<a href="/team_project/product/productView?product_seq=\${product_seq}" class="btn btn-primary" style="color: white; background-color: #172126; --bs-btn-border-color: white;">응찰하러가기</a>
+									</div>
+								</div>
+		</li> 
+</script>
+<script type="text/javascript">
+	$(function () {
+		$.ajax({
+	 		type : 'post',
+	 		url : '/team_project/product/getHighList',
+	 		dataType : 'json',
+	 		success : function (data) {
+	 			$.each(data,function(index,items){
+	 				var tmpl= $('#highItemTemplate').tmpl(data[index]);	
+	 				$('.flex-rolling').append(tmpl);
+	 			})
+			},
+			error : function (err) {
+				console.log(err)
+			}
+	 	});
+	})
+	
+</script>
+<script type="text/javascript" src="/team_project/resources/js/jquery.tmpl.min.js"></script>
+<script type="text/javascript">
+$(function () {
+	
+	$('.close').hide();
+	$('#sidebar').hide();
+	$('.sidebar nav dd').hide();
+	$('#nameTag').hide();
+	$('#quick-menu').hide();
+	
+	
+	
+	$('#categoryBtn').click(function () {
+		$('.close').toggle();
+		$('.list').toggle();
+		$('#sidebar').toggle();
+	});
+	
+	$('#sidebar nav dt').click(function () {
+		$(this).next('dd').toggle();
+	});
+	
+	var id = "${id}";
+	if ( id == '') {
+		$('#headerRight_login').show();
+		$('#headerRight_logout').hide();
+		$('#nameTag').hide();
+		$('#quick-menu').hide();
+	} else {
+		$('#headerRight_login').hide();
+		$('#headerRight_logout').show();
+		$('#nameTag').show();
+		$('#quick-menu').show();
+	}
+	
+	
+	$.ajax({
+		url : '/team_project/product/getProductList',
+		type: 'post',
+		dataType : 'json',
+		success : function(data){
+			//console.log(JSON.stringify(data));
+			var data1 = data.concat();
+			//최신 5개
+			$.each($('.posted-info .subject .new'),function(index, items){
+				$(items).text(data1[index].subject)
+				$(items).attr('href','/team_project/product/productView?product_seq='+data1[index].product_seq)
+			});
+			$.each($('.thumb .new'),function(index, items){
+				$(items).attr('src','/team_project/resources/img/'+data1[index].img1)
+			});
+			
+			
+			var data2 = data.filter(item => item.category_1 === '1');
+			// 가전/디지털 5개
+			 $.each($('.posted-info .subject .digital'),function(index, items){
+				$(items).text(data2[index].subject)
+				$(items).attr('href','/team_project/product/productView?product_seq='+data2[index].product_seq)
+			});
+			$.each($('.thumb .digital'),function(index, items){
+				$(items).attr('src','/team_project/resources/img/'+data2[index].img1)
+			}); 
+			
+			
+			var data3 = data.filter(item => item.category_1 === '2');
+			// 스포츠/아웃도어 5개
+			 $.each($('.posted-info .subject .sports'),function(index, items){
+				$(items).text(data3[index].subject)
+				$(items).attr('href','/team_project/product/productView?product_seq='+data3[index].product_seq)
+			});
+			$.each($('.thumb .sports'),function(index, items){
+				$(items).attr('src','/team_project/resources/img/'+data3[index].img1)
+			}); 
+		},
+		error : function(err){
+			console.log(err);
+		}
+	});	
+});
+</script>
 </body>
 </html>

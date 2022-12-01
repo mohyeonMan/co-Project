@@ -37,7 +37,7 @@ public class BidController {
 	
 	@PostMapping(value="bidSetHigh")
 	@ResponseBody
-	public void bidbidSetHigh(@RequestParam String product_seq) {
+	public void bidSetHigh(@RequestParam String product_seq) {
 		Map<String, String>map = new HashMap<String, String>();
 		map.put("product_seq1", product_seq);
 		map.put("product_seq2", product_seq);

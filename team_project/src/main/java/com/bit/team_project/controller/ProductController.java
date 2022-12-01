@@ -4,7 +4,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.bit.team_project.DTO.PrdCommentDTO;
 import com.bit.team_project.DTO.ProductDTO;
 import com.bit.team_project.productService.ProductService;
 
@@ -35,9 +38,7 @@ public class ProductController {
 	
 	@PostMapping(value = "/write")
 	public String write(@ModelAttribute ProductDTO productDTO, HttpSession session) {
-		String id = (String) session.getAttribute("id");
-		productDTO.setId(id);
-		productService.write(productDTO);
+		productService.write(productDTO, session);
 		return "/product/productList";
 	}
 	
@@ -73,22 +74,50 @@ public class ProductController {
 	public ProductDTO getProductView(@RequestParam int product_seq) {
 		return productService.getProductView(product_seq);
 	}
-	@PostMapping(value = "updateHit")
-	@ResponseBody
-	public String updateHit(@RequestParam String hit,int product_seq) {
-		Map<String, Integer>map = new HashMap<String, Integer>();
-		map.put("hit", Integer.parseInt(hit));
-		map.put("product_seq", product_seq);
-		productService.updateHit(map);
-		return "/product/productList";
-	}
 
-	@Scheduled(fixedDelay = 3000)  //3초마다 
-	public void testset() {
-		productService.test();
-		productService.gomsg();
-		
+	
+	  @PostMapping(value = "updateHit")
+	  @ResponseBody 
+	  public void updateHit(@RequestParam String hit, int product_seq,HttpServletRequest request,HttpServletResponse response) { 
+		  Map<String, Integer> map = new HashMap<String, Integer>();
+		  map.put("hit", Integer.parseInt(hit)); 
+		  map.put("product_seq", product_seq);
+	  	Cookie oldCookie = null;
+	    Cookie[] cookies = request.getCookies();
+	    if (cookies != null) {
+	        for (Cookie cookie : cookies) {
+	            if (cookie.getName().equals("updateHit")) {
+	                oldCookie = cookie;
+	            }
+	        }
+	    }
+	    if (oldCookie != null) {
+	        if (!oldCookie.getValue().contains("[" + product_seq + "]")) {
+	        	productService.updateHit(map); 
+	            oldCookie.setValue(oldCookie.getValue() + "_[" + product_seq + "]");
+	            oldCookie.setPath("/");
+	            oldCookie.setMaxAge(60 * 60 * 24);
+	            response.addCookie(oldCookie);
+	        }
+	    } else {
+	    	productService.updateHit(map);
+	        Cookie newCookie = new Cookie("updateHit","[" + product_seq+ "]");
+	        newCookie.setPath("/");
+	        newCookie.setMaxAge(60 * 60 * 24);
+	        response.addCookie(newCookie);
+	    }
+	  }
+
+	@Scheduled(fixedDelay = 3000) // 3초마다 잘되는데 한번이라도 오라클오류나면 유찰,낙찰빼고 null들어감
+	public void setPrdStatus() {
+		productService.setPrdStatus();
 	}
+	@PostMapping(value = "showGettingPrd")
+	@ResponseBody
+	public ProductDTO showGettingPrd() {
+		return productService.showGettingPrd(); 
+	}
+	
 	
 	@PostMapping(value = "getIndexGrid")
 	@ResponseBody
@@ -114,6 +143,11 @@ public class ProductController {
 		return productService.getProductNew();
 	}
 	
+	@PostMapping(value = "/getHighList")
+	@ResponseBody
+	public List<ProductDTO> getHighList(){
+		return productService.getHighList();
+	}
 	
 }
 

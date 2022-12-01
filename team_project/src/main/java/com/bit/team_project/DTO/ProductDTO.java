@@ -36,4 +36,5 @@ public class ProductDTO {
 	private String endTime;
 	private String endDate;
 	private String prdstatus;
+	private String get_id;
 }
