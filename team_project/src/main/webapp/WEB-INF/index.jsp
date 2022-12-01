@@ -44,6 +44,8 @@
 	               </div>
 	            </div>
 	         </div>
+	         
+	         
 	         <div class="rolling-listed-item swiper-container swiper-container-initialized swiper-container-horizontal">
 	            <ul class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px);">
 	               <div class="swiper-slide swiper-slide-active">
@@ -346,8 +348,6 @@
                   <div class="member_login_btn">
                      <input type="button" class="btn btn-secondary" id="btn-login" value="로그인">
                      <input type="button" class="btn btn-secondary" value="회원가입" onclick="location.href='/team_project/user/writeForm'">
-                     <br>
-                  	 <input type="button" class="btn btn-secondary" value="관리자 로그인" onclick ="location.href='/team_project/user/adminLogin'">
                   </div>
                   <div class="find_password">
                      <a href="/forgot-password">아이디 또는 비밀번호를 잊으셨나요?</a>
@@ -365,66 +365,6 @@
    </div>
 </div>
 
-<<<<<<< HEAD
-                  
-=======
-
-
-<!-- <div class="quick-menu" id="quick-menu">
-   <ul>
-      <li>
-      
-         <a href="#"> 
-         
-            <span class="icon badge-container">
-               <i class="bi bi-info-circle"></i>
-            </span> 
-            <span class="label">경매방법</span>
-         </a>
-         <hr width="80%">
-      </li>
-      <li>
-         <a href="#" id="writeFormBtn"> 
-            <span class="icon badge-container">
-               <i class="bi bi-clipboard2"></i>
-            </span> 
-            <span class="label">글쓰기</span>
-         </a>
-         <hr width="80%">
-      </li>
-      <li>
-         <a href="#" id="messageBtn"> 
-            <span class="icon badge-container">
-               <i class="bi bi-envelope"></i>
-               <span class="badge"></span>
-            </span> 
-            <span class="label">메세지함</span>
-         </a>
-         <hr width="80%">
-      </li>
-      <li>
-         <a href="/team_project/user/myPage"> 
-            <span class="icon badge-container">
-               <i class="bi bi-person"></i>
-            </span> 
-            <span class="label">마이페이지</span>
-         </a>
-         <hr width="80%">
-      </li>
-      <li>
-         <a href="#"> 
-            <span class="icon badge-container">
-               <i class="bi bi-question-circle"></i>
-            </span> 
-            <span class="label">Q&A</span>
-         </a>
-      </li>
-   </ul>
-</div>
-
-<div id="msgStack"></div> -->
-
->>>>>>> branch 'test' of https://github.com/mohyeonMan/co-Project.git
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.5/sockjs.min.js"></script>
@@ -463,38 +403,42 @@ $(document).ready(function(){
 	       
 	       });
 	    
-	 setInterval(function() {
-	   		$.ajax({
-	   	 		type : 'post',
-	   	 		url : '/team_project/product/showGettingPrd',
-	   	 		dataType : 'json',
-	   	 		success : function (data) {
-	   	 			$('#msgSeq').val(data.product_seq)
-	   	 			let type = '70';
-	        		let target = data.get_id;
-	       			let content = "응찰하신 '"+data.subject+"' 상품이 낙찰되었습니다.";
-	       			let msgseq = data.product_seq
-	        		let url = '/team_project/message/messageList';
-	        		
-	        
-	        	// 전송한 정보를 db에 저장   
-	       		$.ajax({
-	            		type: 'post',
-	           	 		url: '/team_project/test/saveNotify',
-	            		data: {
-	               		target: target,
-	               	 	content: content,
-	                	type: type,
-	                	url: url,
-	                	msgseq : msgseq
-	           		 },
-	            success: function(){    // db전송 성공시 실시간 알림 전송
-	                socket.send("관리자,"+target+","+content+","+url + ","+msgseq);
-	            }
-	        });
-	        $('#msgContent').val('');   // textarea 초기화
-<<<<<<< HEAD
-	    });
+	       setInterval(function() {
+	            $.ajax({
+	                type : 'post',
+	                url : '/team_project/product/showGettingPrd',
+	                dataType : 'json',
+	                success : function (data) {
+	                   $('#msgSeq').val(data.product_seq)
+	                   let type = '70';
+	                 let target = data.get_id;
+	                   let content = "응찰하신 '"+data.subject+"' 상품이 낙찰되었습니다.";
+	                   let msgseq = data.product_seq
+	                 let url = '/team_project/message/messageList';
+	                 
+	           
+	              // 전송한 정보를 db에 저장   
+	                $.ajax({
+	                     type: 'post',
+	                        url: '/team_project/test/saveNotify',
+	                     data: {
+	                        target: target,
+	                         content: content,
+	                      type: type,
+	                      url: url,
+	                      msgseq : msgseq
+	                     },
+	               success: function(){    // db전송 성공시 실시간 알림 전송
+	                   socket.send("관리자,"+target+","+content+","+url + ","+msgseq);
+	               }
+	           });
+	           $('#msgContent').val('');   // textarea 초기화
+	                   
+	               },
+	               error : function (err) {
+	               }
+	             });
+	         }, 2000);
 	  
 	    $.ajax({
 	        url : '/team_project/product/getPopularList',
@@ -504,7 +448,7 @@ $(document).ready(function(){
 	        	
 	        	
 	        	$.each(data,function(index, items){
-	        		$('<li>').append($('<a>',{})).append($('<div>',{})).appendTo($('.flex-rolling'))
+	        		$('<li>').append($('<a>',{class:'thumb'}).append($('<img>',{}))).append($('<div>',{})).appendTo($('.flex-rolling'))
 	        	});
 	        	
 	        /* <li>
@@ -586,139 +530,8 @@ $(document).ready(function(){
 	           console.log(err);
 	        }
 	     });  
-=======
-	   	 			
-	   			},
-	   			error : function (err) {
-	   			}
-	   	 	});
-	   	}, 2000);
-	        
-	        
-	        
-	        
-	    
->>>>>>> branch 'test' of https://github.com/mohyeonMan/co-Project.git
+
 })
 </script>
-<<<<<<< HEAD
-=======
-<script type="text/x-jquery-tmpl" id="highItemTemplate">
-		<li>
-								<a href="#" class="thumb">
-									<img src="/team_project/resources/img/\${img1}" class="lazy" alt="대표이미지" style="display: block;">
-								</a>
-								<div class="posted-info">
-									<p class="subject">
-										<a href="#" style="color: white;">\${subject}</a>
-									</p>
-									<span class="tag">현재가 : </span><span class="nowprice" style="color: white;">\${nowprice}원</span><br>
-									<span class="tag">희망가 : </span><span class="endprice" style="color: white;">\${hopeprice}원</span><br>
-									<div class="like">
-										<a href="/team_project/product/productView?product_seq=\${product_seq}" class="btn btn-primary" style="color: white; background-color: #172126; --bs-btn-border-color: white;">응찰하러가기</a>
-									</div>
-								</div>
-		</li> 
-</script>
-<script type="text/javascript">
-	$(function () {
-		$.ajax({
-	 		type : 'post',
-	 		url : '/team_project/product/getHighList',
-	 		dataType : 'json',
-	 		success : function (data) {
-	 			$.each(data,function(index,items){
-	 				var tmpl= $('#highItemTemplate').tmpl(data[index]);	
-	 				$('.flex-rolling').append(tmpl);
-	 			})
-			},
-			error : function (err) {
-				console.log(err)
-			}
-	 	});
-	})
-	
-</script>
-<script type="text/javascript" src="/team_project/resources/js/jquery.tmpl.min.js"></script>
-<script type="text/javascript">
-$(function () {
-	
-	$('.close').hide();
-	$('#sidebar').hide();
-	$('.sidebar nav dd').hide();
-	$('#nameTag').hide();
-	$('#quick-menu').hide();
-	
-	
-	
-	$('#categoryBtn').click(function () {
-		$('.close').toggle();
-		$('.list').toggle();
-		$('#sidebar').toggle();
-	});
-	
-	$('#sidebar nav dt').click(function () {
-		$(this).next('dd').toggle();
-	});
-	
-	var id = "${id}";
-	if ( id == '') {
-		$('#headerRight_login').show();
-		$('#headerRight_logout').hide();
-		$('#nameTag').hide();
-		$('#quick-menu').hide();
-	} else {
-		$('#headerRight_login').hide();
-		$('#headerRight_logout').show();
-		$('#nameTag').show();
-		$('#quick-menu').show();
-	}
-	
-	
-	$.ajax({
-		url : '/team_project/product/getProductList',
-		type: 'post',
-		dataType : 'json',
-		success : function(data){
-			//console.log(JSON.stringify(data));
-			var data1 = data.concat();
-			//최신 5개
-			$.each($('.posted-info .subject .new'),function(index, items){
-				$(items).text(data1[index].subject)
-				$(items).attr('href','/team_project/product/productView?product_seq='+data1[index].product_seq)
-			});
-			$.each($('.thumb .new'),function(index, items){
-				$(items).attr('src','/team_project/resources/img/'+data1[index].img1)
-			});
-			
-			
-			var data2 = data.filter(item => item.category_1 === '1');
-			// 가전/디지털 5개
-			 $.each($('.posted-info .subject .digital'),function(index, items){
-				$(items).text(data2[index].subject)
-				$(items).attr('href','/team_project/product/productView?product_seq='+data2[index].product_seq)
-			});
-			$.each($('.thumb .digital'),function(index, items){
-				$(items).attr('src','/team_project/resources/img/'+data2[index].img1)
-			}); 
-			
-			
-			var data3 = data.filter(item => item.category_1 === '2');
-			// 스포츠/아웃도어 5개
-			 $.each($('.posted-info .subject .sports'),function(index, items){
-				$(items).text(data3[index].subject)
-				$(items).attr('href','/team_project/product/productView?product_seq='+data3[index].product_seq)
-			});
-			$.each($('.thumb .sports'),function(index, items){
-				$(items).attr('src','/team_project/resources/img/'+data3[index].img1)
-			}); 
-		},
-		error : function(err){
-			console.log(err);
-		}
-	});	
-});
-</script>
->>>>>>> branch 'test' of https://github.com/mohyeonMan/co-Project.git
 </body>
 </html>
