@@ -40,7 +40,7 @@ public class ProductController {
 	public String write(@ModelAttribute ProductDTO productDTO, HttpSession session) {
 		String id = (String) session.getAttribute("id");
 		productDTO.setId(id);
-		productService.write(productDTO);
+		productService.write(productDTO, session);
 		return "/product/productwriteSuccess";
 	}
 	
