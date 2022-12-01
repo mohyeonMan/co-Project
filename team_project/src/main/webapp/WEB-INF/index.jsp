@@ -70,8 +70,6 @@
 	               </div>
 	            </div>
 	         </div>
-	         
-	         
 	         <div class="rolling-listed-item swiper-container swiper-container-initialized swiper-container-horizontal">
 	            <ul class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px);">
 	               <div class="swiper-slide swiper-slide-active">
@@ -346,7 +344,6 @@
 	         </div>
 	      </div>
 	   </div>
->>>>>>> a26afe7bc102d9fce7641d5c3c6ee0bd39fe4f4b
 </div>
 
 
@@ -375,6 +372,8 @@
                   <div class="member_login_btn">
                      <input type="button" class="btn btn-secondary" id="btn-login" value="로그인">
                      <input type="button" class="btn btn-secondary" value="회원가입" onclick="location.href='/team_project/user/writeForm'">
+                     <br>
+                  	 <input type="button" class="btn btn-secondary" value="관리자 로그인" onclick ="location.href='/team_project/user/adminLogin'">
                   </div>
                   <div class="find_password">
                      <a href="/forgot-password">아이디 또는 비밀번호를 잊으셨나요?</a>
@@ -486,23 +485,22 @@ $(document).ready(function(){
 	       
 	       });
 	    
-	 setInterval(function()  {
+	 setInterval(function() {
 	   		$.ajax({
 	   	 		type : 'post',
 	   	 		url : '/team_project/product/showGettingPrd',
 	   	 		dataType : 'json',
 	   	 		success : function (data) {
-	   	 			console.log(JSON.stringify(data))
 	   	 			$('#msgSeq').val(data.product_seq)
 	   	 			let type = '70';
 	        		let target = data.get_id;
 	       			let content = "응찰하신 '"+data.subject+"' 상품이 낙찰되었습니다.";
 	       			let msgseq = data.product_seq
 	        		let url = '/team_project/message/messageList';
-	        
+	        		
 	        
 	        	// 전송한 정보를 db에 저장   
-	       		 	$.ajax({
+	       		$.ajax({
 	            		type: 'post',
 	           	 		url: '/team_project/test/saveNotify',
 	            		data: {
@@ -513,11 +511,7 @@ $(document).ready(function(){
 	                	msgseq : msgseq
 	           		 },
 	            success: function(){    // db전송 성공시 실시간 알림 전송
-	               
-	                // 소켓에 전달되는 메시지
-	                // 위에 기술한 EchoHandler에서 ,(comma)를 이용하여 분리시킨다.
 	                socket.send("관리자,"+target+","+content+","+url + ","+msgseq);
-	            
 	            }
 	        });
 	        $('#msgContent').val('');   // textarea 초기화
@@ -526,7 +520,7 @@ $(document).ready(function(){
 	   			error : function (err) {
 	   			}
 	   	 	});
-	   	}, 3000);
+	   	}, 2000);
 	        
 	        
 	        

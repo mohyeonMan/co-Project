@@ -2,6 +2,9 @@ package com.bit.team_project.userDAO;
 
 import java.util.List;
 import java.util.Map;
+
+import org.springframework.ui.ModelMap;
+
 import com.bit.team_project.DTO.BidDTO;
 import com.bit.team_project.DTO.UserDTO;
 
@@ -26,4 +29,6 @@ public interface UserDAO {
 	public int getMessageCount(String id);
 
 	public void kakaoWrite(Map<String, String> map);
+
+	public UserDTO adminlogintest(ModelMap modelMap);
 }

@@ -108,7 +108,7 @@ public class ProductController {
 	    }
 	  }
 
-	@Scheduled(fixedDelay = 3000) // 3초마다 잘되는데 한번이라도 오라클오류나면 유찰,낙찰빼고 null들어감
+	@Scheduled(fixedDelay = 2000) 
 	public void setPrdStatus() {
 		productService.setPrdStatus();
 	}
