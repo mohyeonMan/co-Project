@@ -67,4 +67,7 @@
   							tel1 = #{tel1} , tel2 = #{tel2} , tel3 = #{tel3} , email1 = #{email1}
   							,email2 = #{email2},zipcode = #{zipcode},addr1 = #{addr1},addr2 = #{addr2} where id = #{id}
   	</update>
+  	<select id="">
+  	
+  	</select>
 </mapper>

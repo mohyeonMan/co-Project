@@ -79,10 +79,6 @@ public class ProductController {
 		  map.put("product_seq", product_seq);
 	  	Cookie oldCookie = null;
 	    Cookie[] cookies = request.getCookies();
-	    for(int i =0; i<cookies.length; i++) {
-	    	System.out.println(cookies[i].getName());
-	    	
-	    }
 	    if (cookies != null) {
 	        for (Cookie cookie : cookies) {
 	            if (cookie.getName().equals("updateHit")) {
@@ -132,22 +128,7 @@ public class ProductController {
 	public String successedPrd() {
 		return "/product/successedPrd";
 	}
-	@RequestMapping(value = "/commentSet")
-	@ResponseBody
-	public void commentSet(@RequestParam Map<String, String>map, ModelMap modelMap) {
-		modelMap.put("comment_id", map.get("comment_id"));
-		modelMap.put("comment_content", map.get("comment_content"));
-		modelMap.put("product_seq", map.get("product_seq"));
-		productService.commentSet(modelMap);
-	}
 	
-	@RequestMapping(value = "/getComment")
-	@ResponseBody
-	public List<PrdCommentDTO> getComment(@RequestParam Map<String, String>map, ModelMap modelMap) {
-		modelMap.put("product_seq", map.get("product_seq"));
-		productService.getComment(modelMap);
-		return productService.getComment(modelMap);
-	}
 	@PostMapping(value = "/getProductNew")
 	@ResponseBody
 	public List<ProductDTO> getProductNew(){

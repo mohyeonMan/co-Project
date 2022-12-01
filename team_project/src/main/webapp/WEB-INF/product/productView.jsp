@@ -136,8 +136,8 @@ h1 {
 		<input type="button" value="+" id="plus"><br>
 		<input type="button" value="응찰하기" name="bidBtn" id="bidBtn">
 		<input type="hidden" name="productid" id="productid">
+		<input type="hidden" id="hit">
 	</div>
-	<input type="text" id="hit">
 </div>
 <div class="container_content">
 <br>
@@ -146,33 +146,48 @@ h1 {
 <div id="content"></div>
 </div>
 <br>
-<div id="container">
 <hr>
-	<div id="comment_write">
-		<form id="comment_form">
-			<div>
-				<label for="comment"> 덧글 내용 </label>
-				<textarea name="comment" id="comment" style="width: 700px;"></textarea>
-				<input type="button" id="commentSubmit" value="저장하기">
+<div id="container">
+	<div class="card mb-2">
+		<div class="card-header bg-light">
+	        <i class="fa fa-comment fa"></i> 댓글
+		</div>
+		<div class="card-body">
+		<ul class="list-group list-group-flush">
+		    <li class="list-group-item">
+			<div class="form-inline mb-2">
 			</div>
-		</form>
+			<textarea class="form-control" id="comment" rows="3"></textarea>
+			<input type="button" class="btn btn-dark mt-3" id="commentSubmit" value="작성하기"></button>
+		    </li>
+		</ul>
+		</div>
 	</div>
-	
-	<ul id="comment_list">
-		<table id="commentA">
-		<tr>
-			<th width="100">댓글 번호</th>
-			<th width="100">작성자</th>
-			<th width="400">내용</th>
-			<th width="100">작성시간</th>
-			<th width="50"></th>
-		</tr>
-	</table>
-	</ul>
+</div>
+	<div class="card mb-2" id="commentlist">
+	</div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script type="text/javascript" src="/team_project/resources/js/jquery.tmpl.min.js"></script>
+<script type="text/x-jquery-tmpl" id="commentTemplate">
+<div class="card mb-2">
+	<div class="card-body">
+		<ul class="list-group list-group-flush">
+		    <li class="list-group-item">
+			<div class="form-inline mb-2" id="\${comment_seq}">
+				<div class="form-control ml-2">작성자 : \${comment_id} </div>
+				<div class="form-control ml-2">작성 시간 : \${logtime}</div>
+				<textarea class="form-control" rows="3" readonly>\${comment_content}</textarea>
+				<button type="button" class="btn btn-dark mt-3"  onClick="updateComment(\${comment_seq})">수정하기</button>
+				<button type="button" class="btn btn-dark mt-3"  onClick="deleteComment(\${comment_seq})">삭제하기</button>
+			</div>
+		    </li>
+		</ul>
+	</div>
+</div>
+</script>
 <script type="text/javascript">
 	$.ajax({
 		type : 'post',
@@ -180,7 +195,6 @@ h1 {
 		data : 'product_seq='+$('#product_seq').val(),
 		dataType : 'json',
 		success : function (data) {
-			console.log(data.hit)
 			$('#img').attr('src','/team_project/resources/img/'+data.img1);
 			$('#subject').text(data.subject);
 			$('#hopeprice').text(data.hopeprice);
@@ -188,7 +202,7 @@ h1 {
 			$('#nowprice').text(data.nowprice);
 			$('#unitprice').text(data.unitprice);
 			$('#content').text(data.content);
-			$('#bidprice').val(data.nowprice);
+			$('#bidprice').val(data.nowprice+data.unitprice);
 			$('#productid').val(data.id);
 			$('#hit').val(data.hit);
 			 $.ajax({
@@ -208,19 +222,22 @@ h1 {
 	});
 	$.ajax({
 		type : 'post',
-		url : '/team_project/product/getComment',
+		url : '/team_project/prdComment/getComment',
 		data : 'product_seq='+$('#product_seq').val(),
 		dataType : 'json',
 		success : function (data) {
-			 $.each(data,function(index, items){
-				 $('<tr/>',{text: items.comment_content})
+			
+			  $.each(data,function(index, items){
+				  var tmpl= $('#commentTemplate').tmpl(data[index]);	
+	 				$('#commentlist').append(tmpl);
+				/*  $('<tr/>',{text: items.comment_id})
 				 .append($('<td>',{text:items.comment_id}))
 				 .append($('<td>',{text:items.comment_content}))
 				 .append($('<td>',{text:items.logtime}))
-				 .append($('<button>',{type:'button',id:items.comment_seq, text :"수정",height:'30',width :'50', onclick :'updateComment(this.id)' }))
-				 .append($('<button>',{type:'button',id:items.comment_seq, text :"삭제",height:'30',width :'50', onclick : 'deleteComment(this.id)'}))
-				 .appendTo($('#commentA'))
-			 })
+				 .append($('<input>',{type:'button',id:items.comment_content, value:"수정" , text:items.comment_id ,height:'30',width :'50', onclick :'updateComment(this.id)' }))
+				 .append($('<input>',{type:'button',id:items.comment_seq,  text :"삭제",height:'30',width :'50', onclick : 'deleteComment(this.id)'}))
+				 .appendTo($('#commentA')) */
+			 }) 
 		},
 		error : function (err) {
 			
@@ -234,29 +251,92 @@ h1 {
 $('#commentSubmit').click(function () {
 	if('${id}'!=''){
 	$.ajax({
-		url : '/team_project/product/commentSet',
+		url : '/team_project/prdComment/commentSet',
 		type: 'post',
 		data : 'comment_id='+'${id}'+'&product_seq='+$('#product_seq').val()+'&comment_content='+$('#comment').val(),
 		dataType : 'json',
 		success : function(data){
-				alert('덧글 작성 성공')
+				alert('댓글 작성 성공')
 		},
 		error : function(err){
 		console.log(err)
 		}
 	});
 	location.reload()
-	}else{
-		alert('댓글달려면 로그인ㅇ')
+		}else{
+			alert('댓글달려면 로그인ㅇ')
 	}
 })
 function updateComment(data) {
-	console.log(data)
-	var cc = data
-	var commentLine = $('tr $(cc)').attr("id")
-	console.log(commentLine)
-}
+	var id = data+''
+	var up = document.getElementById(id).children[2] 
+	var ch = document.getElementById(id).children[3]
+	var del = document.getElementById(id).children[4]
+	ch.setHTML('수정')
+	del.setHTML('취소')
+	up.removeAttribute('readonly')
+	ch.removeAttribute('onClick')
+	del.removeAttribute('onClick')
+	ch.setAttribute('onClick',"updateSubmit("+data+")")
+	del.setAttribute('onClick',"cancelupdateSubmit("+data+")")
+	}
 function deleteComment(data) {
+	var check = confirm('댓글을 삭제 하시겟습니까?')
+	if(check){
+		$.ajax({
+			url : '/team_project/prdComment/deleteComment',
+			type: 'post',
+			data : 'comment_seq='+data,
+			success : function(){
+					alert('댓글 삭제 완료')
+				location.reload()
+			},
+			error : function(err){
+				console.log(err);
+			}
+		});
+	}else{
+		
+	}
+	
+}
+function cancelupdateSubmit(data) {
+	var id = data+''
+	var up = document.getElementById(id).children[2] 
+	var ch = document.getElementById(id).children[3]
+	var del = document.getElementById(id).children[4]
+	ch.setHTML('수정하기')
+	del.setHTML('삭제하기')
+	up.setAttribute('readonly','readonly')
+	ch.removeAttribute('onClick')
+	del.removeAttribute('onClick')
+	ch.setAttribute('onClick',"updateComment("+data+")")
+	del.setAttribute('onClick',"deleteComment("+data+")")
+}
+function updateSubmit(data) {
+	
+	var id = '#'+data+'>textarea'
+	var updatecon = $(id).val()
+	console.log(data)
+	console.log(updatecon)
+
+	var check = confirm('댓글을 수정 하시겟습니까?')
+	if(check){
+		$.ajax({
+			url : '/team_project/prdComment/updateComment',
+			type: 'post',
+			data : 'comment_seq='+data+'&comment_content='+updatecon,
+			success : function(){
+					alert('댓글 수정 완료')
+				location.reload()
+			},
+			error : function(err){
+				console.log(err);
+			}
+		});
+	}else{
+		
+	}
 	
 }
 

@@ -8,5 +8,6 @@ public class PrdCommentDTO {
 	private String comment_content;
 	private int product_seq;
 	private String logtime;
+	private int comment_seq;
 	
 }

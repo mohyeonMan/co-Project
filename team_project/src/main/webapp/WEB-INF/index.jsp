@@ -7,7 +7,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
 <link rel="stylesheet" href="/team_project/resources/css/sideBanner.css">
 <link rel="stylesheet" href="/team_project/resources/css/header.css">
@@ -15,11 +14,36 @@
 <link rel="stylesheet" href="/team_project/resources/css/container.css">
 <link rel="stylesheet" href="/team_project/resources/css/modal.css">
 <link rel="stylesheet" href="/team_project/resources/css/message.css">
-
 <style type="text/css">
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css");
 .rolling-listed-item{
-	scroll-behavior : smooth;
+   scroll-behavior : smooth;
+}
+.modal-body{
+   margin: auto;
+}
+.member_login_input{
+   margin-top: 8px;
+}
+.member_login_btn{
+   margin-top: 8px;
+   margin-left: 8%;
+}
+#msgStack{
+   position: fixed;
+    bottom: 20px;
+    right: 10px;
+    z-index: 10000;
+}
+.toast-header .close{
+   position: absolute;
+   right: 10px;
+}
+.flex-listed li .thumb img:hover{
+	transform : scale(1.1);
+}
+.card {
+    margin-left: 25px;
 }
 </style>
 </head>
@@ -350,31 +374,56 @@
 		<a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">로그인</a> / <a>회원가입</a> / <a>공지사항</a>
 	</div>
 	<div id="headerRight_logout">
+      <a href="#" id="logoutBtn">로그아웃</a>
+      <div class="messageInput">
+         <input type="text" value="${id}" id="msgId">
+         <input type="text" id="msgContent">
+         <input type="text" id="msgSeq">
+         <button id="notifySendBtn">메세지</button>
+      </div>
+   </div>
 		
 		<!-- Button trigger modal -->
 		<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
   			메세지 전송
 		</button>
 		<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="margin-top: 100px">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">로그인</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+         </div>
+         <div class="modal-body">
+            <div class="member_login">
+               <form id="loginForm">
+                  <div class="member_login_input">
+                     <input type="text" name="id" id="id" placeholder="아이디" >
+                     <div id="idDiv"></div>
+                  </div>
+                  <div class="member_login_input">
+                     <input type="password" name="pwd" id="pwd" placeholder="비밀번호" autocomplete="on">
+                     <div id="pwdDiv"></div>
+                  </div>
+                  <div class="member_login_btn">
+                     <input type="button" class="btn btn-secondary" id="btn-login" value="로그인">
+                     <input type="button" class="btn btn-secondary" value="회원가입" onclick="location.href='/team_project/user/writeForm'">
+                  </div>
+                  <div class="find_password">
+                     <a href="/forgot-password">아이디 또는 비밀번호를 잊으셨나요?</a>
+                  </div>
+                  <div class="login_api">
+                     <a href="https://kauth.kakao.com/oauth/authorize?client_id=268b20cd927776992bc7f4192b57984b&redirect_uri=http://localhost:8080/team_project/user/kakaoLogin&response_type=code"><img src="/team_project/resources/img/kakao_login_medium_narrow.png" style="width: 200px; height: 45px;"></a>
+                  </div>
+                  <div class="login_api">
+                     <a href="/oauth2/authorization/google"><img src="/team_project/resources/img/naverlogin.png" style="width: 200px; height: 45px; margin-top: 8px;"></a>
+                  </div>
+               </form>
+            </div>
+         </div>
       </div>
-      <div class="modal-body">
-        <input type="text" value="${id}" id="msgId">
-        <textarea rows="" cols=""></textarea>
-        <input type="text" value="" id="msgseq">
-        
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" id="notifySendBtn">Save changes</button>
-      </div>
-    </div>
-  </div>
+   </div>
 </div>
 		<a href="#" id="logoutBtn">로그아웃</a>
 	</div>
@@ -582,7 +631,9 @@
 	</ul>
 </div>
 
-<div id="msgStack"></div>
+<div id="msgStack">
+	
+</div>
 
 						
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
