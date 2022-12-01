@@ -189,6 +189,7 @@ $('.subimgadd .addBtn').on('click',function(){
 		});
  
  
+ 
 //매물작성 버튼 유효성검사
  $('#productWriteBtn').on('click',function(){
 	$('#subjectDiv').empty();
@@ -211,7 +212,6 @@ $('.subimgadd .addBtn').on('click',function(){
 	var trade = $('#trade_way').val();
 	var date = $('#date').val();
 	var time = $('#time').val(); 
-	
 	var access =true;
 	console.log(category1+"_"+category2)
 	if(!subject){

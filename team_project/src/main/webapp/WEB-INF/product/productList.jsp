@@ -129,7 +129,6 @@
 }
 </style>
 <body>
-
 <jsp:include page="/WEB-INF/main/header.jsp"></jsp:include>
 
 	<div class="tab tab-md mg-b-4u" id="c_size">
@@ -155,7 +154,6 @@
 			</ul>
 		</div>
 	</div>
-
 	<input type="hidden" value="${id}" id="msgid">
 	<select id="sort" name="sort">
 		<option value="product_seq desc">최신순</option>
@@ -258,6 +256,84 @@ function CountDownTimer(dt, id){
     /* if(timer = setTimeout()) */
     
 }
+</script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script type="text/javascript" src="/team_project/resources/js/jquery.tmpl.min.js"></script>
+<script type="text/x-jquery-tmpl" id="itemTemplate">
+   <div class="card" style="width: 18rem; margin-top : 20px; border-color: #EDEDED">
+      <img src="/team_project/resources/img/\${img1}" class="card-img-top" alt="대표이미지" style="width: 100%; height: 250px;">
+      <div class="card-body">
+         <h5 class="card-title">\${subject}</h5>
+         <p class="card-text">
+            <span id="startprice">시작가 : \${startprice}원</span><br>
+            <span>현재가 : \${nowprice}원</span><br>
+            <span>호가 : \${unitprice}원</span>
+            <div class="timer" id="\${product_seq}"></div>
+         </p>
+         <a href="/team_project/product/productView?product_seq=\${product_seq}" class="btn btn-primary">응찰하러가기</a>
+      </div>
+   </div>
+</script>
+<script type="text/javascript">
+
+
+$(document).ready(function(){
+   var selectSort = $('#sort').val();
+   
+   $.ajax({
+      url : '/team_project/product/getProductSort',
+      type: 'post',
+      data : 'sort='+selectSort,
+      dataType : 'json',
+      success : function(data){
+         $.each(data,function(index,items){
+            var end = new Date(items.endDate);
+            var time=end.getMonth()+1+'/'+end.getDate()+'/'+end.getFullYear()+' '+end.getHours()+':'+end.getMinutes();
+            
+            CountDownTimer(time, items.product_seq) 
+            var tmpl;	 
+            if(data[index].prdstatus==null){
+            tmpl= $('#itemTemplate').tmpl(data[index]);
+            }
+            $('#row').append(tmpl);
+             })
+         
+      },
+      error : function(err){
+         console.log(err);
+      }
+   });
+
+   $(document).on('change','#sort',function(){
+   var selectSort = $('#sort').val();
+
+   $('#row').empty();
+   
+   $.ajax({
+      url : '/team_project/product/getProductSort',
+      type: 'post',
+      data : 'sort='+selectSort,
+      dataType : 'json',
+      success : function(data){
+         $.each(data,function(index,items){
+            var end = new Date(items.endDate);
+            var time=end.getMonth()+1+'/'+end.getDate()+'/'+end.getFullYear()+' '+end.getHours()+':'+end.getMinutes();
+            CountDownTimer(time, items.product_seq) 
+            var tmpl;	 
+            if(data[index].prdstatus==null){
+            tmpl= $('#itemTemplate').tmpl(data[index]);
+            }
+            $('#row').append(tmpl);
+             })
+         
+      },
+      error : function(err){
+         console.log(err);
+      }
+   });
+   })
+   
+});
 </script>
 </body>
 </html>

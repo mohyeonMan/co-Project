@@ -8,7 +8,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.ModelMap;
 
+import com.bit.team_project.DTO.PrdCommentDTO;
 import com.bit.team_project.DTO.ProductDTO;
 import com.bit.team_project.DTO.SoketDTO;
 
@@ -48,33 +50,45 @@ public class ProductDAOMybatis implements ProductDAO {
 	}
 
 	@Override
-	public void test() {
-		sqlSession.update("productSQL.test");
+	public void setPrdStatus() {
+		/* sqlSession.update("productSQL.nulltest"); */
+		sqlSession.update("productSQL.setPrdStatus");
 	}
-
+	
 	public List<ProductDTO> getIndexGrid() {
 		return sqlSession.selectList("productSQL.getIndexGrid");
 	}
-
+	
 	public List<ProductDTO> getProductSort(Map<String, String> map) {
 		return  sqlSession.selectList("productSQL.getProductSort",map);
 	}
 
 	@Override
-	public void gomsg() {
-		sqlSession.insert("productSQL.gomsg");
-	}
 	public void saveNotify(SoketDTO soketDTO) {
 		sqlSession.insert("productSQL.saveNotify", soketDTO);
 		
 	}
 
 	@Override
+	public void commentSet(ModelMap modelMap) {
+		sqlSession.insert("productSQL.commentSet",modelMap);
+	}
+
+	@Override
+	public List<PrdCommentDTO> getComment(ModelMap modelMap) {
+		return sqlSession.selectList("productSQL.getComment",modelMap);
+	}
+	
+	@Override
 	public List<ProductDTO> getProductNew() {
-		
 		return sqlSession.selectList("productSQL.getProductNew");
 	}
 
+	@Override
+	public List<ProductDTO> getHighList() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("productSQL.getHighList");
+	}
 	@Override
 	public List<SoketDTO> getMessageList(String id) {
 		return sqlSession.selectList("productSQL.getMessageList",id);
@@ -84,5 +98,12 @@ public class ProductDAOMybatis implements ProductDAO {
 	public List<ProductDTO> getPopularList() {
 		return sqlSession.selectList("productSQL.getPopularList");
 	}
+
+	public ProductDTO showGettingPrd() {
+		return sqlSession.selectOne("productSQL.gomsg");
+	}
+
+	
+
 
 }
