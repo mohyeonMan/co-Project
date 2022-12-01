@@ -94,7 +94,6 @@
 				<td>
 					<input type="date" name="endDay" id="endDay">
 					<input type="time" name="endTime" id="endTime" required>
-					<br><span class="checking">최소 3시간의 입찰시간을 제공하여야합니다.</span>
 					
 				</td>
 			</tr>

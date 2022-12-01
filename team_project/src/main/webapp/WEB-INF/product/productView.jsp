@@ -116,6 +116,7 @@ h1 {
 </head>
 <body>
 <input type="hidden" value="${param.product_seq}" name="product_seq" id="product_seq">
+<input type="hidden" name="prdstatus" id="prdstatus">
 <div class="container">
 	<div class="container_left">
 		<img alt="이미지" id="img" width="100%" height="100%" style="border-radius: 10px;">
@@ -126,11 +127,15 @@ h1 {
 		<hr>
 		희망가 : <span id="hopeprice" name="hopeprice"></span><br>
 		시작가 : <span id="startprice" name="startprice"></span><br>
+		<c:if test="$('#prdstatus').val() == ''" >
+		ddddd
+		</c:if>
 		현재가 : <span id="nowprice" name="nowprice"></span><br>
 		거래방식 : <span id="trade_way" name="trade_way"></span>
 		<br>
 		남은시간 : 추후 추가 예정<br>
 		응찰 :  응찰건수 <span id="bidstatus" name="bidstatus">**</span> 회 (마우스 오버시 응찰 내역)<br>
+		
 		호가(증액) : <span id="unitprice" name="unitprice"></span><br>
 		응찰가격 : 
 		<input type="button" value="-" id="minus">
@@ -203,10 +208,16 @@ h1 {
 			$('#startprice').text(data.startprice);
 			$('#nowprice').text(data.nowprice);
 			$('#unitprice').text(data.unitprice);
+			if(data.trade_way == '1'){
+			$('#trade_way').text('직거래')
+			}else if(data.trade_way == '2'){
+			$('#trade_way').text('택배')
+			}
 			$('#content').text(data.content);
 			$('#bidprice').val(data.nowprice+data.unitprice);
 			$('#productid').val(data.id);
 			$('#hit').val(data.hit);
+			$('#prdstatus').val(data.prdstatus)
 			 $.ajax({
 					type : 'post',
 					url : '/team_project/product/updateHit',
@@ -274,149 +285,180 @@ function updateComment(data) {
 	var up = document.getElementById(id).children[2] 
 	var ch = document.getElementById(id).children[3]
 	var del = document.getElementById(id).children[4]
-	ch.setHTML('수정')
-	del.setHTML('취소')
-	up.removeAttribute('readonly')
-	ch.removeAttribute('onClick')
-	del.removeAttribute('onClick')
-	ch.setAttribute('onClick',"updateSubmit("+data+")")
-	del.setAttribute('onClick',"cancelupdateSubmit("+data+")")
-	}
-function deleteComment(data) {
-	var check = confirm('댓글을 삭제 하시겟습니까?')
-	if(check){
-		$.ajax({
-			url : '/team_project/prdComment/deleteComment',
-			type: 'post',
-			data : 'comment_seq='+data,
-			success : function(){
-					alert('댓글 삭제 완료')
-				location.reload()
-			},
-			error : function(err){
-				console.log(err);
+	var checkId = document.getElementById(id).children[0].innerHTML.substring(6)
+	if ('${id}' == '') {
+			alert('로그인 해야지수정가능')
+	}else{
+			if (checkId!='${id}'){
+				alert('자신의 댓글만 수정 가능합니다')
+
+			} else {
+				ch.setHTML('수정')
+				del.setHTML('취소')
+				up.removeAttribute('readonly')
+				ch.removeAttribute('onClick')
+				del.removeAttribute('onClick')
+				ch.setAttribute('onClick', "updateSubmit(" + data + ")")
+				del.setAttribute('onClick', "cancelupdateSubmit(" + data + ")")
+
 			}
-		});
-	}else{
-		
+		}
 	}
-	
-}
-function cancelupdateSubmit(data) {
-	var id = data+''
-	var up = document.getElementById(id).children[2] 
-	var ch = document.getElementById(id).children[3]
-	var del = document.getElementById(id).children[4]
-	ch.setHTML('수정하기')
-	del.setHTML('삭제하기')
-	up.setAttribute('readonly','readonly')
-	ch.removeAttribute('onClick')
-	del.removeAttribute('onClick')
-	ch.setAttribute('onClick',"updateComment("+data+")")
-	del.setAttribute('onClick',"deleteComment("+data+")")
-}
-function updateSubmit(data) {
-	
-	var id = '#'+data+'>textarea'
-	var updatecon = $(id).val()
-	console.log(data)
-	console.log(updatecon)
 
-	var check = confirm('댓글을 수정 하시겟습니까?')
-	if(check){
-		$.ajax({
-			url : '/team_project/prdComment/updateComment',
-			type: 'post',
-			data : 'comment_seq='+data+'&comment_content='+updatecon,
-			success : function(){
-					alert('댓글 수정 완료')
-				location.reload()
-			},
-			error : function(err){
-				console.log(err);
-			}
-		});
-	}else{
-		
-	}
-	
-}
+	function deleteComment(data) {
+		var id = data + ''
+		var checkId = document.getElementById(id).children[0].innerHTML
+				.substring(6)
 
-$('#plus').click(function () {
-	var nowprice = eval($('#bidprice').val()+' + '+$('#unitprice').text()); 
-	console.log(nowprice);
-	if(nowprice>$('#hopeprice').text()){
-		alert('입찰가는 희망가를 초과할 수 없습니다')	
-		$('#bidprice').val($('#hopeprice').text());
-	}else{
-	$('#bidprice').val(nowprice);
-	}
-});
-$('#minus').click(function () {
-	var nowprice = eval($('#bidprice').val()+' - '+$('#unitprice').text());
-	console.log(nowprice);
-	if(nowprice<$('#nowprice').text()){
-		alert('입찰가는 현재가 미만으로 설정할수 없습니다')	
-		$('#bidprice').val($('#nowprice').text())
-	}else{
-	$('#bidprice').val(nowprice);
-	}
-});
+		if ('${id}' == '') {
+			alert('로그인 해야지삭제가능')
+		}
+		else{
+			if (checkId != '${id}'){
+				alert('자신의 댓글만 수정 가능합니다')
 
-
-
-/* 응찰하기 버튼 */
-$('#bidBtn').click(function () {
-	if(eval($('#bidprice').val())<eval($('#nowprice').text())){
-		alert("응찰가는 현재가보다 높아야 합니다")
-	}
-	else{
-	$.ajax({
-		url : '/team_project/bid/setBid',
-		type: 'post',
-		data : 'id='+'${id}'+'&product_seq='+$('#product_seq').val()+'&bidprice='+$('#bidprice').val()+'&subject='+$('#subject').text(),
-		success : function(){
-			$(function () {
+			}else{
+				var check = confirm('댓글을 삭제 하시겟습니까?')
+				if (check) {
 				$.ajax({
-					url : '/team_project/bid/bidSetHigh',
-					type: 'post',
-					data: 'product_seq='+$('#product_seq').val(),
-					dataType : 'json',
-					success : function(data){
-						
+					url : '/team_project/prdComment/deleteComment',
+					type : 'post',
+					data : 'comment_seq=' + data,
+					success : function() {
+						alert('댓글 삭제 완료')
+						location.reload()
 					},
-					error : function(err){
-						console.log(err)
+					error : function(err) {
+						console.log(err);
 					}
-				})
-
-			})
-			location.reload()
-		},
-		error : function(err){
-			console.log(err);
+				});
+				} 
+				else {
+				alert('삭제 취소')
+				}
+			}
+			}
 		}
-		
-	});
+
 	
-}
-});
-$('#bidstatus').click(function() {
-	$.ajax({
-		url:'/team_project/bid/getBidCount',
-		type: 'post',
-		data : 'product_seq='+$('#product_seq').val(),
-		dataType:'text',
-		success : function(data){
-			$('#bidstatus').text(data)
-		},
-		error : function(err){
-			alert(err)
+	function cancelupdateSubmit(data) {
+		var id = data + ''
+		var up = document.getElementById(id).children[2]
+		var ch = document.getElementById(id).children[3]
+		var del = document.getElementById(id).children[4]
+		ch.setHTML('수정하기')
+		del.setHTML('삭제하기')
+		up.setAttribute('readonly', 'readonly')
+		ch.removeAttribute('onClick')
+		del.removeAttribute('onClick')
+		ch.setAttribute('onClick', "updateComment(" + data + ")")
+		del.setAttribute('onClick', "deleteComment(" + data + ")")
+	}
+	function updateSubmit(data) {
+
+		var id = '#' + data + '>textarea'
+		var updatecon = $(id).val()
+		var check = confirm('댓글을 수정 하시겟습니까?')
+		if (check) {
+			$.ajax({
+				url : '/team_project/prdComment/updateComment',
+				type : 'post',
+				data : 'comment_seq=' + data + '&comment_content=' + updatecon,
+				success : function() {
+					alert('댓글 수정 완료')
+					location.reload()
+				},
+				error : function(err) {
+					console.log(err);
+				}
+			});
+		} else {
+
 		}
+
+	}
+
+	$('#plus').click(
+			function() {
+				var nowprice = eval($('#bidprice').val() + ' + '
+						+ $('#unitprice').text());
+				console.log(nowprice);
+				if (nowprice > $('#hopeprice').text()) {
+					alert('입찰가는 희망가를 초과할 수 없습니다')
+					$('#bidprice').val($('#hopeprice').text());
+				} else {
+					$('#bidprice').val(nowprice);
+				}
+			});
+	$('#minus').click(
+			function() {
+				var nowprice = eval($('#bidprice').val() + ' - '
+						+ $('#unitprice').text());
+				console.log(nowprice);
+				if (nowprice < $('#nowprice').text()) {
+					alert('입찰가는 현재가 미만으로 설정할수 없습니다')
+					$('#bidprice').val($('#nowprice').text())
+				} else {
+					$('#bidprice').val(nowprice);
+				}
+			});
+
+	/* 응찰하기 버튼 */
+	$('#bidBtn').click(function() {
+				if ('${id}' == '') {
+						alert('로그인 해야지 입찰가능')
+			}else{
+				if (eval($('#bidprice').val()) < eval($('#nowprice').text())) {
+					alert("응찰가는 현재가보다 높아야 합니다")
+				} else {
+					$.ajax({
+						url : '/team_project/bid/setBid',
+						type : 'post',
+						data : 'id=' + '${id}' + '&product_seq='
+								+ $('#product_seq').val() + '&bidprice='
+								+ $('#bidprice').val() + '&subject='
+								+ $('#subject').text(),
+						success : function() {
+							$(function() {
+								$.ajax({
+									url : '/team_project/bid/bidSetHigh',
+									type : 'post',
+									data : 'product_seq='
+											+ $('#product_seq').val(),
+									dataType : 'json',
+									success : function(data) {
+
+									},
+									error : function(err) {
+										console.log(err)
+									}
+								})
+
+							})
+							location.reload()
+						},
+						error : function(err) {
+							console.log(err);
+						}
+
+						});
+					}
+				}
+			});
+	$('#bidstatus').click(function() {
+		$.ajax({
+			url : '/team_project/bid/getBidCount',
+			type : 'post',
+			data : 'product_seq=' + $('#product_seq').val(),
+			dataType : 'text',
+			success : function(data) {
+				$('#bidstatus').text(data)
+			},
+			error : function(err) {
+				alert(err)
+			}
+		})
 	})
-})
-
-
 </script>
 </body>
 </html>
