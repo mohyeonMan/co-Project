@@ -145,6 +145,11 @@ public class ProductServiceImpl implements ProductService {
 		return productDAO.getMessageList(id);
 	}
 
+	@Override
+	public List<ProductDTO> getPopularList() {
+		return productDAO.getPopularList();
+	}
+
 	
 
 }

@@ -38,13 +38,20 @@ public class ProductController {
 		String id = (String) session.getAttribute("id");
 		productDTO.setId(id);
 		productService.write(productDTO);
-		return "/product/productList";
+		return "/product/productwriteSuccess";
 	}
 	
 	@RequestMapping(value = "/productList")
 	public String productList() {
 		return "/product/productList";
 	}
+	
+	@PostMapping(value = "/getPopularList")
+	@ResponseBody
+	public List<ProductDTO> getPopularList(){
+		return productService.getPopularList();
+	}
+	
 	@RequestMapping(value = "/productList_")
 	public String productList_() {
 		return "/product/productList_";
@@ -73,14 +80,13 @@ public class ProductController {
 	public ProductDTO getProductView(@RequestParam int product_seq) {
 		return productService.getProductView(product_seq);
 	}
-	@PostMapping(value = "updateHit")
+	
+	@PostMapping(value = "/updateHit")
 	@ResponseBody
-	public String updateHit(@RequestParam String hit,int product_seq) {
+	public void updateHit(@RequestParam int product_seq) {
 		Map<String, Integer>map = new HashMap<String, Integer>();
-		map.put("hit", Integer.parseInt(hit));
 		map.put("product_seq", product_seq);
 		productService.updateHit(map);
-		return "/product/productList";
 	}
 
 	@Scheduled(fixedDelay = 3000)  //3초마다 

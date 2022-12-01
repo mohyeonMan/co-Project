@@ -21,32 +21,6 @@
 .rolling-listed-item{
    scroll-behavior : smooth;
 }
-.modal-body{
-   margin: auto;
-}
-.member_login_input{
-   margin-top: 8px;
-}
-.member_login_btn{
-   margin-top: 8px;
-   margin-left: 8%;
-}
-#msgStack{
-   position: fixed;
-    bottom: 20px;
-    right: 10px;
-    z-index: 10000;
-}
-.toast-header .close{
-   position: absolute;
-   right: 10px;
-}
-.flex-listed li .thumb img:hover{
-	transform : scale(1.1);
-}
-.card {
-    margin-left: 25px;
-}
 </style>
 </head>
 <body>
@@ -332,17 +306,7 @@
 	            <ul>
 	               <div class="flex-listed">
 	                  <li>
-	                     <a href="#" class="thumb">
-	                        <img src="/team_project/resources/img/loading.gif" class="digital" alt="대표이미지" style="display: block; border: 1px solid;">
-	                     </a>
-	                     <div class="posted-info">
-	                        <p class="subject">
-	                           <a href="#" class="digital"></a>
-	                        </p>
-	                     </div>
-	                  </li>
-	                  <li>
-	                     <a href="#" class="thumb">
+	                     <a href="#" class="thumb"  style="border: 1px solid;">
 	                        <img src="/team_project/resources/img/loading.gif" class="digital" alt="대표이미지" style="display: block;">
 	                     </a>
 	                     <div class="posted-info">
@@ -352,7 +316,7 @@
 	                     </div>
 	                  </li>
 	                  <li>
-	                     <a href="#" class="thumb">
+	                     <a href="#" class="thumb" style="border: 1px solid;">
 	                        <img src="/team_project/resources/img/loading.gif" class="digital" alt="대표이미지" style="display: block;">
 	                     </a>
 	                     <div class="posted-info">
@@ -362,7 +326,7 @@
 	                     </div>
 	                  </li>
 	                  <li>
-	                     <a href="#" class="thumb">
+	                     <a href="#" class="thumb" style="border: 1px solid;">
 	                        <img src="/team_project/resources/img/loading.gif" class="digital" alt="대표이미지" style="display: block;">
 	                     </a>
 	                     <div class="posted-info">
@@ -372,7 +336,17 @@
 	                     </div>
 	                  </li>
 	                  <li>
-	                     <a href="#" class="thumb">
+	                     <a href="#" class="thumb" style="border: 1px solid;">
+	                        <img src="/team_project/resources/img/loading.gif" class="digital" alt="대표이미지" style="display: block;">
+	                     </a>
+	                     <div class="posted-info">
+	                        <p class="subject">
+	                           <a href="#" class="digital"></a>
+	                        </p>
+	                     </div>
+	                  </li>
+	                  <li>
+	                     <a href="#" class="thumb" style="border: 1px solid;">
 	                        <img src="/team_project/resources/img/loading.gif" class="digital" alt="재벌집 막내아들" style="display: block;">
 	                     </a>
 	                     <div class="posted-info">
@@ -396,7 +370,7 @@
 	            <ul>
 	               <div class="flex-listed">
 	                  <li>
-	                     <a href="#" class="thumb">
+	                     <a href="#" class="thumb" style="border: 1px solid;">
 	                        <img src="/team_project/resources/img/loading.gif" class="sports" alt="대표이미지" style="display: block;">
 	                     </a>
 	                     <div class="posted-info">
@@ -406,7 +380,7 @@
 	                     </div>
 	                  </li>
 	                  <li>
-	                     <a href="#" class="thumb">
+	                     <a href="#" class="thumb" style="border: 1px solid;">
 	                        <img src="/team_project/resources/img/loading.gif" class="sports" alt="대표이미지" style="display: block;">
 	                     </a>
 	                     <div class="posted-info">
@@ -416,7 +390,7 @@
 	                     </div>
 	                  </li>
 	                  <li>
-	                     <a href="#" class="thumb">
+	                     <a href="#" class="thumb" style="border: 1px solid;">
 	                        <img src="/team_project/resources/img/loading.gif" class="sports" alt="대표이미지" style="display: block;">
 	                     </a>
 	                     <div class="posted-info">
@@ -426,7 +400,7 @@
 	                     </div>
 	                  </li>
 	                  <li>
-	                     <a href="#" class="thumb">
+	                     <a href="#" class="thumb" style="border: 1px solid;">
 	                        <img src="/team_project/resources/img/loading.gif" class="sports" alt="대표이미지" style="display: block;">
 	                     </a>
 	                     <div class="posted-info">
@@ -436,7 +410,7 @@
 	                     </div>
 	                  </li>
 	                  <li>
-	                     <a href="#" class="thumb">
+	                     <a href="#" class="thumb" style="border: 1px solid;">
 	                        <img src="/team_project/resources/img/loading.gif" class="sports" alt="재벌집 막내아들" style="display: block;">
 	                     </a>
 	                     <div class="posted-info">
@@ -460,52 +434,52 @@
 	            <ul>
 	               <div class="flex-listed">
 	                  <li>
-	                     <a href="#" class="thumb">
-	                        <img src="https://images.nstatic.org/info/tv/153496/wFhRbJvcK5noXy3K3pBpw6UMDfQ.jpg" class="lazy" alt="재벌집 막내아들" style="display: block;">
+	                     <a href="#" class="thumb" style="border: 1px solid;">
+	                        <img src="https://images.nstatic.org/info/tv/153496/wFhRbJvcK5noXy3K3pBpw6UMDfQ.jpg" class="home" alt="재벌집 막내아들" style="display: block;">
 	                     </a>
 	                     <div class="posted-info">
 	                        <p class="subject">
-	                           <a href="#">재벌집 막내아들 </a>
+	                           <a href="#" class="home"> </a>
 	                        </p>
 	                     </div>
 	                  </li>
 	                  <li>
-	                     <a href="#" class="thumb">
-	                        <img src="https://images.nstatic.org/info/tv/153496/wFhRbJvcK5noXy3K3pBpw6UMDfQ.jpg" class="lazy" alt="재벌집 막내아들" style="display: block;">
+	                     <a href="#" class="thumb" style="border: 1px solid;">
+	                        <img src="https://images.nstatic.org/info/tv/153496/wFhRbJvcK5noXy3K3pBpw6UMDfQ.jpg" class="home" alt="재벌집 막내아들" style="display: block;">
 	                     </a>
 	                     <div class="posted-info">
 	                        <p class="subject">
-	                           <a href="#">재벌집 막내아들 </a>
+	                           <a href="#" class="home"> </a>
 	                        </p>
 	                     </div>
 	                  </li>
 	                  <li>
-	                     <a href="#" class="thumb">
-	                        <img src="https://images.nstatic.org/info/tv/153496/wFhRbJvcK5noXy3K3pBpw6UMDfQ.jpg" class="lazy" alt="재벌집 막내아들" style="display: block;">
+	                     <a href="#" class="thumb" style="border: 1px solid;">
+	                        <img src="https://images.nstatic.org/info/tv/153496/wFhRbJvcK5noXy3K3pBpw6UMDfQ.jpg" class="home" alt="재벌집 막내아들" style="display: block;">
 	                     </a>
 	                     <div class="posted-info">
 	                        <p class="subject">
-	                           <a href="#">재벌집 막내아들 </a>
+	                           <a href="#" class="home"> </a>
 	                        </p>
 	                     </div>
 	                  </li>
 	                  <li>
-	                     <a href="#" class="thumb">
-	                        <img src="https://images.nstatic.org/info/tv/153496/wFhRbJvcK5noXy3K3pBpw6UMDfQ.jpg" class="lazy" alt="재벌집 막내아들" style="display: block;">
+	                     <a href="#" class="thumb" style="border: 1px solid;">
+	                        <img src="https://images.nstatic.org/info/tv/153496/wFhRbJvcK5noXy3K3pBpw6UMDfQ.jpg" class="home" alt="재벌집 막내아들" style="display: block;">
 	                     </a>
 	                     <div class="posted-info">
 	                        <p class="subject">
-	                           <a href="#">재벌집 막내아들 </a>
+	                           <a href="#" class="home"> </a>
 	                        </p>
 	                     </div>
 	                  </li>
 	                  <li>
-	                     <a href="#" class="thumb">
-	                        <img src="https://images.nstatic.org/info/tv/153496/wFhRbJvcK5noXy3K3pBpw6UMDfQ.jpg" class="lazy" alt="재벌집 막내아들" style="display: block;">
+	                     <a href="#" class="thumb" style="border: 1px solid;">
+	                        <img src="https://images.nstatic.org/info/tv/153496/wFhRbJvcK5noXy3K3pBpw6UMDfQ.jpg" class="home" alt="재벌집 막내아들" style="display: block;">
 	                     </a>
 	                     <div class="posted-info">
 	                        <p class="subject">
-	                           <a href="#">재벌집 막내아들 </a>
+	                           <a href="#" class="home"></a>
 	                        </p>
 	                     </div>
 	                  </li>
@@ -558,62 +532,6 @@
       </div>
    </div>
 </div>
-
-
-
-<!-- <div class="quick-menu" id="quick-menu">
-   <ul>
-      <li>
-      
-         <a href="#"> 
-         
-            <span class="icon badge-container">
-               <i class="bi bi-info-circle"></i>
-            </span> 
-            <span class="label">경매방법</span>
-         </a>
-         <hr width="80%">
-      </li>
-      <li>
-         <a href="#" id="writeFormBtn"> 
-            <span class="icon badge-container">
-               <i class="bi bi-clipboard2"></i>
-            </span> 
-            <span class="label">글쓰기</span>
-         </a>
-         <hr width="80%">
-      </li>
-      <li>
-         <a href="#" id="messageBtn"> 
-            <span class="icon badge-container">
-               <i class="bi bi-envelope"></i>
-               <span class="badge"></span>
-            </span> 
-            <span class="label">메세지함</span>
-         </a>
-         <hr width="80%">
-      </li>
-      <li>
-         <a href="/team_project/user/myPage"> 
-            <span class="icon badge-container">
-               <i class="bi bi-person"></i>
-            </span> 
-            <span class="label">마이페이지</span>
-         </a>
-         <hr width="80%">
-      </li>
-      <li>
-         <a href="#"> 
-            <span class="icon badge-container">
-               <i class="bi bi-question-circle"></i>
-            </span> 
-            <span class="label">Q&A</span>
-         </a>
-      </li>
-   </ul>
-</div>
-
-<div id="msgStack"></div> -->
 
                   
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
@@ -686,9 +604,98 @@ $(document).ready(function(){
 	        });
 	        $('#msgContent').val('');   // textarea 초기화
 	    });
+	  
+	    $.ajax({
+	        url : '/team_project/product/getPopularList',
+	        type: 'post',
+	        success : function(data){
+	        	console.log(data)
+	        	
+	        	
+	        	$.each(data,function(index, items){
+	        		$('<li>').append($('<a>',{})).append($('<div>',{})).appendTo($('.flex-rolling'))
+	        	});
+	        	
+	        /* <li>
+                <a href="#" class="thumb">
+                   <img src="/team_project/resources/img/tmdnlcl.jpeg" class="lazy" alt="대표이미지" style="display: block;">
+                </a>
+                <div class="posted-info">
+                   <p class="subject">
+                      <a href="#" style="color: white;">스위치 팔아요~ </a>
+                   </p>
+                   <span class="tag">현재가 : </span><span class="nowprice" style="color: white;"> 22 </span><br>
+                   <span class="tag">낙찰가 : </span><span class="endprice" style="color: white;"> 22 </span><br>
+                   <div class="like">
+                      <a href="/team_project/product/productView?product_seq=35" class="btn btn-primary" style="color: white; background-color: #172126; --bs-btn-border-color: white;">응찰하러가기</a>
+                   </div>
+                </div>
+             </li> */
+	        	
+	        	
+	        }, error : function () {
+				console.log(err)
+			}
+	    });
+
+	    $.ajax({
+	        url : '/team_project/product/getProductList',
+	        type: 'post',
+	        dataType : 'json',
+	        success : function(data){
+	           //console.log(JSON.stringify(data));
+	           var data1 = data.concat();
+	           //최신 5개
+	           $.each($('.posted-info .subject .new'),function(index, items){
+	              $(items).text(data1[index].subject)
+	              $(items).attr('href','/team_project/product/productView?product_seq='+data1[index].product_seq)
+	           });
+	           $.each($('.thumb .new'),function(index, items){
+	              $(items).attr('src','/team_project/resources/img/'+data1[index].img1)
+	              $(items).parent().attr('href','/team_project/product/productView?product_seq='+data1[index].product_seq)
+	           });
+	           
+	           
+	           var data2 = data.filter(item => item.category_1 === '1');
+	           // 가전/디지털 5개
+	            $.each($('.posted-info .subject .digital'),function(index, items){
+	              $(items).text(data2[index].subject)
+	              $(items).attr('href','/team_project/product/productView?product_seq='+data2[index].product_seq)
+	           });
+	           $.each($('.thumb .digital'),function(index, items){
+	              $(items).attr('src','/team_project/resources/img/'+data2[index].img1)
+	              $(items).parent().attr('href','/team_project/product/productView?product_seq='+data2[index].product_seq)
+	           }); 
+	           
+	           
+	           var data3 = data.filter(item => item.category_1 === '2');
+	           // 스포츠/아웃도어 5개
+	            $.each($('.posted-info .subject .sports'),function(index, items){
+	              $(items).text(data3[index].subject)
+	              $(items).attr('href','/team_project/product/productView?product_seq='+data3[index].product_seq)
+	           });
+	           $.each($('.thumb .sports'),function(index, items){
+	              $(items).attr('src','/team_project/resources/img/'+data3[index].img1)
+	              $(items).parent().attr('href','/team_project/product/productView?product_seq='+data3[index].product_seq)
+	           }); 
+	           
+	           var data4 = data.filter(item => item.category_1 === '3');
+	           // 홈/생활 5개
+	           $.each($('.posted-info .subject .home'),function(index, items){
+	              $(items).text(data4[index].subject)
+	              $(items).attr('href','/team_project/product/productView?product_seq='+data4[index].product_seq)
+	           });
+	           $.each($('.thumb .home'),function(index, items){
+	              $(items).attr('src','/team_project/resources/img/'+data4[index].img1)
+	              $(items).parent().attr('href','/team_project/product/productView?product_seq='+data4[index].product_seq)
+	           }); 
+	           
+	        },
+	        error : function(err){
+	           console.log(err);
+	        }
+	     });  
 })
 </script>
-
-
 </body>
 </html>

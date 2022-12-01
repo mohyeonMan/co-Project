@@ -7,10 +7,17 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+<link rel="stylesheet" href="/team_project/resources/css/reset.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
+<link rel="stylesheet" href="/team_project/resources/css/sideBanner.css">
+<link rel="stylesheet" href="/team_project/resources/css/header.css">
+<link rel="stylesheet" href="/team_project/resources/css/sidebar.css">
 <style type="text/css">
-.container{
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css");
+.container2{
 	width: 1000px;
 	height: 500px;
+	margin: 80px auto;
 }
 .container_left{
 	border: 1px solid;
@@ -23,7 +30,7 @@
 	float: left;
 	margin-left: 20px;
 }
-.container:after{
+.container2:after{
 	content: '';
 	clear: both;
 }
@@ -37,28 +44,10 @@
 	content: '';
 	clear: both;
 }
-* {
-   padding: 0;
-   margin: 0;
-   color: #333;
-}
-      
-ul {
-   list-style: none;
-}
-      
-#container {
+#container2 {
    padding: 30px 20px;
    width: 1000px;
    margin: 0 auto;
-}
-
-h1 {
-   font-size: large;
-   border-left: 10px solid #7BAEB5;
-   border-bottom: 1px solid #7BAEB5;
-   padding: 10px;
-   width: auto;
 }
 
 #comment_write {
@@ -115,16 +104,20 @@ h1 {
 </style>
 </head>
 <body>
-<input type="text" value="${param.product_seq}" name="product_seq" id="product_seq">
-<input type="text" value="${param.hit}" name="hit" id="hit">
+<jsp:include page="/WEB-INF/main/header.jsp"></jsp:include>
 
-<div class="container">
+
+
+<div class="container2">
+<input type="text" value="${param.product_seq}" name="product_seq" id="product_seq">
+<input type="text" value="" name="hit" id="hit">
+<input type="text" value="${id}" id="msgid">
 	<div class="container_left">
 		<img alt="이미지" id="img" width="100%" height="100%" style="border-radius: 10px;">
 	</div>
 	<div class="container_right">
 		<hr>
-		제목 : <span id="subject" name="subject"></span> <br>
+		제목 : <span id="subject" name="subject" style="padding: 10px;"></span> <br>
 		<hr>
 		희망가 : <span id="hopeprice" name="hopeprice"></span><br>
 		시작가 : <span id="startprice" name="startprice"></span><br>
@@ -147,7 +140,7 @@ h1 {
 <hr>
 <pre id="content" style="overflow: auto; width: 100%; height: 300px;white-space: pre-wrap;"></pre>
 </div>
-<div id="container">
+<div id="container2">
 <hr>
 	<div id="comment_write">
 		<form id="comment_form">
@@ -169,6 +162,11 @@ h1 {
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.5/sockjs.min.js"></script>
+<script type="text/javascript" src="/team_project/resources/js/index.js"></script>
+<script type="text/javascript" src="/team_project/resources/js/header.js"></script>
+<script type="text/javascript" src="/team_project/resources/js/quick_menu.js"></script>
+<script type="text/javascript" src="/team_project/resources/js/jquery.tmpl.min.js"></script>
 <script type="text/javascript">
 //출력
 	$.ajax({
@@ -187,23 +185,24 @@ h1 {
 			$('#unitprice').text(data.unitprice);
 			$('#content').text(data.content);
 			$('#bidprice').val(data.nowprice);
+			$('#hit').val(data.hit);
 		},
 		error : function (err) {
 			
 		}
 	});
 	//조회수
-	/* $.ajax({
+	 $.ajax({
 		type : 'post',
 		url : '/team_project/product/updateHit',
-		data : 'product_seq='+$('#product_seq').val()+'&hit='+$('#hit').val(),
+		data : 'product_seq='+$('#product_seq').val(),
 		dataType : 'text',
 		success : function (data) {
 		},
 		error : function (err) {
-			alert('ss')
+			alert(err);
 		}
-	}); */
+	}); 
 	
 </script>
 <script type="text/javascript">

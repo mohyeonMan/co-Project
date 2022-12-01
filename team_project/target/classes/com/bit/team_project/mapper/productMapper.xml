@@ -58,8 +58,8 @@
 	<select id="getList" resultType="product">
 		SELECT * FROM producttable ORDER by product_seq DESC
 	</select>
-	<select id="getList2" resultType="product">
-		SELECT * FROM producttable ORDER by startprice DESC
+	<select id="getPopularList" resultType="product">
+		SELECT * FROM producttable ORDER by hit DESC
 	</select>
 	<select id="getView" parameterType="map" resultType="product">
 		select * from producttable where product_seq=#{product_seq}
@@ -71,7 +71,7 @@
 	
 	
 	<update id="updateHit" parameterType="map">
-		update  producttable set hit = #{hit} where product_seq = #{product_seq}
+		update  producttable set hit = hit+1 where product_seq = #{product_seq}
 	</update>
 	<update id="test"><!-- 3초갱신  -->
 		       update  producttable  

@@ -32,6 +32,8 @@ public interface ProductService {
 
 	public List<SoketDTO> getMessageList(String id);
 
+	public List<ProductDTO> getPopularList();
+
 	
 
 }

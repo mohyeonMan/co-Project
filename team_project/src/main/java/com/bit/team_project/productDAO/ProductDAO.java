@@ -30,6 +30,6 @@ public interface ProductDAO {
 
 	public List<SoketDTO> getMessageList(String id);
 
-	
+	public List<ProductDTO> getPopularList();
 
 }

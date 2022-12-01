@@ -124,6 +124,9 @@
 .mg-b-4u .tab-horizon ul li:hover {
 	border-color: #172126;
 }
+.card{
+	margin-left: 25px;
+}
 </style>
 <body>
 
@@ -133,12 +136,16 @@
 		<!-- DeskTop -->
 		<div class="tab-menu tab-horizon">
 			<ul>
-				<li class="on"><a href="#" class="tab-item"
+				<li class="on">
+					<a href="#" class="tab-item"
 					data-tab-contents="Tab 1" data-tab-contents-group="A"
-					style="color: #172126;">전체 매물</a></li>
-				<li class=""><a href="#" class="tab-item"
+					style="color: #172126;">전체 매물</a>
+				</li>
+				<li class="">
+					<a href="#" class="tab-item"
 					data-tab-contents="Tab 2" data-tab-contents-group="A"
-					style="color: #172126;">디지털/가전</a></li>
+					style="color: #172126;">디지털/가전</a>
+				</li>
 				<li class=""><a href="#" class="tab-item"
 					data-tab-contents="Tab 3" data-tab-contents-group="A"
 					style="color: #172126;">아웃도어/스포츠</a></li>
@@ -254,4 +261,3 @@ function CountDownTimer(dt, id){
 </script>
 </body>
 </html>
-

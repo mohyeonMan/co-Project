@@ -327,3 +327,6 @@ a:link, a:visited {
     overflow: hidden;
     text-decoration: none;
 }
+.flex-listed li .thumb img:hover{
+	transform : scale(1.1);
+}
