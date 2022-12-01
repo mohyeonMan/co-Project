@@ -97,6 +97,9 @@
 	<insert id="saveNotify" parameterType="soket">
 		INSERT INTO soket VALUES (#{target},#{content},#{type},#{url},#{msgseq},0)
 	</insert>
+	<select id="getMessageList" parameterType="String" resultType="soket">
+		select * from soket where target = #{id}
+	</select>
 	
 	
   </mapper>

@@ -34,14 +34,14 @@
 		<nav>
 			<dl>
 				<dt class="on">
-					<a href="#">
+					<a href="/team_project/">
 						<p class="label-txt"> <i class="bi bi-house"></i> 홈 </p>
 					</a>
 				</dt>
 			</dl>
 			<dl>
 				<dt class="on">
-					<a href="/team_project/product/productList"><p class="label-txt"> <i class="bi bi-list-stars"></i> 전체 매물 </p></a>
+					<a href="/team_project/product/productList" id="allProduct"><p class="label-txt"> <i class="bi bi-list-stars"></i> 전체 매물 </p></a>
 				</dt>
 			</dl>
 			<dl>
@@ -71,19 +71,19 @@
 					<p class="label-txt"> <i class="bi bi-globe2"></i> 아웃도어/스포츠 </p>
 				</dt>
 				<dd>
-					<a href="#" class="category">
+					<a href="#" class="category" id="1-5">
 						<p class="label-txt">골프</p>
 					</a>
-					<a href="#" class="category">
+					<a href="#" class="category" id="1-5">
 						<p class="label-txt">캠핑/낚시/등산</p>
 					</a>
-					<a href="#" class="category">
+					<a href="#" class="category" id="1-5">
 						<p class="label-txt">헬스/수영/러닝</p>
 					</a>
-					<a href="#" class="category">
+					<a href="#" class="category" id="1-5">
 						<p class="label-txt">스키/보드/구기</p>
 					</a>
-					<a href="#" class="category">
+					<a href="#" class="category" id="1-5">
 						<p class="label-txt">자전거</p>
 					</a>
 				</dd>
@@ -122,12 +122,57 @@
 		</nav>
 	</aside>
 </div>
-<script type="text/javascript"
-	src="http://code.jquery.com/jquery-3.6.1.min.js"></script>
-<script type="text/javascript">
-	$('.category').on('click',function(){
-		alert($(this).attr('id'));
-		location.href='/team_project/product/productList?category='+$(this).attr('id');
-	})
-</script>
 
+<div class="quick-menu" id="quick-menu">
+   <ul>
+      <li>
+      
+         <a href="#"> 
+         
+            <span class="icon badge-container">
+               <i class="bi bi-info-circle"></i>
+            </span> 
+            <span class="label">경매방법</span>
+         </a>
+         <hr width="80%">
+      </li>
+      <li>
+         <a href="#" id="writeFormBtn"> 
+            <span class="icon badge-container">
+               <i class="bi bi-clipboard2"></i>
+            </span> 
+            <span class="label">글쓰기</span>
+         </a>
+         <hr width="80%">
+      </li>
+      <li>
+         <a href="#" id="messageBtn"> 
+            <span class="icon badge-container">
+               <i class="bi bi-envelope"></i>
+               <span class="badge"></span>
+            </span> 
+            <span class="label">메세지함</span>
+         </a>
+         <hr width="80%">
+      </li>
+      <li>
+         <a href="/team_project/user/myPage"> 
+            <span class="icon badge-container">
+               <i class="bi bi-person"></i>
+            </span> 
+            <span class="label">마이페이지</span>
+         </a>
+         <hr width="80%">
+      </li>
+      <li>
+         <a href="#"> 
+            <span class="icon badge-container">
+               <i class="bi bi-question-circle"></i>
+            </span> 
+            <span class="label">Q&A</span>
+         </a>
+      </li>
+   </ul>
+</div>
+
+<div id="msgStack"></div>
