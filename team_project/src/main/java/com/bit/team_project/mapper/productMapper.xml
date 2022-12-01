@@ -70,7 +70,7 @@
 	<select id="getComment" parameterType="map" resultType="comment">
 		select * from prdcomment where product_seq = #{product_seq} order by logtime desc
 	</select>
-	<update id="test"><!-- 3초갱신  -->
+	<update id="setPrdStatus"><!-- 3초갱신  -->
 	
 		       <![CDATA[
 		       update  producttable  
@@ -82,14 +82,13 @@
 					]]>
 	</update>
 	<!-- 낙찰 된 물품 찾아서 메세지 보내기 -->	
-	<insert id="gomsg">
-		insert into message (product_seq,subject,id) 
+	 <select id="gomsg" resultType="product">
 		select
         p.product_seq,p.subject,p.get_id 
         from producttable p 
         where p.prdstatus = '낙찰' and 
-        not exists(select product_seq from message where product_seq=p.product_seq)
-	</insert>
+        not exists(select msgseq from soket where msgseq=p.product_seq)
+	</select> 
 	<!-- 실시간 알림 -->
 	<insert id="saveNotify" parameterType="soket">
 		INSERT INTO soket VALUES (#{target},#{content},#{type},#{url},#{msgseq},0)

@@ -27,10 +27,6 @@ public interface ProductService {
 	
 	public List<ProductDTO> getProductSort(Map<String, String> map);
 
-	public void test();
-	
-	public void gomsg();
-
 	public void saveNotify(SoketDTO soketDTO);
 
 	public void commentSet(ModelMap modelMap);
@@ -42,6 +38,10 @@ public interface ProductService {
 	public List<ProductDTO> getHighList();
 	
 	public List<SoketDTO> getMessageList(String id);
+
+	public void setPrdStatus();
+
+	public ProductDTO showGettingPrd();
 
 	
 

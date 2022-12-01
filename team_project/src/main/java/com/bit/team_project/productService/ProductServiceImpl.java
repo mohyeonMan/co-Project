@@ -133,15 +133,6 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public void test() {
-		productDAO.test();
-		
-	}
-	@Override
-	public void gomsg() {
-		productDAO.gomsg();
-	}
-	@Override
 	public void saveNotify(SoketDTO soketDTO) {
 		productDAO.saveNotify(soketDTO);
 		
@@ -172,6 +163,14 @@ public class ProductServiceImpl implements ProductService {
 		return productDAO.getMessageList(id);
 	}
 
-	
+	@Override
+	public void setPrdStatus() {
+		productDAO.setPrdStatus();
+	}
+
+	@Override
+	public ProductDTO showGettingPrd() {
+		return productDAO.showGettingPrd();
+	}
 
 }

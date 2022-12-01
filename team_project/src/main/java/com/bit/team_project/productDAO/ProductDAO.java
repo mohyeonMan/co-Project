@@ -21,9 +21,6 @@ public interface ProductDAO {
 	
 	public void updateHit(Map<String, Integer> map);
 
-	public void test();
-
-	public void gomsg();
 
 	public List<ProductDTO> getIndexGrid();
 
@@ -40,6 +37,10 @@ public interface ProductDAO {
 	public List<ProductDTO> getHighList();
 	
 	public List<SoketDTO> getMessageList(String id);
+
+	public void setPrdStatus();
+
+	public ProductDTO showGettingPrd();
 
 	
 

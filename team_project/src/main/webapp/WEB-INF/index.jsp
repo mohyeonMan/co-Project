@@ -464,7 +464,7 @@ $(document).ready(function(){
 
 	    // 데이터를 전달 받았을때 
 	    sock.onmessage = onMessage; // toast 생성
-	   console.log(sock);
+	  	 console.log(sock);
 	    
 	    
 	 // toast생성 및 추가
@@ -483,31 +483,35 @@ $(document).ready(function(){
 	    
 	       $(document).on('click','.toast-header .close',function (){
 	          $(this).parents('.toast').remove();
+	       
 	       });
 	    
-	  //notifySend
-	    $('#notifySendBtn').click(function(e){
+	 setInterval(function()  {
+	   		$.ajax({
+	   	 		type : 'post',
+	   	 		url : '/team_project/product/showGettingPrd',
+	   	 		dataType : 'json',
+	   	 		success : function (data) {
+	   	 			console.log(JSON.stringify(data))
+	   	 			$('#msgSeq').val(data.product_seq)
+	   	 			let type = '70';
+	        		let target = data.get_id;
+	       			let content = "응찰하신 '"+data.subject+"' 상품이 낙찰되었습니다.";
+	       			let msgseq = data.product_seq
+	        		let url = '/team_project/message/messageList';
 	        
 	        
-	        
-	        let type = '70';
-	        let target = $('#msgId').val();
-	        let content = "응찰하신 '"+$('#msgContent').val()+"' 상품이 낙찰되었습니다.";
-	        let msgseq = $('#msgSeq').val();
-	        let url = '/team_project/message/messageList';
-	        
-	        
-	        // 전송한 정보를 db에 저장   
-	        $.ajax({
-	            type: 'post',
-	            url: '/team_project/test/saveNotify',
-	            data: {
-	                target: target,
-	                content: content,
-	                type: type,
-	                url: url,
-	                msgseq : msgseq
-	            },
+	        	// 전송한 정보를 db에 저장   
+	       		 	$.ajax({
+	            		type: 'post',
+	           	 		url: '/team_project/test/saveNotify',
+	            		data: {
+	               		target: target,
+	               	 	content: content,
+	                	type: type,
+	                	url: url,
+	                	msgseq : msgseq
+	           		 },
 	            success: function(){    // db전송 성공시 실시간 알림 전송
 	               
 	                // 소켓에 전달되는 메시지
@@ -517,7 +521,17 @@ $(document).ready(function(){
 	            }
 	        });
 	        $('#msgContent').val('');   // textarea 초기화
-	    });
+	   	 			
+	   			},
+	   			error : function (err) {
+	   			}
+	   	 	});
+	   	}, 3000);
+	        
+	        
+	        
+	        
+	    
 })
 </script>
 <script type="text/x-jquery-tmpl" id="highItemTemplate">
@@ -554,6 +568,7 @@ $(document).ready(function(){
 			}
 	 	});
 	})
+	
 </script>
 <script type="text/javascript" src="/team_project/resources/js/jquery.tmpl.min.js"></script>
 <script type="text/javascript">

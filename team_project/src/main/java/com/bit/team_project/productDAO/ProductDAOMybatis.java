@@ -50,9 +50,9 @@ public class ProductDAOMybatis implements ProductDAO {
 	}
 
 	@Override
-	public void test() {
+	public void setPrdStatus() {
 		/* sqlSession.update("productSQL.nulltest"); */
-		sqlSession.update("productSQL.test");
+		sqlSession.update("productSQL.setPrdStatus");
 	}
 	
 	public List<ProductDTO> getIndexGrid() {
@@ -63,10 +63,6 @@ public class ProductDAOMybatis implements ProductDAO {
 		return  sqlSession.selectList("productSQL.getProductSort",map);
 	}
 
-	@Override
-	public void gomsg() {
-		sqlSession.insert("productSQL.gomsg");
-	}
 	@Override
 	public void saveNotify(SoketDTO soketDTO) {
 		sqlSession.insert("productSQL.saveNotify", soketDTO);
@@ -96,6 +92,11 @@ public class ProductDAOMybatis implements ProductDAO {
 	@Override
 	public List<SoketDTO> getMessageList(String id) {
 		return sqlSession.selectList("productSQL.getMessageList",id);
+	}
+
+	@Override
+	public ProductDTO showGettingPrd() {
+		return sqlSession.selectOne("productSQL.gomsg");
 	}
 
 	

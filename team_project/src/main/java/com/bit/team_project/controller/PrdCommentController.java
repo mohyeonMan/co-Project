@@ -50,4 +50,5 @@ public class PrdCommentController {
 		modelMap.put("comment_seq", map.get("comment_seq"));
 		prdCommentService.deleteComment(modelMap);
 	}
+	
 }
