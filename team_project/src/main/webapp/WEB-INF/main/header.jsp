@@ -21,10 +21,6 @@
 	<div id="headerRight_logout">
 		<a href="#" id="logoutBtn">로그아웃</a>
 		<div class="messageInput">
-			<input type="text" value="${id}" id="msgId">
-			<input type="text" id="msgContent">
-			<input type="text" id="msgSeq">
-			<button id="notifySendBtn">메세지</button>
 		</div>
 	</div>
 	
@@ -170,6 +166,14 @@
                <i class="bi bi-question-circle"></i>
             </span> 
             <span class="label">Q&A</span>
+         </a>
+      </li>
+       <li>
+         <a href="/team_project/product/successedPrd"> 
+            <span class="icon badge-container">
+               <i class="bi bi-bag-check"></i>
+            </span> 
+            <span class="label">종료된물품</span>
          </a>
       </li>
    </ul>

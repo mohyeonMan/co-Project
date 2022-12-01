@@ -124,10 +124,12 @@ public class ProductServiceImpl implements ProductService {
 		productDAO.updateHit(map);
 	}
 
+	@Override
 	public List<ProductDTO> getIndexGrid() {
 		return productDAO.getIndexGrid();
 	}
 
+	@Override
 	public List<ProductDTO> getProductSort(Map<String, String> map) {
 		return productDAO.getProductSort(map);
 	}
@@ -168,7 +170,7 @@ public class ProductServiceImpl implements ProductService {
 		return productDAO.getPopularList();
 	}
 
-	
+	@Override
 	public void setPrdStatus() {
 		productDAO.setPrdStatus();
 	}

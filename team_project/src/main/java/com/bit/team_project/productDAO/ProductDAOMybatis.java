@@ -55,10 +55,12 @@ public class ProductDAOMybatis implements ProductDAO {
 		sqlSession.update("productSQL.setPrdStatus");
 	}
 	
+	@Override
 	public List<ProductDTO> getIndexGrid() {
 		return sqlSession.selectList("productSQL.getIndexGrid");
 	}
 	
+	@Override
 	public List<ProductDTO> getProductSort(Map<String, String> map) {
 		return  sqlSession.selectList("productSQL.getProductSort",map);
 	}
@@ -98,7 +100,8 @@ public class ProductDAOMybatis implements ProductDAO {
 	public List<ProductDTO> getPopularList() {
 		return sqlSession.selectList("productSQL.getPopularList");
 	}
-
+	
+	@Override
 	public ProductDTO showGettingPrd() {
 		return sqlSession.selectOne("productSQL.gomsg");
 	}

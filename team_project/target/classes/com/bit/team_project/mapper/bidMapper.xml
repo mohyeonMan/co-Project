@@ -24,14 +24,4 @@
 		where rnum = 1 and product_seq = #{product_seq1})
 		where product_seq = #{product_seq2}
 	</update>
-
-	<update id="bidSetHigh" parameterType="map">
-      update producttable set (get_id,nowprice) = 
-      (select id,bidprice from(select id,bidprice,product_seq,row_number()
-      over(Partition by product_seq order by bidprice desc)rnum
-      from bid)
-      where rnum = 1 and product_seq = #{product_seq1})
-      where product_seq = #{product_seq2}
-   </update>
-
   </mapper>

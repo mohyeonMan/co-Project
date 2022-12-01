@@ -2,6 +2,9 @@ package com.bit.team_project.userService;
 
 import java.util.List;
 import java.util.Map;
+
+import org.springframework.ui.ModelMap;
+
 import com.bit.team_project.DTO.BidDTO;
 import com.bit.team_project.DTO.UserDTO;
 
@@ -30,5 +33,7 @@ public interface UserService {
 	public void update(UserDTO userDTO);
 
 	public int getMessageCount(String id);
+
+	public UserDTO adminlogintest(ModelMap modelMap);
 
 }

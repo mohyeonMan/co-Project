@@ -4,15 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 </head>
 <body>
-<!-- <button id="tcheck">시간확인</button> -->
 <div id="wrap" style="display:block; width:80%; margin: auto;">
-	<div id="fix_header">
-		<jsp:include page="/WEB-INF/main/header.jsp"></jsp:include>
-	</div>
 	<select id="sort" name="sort">
 		<option value="product_seq desc">최신순</option>
 		<option value="nowprice desc">낙찰가 높은순</option>

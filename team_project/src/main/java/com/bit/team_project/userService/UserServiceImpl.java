@@ -15,6 +15,7 @@ import javax.net.ssl.HttpsURLConnection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.ModelMap;
 
 import com.bit.team_project.DTO.BidDTO;
 import com.bit.team_project.DTO.UserDTO;
@@ -190,6 +191,12 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public int getMessageCount(String id) {
 		return userDAO.getMessageCount(id);
+	}
+
+
+	@Override
+	public UserDTO adminlogintest(ModelMap modelMap) {
+		return userDAO.adminlogintest(modelMap);
 	}
 
 }

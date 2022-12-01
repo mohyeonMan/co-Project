@@ -57,7 +57,7 @@ prev.swiper-button-disabled {
     pointer-events: none;
 }
 a:link, a:visited {
-    color: #b6b6b6;
+    color: white;
     text-decoration: none;
 }
 #container .main-ranking .rolling-list .coordinates:after {

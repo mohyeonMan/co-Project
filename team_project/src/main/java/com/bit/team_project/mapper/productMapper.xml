@@ -71,7 +71,6 @@
 		select * from prdcomment where product_seq = #{product_seq} order by logtime desc
 	</select>
 	<update id="setPrdStatus"><!-- 3초갱신  -->
-	
 		       <![CDATA[
 		       update  producttable  
            		 set prdstatus =  case
@@ -98,7 +97,7 @@
 	</select>
 	
 	<select id="getHighList" resultType="product">
-		SELECT * FROM (SELECT product_seq,img1,nowprice,hopeprice FROM producttable order by hit desc) WHERE ROWNUM <![CDATA[<]]>= 10
+		SELECT * FROM (SELECT product_seq,img1,nowprice,hopeprice,prdstatus FROM producttable order by hit desc) WHERE ROWNUM <![CDATA[<]]>= 10 and prdstatus is null
 		
 	</select>
 	
