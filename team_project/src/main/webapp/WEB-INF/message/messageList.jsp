@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
+<link rel="stylesheet" href="/team_project/resources/css/header.css">
 <style type="text/css">
 * {
     box-sizing: border-box;
@@ -92,7 +92,7 @@ button, input, select, textarea {
 			<table width="550" border="0" cellspacing="0" cellpadding="0" align="center" class="stex">
 				<tbody><tr height="65">
 					<td style="line-height:18px;padding:10px 10px;">
-					* 낙찰 받으신 상품을 <font color="red">클릭</font>하면 <font color="blue">[결재창]</font>으로 이동합니다.<br>
+					* 낙찰 받으신 상품을 <font color="red">클릭</font>하면 <font color="blue">[주소입력창]</font>으로 이동합니다.<br>
 					* <font color="red">읽지 않음</font> 상태의 쪽지는 삭제가 <font color="red">불가능</font>합니다.<br>
 					* 삭제한 쪽지는 복구가 <font color="red">불가</font>합니다. <font color="red">쪽지 삭제시 유의 부탁드립니다.</font><br>
 					</td>
@@ -176,6 +176,7 @@ button, input, select, textarea {
 			console.log(err)
 		}
 	});
+	
 </script>
 </body>
 </html>

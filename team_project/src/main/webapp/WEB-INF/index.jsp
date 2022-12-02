@@ -406,7 +406,7 @@ $(document).ready(function(){
 	               error : function (err) {
 	               }
 	             });
-	         }, 2000);
+	         }, 300);
 	  
 	    $.ajax({
 	        url : '/team_project/product/getPopularList',
