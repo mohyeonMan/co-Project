@@ -3,6 +3,7 @@ package com.bit.team_project.controller;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Locale.Category;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -42,7 +43,9 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value = "/productList")
-	public String productList() {
+	public String productList(@RequestParam String category_1,String category_2, Model model) {
+		model.addAttribute("category_1",category_1);
+		model.addAttribute("category_2",category_2);
 		return "/product/productList";
 	}
 	@RequestMapping(value = "/productList_")
@@ -52,8 +55,7 @@ public class ProductController {
 	
 	@PostMapping(value = "/getProductList")
 	@ResponseBody
-	public List<ProductDTO> getProductList( Model model){
-//		model.addAttribute("category",category);
+	public List<ProductDTO> getProductList(){
 		return productService.getList();
 	}
 	@ResponseBody
@@ -98,9 +100,12 @@ public class ProductController {
 	
 	@PostMapping(value = "/getProductSort")
 	@ResponseBody
-	public List<ProductDTO> getProductSort(@RequestParam String sort){
+	public List<ProductDTO> getProductSort(@RequestParam String sort, String category_1,String category_2, String searchWord){
 		Map<String, String>map = new HashMap<String, String>();
 		map.put("sort",sort);
+		map.put("category_1",category_1);
+		map.put("category_2",category_2);
+		map.put("searchWord",searchWord);
 		return productService.getProductSort(map);
 	}
 	@RequestMapping(value = "/successedPrd")

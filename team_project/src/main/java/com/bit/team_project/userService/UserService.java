@@ -31,4 +31,6 @@ public interface UserService {
 
 	public int getMessageCount(String id);
 
+	public void pointCharge(Map<String, String> map);
+
 }

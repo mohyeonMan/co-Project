@@ -124,6 +124,11 @@
 .mg-b-4u .tab-horizon ul li:hover {
 	border-color: #172126;
 }
+#sortSelector{
+	display:flex;
+	justify-content: center;
+	align-items: center;
+}
 </style>
 <body>
 
@@ -146,18 +151,25 @@
 					data-tab-contents="Tab 3" data-tab-contents-group="A"
 					style="color: #172126;">홈/생활</a></li>
 			</ul>
+			<div id="sortSelector" height="100" border="1">
+				<input type="hidden" value="${id}" id="msgid">
+				<select id="sort" name="sort">
+					<option value="product_seq desc">최신순</option>
+					<option value="nowprice desc">현재가 높은 순</option>
+					<option value="nowprice asc">현재가 낮은 순</option>
+				</select>
+				<input type="text" id="searchReady" placeholder="search">
+				<input type="button" id ="searchBtn" value="검색">
+				<input type="hidden" id="category_1" value="${category_1 }">
+				<input type="hidden" id="category_2" value="${category_2 }">
+				<input type="text" id="searchWord">
+			</div>
 		</div>
 	</div>
 
-	<input type="hidden" value="${id}" id="msgid">
-	<select id="sort" name="sort">
-		<option value="product_seq desc">최신순</option>
-		<option value="nowprice desc">현재가 높은 순</option>
-		<option value="nowprice asc">현재가 낮은 순</option>
-	</select>
 	<div class="productList">
 		<div class="row" id="row">
-			<!— grid —>
+			<!-- grid -->
 		</div>
 	</div>
 	
@@ -169,56 +181,6 @@
 <script type="text/javascript" src="/team_project/resources/js/header.js"></script>
 <script type="text/javascript" src="/team_project/resources/js/quick_menu.js"></script>
 <script type="text/javascript" src="/team_project/resources/js/jquery.tmpl.min.js"></script>
-	<script type="text/x-jquery-tmpl" id="itemTemplate">
-	<div class="card" style="width: 18rem; margin-top : 20px; border-color: #EDEDED">
-		<img src="/team_project/resources/img/\${img1}" class="card-img-top" alt="대표이미지" style="width: 100%; height: 250px;">
-		<div class="card-body">
-			<h5 class="card-title">\${subject}</h5>
-			<p class="card-text">
-				<span id="startprice">시작가 : \${startprice}원</span><br>
-				<span>현재가 : \${nowprice}원</span><br>
-				<span>호가 : \${unitprice}원</span>
-				<div class="timer" id="\${product_seq}"></div>
-			</p>
-			<a href="/team_project/product/productView?product_seq=\${product_seq}" class="btn btn-primary">응찰하러가기</a>
-		</div>
-	</div>
-</script>
-<script type="text/javascript">
-$(document).ready(function(){
-	$('#sort').trigger('change');
-	
-});
-
-$(document).on('change','#sort',function(){
-	var selectSort = $('#sort').val();
-
-	$('#row').empty();
-	
-	$.ajax({
-		url : '/team_project/product/getProductSort',
-		type: 'post',
-		data : 'sort='+selectSort,
-		dataType : 'json',
-		success : function(data){
-			$.each(data,function(index,items){
-				var end = new Date(items.endDate);
-				var time=end.getMonth()+1+'/'+end.getDate()+'/'+end.getFullYear()+' '+end.getHours()+':'+end.getMinutes();
-				
-				CountDownTimer(time, items.product_seq) 
-				var tmpl = $('#itemTemplate').tmpl(data[index]);
-				console.log(tmpl)
-				$('#row').append(tmpl);
- 				})
-			
-		},
-		error : function(err){
-			console.log(err);
-		}
-	});
-});
-	
-</script>
 <script type="text/javascript">
 function CountDownTimer(dt, id){
     var end = new Date(dt);
@@ -247,10 +209,80 @@ function CountDownTimer(dt, id){
         document.getElementById(id).innerHTML += minutes + '분 ';
         document.getElementById(id).innerHTML += seconds + '초';
     }
-    timer = setInterval(showRemaining, 1000);
+	timer = setInterval(showRemaining, 1000);
     /* if(timer = setTimeout()) */
-    
 }
+
+
+function getList(){
+	var selectSort = $('#sort').val();
+	var category_1 = $('#category_1').val();
+	var category_2 = $('#category_2').val();
+	var searchWord = $('#searchWord').val();
+
+	$('#row').empty();
+	
+	$.ajax({
+		url : '/team_project/product/getProductSort',
+		type: 'post',
+		data : 'sort='+selectSort+'&category_1='+category_1+'&category_2='+category_2+'&searchWord='+searchWord,
+		dataType : 'json',
+		success : function(data){
+			//console.log(JSON.stringify(data));
+			$.each(data,function(index,items){
+				var tmpl = $('#itemTemplate').tmpl(data[index]);
+				$('#row').append(tmpl);
+
+				CountDownTimer(items.endDate, items.product_seq)
+ 			})
+		
+		},
+		error : function(err){
+			console.log(err);
+		}
+	});
+}
+</script>
+	<script type="text/x-jquery-tmpl" id="itemTemplate">
+	<div class="card" style="width: 18rem; margin-top : 20px; border-color: #EDEDED">
+		<img src="/team_project/resources/img/\${img1}" class="card-img-top" alt="대표이미지" style="width: 100%; height: 250px;">
+		<div class="card-body">
+			<h5 class="card-title">\${subject}</h5>
+			<p class="card-text">
+				<span id="startprice">시작가 : \${startprice}원</span><br>
+				<span>현재가 : \${nowprice}원</span><br>
+				<span>호가 : \${unitprice}원</span>
+				<div class="timer" id="\${product_seq}"></div>
+			</p>
+			<a href="/team_project/product/productView?product_seq=\${product_seq}" class="btn btn-primary">응찰하러가기</a>
+		</div>
+	</div>
+</script>
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+	getList();
+})
+
+$('div.tab-menu.tab-horizon > ul >  li').click(function(){
+	$(this).addClass("on");
+	$('div.tab-menu.tab-horizon > ul > li').not(this).removeClass("on");
+	$('#category_1').val($(this).index());
+	$('#category_2').val("");
+	getList();
+});
+$('#searchBtn').on('click',function(){
+	$('#searchWord').val($('#searchReady').val());
+	$('#searchReady').val("");
+	getList();
+	$('#searchWord').val("");
+})
+
+$(document).on('change','#sort',function(){
+	getList();
+});
+	
 </script>
 </body>
 </html>

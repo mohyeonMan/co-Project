@@ -26,4 +26,7 @@ public interface UserDAO {
 	public int getMessageCount(String id);
 
 	public void kakaoWrite(Map<String, String> map);
+
+	public void pointCharge(Map<String, String> map);
+
 }

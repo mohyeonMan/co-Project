@@ -192,4 +192,10 @@ public class UserServiceImpl implements UserService {
 		return userDAO.getMessageCount(id);
 	}
 
+
+	@Override
+	public void pointCharge(Map<String, String> map) {
+		userDAO.pointCharge(map);
+	}
+
 }

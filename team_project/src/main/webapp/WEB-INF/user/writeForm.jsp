@@ -85,6 +85,7 @@
 	</form>
 	
 	<script type="text/javascript" src="http://code.jquery.com/jquery-3.6.1.min.js"></script>
+	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script type="text/javascript" src="/team_project/resources/js/post.js"></script>
 	<script type="text/javascript" src="/team_project/resources/js/write.js"></script>
 

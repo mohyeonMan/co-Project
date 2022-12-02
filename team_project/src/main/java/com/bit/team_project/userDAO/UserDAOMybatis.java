@@ -62,5 +62,9 @@ public class UserDAOMybatis implements UserDAO{
 	public void kakaoWrite(Map<String, String> map) {
 		sqlSession.insert("userSQL.kakaoWrite",map);
 	}
+	@Override
+	public void pointCharge(Map<String, String> map) {
+		sqlSession.update("userSQL.pointCharge",map);
+	}
 
 }

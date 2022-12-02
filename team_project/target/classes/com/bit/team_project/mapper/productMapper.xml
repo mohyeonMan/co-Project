@@ -13,12 +13,7 @@
 								 startprice, 
 								 nowprice,
 								 unitprice, 
-								 trade_way, 
-								 enddays_year, 
-								 enddays_month, 
-								 enddays_day, 
-								 enddays_hour, 
-								 enddays_min, 
+								 trade_way,
 								 id, 
 								 product_seq, 
 								 img1, 
@@ -38,11 +33,6 @@
 				,#{startprice}
 				,#{unitprice}
 				,#{trade_way}
-				,#{enddays_year}
-				,#{enddays_month}
-				,#{enddays_day}
-				,#{enddays_hour}
-				,#{enddays_min}
 				,#{id}
 				,product_seq.nextval
 				,#{img1}
@@ -65,7 +55,17 @@
 		select * from producttable where product_seq=#{product_seq}
 	</select>
 	<select id="getProductSort" parameterType="map" resultType="product">
-		SELECT * FROM producttable ORDER by ${sort}
+		SELECT * FROM producttable where subject like '%' 
+			<if test="category_1 !='' and category_1 > 0">
+			 	and category_1 = #{category_1}
+				<if test="category_2 !=''">
+					and category_2 = #{category_2}
+				</if>
+			</if>
+			<if test="searchWord !=null">
+				and subject like '%'||#{searchWord}||'%'
+			</if>
+		ORDER by ${sort}
 	</select>
 	
 	

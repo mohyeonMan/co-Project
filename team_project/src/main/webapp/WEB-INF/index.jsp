@@ -519,102 +519,6 @@
 
 
 
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="margin-top: 100px">
-   <div class="modal-dialog">
-      <div class="modal-content">
-         <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">로그인</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-         </div>
-         <div class="modal-body">
-            <div class="member_login">
-               <form id="loginForm">
-                  <div class="member_login_input">
-                     <input type="text" name="id" id="id" placeholder="아이디" >
-                     <div id="idDiv"></div>
-                  </div>
-                  <div class="member_login_input">
-                     <input type="password" name="pwd" id="pwd" placeholder="비밀번호" autocomplete="on">
-                     <div id="pwdDiv"></div>
-                  </div>
-                  <div class="member_login_btn">
-                     <input type="button" class="btn btn-secondary" id="btn-login" value="로그인">
-                     <input type="button" class="btn btn-secondary" value="회원가입" onclick="location.href='/team_project/user/writeForm'">
-                  </div>
-                  <div class="find_password">
-                     <a href="/forgot-password">아이디 또는 비밀번호를 잊으셨나요?</a>
-                  </div>
-                  <div class="login_api">
-                     <a href="https://kauth.kakao.com/oauth/authorize?client_id=268b20cd927776992bc7f4192b57984b&redirect_uri=http://localhost:8080/team_project/user/kakaoLogin&response_type=code"><img src="/team_project/resources/img/kakao_login_medium_narrow.png" style="width: 200px; height: 45px;"></a>
-                  </div>
-                  <div class="login_api">
-                     <a href="/oauth2/authorization/google"><img src="/team_project/resources/img/naverlogin.png" style="width: 200px; height: 45px; margin-top: 8px;"></a>
-                  </div>
-               </form>
-            </div>
-         </div>
-      </div>
-   </div>
-</div>
-
-
-
-<!-- <div class="quick-menu" id="quick-menu">
-   <ul>
-      <li>
-      
-         <a href="#"> 
-         
-            <span class="icon badge-container">
-               <i class="bi bi-info-circle"></i>
-            </span> 
-            <span class="label">경매방법</span>
-         </a>
-         <hr width="80%">
-      </li>
-      <li>
-         <a href="#" id="writeFormBtn"> 
-            <span class="icon badge-container">
-               <i class="bi bi-clipboard2"></i>
-            </span> 
-            <span class="label">글쓰기</span>
-         </a>
-         <hr width="80%">
-      </li>
-      <li>
-         <a href="#" id="messageBtn"> 
-            <span class="icon badge-container">
-               <i class="bi bi-envelope"></i>
-               <span class="badge"></span>
-            </span> 
-            <span class="label">메세지함</span>
-         </a>
-         <hr width="80%">
-      </li>
-      <li>
-         <a href="/team_project/user/myPage"> 
-            <span class="icon badge-container">
-               <i class="bi bi-person"></i>
-            </span> 
-            <span class="label">마이페이지</span>
-         </a>
-         <hr width="80%">
-      </li>
-      <li>
-         <a href="#"> 
-            <span class="icon badge-container">
-               <i class="bi bi-question-circle"></i>
-            </span> 
-            <span class="label">Q&A</span>
-         </a>
-      </li>
-   </ul>
-</div>
-
-<div id="msgStack"></div> -->
-
                   
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.1.min.js"></script>
@@ -622,7 +526,20 @@
 <script type="text/javascript" src="/team_project/resources/js/index.js"></script>
 <script type="text/javascript" src="/team_project/resources/js/header.js"></script>
 <script type="text/javascript" src="/team_project/resources/js/quick_menu.js"></script>
+<script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>
 <script type="text/javascript">
+
+	//네이버 로그인
+	var naverLogin = new naver.LoginWithNaverId(
+		{
+			clientId: "nzm9yPJHOlGpTiV0eFbd", //내 애플리케이션 정보에 cliendId를 입력해줍니다.
+			callbackUrl: "http://localhost:8080/team_project/user/naverLogin", // 내 애플리케이션 API설정의 Callback URL 을 입력해줍니다.
+			isPopup: false,
+			callbackHandle: true
+		}
+	);
+	naverLogin.init();
+	
 	var socket  = null;
 $(document).ready(function(){
 	

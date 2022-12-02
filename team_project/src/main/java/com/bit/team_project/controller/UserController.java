@@ -76,7 +76,6 @@ public class UserController {
 		session.setAttribute("id", map.get("id"));
 		session.setAttribute("name", map.get("name"));
 		return "/user/kakaoLogin";
-		
 	}
 
 	@GetMapping(value = "myPage")
@@ -128,5 +127,14 @@ public class UserController {
 	public int getMessageCount(@RequestParam String id) {
 		System.out.println(id);
 		return userService.getMessageCount(id);
+	}
+	@PostMapping(value = "pointCharge")
+	@ResponseBody
+	public void pointCharge(@RequestParam String id, String point) {
+		Map<String, String>map = new HashMap<String, String>();
+		System.out.println("con : " +id+point);
+		map.put("id", id);
+		map.put("point", point);
+		userService.pointCharge(map);
 	}
 }

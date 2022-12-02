@@ -15,4 +15,5 @@ public class UserDTO {
 	private String zipcode;
 	private String addr1;
 	private String addr2;
+	private int point;
 }

@@ -15,9 +15,6 @@ setTimeout("printTime()", 1000);
 window.onload = function() {
 printTime();
 };
-	
-	
-	
 	$('.close').hide();
 	$('#sidebar').hide();
 	$('.sidebar nav dd').hide();
@@ -33,15 +30,23 @@ printTime();
 	});
 	
 	$('#sidebar nav dt').click(function () {
-		$(this).next('dd').toggle();
+		$(this).next('dd').slideToggle(200);
 	});
 	
-	$('.category').on('click',function(){
-		alert($(this).attr('id'));
-		location.href='/team_project/product/productList?category='+$(this).attr('id');
+	$('.category > a').on('click',function(){
+		location.href='/team_project/product/productList?category_1='
+		+($(this).parents('dd').parents('dl').index()-1)+
+		'&category_2='+($(this).index()+1);
 	})
 	$('#logo').on('click',function(){
 		location.href='/team_project/'
+	})
+	
+	$('.userWriteFormBtn').click(function(){
+		window.open('/team_project/user/writeForm','userWriteForm','width = 550, height = 500, top = 100, left = 200');
+	})
+	$('#userWriteFormBtn').click(function(){
+		$('.userWriteFormBtn').trigger('click');
 	})
 	
 	

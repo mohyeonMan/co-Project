@@ -2,6 +2,10 @@ $('#writeFormBtn').click(function () {
 	window.open('/team_project/product/productWriteForm','productWriteForm','width = 700, height = 700, top = 100, left = 200');
 });
 
+$('#myPageBtn').click(function () {
+	window.open('/team_project/user/myPage','myPage','width = 550, height = 700, top = 100, left = 200');
+});
+
 $(document).ready(function() {
     
    // 기존 css에서 플로팅 배너 위치(top)값을 가져와 저장한다.

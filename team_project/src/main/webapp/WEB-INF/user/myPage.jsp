@@ -5,9 +5,34 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="/team_project/resources/css/collapse.css">
+
+
 </head>
 
 <body>
+<div id="popupHeader" >
+		<span style="color: white; margin-left: 10px; margin-top:10px; font-size: 10pt;">나름 마이페이지</span>
+	</div>
+	<h2>${name }</h2>
+	<br>
+	당신의 포인트 : <input type="text" id="userPoint" readonly placeholder="땡전한푼 없음">
+	<br>
+	<select id="chargeValue">
+		<option value="5000">5,000</option>
+		<option value="10000">10,000</option>
+		<option value="30000">30,000</option>
+		<option value="50000">50,000</option>
+		<option value="100000">100,000</option>
+		<option value="500000">500,000</option>
+		<option value="1000000">1,000,000</option>
+	</select>
+	<input type="button" id="chargeBtn" value="충전">
+
+
+
+
+
 	<Form name="myPage" id="myPage">
 		<table border="1" width="500" cellpadding="10">
 			<tr>
@@ -67,13 +92,14 @@
 			</tr>
 		</table>
 	</Form>
-	<input type="button" id="apibtn" value="결제 테스트">
 
 	<script type="text/javascript"
 		src="http://code.jquery.com/jquery-3.6.1.min.js"></script>
 	<script type="text/javascript"
-		src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+		src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 	<script type="text/javascript">
+	
+	
 		$(function() {
 			//회원정보 수정
 			$.ajax({
@@ -92,6 +118,7 @@
 					$('input[name=zipcode]').val(data.zipcode);
 					$('input[name=addr1]').val(data.addr1);
 					$('input[name=addr2]').val(data.addr2);
+					
 				},
 				error : function(err) {
 
@@ -113,32 +140,50 @@
 				}
 			})
 		})
-
-		//결제 api 연결 테스트
-	</script>
-	<script type="text/javascript">
-		$(function() {
-			$('#apibtn').click(function() {
+	function payment(user){
+			
+			console.log(user);
+		IMP.init('imp46112010');
+		IMP.request_pay({
+			pg: "kakaopay.TC0ONETIME",
+			pay_method: "card",
+			merchant_uid: (user.name)+"21346789011111",
+			name: "포인트 충전",
+			amount: user.amount,
+			buyer_email : "email@naver.com",
+			buyer_name : user.name,
+			buyer_tel : "010-0000-0000"
+		},function(rsp){
+			if(rsp.success){
 				$.ajax({
-					url : '/team_project/payments/complete',
-					dataType : 'json',
-					success : function(data) {
-						console.log("13123")
-						var box = data.next_redirect_pc_url;
-						window.open(box, "box","width=650 height=600 left=400 top=120");
-						// location.href=box;
-						// alert("결제 완료");
-						// 2가지 방법 팝업창을 띄우고 하던지 이동해서 하던지 
-						// console.log("123123123123");
-						// w.close();
-						// location.href = "http://localhost:8080/swan_stream/home";
+					type : 'post',
+					url: '/team_project/user/pointCharge',
+					data : "id="+user.id+"&point="+user.amount,
+					success : function(){
+						alert(user.name+"님, "+user.amount+"원 충전되었습니다. ("+rsp.imp_uid+")");
 					},
-					error : function(err) {
-						console.log(err);
+					error : function(){
+						alert('결제완료 / 충전실패. 고객센터에 문의 하세요.')
 					}
-				});
-			});
-		});
+				})
+				
+				
+			}else{
+				alert("실패 : "+rsp.error_code+"/"+rsp.error_msg);
+			}
+		})
+	}
+		
+		//결제 api 연동2 (iamport)
+		$('#chargeBtn').click(function(){
+			var name= $('input[name=name]').val();
+			var amount = $('#chargeValue').val();
+			var id= $('input[name=id]').val()
+			var user = {"id":id,"name":name,"amount":amount};
+			payment(user);
+		})	
+
 	</script>
+	
 </body>
 </html>
