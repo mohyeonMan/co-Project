@@ -156,17 +156,18 @@
             <span class="icon badge-container">
                <i class="bi bi-person"></i>
             </span> 
-            <span class="label">마이페이지</span>
+            <span class="label">회원정보수정</span>
          </a>
          <hr width="80%">
       </li>
       <li>
          <a href="#"> 
             <span class="icon badge-container">
-               <i class="bi bi-question-circle"></i>
+               <i class="bi bi-cash-coin"></i>
             </span> 
-            <span class="label">Q&A</span>
+            <span class="label">포인트충전</span>
          </a>
+         <hr width="80%">
       </li>
        <li>
          <a href="/team_project/product/successedPrd"> 

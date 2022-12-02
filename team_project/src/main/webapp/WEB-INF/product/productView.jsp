@@ -338,7 +338,7 @@ $(document).ready(function(){
 	               error : function (err) {
 	               }
 	             });
-	         }, 2000);
+	         }, 300);
 });
 
 </script>

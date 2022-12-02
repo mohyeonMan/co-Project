@@ -20,6 +20,17 @@
 .rolling-listed-item{
    scroll-behavior : smooth;
 }
+ul li .posted-info .like a{
+    color : white;
+    background-color : #172126;
+    --bs-btn-border-color: white;
+}
+.posted-info .nowprice{
+	color: white;
+}
+.posted-info .endprice{
+	color: white;
+}
 </style>
 </head>
 <body>
@@ -412,28 +423,9 @@ $(document).ready(function(){
 	        url : '/team_project/product/getPopularList',
 	        type: 'post',
 	        success : function(data){
-	        	console.log(data)
-	        	
-	        	
 	        	$.each(data,function(index, items){
-	        		$('<li>').append($('<a>',{class:'thumb'}).append($('<img>',{}))).append($('<div>',{})).appendTo($('.flex-rolling'))
+	        		$('<li>').append($('<a>',{class:'thumb',href:'/team_project/product/productView?product_seq='+items.product_seq}).append($('<img>',{src:'/team_project/resources/img/'+items.img1,alt:'대표이미지'}))).append($('<div>',{class:'posted-info'}).append($('<p>',{class:'subject'})).append($('<span>',{class:'tag', text:' 현재가 : '})).append($('<span>',{class:'nowprice', text : items.nowprice})).append($('<br>')).append($('<span>',{class:'tag', text:' 낙찰가 : '})).append($('<span>',{class:'endprice',text: items.hopeprice})).append($('<div>',{class:'like'}).append($('<a>',{href:'/team_project/product/productView?product_seq='+items.product_seq, class:'btn btn-primary',text:'응찰하러가기'})))).appendTo($('.flex-rolling'))
 	        	});
-	        	
-	        /* <li>
-                <a href="#" class="thumb">
-                   <img src="/team_project/resources/img/tmdnlcl.jpeg" class="lazy" alt="대표이미지" style="display: block;">
-                </a>
-                <div class="posted-info">
-                   <p class="subject">
-                      <a href="#" style="color: white;">스위치 팔아요~ </a>
-                   </p>
-                   <span class="tag">현재가 : </span><span class="nowprice" style="color: white;"> 22 </span><br>
-                   <span class="tag">낙찰가 : </span><span class="endprice" style="color: white;"> 22 </span><br>
-                   <div class="like">
-                      <a href="/team_project/product/productView?product_seq=35" class="btn btn-primary" style="color: white; background-color: #172126; --bs-btn-border-color: white;">응찰하러가기</a>
-                   </div>
-                </div>
-             </li> */
 	        	
 	        	
 	        }, error : function () {

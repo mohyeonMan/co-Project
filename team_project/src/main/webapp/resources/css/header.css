@@ -141,6 +141,6 @@ hr{
 	z-index: 3001;
 	position: absolute;
 }
-.toast-body a{
+.toast-body a:visited{
 	color: black;
 }
