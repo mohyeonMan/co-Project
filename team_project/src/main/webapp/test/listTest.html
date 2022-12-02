@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div class="row row" id="row"></div>
+
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script type="text/javascript" src="/team_project/resources/js/jquery.tmpl.min.js"></script>
+<script type="text/x-jquery-tmpl" id="itemTemplate">
+	<div class="card" style="width: 18rem; margin-top : 20px; border-color: #EDEDED">
+		<img src="/team_project/resources/img/${img1}" class="card-img-top" alt="대표이미지" style="width: 100%; height: 250px;">
+		<div class="card-body">
+			<h5 class="card-title">${subject}</h5>
+			<p class="card-text">
+				${content}<br>
+				<span id="startprice">시작가 : ${startprice}원</span><br>
+				<span>현재가 : ${nowprice}원</span><br>
+				<span>호가 : ${unitprice}원</span>
+				<div class="timer" id="${product_seq}"></div>
+			</p>
+			<a href="/team_project/product/productView?product_seq=${product_seq}" class="btn btn-primary">응찰하러가기</a>
+		</div>
+	</div>
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$.ajax({
+		url : '/team_project/product/getProductList',
+		type: 'post',
+		dataType : 'json',
+		success : function(data){
+			console.log(JSON.stringify(data));
+				var tmpl = $('#itemTemplate').tmpl(data);
+				$('#row').append(tmpl);
+				
+		},
+		error : function(err){
+			console.log(err);
+		}
+	});
+	
+});
+</script>
+</body>
+</html>

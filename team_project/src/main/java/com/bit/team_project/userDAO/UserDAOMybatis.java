@@ -1,12 +1,15 @@
 package com.bit.team_project.userDAO;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.collections.map.HashedMap;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.ModelMap;
 
 import com.bit.team_project.DTO.BidDTO;
 import com.bit.team_project.DTO.UserDTO;
@@ -53,5 +56,31 @@ public class UserDAOMybatis implements UserDAO{
 	public void update(UserDTO userDTO) {
 		sqlSession.update("userSQL.update",userDTO);
 	}
+	@Override
+	public int getMessageCount(String id) {
+		
+		return sqlSession.selectOne("userSQL.getMessageCount",id);
+	}
+	@Override
+	public void kakaoWrite(Map<String, String> map) {
+		sqlSession.insert("userSQL.kakaoWrite",map);
+	}
+	@Override
+	public void pointCharge(Map<String, String> map) {
+		sqlSession.update("userSQL.pointCharge",map);
+	}
+	@Override
+	public UserDTO adminlogintest(ModelMap modelMap) {
+		Map<String, String>map = new HashMap<String, String>();
+		map.put("id",(String) modelMap.get("id"));
+		map.put("pwd",(String) modelMap.get("pwd"));
+		return sqlSession.selectOne("userSQL.adminlogintest",map);
+	}
+	@Override
+	public List<UserDTO> getAlluser() {
+		return sqlSession.selectList("userSQL.getAlluser");
+	}
+	
+	
 
 }

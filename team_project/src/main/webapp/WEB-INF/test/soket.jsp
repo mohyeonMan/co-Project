@@ -6,16 +6,23 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
 </head>
 <body>
 <div id="msgStack"></div>
 
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button>
 
-<div class="modal" tabindex="-1">
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Modal title</h5>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -24,15 +31,19 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" id="notifySendBtn">Send</button>
+        <button type="button" class="btn btn-primary" id="notifySendBtn">Save changes</button>
       </div>
     </div>
   </div>
 </div>
 
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+
 <!-- sockJS -->
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script> -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.5/sockjs.min.js"></script>
 <script>
 // 전역변수 설정
 var socket  = null;
@@ -43,7 +54,7 @@ $(document).ready(function(){
 
     // 데이터를 전달 받았을때 
     sock.onmessage = onMessage; // toast 생성
-	console.log(socket);
+	console.log(sock);
 });
 
 // toast생성 및 추가
@@ -68,7 +79,7 @@ $('#notifySendBtn').click(function(e){
     let type = '70';
     let target = modal.find('.modal-body input').val();
     let content = modal.find('.modal-body textarea').val();
-    let url = '${contextPath}/test/soket';
+    let url = '${contextPath}/message/messageList';
     
     console.log(target);
     console.log(content);
@@ -85,9 +96,10 @@ $('#notifySendBtn').click(function(e){
             url: url
         },
         success: function(){    // db전송 성공시 실시간 알림 전송
+        	
             // 소켓에 전달되는 메시지
             // 위에 기술한 EchoHandler에서 ,(comma)를 이용하여 분리시킨다.
-            sock.send("관리자,"+target+","+content+","+url);
+            socket.send("관리자,"+target+","+content+","+url);
         
         }
     });

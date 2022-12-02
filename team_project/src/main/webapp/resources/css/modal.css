@@ -1,0 +1,12 @@
+@charset "UTF-8";
+.modal-body{
+   margin: auto;
+}
+.member_login_input{
+   margin-top: 8px;
+}
+.member_login_btn{
+   margin-top: 8px;
+   margin-left: 8%;
+}
+

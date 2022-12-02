@@ -15,6 +15,7 @@ import javax.net.ssl.HttpsURLConnection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.ModelMap;
 
 import com.bit.team_project.DTO.BidDTO;
 import com.bit.team_project.DTO.UserDTO;
@@ -158,18 +159,20 @@ public class UserServiceImpl implements UserService {
 			JsonElement element = parser.parse(result);
 
 			String id = element.getAsJsonObject().get("id").getAsString();
-//			String properties = element.getAsJsonObject().get("properties").getAsString();
-
-//			boolean hasEmail = element.getAsJsonObject().get("kakao_account").getAsJsonObject().get("has_email")
-//					.getAsBoolean();
-//			String email = "";
-//			if (hasEmail) {
-//				email = element.getAsJsonObject().get("kakao_account").getAsJsonObject().get("email").getAsString();
-//			}
+			String name = element.getAsJsonObject().get("properties").getAsJsonObject().get("nickname").getAsString();
 
 			System.out.println("id : " + id);
-//			System.out.println("nick : " + nick);
-			map.put("id", id); // 임시로 name
+			System.out.println("nick : " + name);
+			map.put("id", id);
+			map.put("name",name);
+			
+			String exist = userDAO.checkId(id);
+			if(exist.equals("0")) {
+				userDAO.kakaoWrite(map);
+				System.out.println(id+"/"+name+"회원가입 완료");
+			}
+		
+			
 			
 			reader.close();
 
@@ -182,6 +185,28 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void update(UserDTO userDTO) {
 		userDAO.update(userDTO);
+	}
+
+
+	@Override
+	public int getMessageCount(String id) {
+		return userDAO.getMessageCount(id);
+	}
+
+
+	@Override
+	public void pointCharge(Map<String, String> map) {
+		userDAO.pointCharge(map);
+	}
+	@Override
+	public UserDTO adminlogintest(ModelMap modelMap) {
+		return userDAO.adminlogintest(modelMap);
+	}
+
+
+	@Override
+	public List<UserDTO> getAlluser() {
+		return userDAO.getAlluser();
 	}
 
 }

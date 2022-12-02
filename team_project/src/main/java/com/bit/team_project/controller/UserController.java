@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -72,13 +73,13 @@ public class UserController {
 		System.out.println("인가코드 : "+code);
 		String token = userService.getKakaoAccessToken(code);
 		Map<String, String> map = userService.createKakaoUser(token);
+	
 		session.setAttribute("id", map.get("id"));
-		session.setAttribute("name", "good");
-
-		return "/index";
+		session.setAttribute("name", map.get("name"));
+		return "/user/kakaoLogin";
 	}
 
-	@GetMapping(value = "/myPage")
+	@GetMapping(value = "myPage")
 	public String myPage() {
 		return "/user/myPage";
 	}
@@ -120,5 +121,45 @@ public class UserController {
 	public void update(@ModelAttribute UserDTO userDTO) {
 		System.out.println(userDTO);
 		userService.update(userDTO);
+	}
+	
+	@PostMapping(value = "/getMessageCount")
+	@ResponseBody
+	public int getMessageCount(@RequestParam String id) {
+		System.out.println(id);
+		return userService.getMessageCount(id);
+	}
+	@PostMapping(value = "pointCharge")
+	@ResponseBody
+	public void pointCharge(@RequestParam String id, String point) {
+		Map<String, String>map = new HashMap<String, String>();
+		System.out.println("con : " +id+point);
+		map.put("id", id);
+		map.put("point", point);
+		userService.pointCharge(map);
+	}
+	
+	@GetMapping(value = "adminPage")
+	public String adminPage() {
+		return "/user/adminPage";
+	}
+	@GetMapping(value = "adminLogin")
+	public String adminLogin() {
+		return "/user/adminLogin";
+	}
+	
+	@PostMapping(value= "adminlogintest")
+	@ResponseBody
+	public UserDTO adminlogintest(@RequestParam String id,  String pwd,ModelMap modelMap){
+		modelMap.put("id", id);
+		modelMap.put("pwd", pwd);
+		
+		return userService.adminlogintest(modelMap);
+	}
+	
+	@PostMapping(value= "getAlluser")
+	@ResponseBody
+	public List<UserDTO> getAlluser(){
+		return userService.getAlluser();
 	}
 }

@@ -2,6 +2,9 @@ package com.bit.team_project.userService;
 
 import java.util.List;
 import java.util.Map;
+
+import org.springframework.ui.ModelMap;
+
 import com.bit.team_project.DTO.BidDTO;
 import com.bit.team_project.DTO.UserDTO;
 
@@ -28,5 +31,13 @@ public interface UserService {
 	public Map<String, String> createKakaoUser(String token);
 
 	public void update(UserDTO userDTO);
+
+	public int getMessageCount(String id);
+
+	public void pointCharge(Map<String, String> map);
+	
+	public UserDTO adminlogintest(ModelMap modelMap);
+
+	public List<UserDTO> getAlluser();
 
 }

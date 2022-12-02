@@ -1,0 +1,237 @@
+@charset "UTF-8";
+#footer {
+    background-color: #fafbfc;
+    border-top: 1px solid #e4e8eb;
+}
+#footer .footer_inner {
+    width: 90%;
+    padding: 0 30px 92px;
+    margin: 0 auto;
+}
+#footer .banner_area {
+    overflow: hidden;
+    padding: 24px 0;
+    border-bottom: 1px solid #e4e8eb;
+}
+#da_public_left {
+    float: left;
+}
+iframe {
+    overflow: hidden;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    vertical-align: top;
+}
+.main_public {
+    position: relative;
+    width: 350px;
+    height: 86px;
+    font-family: "Malgun Gothic", "맑은 고딕", -apple-system, BlinkMacSystemFont, helvetica, "Apple SD Gothic Neo", sans-serif;
+}
+.main_public a, .main_public img {
+    border: none;
+    outline: none;
+}
+.main_public a {
+    text-decoration: none;
+    color: inherit;
+}
+.main_public_image {
+    overflow: hidden;
+    position: relative;
+    float: left;
+    width: 160px;
+    height: 86px;
+}
+.main_public_image img {
+    -webkit-transition: -webkit-transform .2s cubic-bezier(.165, .84, .44, 1);
+    transition: -webkit-transform .2s cubic-bezier(.165, .84, .44, 1);
+    transition: transform .2s cubic-bezier(.165, .84, .44, 1);
+    transition: transform .2s cubic-bezier(.165, .84, .44, 1), -webkit-transform .2s cubic-bezier(.165, .84, .44, 1);
+    image-rendering: -webkit-optimize-contrast;
+}
+.main_public_image::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    content: '';
+}
+.main_public_content {
+    overflow: hidden;
+    height: 86px;
+    padding: 2px 2px 0 16px;
+    font-size: 12px;
+    line-height: 1.25;
+    box-sizing: border-box;
+    text-align: left;
+}
+.main_public em {
+    font-style: normal;
+}
+.main_public_subtitle {
+    display: block;
+    overflow: hidden;
+    font-weight: 700;
+    letter-spacing: -0.25px;
+    color: #58c464;
+    white-space: nowrap;
+}
+.main_public_title {
+    display: block;
+    margin-top: 6px;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.26px;
+    color: #242424;
+    white-space: nowrap;
+}
+.main_public_desc, .main_public_desc2 {
+    overflow: hidden;
+    line-height: 18px;
+    letter-spacing: -0.25px;
+    color: #424242;
+    white-space: nowrap;
+}
+.main_public_desc {
+    margin-top: 8px;
+}
+.main_public a {
+    text-decoration: none;
+    color: inherit;
+}
+#da_public_right {
+    float: left;
+    margin-left: 40px;
+}
+#veta_time2 {
+    float: left;
+    margin-left: 40px;
+}
+#footer .notice_area {
+    overflow: hidden;
+    padding: 16px 0 15px;
+    border-bottom: 1px solid #e4e8eb;
+}
+#footer .notice_box {
+    float: left;
+}
+#footer .notice_box .title {
+    float: left;
+    margin-right: 13px;
+    color: #202020;
+}
+#footer .notice_box .title a{
+    float: left;
+    margin-right: 13px;
+    font-size: 12px;
+    line-height: 16px;
+    color: #202020;
+    font-family: -apple-system,BlinkMacSystemFont,"Malgun Gothic","맑은 고딕",helvetica,"Apple SD Gothic Neo",sans-serif;
+}
+#footer .notice_area .link_all {
+    float: right;
+    font-weight: 700;
+    color: #202020;
+}
+#footer .notice_area .link_all:after {
+    display: inline-block;
+    width: 8px;
+    height: 12px;
+    background-position: -408px -110px;
+    background-repeat: no-repeat;
+    vertical-align: top;
+    content: '';
+    margin-left: 10px;
+    vertical-align: -2px;
+}
+#footer .aside_area {
+    overflow: hidden;
+    border-bottom: 1px solid #e4e8eb;
+}
+#footer .partner_box_wrap {
+    float: left;
+    width: 780px;
+    padding: 20px 0;
+}
+#footer .partner_box {
+    overflow: hidden;
+}
+#footer .partner_box .title {
+    float: left;
+    width: 170px;
+    font-size: 12px;
+    line-height: 16px;
+    color: #202020;
+    font-family: -apple-system,BlinkMacSystemFont,"Malgun Gothic","맑은 고딕",helvetica,"Apple SD Gothic Neo",sans-serif;
+}
+#footer .partner_box .link_partner {
+    float: left;
+    font-size: 12px;
+    line-height: 16px;
+    color: #202020;
+    font-family: -apple-system,BlinkMacSystemFont,"Malgun Gothic","맑은 고딕",helvetica,"Apple SD Gothic Neo",sans-serif;
+}
+#footer .partner_box .link_partner+.link_partner:before {
+    content: "";
+    display: inline-block;
+    width: 1px;
+    height: 11px;
+    background-color: #e4e8eb;
+    vertical-align: -1px;
+    margin: 0 8px;
+}
+#footer .partner_box+.partner_box {
+    margin-top: 9px;
+}
+#footer .partner_box {
+    overflow: hidden;
+}
+#footer .corp_area {
+    padding-top: 25px;
+    width: 100%;;
+}
+.blind {
+    position: absolute;
+    clip: rect(0 0 0 0);
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+}
+#footer .list_corp {
+    overflow: hidden;
+    float: left;
+    margin-right: 13px;
+}
+#footer .list_corp .corp_item {
+    float: left;
+    margin-left: 20px;
+}
+#footer .list_corp .corp_item a{
+    font-size: 12px;
+    line-height: 16px;
+    color: #202020;
+    font-family: -apple-system,BlinkMacSystemFont,"Malgun Gothic","맑은 고딕",helvetica,"Apple SD Gothic Neo",sans-serif;
+}
+#footer .corp_area .addr {
+    float: left;
+    color: #202020;
+    font-weight: 700;
+}
+#footer .corp_area .addr a{
+    font-size: 12px;
+    line-height: 16px;
+    color: #202020;
+    font-family: -apple-system,BlinkMacSystemFont,"Malgun Gothic","맑은 고딕",helvetica,"Apple SD Gothic Neo",sans-serif;
+}
+#footer .corp_area:after {
+    content: "";
+    display: table;
+    table-layout: fixed;
+    clear: both;
+}

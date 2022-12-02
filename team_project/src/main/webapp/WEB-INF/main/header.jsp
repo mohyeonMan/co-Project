@@ -1,95 +1,225 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+<div id="header">
+	<div id="headerLeft">
+		<a id="categoryBtn">
+			<span class="list"><i class="bi bi-list"></i></span>
+			<span class="close">
+				<i class="bi bi-x-lg"></i>
+			</span>
+		</a>
+		<img src="/team_project/resources/img/logo1.jpeg" alt="로고" id="logo">
+		<h1 id="nameTag"> <i class="bi bi-person-circle" style="font-size: 1.1em;"></i> ${name}님 환영합니다. </h1>
+		<span id="clock"></span>
+	</div>
+	
+	<div id="headerRight_login">
+		
+		<a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">로그인</a> / <a class="userWriteFormBtn">회원가입</a> / <a>공지사항</a>
 
-<nav class="navbar navbar-expand-lg bg-light" id="nav-bar-opacity">
-	<div class="container-fluid">
-			<img src="/team_project/resources/img/logo.png"
-				onclick="location.href='/team_project/'">
-			<button class="navbar-toggler" type="button"
-				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-				aria-controls="navbarSupportedContent" aria-expanded="false"
-				aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<ul class="navbar-nav ms+20 me-auto mb-2 mb-lg-0" id="nav-bar-center">
-
-				<!-- 전체 -->
-				<li class="nav-item"><a class="nav-link"
-					href="/team_project/product/productList" role="button"> 전체 매물
-				</a></li>
-				<!-- dropdown1 -->
-				<li class="nav-item dropdown"><a
-					class="nav-link dropdown-toggle" href="#"> 디지털/가전 </a>
-					<ul class="dropdown-menu">
-						<li><a class="dropdown-item" id="1-1">생활가전</a></li>
-						<li><hr class="dropdown-divider"></li>
-						<li><a class="dropdown-item" id="1-2">주방가전</a></li>
-						<li><hr class="dropdown-divider"></li>
-						<li><a class="dropdown-item" id="1-3">계절가전</a></li>
-						<li><hr class="dropdown-divider"></li>
-						<li><a class="dropdown-item" id="1-4">컴퓨터/노트북</a></li>
-						<li><hr class="dropdown-divider"></li>
-						<li><a class="dropdown-item" id="1-5">모바일/디카</a></li>
-					</ul></li>
-				<!-- dropdown2 -->
-				<li class="nav-item dropdown"><a
-					class="nav-link dropdown-toggle" href="#"> 아웃도어/스포츠 </a>
-					<ul class="dropdown-menu">
-						<li><a class="dropdown-item" id="2-1">골프</a></li>
-						<li><hr class="dropdown-divider"></li>
-						<li><a class="dropdown-item" id="2-2">캠핑/낚시/등산</a></li>
-						<li><hr class="dropdown-divider"></li>
-						<li><a class="dropdown-item" id="2-3">헬스/수영/러닝</a></li>
-						<li><hr class="dropdown-divider"></li>
-						<li><a class="dropdown-item" id="2-4">스키/보드/구기</a></li>
-						<li><hr class="dropdown-divider"></li>
-						<li><a class="dropdown-item" id="2-5">자전거</a></li>
-					</ul></li>
-				<!-- dropdown2 -->
-				<li class="nav-item dropdown"><a
-					class="nav-link dropdown-toggle" href="#"> 홈/생활 </a>
-					<ul class="dropdown-menu">
-						<li><a class="dropdown-item" id="3-1">가구/조명</a></li>
-						<li><hr class="dropdown-divider"></li>
-						<li><a class="dropdown-item" id="3-2">식품</a></li>
-						<li><hr class="dropdown-divider"></li>
-						<li><a class="dropdown-item" id="3-3">생활/주방</a></li>
-						<li><hr class="dropdown-divider"></li>
-						<li><a class="dropdown-item" id="3-4">반려동물 용품</a></li>
-						<li><hr class="dropdown-divider"></li>
-						<li><a class="dropdown-item" id="3-5">도서/그림/악기</a></li>
-						<li><hr class="dropdown-divider"></li>
-						<li><a class="dropdown-item" id="3-6">티켓/음반/공연</a></li>
-						<li><hr class="dropdown-divider"></li>
-						<li><a class="dropdown-item" id="3-7">게임/취미</a></li>
-						<li><hr class="dropdown-divider"></li>
-						<li><a class="dropdown-item" id="3-8">식물</a></li>
-					</ul></li>
-
-			</ul>
-			<form class="d-flex" role="search">
-				<input class="form-control me-2" type="search" placeholder="Search"
-					aria-label="Search">
-				<button class="btn btn-outline-success" type="submit">Search</button>
-			</form>
+	</div>
+	<div id="headerRight_logout">
+		<a href="#" id="logoutBtn">로그아웃</a>
+		<div class="messageInput">
+			<input type="hidden" value="${id}" id="msgId">
+			<input type="hidden" id="msgContent">
+			<input type="hidden" id="msgSeq">
 		</div>
 	</div>
-</nav>
-<script type="text/javascript"
-	src="http://code.jquery.com/jquery-3.6.1.min.js"></script>
+	
+</div>
 
-<script>
-	$('.nav-item.dropdown').hover(function() {
-		$(this).children('.dropdown-menu').slideDown(100);
-	}, function() {
-		$(this).children('.dropdown-menu').slideUp(100);
-	})
+<div class="sidebar-wrap">
+	<aside id="sidebar" class="sidebar">
+		<nav>
+			<dl>
+				<dt class="on">
+					<a href="/team_project/">
+						<p class="label-txt"> <i class="bi bi-house"></i> 홈 </p>
+					</a>
+				</dt>
+			</dl>
+			<dl>
+				<dt class="on">
+					<a href="/team_project/product/productList?category_1=1&category_2=#"><p class="label-txt"> <i class="bi bi-list-stars"></i> 전체 매물 </p></a>
+				</dt>
+			</dl>
+			<dl>
+				<dt class="on">
+					<p class="label-txt"> <i class="bi bi-pc-display-horizontal"></i> 디지털/가전 </p>
+				</dt>
+				<dd class="category">
+					<a href="#" >
+						<p class="label-txt">생활가전</p>
+					</a>
+					<a href="#" >
+						<p class="label-txt">주방가전</p>
+					</a>
+					<a href="#" >
+						<p class="label-txt">계절가전</p>
+					</a>
+					<a href="#" >
+						<p class="label-txt">컴퓨터/노트북</p>
+					</a>
+					<a href="#" >
+						<p class="label-txt">모바일/디카</p>
+					</a>
+				</dd>
+			</dl> 
+			<dl>
+				<dt class="on">
+					<p class="label-txt"> <i class="bi bi-globe2"></i> 아웃도어/스포츠 </p>
+				</dt>
+				<dd class="category">
+					<a href="#" >
+						<p class="label-txt">골프</p>
+					</a>
+					<a href="#" >
+						<p class="label-txt">캠핑/낚시/등산</p>
+					</a>
+					<a href="#" >
+						<p class="label-txt">헬스/수영/러닝</p>
+					</a>
+					<a href="#" >
+						<p class="label-txt">스키/보드/구기</p>
+					</a>
+					<a href="#" >
+						<p class="label-txt">자전거</p>
+					</a>
+				</dd>
+			</dl>
+			<dl>
+				<dt class="on">
+					<p class="label-txt"> <i class="bi bi-flower2"></i> 홈/생활 </p>
+				</dt>
+				<dd class="category">
+					<a href="#" >
+						<p class="label-txt">가구/조명</p>
+					</a>
+					<a href="#" >
+						<p class="label-txt">식품</p>
+					</a>
+					<a href="#" >
+						<p class="label-txt">생활/주방</p>
+					</a>
+					<a href="#" >
+						<p class="label-txt">반려동물 용품</p>
+					</a>
+					<a href="#" >
+						<p class="label-txt">도서/그림/악기</p>
+					</a>
+					<a href="#" >
+						<p class="label-txt">티켓/음반/공연</p>
+					</a>
+					<a href="#" >
+						<p class="label-txt">게임/취미</p>
+					</a>
+					<a href="#" >
+						<p class="label-txt">식물</p>
+					</a>
+				</dd>
+			</dl>
+		</nav>
+	</aside>
+</div>
 
-	$('.dropdown-item').click(function() {
-		var category = $(this).attr('id');
-		alert(category);
-		location.href = "list?category=" + category
-	})
-</script>
+<div class="quick-menu" id="quick-menu">
+   <ul>
+      <li>
+      
+         <a href="#"> 
+         
+            <span class="icon badge-container">
+               <i class="bi bi-info-circle"></i>
+            </span> 
+            <span class="label">경매방법</span>
+         </a>
+         <hr width="80%">
+      </li>
+      <li>
+         <a href="#" id="writeFormBtn"> 
+            <span class="icon badge-container">
+               <i class="bi bi-clipboard2"></i>
+            </span> 
+            <span class="label">글쓰기</span>
+         </a>
+         <hr width="80%">
+      </li>
+      <li>
+         <a href="#" id="messageBtn"> 
+            <span class="icon badge-container">
+               <i class="bi bi-envelope"></i>
+               <span class="badge"></span>
+            </span> 
+            <span class="label">메세지함</span>
+         </a>
+         <hr width="80%">
+      </li>
+      <li>
+         <a href="#" id="myPageBtn"> 
+            <span class="icon badge-container">
+               <i class="bi bi-person"></i>
+            </span> 
+            <span class="label">회원정보수정</span>
+         </a>
+         <hr width="80%">
+      </li>
+      <li>
+         <a href="#"> 
+            <span class="icon badge-container">
+               <i class="bi bi-cash-coin"></i>
+            </span> 
+            <span class="label">포인트충전</span>
+         </a>
+         <hr width="80%">
+      </li>
+       <li>
+         <a href="/team_project/product/successedPrd"> 
+            <span class="icon badge-container">
+               <i class="bi bi-bag-check"></i>
+            </span> 
+            <span class="label">종료된물품</span>
+         </a>
+      </li>
+   </ul>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="margin-top: 100px">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">로그인</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+         </div>
+         <div class="modal-body">
+            <div class="member_login">
+               <form id="loginForm">
+                  <div class="member_login_input">
+                     <input type="text" name="id" id="id" placeholder="아이디" >
+                     <div id="idDiv"></div>
+                  </div>
+                  <div class="member_login_input">
+                     <input type="password" name="pwd" id="pwd" placeholder="비밀번호" autocomplete="on">
+                     <div id="pwdDiv"></div>
+                  </div>
+                  <div class="member_login_btn">
+                     <input type="button" class="btn btn-secondary" id="btn-login" value="로그인">
+                     <input type="button" class="btn btn-secondary" id="userWriteFormBtn" value="회원가입" >
+                  </div>
+                  <div class="find_password">
+                     <a href="/forgot-password">아이디 또는 비밀번호를 잊으셨나요?</a>
+                  </div>
+                  <div class="login_api">
+                     <a href="https://kauth.kakao.com/oauth/authorize?client_id=268b20cd927776992bc7f4192b57984b&redirect_uri=http://localhost:8080/team_project/user/kakaoLogin&response_type=code"><img src="/team_project/resources/img/kakao_login_medium_narrow.png" style="width: 200px; height: 45px;"></a>
+                  </div>
+               </form>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+
+<div id="msgStack"></div>

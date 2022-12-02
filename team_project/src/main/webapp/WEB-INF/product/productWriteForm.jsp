@@ -9,29 +9,25 @@
 <link rel="stylesheet" href="/team_project/resources/css/collapse.css">
 <link rel="stylesheet" href="/team_project/resources/css/reset.css">
 <style type="text/css">
-div{
-	border:1px dotted gray;
-}
+
 </style>
-<link rel="stylesheet" href="/team_project/resources/css/collapse.css">
-<link rel="stylesheet" href="/team_project/resources/css/reset.css">
 </head>
 <body>
 	<div id="popupHeader" >
-		
+		<span style="color: white; margin-left: 10px; margin-top:10px; font-size: 10pt;">${name}님</span>
 	</div>
-	<h1>매물 등록</h1><br>
+	<h1 style="margin-left: 10px;">매물 등록</h1><br>
 	
 	<form action="write" method="post" enctype="multipart/form-data" id="productWriteForm">
 		<table cellpadding="5">
 			<tr height="50">
-				<td width="200"><font size="2pt">매물명</font></td>
+				<td width="200"><font size="2pt">매물명 <span style="color: red; font-size: 5pt;">(*)</span></font></td>
 				<td width="400"><input type="text" placeholder='물품명' id="subject" name="subject" >
 				<br><span class="checking" id="subjectDiv"></span>
 				</td>
 			</tr>
 			<tr height="50">
-				<td width="200"><font size="2pt">카테고리</font></td>
+				<td width="200"><font size="2pt">카테고리 <span style="color: red; font-size: 5pt;">(*)</span></font></td>
 				<td width="400">
 					<span id="category1"></span>
 					<span id="category2"></span>
@@ -39,7 +35,7 @@ div{
 				</td>
 			</tr>
 			<tr height="50">
-				<td width="200"><font size="2pt">대표이미지</font></td>
+				<td width="200"><font size="2pt">대표이미지 <span style="color: red; font-size: 5pt;">(*)</span></font></td>
 				<td width="400"><input type="file" id="file" name="file" multiple="multiple" style='font-size:0.8em'>
 				<br><span class="checking" id="imageDiv"></span></td>
 			</tr>
@@ -55,7 +51,7 @@ div{
 				</td>
 			</tr>
 			<tr>
-				<td width="200"><font size="2pt">물품정보</font></td>
+				<td width="200"><font size="2pt">물품정보 <span style="color: red; font-size: 5pt;">(*)</span></font></td>
 				<td width="400"><span class="checking" id="contentDiv"></span>
 				<textarea cols="40" rows="5" class="form-control" id="content" name="content" style='min-height:200px' required placeholder="하자를 포함하여 물품정보를 상세하게 입력해주시고, 직거래 시 직거래 가능 지역을 물품정보에 입력하세요."></textarea><br>
 				</td>
@@ -65,25 +61,25 @@ div{
 				<td width="400"><input type="text" placeholder='검색어 사이에 쉼표를 입력' id="keywoed" name="keyword" ></td>
 			</tr>
 			<tr height="50">
-				<td width="200"><font size="2pt">희망가</font></td>
+				<td width="200"><font size="2pt">희망가 <span style="color: red; font-size: 5pt;">(*)</span></font></td>
 				<td width="400"><input type="text" placeholder='희망가(원)' id="hopeprice" name="hopeprice" >
 				<br><span class="checking" id="hopeDiv"></span>
 				</td>
 			</tr>
 			<tr height="50">
-				<td width="200"><font size="2pt">시작가</font></td>
+				<td width="200"><font size="2pt">시작가 <span style="color: red; font-size: 5pt;">(*)</span></font></td>
 				<td width="400"><input type="text" placeholder='시작가(원)' id="startprice" name="startprice" >
 				<br><span class="checking" id="startDiv"></span>
 				</td>
 			</tr>
 			<tr height="50">
-				<td width="200"><font size="2pt">호가</font></td>
+				<td width="200"><font size="2pt">호가 <span style="color: red; font-size: 5pt;">(*)</span></font></td>
 				<td width="400"><input type="text" placeholder='호가(원)' id="unitprice" name="unitprice" >
 				<br><span class="checking" id="unitDiv"></span>
 				</td>
 			</tr>
 			<tr height="50">
-				<td width="200"><font size="2pt">거래방식</font></td>
+				<td width="200"><font size="2pt">거래방식 <span style="color: red; font-size: 5pt;">(*)</span></font></td>
 				<td width="400">
 					<select id="trade_way" name="trade_way" class="form-control" required >
 						<option value="">선택하세요</option>
@@ -94,11 +90,10 @@ div{
 				</td>
 			</tr>
 			<tr height="50">
-				<td width="200"><font size="2pt">경매종료 일시</font></td>
+				<td width="200"><font size="2pt">경매종료 일시 <span style="color: red; font-size: 5pt;">(*)</span></font></td>
 				<td>
 					<input type="date" name="endDay" id="endDay">
 					<input type="time" name="endTime" id="endTime" required>
-					<br><span class="checking">최소 3시간의 입찰시간을 제공하여야합니다.</span>
 					
 				</td>
 			</tr>
@@ -107,13 +102,11 @@ div{
 
 		<div class="clearfix"></div>
 		<hr>
-		<div class='sp1'></div>
-		<div style='width:100%;'>*사진업로드와 변환에 잠깐 시간이 걸립니다.<br>&nbsp;&nbsp;등록버튼 클릭후 잠시만 기다려주세요.</div>
-		<div class='sp10'></div>
+
 		<div align='center'>
 			<input type="button" value="경매등록" id="productWriteBtn">
 		</div>
-		<div class="clearfix"></div>
+		<div class="clearfix" style="padding-bottom: 20px;"></div>
 </form>
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.1.min.js"></script>
@@ -195,6 +188,7 @@ $('.subimgadd .addBtn').on('click',function(){
 		});
  
  
+ 
 //매물작성 버튼 유효성검사
  $('#productWriteBtn').on('click',function(){
 	$('#subjectDiv').empty();
@@ -217,7 +211,6 @@ $('.subimgadd .addBtn').on('click',function(){
 	var trade = $('#trade_way').val();
 	var date = $('#date').val();
 	var time = $('#time').val(); 
-	
 	var access =true;
 	console.log(category1+"_"+category2)
 	if(!subject){

@@ -9,6 +9,7 @@
 			<typeAlias type="com.bit.team_project.DTO.BidDTO" alias="bid" />
 			<typeAlias type="com.bit.team_project.DTO.UserDTO" alias="user"/>
 			<typeAlias type="com.bit.team_project.DTO.SoketDTO" alias="soket"/>
+			<typeAlias type="com.bit.team_project.DTO.PrdCommentDTO" alias="comment"/>
 	</typeAliases>
 
 	

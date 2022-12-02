@@ -33,8 +33,8 @@ var primary = false
 				url: '/team_project/user/write',
 				data : $('#writeForm').serialize(),
 				success: function(){
-				alert("job done");
-				location.href='/team_project/';
+				alert("회원가입 완료");
+				window.close();
 				},
 				error: function(err){
 					console.log(err);

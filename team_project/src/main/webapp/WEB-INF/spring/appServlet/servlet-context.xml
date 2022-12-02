@@ -19,7 +19,7 @@
 	
 	<mvc:annotation-driven/>
 	<mvc:resources mapping="/resources/**" location="/resources/" />
-	
+	<mvc:resources mapping="/test/**" location="/test/" />
 	<!-- resource를 위한 주소값에서 servlet으로 가지않게 mapping -->
 
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -34,13 +34,14 @@
 
 
 
-<bean id="echoHandler" class="com.bit.team_project.socket.EchoHandler"></bean>
-<websocket:handlers>
-	<websocket:mapping handler="echoHandler" path="/echo-ws" />
-	<websocket:handshake-interceptors>
-		<bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor" />
-	</websocket:handshake-interceptors>	
-	<websocket:sockjs />
-</websocket:handlers>
+	<websocket:handlers>
+		<websocket:mapping handler="echoHandler" path="/echo-ws" />
+		<websocket:handshake-interceptors>
+        	<bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor"/>
+        </websocket:handshake-interceptors>
+	<websocket:sockjs websocket-enabled="true"/>
+	</websocket:handlers>
+
+	<bean id="echoHandler" class="com.bit.team_project.socket.EchoHandler"></bean>
 
 </beans>

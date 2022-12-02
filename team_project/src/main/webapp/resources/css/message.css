@@ -1,0 +1,12 @@
+@charset "UTF-8";
+@charset "UTF-8";
+#msgStack{
+   position: fixed;
+    bottom: 20px;
+    right: 10px;
+    z-index: 10000;
+}
+.toast-header .close{
+   position: absolute;
+   right: 10px;
+}

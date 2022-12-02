@@ -1,12 +1,10 @@
 package com.bit.team_project.socket;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
@@ -15,7 +13,7 @@ import org.springframework.web.socket.handler.TextWebSocketHandler;
 
 public class EchoHandler extends TextWebSocketHandler{
 	//로그인 한 전체
-	List<WebSocketSession> sessions = new ArrayList<WebSocketSession>();
+	//List<WebSocketSession> sessions = new ArrayList<WebSocketSession>();
 	// 로그인중인 개별유저
 	Map<String, WebSocketSession> users = new ConcurrentHashMap<String, WebSocketSession>();
 	
@@ -23,7 +21,10 @@ public class EchoHandler extends TextWebSocketHandler{
 	// 클라이언트가 서버로 연결시
 	@Override
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
-		String senderId = getMemberId(session); // 접속한 유저의 http세션을 조회하여 id를 얻는 함수
+		System.out.println("afterConnectionEstablished:" + session);
+		
+		String senderId = getMemberId(session);// 접속한 유저의 http세션을 조회하여 id를 얻는 함수
+		System.out.println("send = "+senderId);
 		if(senderId!=null) {	// 로그인 값이 있는 경우만
 			log(senderId + " 연결 됨");
 			users.put(senderId, session);   // 로그인중 개별유저 저장
@@ -38,17 +39,24 @@ public class EchoHandler extends TextWebSocketHandler{
 		if(msg != null) {
 			String[] strs = msg.split(",");
 			log(strs.toString());
-			if(strs != null && strs.length == 4) {
+			for(int i=0; i<strs.length; i++) {
+				System.out.println(strs[i]);
+			}
+			if(strs != null && strs.length == 5) {
 				String type = strs[0];
 				String target = strs[1]; // m_id 저장
 				String content = strs[2];
 				String url = strs[3];
+				int msgseq = Integer.parseInt(strs[4]);
 				WebSocketSession targetSession = users.get(target);  // 메시지를 받을 세션 조회
+				System.out.println("targetSession = "+ targetSession);
+				
 				
 				// 실시간 접속시
-				if(targetSession!=null) {
+				if(targetSession != null) {
 					// ex: [&분의일] 신청이 들어왔습니다.
-					TextMessage tmpMsg = new TextMessage("<a target='_blank' href='"+ url +"'>[<b>" + type + "</b>] " + content + "</a>" );
+					TextMessage tmpMsg = new TextMessage("<a target='_blank' id="+msgseq+" href='"+ url +"'>[<b>" + type + "</b>] " + content + "</a>" );
+					System.out.println(tmpMsg);
 					targetSession.sendMessage(tmpMsg);
 				}
 			}
@@ -58,10 +66,10 @@ public class EchoHandler extends TextWebSocketHandler{
 	@Override
 	public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
 		String senderId = getMemberId(session);
-		if(senderId!=null) {	// 로그인 값이 있는 경우만
+		if(senderId != null) {	// 로그인 값이 있는 경우만
 			log(senderId + " 연결 종료됨");
 			users.remove(senderId);
-			sessions.remove(session);
+			//sessions.remove(session);
 		}
 	}
 	// 에러 발생시
@@ -74,11 +82,13 @@ public class EchoHandler extends TextWebSocketHandler{
 	private void log(String logmsg) {
 		System.out.println(new Date() + " : " + logmsg);
 	}
+	
+	
 	// 웹소켓에 id 가져오기
     // 접속한 유저의 http세션을 조회하여 id를 얻는 함수
 	private String getMemberId(WebSocketSession session) {
 		Map<String, Object> httpSession = session.getAttributes();
-		String m_id = (String) httpSession.get("m_id"); // 세션에 저장된 m_id 기준 조회
-		return m_id==null? null: m_id;
+		String id = (String) httpSession.get("id"); // 세션에 저장된 m_id 기준 조회
+		return id == null ? null : id;
 	}
 }
