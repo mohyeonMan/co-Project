@@ -174,7 +174,7 @@
 		})
 	}
 		
-		//결제 api 연동2 (iamport)
+		//결제 api 연동 (iamport)
 		$('#chargeBtn').click(function(){
 			var name= $('input[name=name]').val();
 			var amount = $('#chargeValue').val();

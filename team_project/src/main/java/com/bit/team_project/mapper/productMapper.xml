@@ -22,8 +22,8 @@
 								 img4, 
 								 logdate, 
 								 hit,
-								 enddate,
-								 prdstatus) 
+								 enddate, 
+								 prdstatus)
 		VALUES (#{subject}
 				,#{category_1}
 				,#{category_2}
@@ -48,8 +48,8 @@
 	<select id="getList" resultType="product">
 		SELECT * FROM producttable ORDER by product_seq DESC
 	</select>
-	<select id="getList2" resultType="product">
-		SELECT * FROM producttable ORDER by startprice DESC
+	<select id="getPopularList" resultType="product">
+		SELECT * FROM producttable ORDER by hit DESC
 	</select>
 	<select id="getView" parameterType="map" resultType="product">
 		select * from producttable where product_seq=#{product_seq}
@@ -71,28 +71,31 @@
 	
 	
 	<update id="updateHit" parameterType="map">
-		update  producttable set hit = #{hit} where product_seq = #{product_seq}
+		update  producttable set hit = hit+1 where product_seq = #{product_seq}
 	</update>
-	<update id="test"><!-- 3초갱신  -->
+	<insert id="commentSet" parameterType="map">
+		insert  into prdcomment(comment_id,comment_content,product_seq,logtime,comment_seq)
+			values(#{comment_id},#{comment_content},#{product_seq},(SYSDATE+(INTERVAL '9'HOUR)),comment_seq.nextval)
+	</insert>
+	<select id="getComment" parameterType="map" resultType="comment">
+		select * from prdcomment where product_seq = #{product_seq} order by logtime desc
+	</select>
+	<update id="setPrdStatus">
 		       update  producttable  
-                    set prdstatus = 
-                 case
-                     WHEN enddate <![CDATA[ < ]]> TO_CHAR(SYSDATE,'YYYY-MM-DD HH24:MI') AND get_id IS NOT NULL 
-                    THEN '낙찰'
-                     WHEN enddate  <![CDATA[ < ]]>  TO_CHAR(SYSDATE,'YYYY-MM-DD HH24:MI') AND get_id IS NULL 
-                    THEN '유찰'
-                    end 
-					where enddate is not null and prdstatus != '낙찰' and prdstatus != '유찰'
+           		 set prdstatus =  case
+                     WHEN  get_id is not null THEN '낙찰' 
+                     WHEN get_id is null THEN'유찰'
+                     end
+                    where   enddate  <![CDATA[<= ]]> to_char((SYSDATE+(INTERVAL '9'HOUR)),('YYYY-MM-DD HH24:MI'))
 	</update>
 	<!-- 낙찰 된 물품 찾아서 메세지 보내기 -->	
-	<insert id="gomsg">
-		insert into message (product_seq,subject,id) 
+	 <select id="gomsg" resultType="product">
 		select
         p.product_seq,p.subject,p.get_id 
         from producttable p 
         where p.prdstatus = '낙찰' and 
-        not exists(select product_seq from message where product_seq=p.product_seq)
-	</insert>
+        not exists(select msgseq from soket where msgseq=p.product_seq)
+	</select> 
 	<!-- 실시간 알림 -->
 	<insert id="saveNotify" parameterType="soket">
 		INSERT INTO soket VALUES (#{target},#{content},#{type},#{url},#{msgseq},0)
@@ -101,5 +104,10 @@
 		select * from soket where target = #{id}
 	</select>
 	
-	
+	<select id="getHighList" resultType="product">
+		SELECT * FROM (SELECT product_seq,img1,nowprice,hopeprice,prdstatus FROM producttable order by hit desc) WHERE ROWNUM <![CDATA[<]]>= 10 and prdstatus is null
+	</select>
+	<delete id="deletePrd" parameterType="map">
+		delete producttable where product_seq = #{product_seq}
+	</delete>
   </mapper>

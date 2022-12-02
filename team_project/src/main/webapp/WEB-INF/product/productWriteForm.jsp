@@ -94,7 +94,6 @@
 				<td>
 					<input type="date" name="endDay" id="endDay">
 					<input type="time" name="endTime" id="endTime" required>
-					<br><span class="checking">최소 3시간의 입찰시간을 제공하여야합니다.</span>
 					
 				</td>
 			</tr>
@@ -189,6 +188,7 @@ $('.subimgadd .addBtn').on('click',function(){
 		});
  
  
+ 
 //매물작성 버튼 유효성검사
  $('#productWriteBtn').on('click',function(){
 	$('#subjectDiv').empty();
@@ -211,7 +211,6 @@ $('.subimgadd .addBtn').on('click',function(){
 	var trade = $('#trade_way').val();
 	var date = $('#date').val();
 	var time = $('#time').val(); 
-	
 	var access =true;
 	console.log(category1+"_"+category2)
 	if(!subject){

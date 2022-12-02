@@ -1,21 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-<link rel="stylesheet" href="/team_project/resources/css/reset.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
 <link rel="stylesheet" href="/team_project/resources/css/sideBanner.css">
 <link rel="stylesheet" href="/team_project/resources/css/header.css">
 <link rel="stylesheet" href="/team_project/resources/css/sidebar.css">
+<link rel="stylesheet" href="/team_project/resources/css/modal.css">
+<link rel="stylesheet" href="/team_project/resources/css/message.css">
+<link rel="stylesheet" href="/team_project/resources/css/footer.css">
 <title>Insert title here</title>
 <style type="text/css">
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css");
-
 .tab .tab-menu.tab-horizon:before {
-	position: absolute;
+	
 	bottom: 0;
 	left: -16px;
 	right: -16px;
@@ -128,22 +130,27 @@
 	display:flex;
 	justify-content: center;
 	align-items: center;
+.card{
+	margin-left: 25px;
 }
 </style>
 <body>
-
 <jsp:include page="/WEB-INF/main/header.jsp"></jsp:include>
 
 	<div class="tab tab-md mg-b-4u" id="c_size">
 		<!-- DeskTop -->
 		<div class="tab-menu tab-horizon">
 			<ul>
-				<li class="on"><a href="#" class="tab-item"
+				<li class="on">
+					<a href="#" class="tab-item"
 					data-tab-contents="Tab 1" data-tab-contents-group="A"
-					style="color: #172126;">전체 매물</a></li>
-				<li class=""><a href="#" class="tab-item"
+					style="color: #172126;">전체 매물</a>
+				</li>
+				<li class="">
+					<a href="#" class="tab-item"
 					data-tab-contents="Tab 2" data-tab-contents-group="A"
-					style="color: #172126;">디지털/가전</a></li>
+					style="color: #172126;">디지털/가전</a>
+				</li>
 				<li class=""><a href="#" class="tab-item"
 					data-tab-contents="Tab 3" data-tab-contents-group="A"
 					style="color: #172126;">아웃도어/스포츠</a></li>
@@ -172,6 +179,8 @@
 			<!-- grid -->
 		</div>
 	</div>
+
+<jsp:include page="/WEB-INF/main/footer.jsp"></jsp:include>
 	
 	
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
@@ -181,6 +190,8 @@
 <script type="text/javascript" src="/team_project/resources/js/header.js"></script>
 <script type="text/javascript" src="/team_project/resources/js/quick_menu.js"></script>
 <script type="text/javascript" src="/team_project/resources/js/jquery.tmpl.min.js"></script>
+
+
 <script type="text/javascript">
 function CountDownTimer(dt, id){
     var end = new Date(dt);
@@ -286,4 +297,3 @@ $(document).on('change','#sort',function(){
 </script>
 </body>
 </html>
-

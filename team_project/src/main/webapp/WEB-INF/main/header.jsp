@@ -17,6 +17,7 @@
 	<div id="headerRight_login">
 		
 		<a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">로그인</a> / <a class="userWriteFormBtn">회원가입</a> / <a>공지사항</a>
+
 	</div>
 	<div id="headerRight_logout">
 		<a href="#" id="logoutBtn">로그아웃</a>
@@ -160,16 +161,25 @@
             <span class="icon badge-container">
                <i class="bi bi-person"></i>
             </span> 
-            <span class="label">마이페이지</span>
+            <span class="label">회원정보수정</span>
          </a>
          <hr width="80%">
       </li>
       <li>
          <a href="#"> 
             <span class="icon badge-container">
-               <i class="bi bi-question-circle"></i>
+               <i class="bi bi-cash-coin"></i>
             </span> 
-            <span class="label">Q&A</span>
+            <span class="label">포인트충전</span>
+         </a>
+         <hr width="80%">
+      </li>
+       <li>
+         <a href="/team_project/product/successedPrd"> 
+            <span class="icon badge-container">
+               <i class="bi bi-bag-check"></i>
+            </span> 
+            <span class="label">종료된물품</span>
          </a>
       </li>
    </ul>

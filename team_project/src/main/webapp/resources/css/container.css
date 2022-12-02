@@ -57,7 +57,7 @@ prev.swiper-button-disabled {
     pointer-events: none;
 }
 a:link, a:visited {
-    color: #b6b6b6;
+    color: white;
     text-decoration: none;
 }
 #container .main-ranking .rolling-list .coordinates:after {
@@ -223,16 +223,10 @@ a:link, a:visited {
     padding-left: 4px;
 }
 #container .content {
-    width: 90%;
-    max-width: 100%;
-    margin: 0 auto;
-    position: relative;
-    margin-bottom: 40px;
-    min-height: 600px;
-    background-color: #f6f6f6;
+	width : 90%;
+    margin : auto;
 }
 #container .content .main-default-video{
-    width: 1248px;
     max-width: 100%;    
     margin-left : 20px;
     position: relative;
@@ -250,6 +244,8 @@ a:link, a:visited {
     position: relative;
     display: flex;
     align-items: center;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 #container .main-default-video .title h1 {
     font-size: 20px;
@@ -265,14 +261,17 @@ a:link, a:visited {
     overflow: hidden;
     position: relative;
     padding-bottom: 20px;
+    margin-left: 20px;
 }
 #container .main-default-video .default-listed-item ul {
     overflow: hidden;
+    text-align: center;
 }
 #container .main-default-video .default-listed-item ul .flex-listed {
     display: flex;
     width: 100%;
     max-width: 100%;
+    margin: auto;
 }
 #container .main-default-video .default-listed-item ul li {
     width: 236.81px;
@@ -326,4 +325,7 @@ a:link, a:visited {
     text-overflow: ellipsis;
     overflow: hidden;
     text-decoration: none;
+}
+.flex-listed li .thumb img:hover{
+	transform : scale(1.1);
 }

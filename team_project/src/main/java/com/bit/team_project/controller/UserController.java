@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -136,5 +137,29 @@ public class UserController {
 		map.put("id", id);
 		map.put("point", point);
 		userService.pointCharge(map);
+	}
+	
+	@GetMapping(value = "adminPage")
+	public String adminPage() {
+		return "/user/adminPage";
+	}
+	@GetMapping(value = "adminLogin")
+	public String adminLogin() {
+		return "/user/adminLogin";
+	}
+	
+	@PostMapping(value= "adminlogintest")
+	@ResponseBody
+	public UserDTO adminlogintest(@RequestParam String id,  String pwd,ModelMap modelMap){
+		modelMap.put("id", id);
+		modelMap.put("pwd", pwd);
+		
+		return userService.adminlogintest(modelMap);
+	}
+	
+	@PostMapping(value= "getAlluser")
+	@ResponseBody
+	public List<UserDTO> getAlluser(){
+		return userService.getAlluser();
 	}
 }

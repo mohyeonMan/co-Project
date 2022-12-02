@@ -15,6 +15,7 @@ import javax.net.ssl.HttpsURLConnection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.ModelMap;
 
 import com.bit.team_project.DTO.BidDTO;
 import com.bit.team_project.DTO.UserDTO;
@@ -196,6 +197,16 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void pointCharge(Map<String, String> map) {
 		userDAO.pointCharge(map);
+	}
+	@Override
+	public UserDTO adminlogintest(ModelMap modelMap) {
+		return userDAO.adminlogintest(modelMap);
+	}
+
+
+	@Override
+	public List<UserDTO> getAlluser() {
+		return userDAO.getAlluser();
 	}
 
 }

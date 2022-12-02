@@ -2,6 +2,9 @@ package com.bit.team_project.userDAO;
 
 import java.util.List;
 import java.util.Map;
+
+import org.springframework.ui.ModelMap;
+
 import com.bit.team_project.DTO.BidDTO;
 import com.bit.team_project.DTO.UserDTO;
 
@@ -29,4 +32,7 @@ public interface UserDAO {
 
 	public void pointCharge(Map<String, String> map);
 
+	public UserDTO adminlogintest(ModelMap modelMap);
+
+	public List<UserDTO> getAlluser();
 }
