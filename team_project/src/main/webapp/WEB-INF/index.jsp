@@ -14,6 +14,7 @@
 <link rel="stylesheet" href="/team_project/resources/css/container.css">
 <link rel="stylesheet" href="/team_project/resources/css/modal.css">
 <link rel="stylesheet" href="/team_project/resources/css/message.css">
+<link rel="stylesheet" href="/team_project/resources/css/footer.css">
 <style type="text/css">
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css");
 .rolling-listed-item{
@@ -267,7 +268,7 @@
 	               <div class="flex-listed">
 	                  <li>
 	                     <a href="#" class="thumb" style="border: 1px solid;">
-	                        <img src="https://images.nstatic.org/info/tv/153496/wFhRbJvcK5noXy3K3pBpw6UMDfQ.jpg" class="home" alt="재벌집 막내아들" style="display: block;">
+	                        <img src="/team_project/resources/img/loading.gif" class="home" alt="대표이미지" style="display: block;">
 	                     </a>
 	                     <div class="posted-info">
 	                        <p class="subject">
@@ -277,7 +278,7 @@
 	                  </li>
 	                  <li>
 	                     <a href="#" class="thumb" style="border: 1px solid;">
-	                        <img src="https://images.nstatic.org/info/tv/153496/wFhRbJvcK5noXy3K3pBpw6UMDfQ.jpg" class="home" alt="재벌집 막내아들" style="display: block;">
+	                        <img src="/team_project/resources/img/loading.gif" class="home" alt="대표이미지" style="display: block;">
 	                     </a>
 	                     <div class="posted-info">
 	                        <p class="subject">
@@ -287,7 +288,7 @@
 	                  </li>
 	                  <li>
 	                     <a href="#" class="thumb" style="border: 1px solid;">
-	                        <img src="https://images.nstatic.org/info/tv/153496/wFhRbJvcK5noXy3K3pBpw6UMDfQ.jpg" class="home" alt="재벌집 막내아들" style="display: block;">
+	                        <img src="/team_project/resources/img/loading.gif" class="home" alt="대표이미지" style="display: block;">
 	                     </a>
 	                     <div class="posted-info">
 	                        <p class="subject">
@@ -297,7 +298,7 @@
 	                  </li>
 	                  <li>
 	                     <a href="#" class="thumb" style="border: 1px solid;">
-	                        <img src="https://images.nstatic.org/info/tv/153496/wFhRbJvcK5noXy3K3pBpw6UMDfQ.jpg" class="home" alt="재벌집 막내아들" style="display: block;">
+	                        <img src="/team_project/resources/img/loading.gif" class="home" alt="대표이미지" style="display: block;">
 	                     </a>
 	                     <div class="posted-info">
 	                        <p class="subject">
@@ -307,7 +308,7 @@
 	                  </li>
 	                  <li>
 	                     <a href="#" class="thumb" style="border: 1px solid;">
-	                        <img src="https://images.nstatic.org/info/tv/153496/wFhRbJvcK5noXy3K3pBpw6UMDfQ.jpg" class="home" alt="재벌집 막내아들" style="display: block;">
+	                        <img src="/team_project/resources/img/loading.gif" class="home" alt="대표이미지" style="display: block;">
 	                     </a>
 	                     <div class="posted-info">
 	                        <p class="subject">
@@ -322,48 +323,15 @@
 	   </div>
 </div>
 
+<jsp:include page="/WEB-INF/main/footer.jsp"></jsp:include>
 
 
 
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="margin-top: 100px">
-   <div class="modal-dialog">
-      <div class="modal-content">
-         <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">로그인</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-         </div>
-         <div class="modal-body">
-            <div class="member_login">
-               <form id="loginForm">
-                  <div class="member_login_input">
-                     <input type="text" name="id" id="id" placeholder="아이디" >
-                     <div id="idDiv"></div>
-                  </div>
-                  <div class="member_login_input">
-                     <input type="password" name="pwd" id="pwd" placeholder="비밀번호" autocomplete="on">
-                     <div id="pwdDiv"></div>
-                  </div>
-                  <div class="member_login_btn">
-                     <input type="button" class="btn btn-secondary" id="btn-login" value="로그인">
-                     <input type="button" class="btn btn-secondary" value="회원가입" onclick="location.href='/team_project/user/writeForm'">
-                  </div>
-                  <div class="find_password">
-                     <a href="/forgot-password">아이디 또는 비밀번호를 잊으셨나요?</a>
-                  </div>
-                  <div class="login_api">
-                     <a href="https://kauth.kakao.com/oauth/authorize?client_id=268b20cd927776992bc7f4192b57984b&redirect_uri=http://localhost:8080/team_project/user/kakaoLogin&response_type=code"><img src="/team_project/resources/img/kakao_login_medium_narrow.png" style="width: 200px; height: 45px;"></a>
-                  </div>
-                  <div class="login_api">
-                     <a href="/oauth2/authorization/google"><img src="/team_project/resources/img/naverlogin.png" style="width: 200px; height: 45px; margin-top: 8px;"></a>
-                  </div>
-               </form>
-            </div>
-         </div>
-      </div>
-   </div>
-</div>
+
+					
+
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.1.min.js"></script>

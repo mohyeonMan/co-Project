@@ -179,4 +179,44 @@
    </ul>
 </div>
 
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="margin-top: 100px">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">로그인</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+         </div>
+         <div class="modal-body">
+            <div class="member_login">
+               <form id="loginForm">
+                  <div class="member_login_input" st>
+                     <input type="text" name="id" id="id" placeholder="아이디" >
+                     <div id="idDiv"></div>
+                  </div>
+                  <div class="member_login_input">
+                     <input type="password" name="pwd" id="pwd" placeholder="비밀번호" autocomplete="on">
+                     <div id="pwdDiv"></div>
+                  </div>
+                  <div class="member_login_btn">
+                     <input type="button" class="btn btn-secondary" id="btn-login" value="로그인">
+                     <input type="button" class="btn btn-secondary" value="회원가입" onclick="location.href='/team_project/user/writeForm'">
+                  </div>
+                  <div class="find_password" style="margin-top: 8px; margin-bottom: 8px;">
+                     <a href="/forgot-password" style="color: black;">아이디 또는 비밀번호를 잊으셨나요?</a>
+                  </div>
+                  <div class="login_api">
+                     <a href="https://kauth.kakao.com/oauth/authorize?client_id=268b20cd927776992bc7f4192b57984b&redirect_uri=http://localhost:8080/team_project/user/kakaoLogin&response_type=code"><img src="/team_project/resources/img/kakao_login_medium_narrow.png" style="width: 200px; height: 45px;"></a>
+                  </div>
+                  <div class="login_api">
+                     <a href="/oauth2/authorization/google"><img src="/team_project/resources/img/naverlogin.png" style="width: 200px; height: 45px; margin-top: 8px;"></a>
+                  </div>
+               </form>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+
 <div id="msgStack"></div>

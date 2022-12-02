@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +12,7 @@
 <link rel="stylesheet" href="/team_project/resources/css/sidebar.css">
 <link rel="stylesheet" href="/team_project/resources/css/modal.css">
 <link rel="stylesheet" href="/team_project/resources/css/message.css">
+<link rel="stylesheet" href="/team_project/resources/css/footer.css">
 <title>Insert title here</title>
 <style type="text/css">
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css");
@@ -160,11 +162,13 @@
 		<option value="nowprice desc">현재가 높은 순</option>
 		<option value="nowprice asc">현재가 낮은 순</option>
 	</select>
-	<div class="productList">
+	<div class="productList" style="margin-bottom: 20px;">
 		<div class="row" id="row">
 			<!— grid —>
 		</div>
 	</div>
+
+<jsp:include page="/WEB-INF/main/footer.jsp"></jsp:include>
 	
 	
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
@@ -188,6 +192,77 @@
 			<a href="/team_project/product/productView?product_seq=\${product_seq}" class="btn btn-primary">응찰하러가기</a>
 		</div>
 	</div>
+</script>
+<script type="text/javascript">
+var socket  = null;
+$(document).ready(function(){
+	
+	   // 웹소켓 연결
+	    sock = new SockJS("<c:url value='/echo-ws'/>");
+	    socket = sock;
+
+	    // 데이터를 전달 받았을때 
+	    sock.onmessage = onMessage; // toast 생성
+	  	 console.log(sock);
+	    
+	    
+	 // toast생성 및 추가
+	    function onMessage(evt){
+	        var data = evt.data;
+	        // toast
+	        let toast = "<div class='toast' role='alert' aria-live='assertive' aria-atomic='true'>";
+	        toast += "<div class='toast-header'><i class='fas fa-bell mr-2'></i><strong class='mr-auto'>알림</strong>";
+	        toast += "<button type='button' class='ml-2 mb-1 close' data-dismiss='toast' aria-label='Close'>";
+	        toast += "<span aria-hidden='true'>&times;</span></button>";
+	        toast += "</div> <div class='toast-body'>" + data + "</div></div>";
+	        $("#msgStack").append(toast);   // msgStack div에 생성한 toast 추가
+	        $(".toast").toast({"animation": true, "autohide": false});
+	        $('.toast').toast('show');
+	    };   
+	    
+	       $(document).on('click','.toast-header .close',function (){
+	          $(this).parents('.toast').remove();
+	       
+	       });
+	    
+	       setInterval(function() {
+	            $.ajax({
+	                type : 'post',
+	                url : '/team_project/product/showGettingPrd',
+	                dataType : 'json',
+	                success : function (data) {
+	                   $('#msgSeq').val(data.product_seq)
+	                   let type = '70';
+	                 let target = data.get_id;
+	                   let content = "응찰하신 '"+data.subject+"' 상품이 낙찰되었습니다.";
+	                   let msgseq = data.product_seq
+	                 let url = '/team_project/message/messageList';
+	                 
+	           
+	              // 전송한 정보를 db에 저장   
+	                $.ajax({
+	                     type: 'post',
+	                        url: '/team_project/test/saveNotify',
+	                     data: {
+	                        target: target,
+	                         content: content,
+	                      type: type,
+	                      url: url,
+	                      msgseq : msgseq
+	                     },
+	               success: function(){    // db전송 성공시 실시간 알림 전송
+	                   socket.send("관리자,"+target+","+content+","+url + ","+msgseq);
+	               }
+	           });
+	           $('#msgContent').val('');   // textarea 초기화
+	                   
+	               },
+	               error : function (err) {
+	               }
+	             });
+	         }, 2000);
+});
+
 </script>
 <script type="text/javascript">
 $(document).ready(function(){

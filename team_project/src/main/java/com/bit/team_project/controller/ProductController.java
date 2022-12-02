@@ -84,7 +84,7 @@ public class ProductController {
 		return productService.getProductView(product_seq);
 	}
 	
-	  @PostMapping(value = "updateHit")
+	  @PostMapping(value = "/updateHit")
 	  @ResponseBody 
 	  public void updateHit(@RequestParam String hit, int product_seq,HttpServletRequest request,HttpServletResponse response) { 
 		  Map<String, Integer> map = new HashMap<String, Integer>();
