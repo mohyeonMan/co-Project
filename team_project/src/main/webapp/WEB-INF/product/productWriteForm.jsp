@@ -132,7 +132,7 @@ var tSeconds = parse(today.getSeconds());
 	//21시 이후 다음날로 넘어갈것
 	if((tHour+3)>23){
 		tHour -= 24;
-		tDate += 1;
+		tDate = parse(today.getDate()+1);
 	}
 var minHour = parse(tHour+3);
 	

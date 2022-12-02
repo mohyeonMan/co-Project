@@ -169,7 +169,7 @@
 				<input type="button" id ="searchBtn" value="검색">
 				<input type="hidden" id="category_1" value="${category_1 }">
 				<input type="hidden" id="category_2" value="${category_2 }">
-				<input type="text" id="searchWord">
+				<input type="hidden" id="searchWord">
 			</div>
 		</div>
 	</div>
@@ -193,6 +193,8 @@
 
 
 <script type="text/javascript">
+var timerlist = [];
+
 function CountDownTimer(dt, id){
     var end = new Date(dt);
 
@@ -221,7 +223,8 @@ function CountDownTimer(dt, id){
         document.getElementById(id).innerHTML += seconds + '초';
     }
 	timer = setInterval(showRemaining, 1000);
-    /* if(timer = setTimeout()) */
+	timerlist.push(timer);
+
 }
 
 
@@ -232,6 +235,10 @@ function getList(){
 	var searchWord = $('#searchWord').val();
 
 	$('#row').empty();
+	$.each(timerlist, function (index, time) {
+		clearInterval(time);
+	})
+
 	
 	$.ajax({
 		url : '/team_project/product/getProductSort',
@@ -239,12 +246,13 @@ function getList(){
 		data : 'sort='+selectSort+'&category_1='+category_1+'&category_2='+category_2+'&searchWord='+searchWord,
 		dataType : 'json',
 		success : function(data){
-			//console.log(JSON.stringify(data));
 			$.each(data,function(index,items){
-				var tmpl = $('#itemTemplate').tmpl(data[index]);
-				$('#row').append(tmpl);
-
-				CountDownTimer(items.endDate, items.product_seq)
+				if(data[index].prdstatus==null){
+						
+					var tmpl = $('#itemTemplate').tmpl(data[index]);
+					$('#row').append(tmpl);
+					CountDownTimer(items.endDate, items.product_seq)
+				}
  			})
 		
 		},

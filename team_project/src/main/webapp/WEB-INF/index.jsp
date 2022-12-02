@@ -343,6 +343,7 @@ ul li .posted-info .like a{
 <script type="text/javascript" src="/team_project/resources/js/index.js"></script>
 <script type="text/javascript" src="/team_project/resources/js/header.js"></script>
 <script type="text/javascript" src="/team_project/resources/js/quick_menu.js"></script>
+<script type="text/javascript" src="/team_project/resources/js/jquery.tmpl.min.js"></script>
 <script type="text/x-jquery-tmpl" id="highItemTemplate">
 		<li>
 			<a href="#" class="thumb">

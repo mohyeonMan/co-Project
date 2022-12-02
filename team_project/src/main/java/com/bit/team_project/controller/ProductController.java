@@ -92,6 +92,9 @@ public class ProductController {
 	public void updateHit(@RequestParam String hit, int product_seq, HttpServletRequest request,
 			HttpServletResponse response) {
 		Map<String, Integer> map = new HashMap<String, Integer>();
+		System.out.println(product_seq);
+		if(hit == null) hit="0";
+		
 		map.put("hit", Integer.parseInt(hit));
 		map.put("product_seq", product_seq);
 		Cookie oldCookie = null;
