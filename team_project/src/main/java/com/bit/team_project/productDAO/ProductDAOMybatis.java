@@ -106,6 +106,11 @@ public class ProductDAOMybatis implements ProductDAO {
 		return sqlSession.selectOne("productSQL.gomsg");
 	}
 
+	@Override
+	public void deletePrd(Map<String, String> map) {
+		sqlSession.delete("productSQL.deletePrd",map);
+	}
+
 	
 
 

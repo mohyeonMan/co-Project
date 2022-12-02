@@ -62,7 +62,7 @@ public class ProductController {
 	
 	@PostMapping(value = "/getProductList")
 	@ResponseBody
-	public List<ProductDTO> getProductList( Model model){
+	public List<ProductDTO> getProductList(){
 //		model.addAttribute("category",category);
 		return productService.getList();
 	}
@@ -116,7 +116,7 @@ public class ProductController {
 	    }
 	  }
 
-	@Scheduled(fixedDelay = 2000) 
+	@Scheduled(fixedRate = 1000) 
 	public void setPrdStatus() {
 		productService.setPrdStatus();
 	}
@@ -155,6 +155,13 @@ public class ProductController {
 	@ResponseBody
 	public List<ProductDTO> getHighList(){
 		return productService.getHighList();
+	}
+	
+	@PostMapping(value = "/deletePrd")
+	@ResponseBody
+	public void deletePrd(@RequestParam Map<String, String>map,String product_seq){
+		map.put("product_seq", product_seq);
+		productService.deletePrd(map);
 	}
 	
 }

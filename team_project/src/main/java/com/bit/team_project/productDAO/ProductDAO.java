@@ -43,6 +43,8 @@ public interface ProductDAO {
 
 	public ProductDTO showGettingPrd();
 
+	public void deletePrd(Map<String, String> map);
 
+	
 
 }

@@ -338,29 +338,38 @@ ul li .posted-info .like a{
 
 
 
-
-
-					
-
-
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.5/sockjs.min.js"></script>
 <script type="text/javascript" src="/team_project/resources/js/index.js"></script>
 <script type="text/javascript" src="/team_project/resources/js/header.js"></script>
 <script type="text/javascript" src="/team_project/resources/js/quick_menu.js"></script>
-<script type="text/javascript">
+<script type="text/x-jquery-tmpl" id="highItemTemplate">
+		<li>
+								<a href="#" class="thumb">
+									<img src="/team_project/resources/img/\${img1}" class="lazy" alt="대표이미지" style="display: block;">
+								</a>
+								<div class="posted-info">
+									<p class="subject">
+										<a href="#" style="color: white;">\${subject}</a>
+									</p>
+									<span class="tag">현재가 : </span><span class="nowprice" style="color: white;">\${nowprice}원</span><br>
+									<span class="tag">희망가 : </span><span class="endprice" style="color: white;">\${hopeprice}원</span><br>
+									<div class="like">
+										<a href="/team_project/product/productView?product_seq=\${product_seq}" class="btn btn-primary" style="color: white; background-color: #172126; --bs-btn-border-color: white;">응찰하러가기</a>
+									</div>
+								</div>
+		</li> 
+</script>
+ <script type="text/javascript">
 	var socket  = null;
-$(document).ready(function(){
-	
+$(function(){
 	   // 웹소켓 연결
 	    sock = new SockJS("<c:url value='/echo-ws'/>");
 	    socket = sock;
 
 	    // 데이터를 전달 받았을때 
 	    sock.onmessage = onMessage; // toast 생성
-	  	 console.log(sock);
 	    
 	    
 	 // toast생성 및 추가
@@ -375,13 +384,14 @@ $(document).ready(function(){
 	        $("#msgStack").append(toast);   // msgStack div에 생성한 toast 추가
 	        $(".toast").toast({"animation": true, "autohide": false});
 	        $('.toast').toast('show');
-	    };   
+	   		 };   
 	    
 	       $(document).on('click','.toast-header .close',function (){
 	          $(this).parents('.toast').remove();
 	       
 	       });
 	    
+<<<<<<< HEAD
 	       setInterval(function() {
 	            $.ajax({
 	                type : 'post',
@@ -429,6 +439,86 @@ $(document).ready(function(){
 	        	
 	        	
 	        }, error : function () {
+=======
+	 setInterval(function() {
+	   		$.ajax({
+	   	 		type : 'post',
+	   	 		url : '/team_project/product/showGettingPrd',
+	   	 		dataType : 'json',
+	   	 		success : function (data) {
+	   	 			$('#msgSeq').val(data.product_seq)
+	   	 			let type = '70';
+	        		let target = data.get_id;
+	       			let content = "응찰하신 '"+data.subject+"' 상품이 낙찰되었습니다.";
+	       			let msgseq = data.product_seq
+	        		let url = '/team_project/message/messageList';
+	       		$.ajax({
+	            		type: 'post',
+	           	 		url: '/team_project/test/saveNotify',
+	            		data: {
+	               		target: target,
+	               	 	content: content,
+	                	type: type,
+	                	url: url,
+	                	msgseq : msgseq
+	           			},
+	          			success: function(){    // db전송 성공시 실시간 알림 전송
+	          				$.ajax({
+	          			       type : 'post',
+	          			       url : '/team_project/user/getMessageCount',
+	          			       data : 'id='+$('#msgid').val(),
+	          			       dataType : 'text',
+	          			       success : function (data) {
+	          			         console.log(data)
+	          			         if(data == 0)$('.badge').text()
+	          			         else $('.badge').text(data)
+	          			      },
+	          			      error : function (err) {
+	          			         console.log(err)
+	          			      }
+	          			    });
+	          				sock.send("관리자,"+target+","+content+","+url + ","+msgseq);
+	          			
+	          			  }
+	      			  });
+	       			 $('#msgContent').val('');   // textarea 초기화
+	   			},
+	   			error : function (err) {
+	   			}
+	   	 	});
+	   	}, 300);
+	   	
+	   	
+		$.ajax({
+			    url : '/team_project/product/getPopularList',
+			    type: 'post',
+			    success : function(data){
+			    	$.each(data,function(index, items){
+			    		$('<li>').append($('<a>',{class:'thumb',href:'/team_project/product/productView?product_seq='+items.product_seq}).append($('<img>',{src:'/team_project/resources/img/'+items.img1,alt:'대표이미지'}))).append($('<div>',{class:'posted-info'}).append($('<p>',{class:'subject'})).append($('<span>',{class:'tag', text:' 현재가 : '})).append($('<span>',{class:'nowprice', text : items.nowprice})).append($('<br>')).append($('<span>',{class:'tag', text:' 낙찰가 : '})).append($('<span>',{class:'endprice',text: items.hopeprice})).append($('<div>',{class:'like'}).append($('<a>',{href:'/team_project/product/productView?product_seq='+items.product_seq, class:'btn btn-primary',text:'응찰하러가기'})))).appendTo($('.flex-rolling'))
+			    	});
+			    	
+			    	
+			   	 }, error : function () {
+					console.log(err)
+					}
+				});
+	        
+	        
+	        
+})
+//인기매물
+	$(function () {
+		$.ajax({
+	 		type : 'post',
+	 		url : '/team_project/product/getHighList',
+	 		dataType : 'json',
+	 		success : function (data) {
+	 			$.each(data,function(index,items){
+	 				var tmpl= $('#highItemTemplate').tmpl(data[index]);	
+	 				$('.flex-rolling').append(tmpl);
+	 			})
+			},
+			error : function (err) {
 				console.log(err)
 			}
 	    });

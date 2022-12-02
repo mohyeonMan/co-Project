@@ -70,15 +70,13 @@
 	<select id="getComment" parameterType="map" resultType="comment">
 		select * from prdcomment where product_seq = #{product_seq} order by logtime desc
 	</select>
-	<update id="setPrdStatus"><!-- 3초갱신  -->
-		       <![CDATA[
+	<update id="setPrdStatus">
 		       update  producttable  
            		 set prdstatus =  case
                      WHEN  get_id is not null THEN '낙찰' 
                      WHEN get_id is null THEN'유찰'
                      end
-                    where   enddate  <=  to_char((SYSDATE+(INTERVAL '9'HOUR)),('YYYY-MM-DD HH24:MI'))
-					]]>
+                    where   enddate  <![CDATA[<= ]]> to_char((SYSDATE+(INTERVAL '9'HOUR)),('YYYY-MM-DD HH24:MI'))
 	</update>
 	<!-- 낙찰 된 물품 찾아서 메세지 보내기 -->	
 	 <select id="gomsg" resultType="product">
@@ -98,7 +96,8 @@
 	
 	<select id="getHighList" resultType="product">
 		SELECT * FROM (SELECT product_seq,img1,nowprice,hopeprice,prdstatus FROM producttable order by hit desc) WHERE ROWNUM <![CDATA[<]]>= 10 and prdstatus is null
-		
 	</select>
-	
+	<delete id="deletePrd" parameterType="map">
+		delete producttable where product_seq = #{product_seq}
+	</delete>
   </mapper>

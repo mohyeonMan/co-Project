@@ -31,4 +31,6 @@ public interface UserDAO {
 	public void kakaoWrite(Map<String, String> map);
 
 	public UserDTO adminlogintest(ModelMap modelMap);
+
+	public List<UserDTO> getAlluser();
 }

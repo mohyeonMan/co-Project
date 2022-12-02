@@ -46,6 +46,8 @@ public interface ProductService {
 
 	public ProductDTO showGettingPrd();
 
+	public void deletePrd(Map<String, String> map);
+
 	
 
 }

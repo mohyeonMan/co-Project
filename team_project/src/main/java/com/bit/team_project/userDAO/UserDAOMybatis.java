@@ -72,6 +72,10 @@ public class UserDAOMybatis implements UserDAO{
 		map.put("pwd",(String) modelMap.get("pwd"));
 		return sqlSession.selectOne("userSQL.adminlogintest",map);
 	}
+	@Override
+	public List<UserDTO> getAlluser() {
+		return sqlSession.selectList("userSQL.getAlluser");
+	}
 	
 	
 
