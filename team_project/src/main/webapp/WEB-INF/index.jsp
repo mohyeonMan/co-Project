@@ -372,8 +372,9 @@
                   <div class="member_login_btn">
                      <input type="button" class="btn btn-secondary" id="btn-login" value="로그인">
                      <input type="button" class="btn btn-secondary" value="회원가입" onclick="location.href='/team_project/user/writeForm'">
+                     <input type="button" class="btn btn-secondary" value="관리자 로그인" onclick="location.href='/team_project/user/adminLogin'">
                      <br>
-                  	 <input type="button" class="btn btn-secondary" value="관리자 로그인" onclick ="location.href='/team_project/user/adminLogin'">
+                  
                   </div>
                   <div class="find_password">
                      <a href="/forgot-password">아이디 또는 비밀번호를 잊으셨나요?</a>
@@ -453,17 +454,16 @@
 <script type="text/javascript" src="/team_project/resources/js/index.js"></script>
 <script type="text/javascript" src="/team_project/resources/js/header.js"></script>
 <script type="text/javascript" src="/team_project/resources/js/quick_menu.js"></script>
-<script type="text/javascript">
+<!-- <script type="text/javascript" src="/team_project/resources/js/socket.js"></script> -->
+ <script type="text/javascript">
 	var socket  = null;
-$(document).ready(function(){
-	
+$(function(){
 	   // 웹소켓 연결
 	    sock = new SockJS("<c:url value='/echo-ws'/>");
 	    socket = sock;
 
 	    // 데이터를 전달 받았을때 
 	    sock.onmessage = onMessage; // toast 생성
-	  	 console.log(sock);
 	    
 	    
 	 // toast생성 및 추가
@@ -478,7 +478,7 @@ $(document).ready(function(){
 	        $("#msgStack").append(toast);   // msgStack div에 생성한 toast 추가
 	        $(".toast").toast({"animation": true, "autohide": false});
 	        $('.toast').toast('show');
-	    };   
+	   		 };   
 	    
 	       $(document).on('click','.toast-header .close',function (){
 	          $(this).parents('.toast').remove();
@@ -497,9 +497,6 @@ $(document).ready(function(){
 	       			let content = "응찰하신 '"+data.subject+"' 상품이 낙찰되었습니다.";
 	       			let msgseq = data.product_seq
 	        		let url = '/team_project/message/messageList';
-	        		
-	        
-	        	// 전송한 정보를 db에 저장   
 	       		$.ajax({
 	            		type: 'post',
 	           	 		url: '/team_project/test/saveNotify',
@@ -509,18 +506,32 @@ $(document).ready(function(){
 	                	type: type,
 	                	url: url,
 	                	msgseq : msgseq
-	           		 },
-	            success: function(){    // db전송 성공시 실시간 알림 전송
-	                socket.send("관리자,"+target+","+content+","+url + ","+msgseq);
-	            }
-	        });
-	        $('#msgContent').val('');   // textarea 초기화
-	   	 			
+	           			},
+	          			success: function(){    // db전송 성공시 실시간 알림 전송
+	          				$.ajax({
+	          			       type : 'post',
+	          			       url : '/team_project/user/getMessageCount',
+	          			       data : 'id='+$('#msgid').val(),
+	          			       dataType : 'text',
+	          			       success : function (data) {
+	          			         console.log(data)
+	          			         if(data == 0)$('.badge').text()
+	          			         else $('.badge').text(data)
+	          			      },
+	          			      error : function (err) {
+	          			         console.log(err)
+	          			      }
+	          			    });
+	          				sock.send("관리자,"+target+","+content+","+url + ","+msgseq);
+	          			
+	          			  }
+	      			  });
+	       			 $('#msgContent').val('');   // textarea 초기화
 	   			},
 	   			error : function (err) {
 	   			}
 	   	 	});
-	   	}, 2000);
+	   	}, 3000);
 	        
 	        
 	        
@@ -546,6 +557,7 @@ $(document).ready(function(){
 		</li> 
 </script>
 <script type="text/javascript">
+
 	$(function () {
 		$.ajax({
 	 		type : 'post',

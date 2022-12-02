@@ -65,7 +65,7 @@
 					</div>
 					<div class="col-xs-4 col-sm-8 top-panel-right">
 						<a href="#" class="about">about</a>
-						<a href="index_v1.html" class="style1"></a>
+						<a href="../resources/index_v1.html" class="style1"></a>
 						<ul class="nav navbar-nav pull-right panel-menu">
 							<li class="hidden-xs">
 								<a href="index.html" class="modal-link">
@@ -74,13 +74,13 @@
 								</a>
 							</li>
 							<li class="hidden-xs">
-								<a class="ajax-link" href="/calendar.html">
+								<a class="ajax-link" href="../resources/calendar.html">
 									<i class="fa fa-calendar"></i>
 									<span class="badge">7</span>
 								</a>
 							</li>
 							<li class="hidden-xs">
-								<a href="ajax/page_messages.html" class="ajax-link">
+								<a href="../resources/ajax/page_messages.html" class="ajax-link">
 									<i class="fa fa-envelope"></i>
 									<span class="badge">7</span>
 								</a>
@@ -160,7 +160,8 @@
 						<span class="hidden-xs">Charts</span>
 					</a>
 					<ul class="dropdown-menu">
-						<li><a class="ajax-link" href="../resources/ajax/charts_xcharts.html">xCharts</a></li>
+						<li><a class="ajax-link" href="../resources/ajax/product.html">물품관리</a></li>
+						<li><a class="ajax-link" href="../resources/ajax/users.html">인간관리</a></li>
 						<li><a class="ajax-link" href="../resources/ajax/charts_flot.html">Flot Charts</a></li>
 						<li><a class="ajax-link" href="../resources/ajax/charts_google.html">Google Charts</a></li>
 						<li><a class="ajax-link" href="../resources/ajax/charts_morris.html">Morris Charts</a></li>
@@ -350,6 +351,7 @@
 <script src="../resources/plugins/justified-gallery/jquery.justifiedGallery.min.js"></script>
 <script src="../resources/plugins/tinymce/tinymce.min.js"></script>
 <script src="../resources/plugins/tinymce/jquery.tinymce.min.js"></script>
+
 <!-- All functions for this theme + document.ready processing -->
 <script src="../resources/js/devoops.js"></script>
 </body>

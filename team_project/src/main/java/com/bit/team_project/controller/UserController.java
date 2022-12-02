@@ -148,4 +148,11 @@ public class UserController {
 		return userService.adminlogintest(modelMap);
 	}
 	
+	@PostMapping(value= "getAlluser")
+	@ResponseBody
+	public List<UserDTO> getAlluser(){
+		return userService.getAlluser();
+	}
+	
+	
 }

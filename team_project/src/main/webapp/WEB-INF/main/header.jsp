@@ -17,6 +17,7 @@
 	<div id="headerRight_login">
 		
 		<a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">로그인</a> / <a>회원가입</a> / <a>공지사항</a>
+		
 	</div>
 	<div id="headerRight_logout">
 		<a href="#" id="logoutBtn">로그아웃</a>

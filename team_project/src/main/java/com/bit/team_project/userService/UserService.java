@@ -36,4 +36,6 @@ public interface UserService {
 
 	public UserDTO adminlogintest(ModelMap modelMap);
 
+	public List<UserDTO> getAlluser();
+
 }

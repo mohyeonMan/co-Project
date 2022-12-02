@@ -199,4 +199,10 @@ public class UserServiceImpl implements UserService {
 		return userDAO.adminlogintest(modelMap);
 	}
 
+
+	@Override
+	public List<UserDTO> getAlluser() {
+		return userDAO.getAlluser();
+	}
+
 }

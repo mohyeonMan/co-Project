@@ -74,4 +74,8 @@
  	<select id="adminlogintest" parameterType="map" resultType="user">
  		select name from usertable where id = #{id} and pwd = #{pwd}
  	</select>
+ 	
+ 	<select id="getAlluser"  resultType="user">
+ 		select * from usertable
+ 	</select>
 </mapper>

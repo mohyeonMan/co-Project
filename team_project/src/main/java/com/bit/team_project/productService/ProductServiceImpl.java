@@ -173,4 +173,10 @@ public class ProductServiceImpl implements ProductService {
 		return productDAO.showGettingPrd();
 	}
 
+	@Override
+	public void deletePrd(Map<String, String> map) {
+		productDAO.deletePrd(map);
+		
+	}
+
 }
