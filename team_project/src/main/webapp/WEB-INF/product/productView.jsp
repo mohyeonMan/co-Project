@@ -543,6 +543,8 @@ $('#minus').click(function () {
 $('#bidBtn').click(function () {
 	if(eval($('#bidprice').val())<=eval($('#nowprice').text())){
 		alert("응찰가는 현재가보다 높아야 합니다")
+	}else if('${id}'=='') {
+		alert("로그인을 해야만 입찰이 가능합니다")
 	}
 	else{
 	$.ajax({

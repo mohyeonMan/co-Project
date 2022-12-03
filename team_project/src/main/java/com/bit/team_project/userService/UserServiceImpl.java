@@ -209,4 +209,16 @@ public class UserServiceImpl implements UserService {
 		return userDAO.getAlluser();
 	}
 
+
+	@Override
+	public void deleteUser(String id) {
+		userDAO.deleteUser(id);
+	}
+
+
+	@Override
+	public UserDTO checkUser(Map<String, String> map) {
+		return userDAO.checkUser(map);
+	}
+
 }

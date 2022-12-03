@@ -169,7 +169,7 @@
 				<input type="button" id ="searchBtn" value="검색">
 				<input type="hidden" id="category_1" value="${category_1 }">
 				<input type="hidden" id="category_2" value="${category_2 }">
-				<input type="text" id="searchWord">
+				<input type="hidden" id="searchWord">
 			</div>
 		</div>
 	</div>
@@ -191,6 +191,8 @@
 <script type="text/javascript" src="/team_project/resources/js/quick_menu.js"></script>
 <script type="text/javascript" src="/team_project/resources/js/jquery.tmpl.min.js"></script>
 <script type="text/javascript">
+var timerlist = [];
+
 function CountDownTimer(dt, id){
     var end = new Date(dt);
 
@@ -219,7 +221,8 @@ function CountDownTimer(dt, id){
         document.getElementById(id).innerHTML += seconds + '초';
     }
 	timer = setInterval(showRemaining, 1000);
-    /* if(timer = setTimeout()) */
+	timerlist.push(timer);
+
 }
 
 
@@ -230,6 +233,10 @@ function getList(){
 	var searchWord = $('#searchWord').val();
 
 	$('#row').empty();
+	$.each(timerlist, function (index, time) {
+		clearInterval(time);
+	})
+
 	
 	$.ajax({
 		url : '/team_project/product/getProductSort',

@@ -13,7 +13,7 @@
 </style>
 </head>
 <body>
-	<div id="popupHeader" >
+	<div class="popupHeader" >
 		<span style="color: white; margin-left: 10px; margin-top:10px; font-size: 10pt;">${name}님</span>
 	</div>
 	<h1 style="margin-left: 10px;">매물 등록</h1><br>
@@ -132,7 +132,7 @@ var tSeconds = parse(today.getSeconds());
 	//21시 이후 다음날로 넘어갈것
 	if((tHour+3)>23){
 		tHour -= 24;
-		tDate += 1;
+		tDate = parse(today.getDate()+1);
 	}
 var minHour = parse(tHour+3);
 	

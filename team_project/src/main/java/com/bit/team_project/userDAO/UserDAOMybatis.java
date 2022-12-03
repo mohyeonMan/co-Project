@@ -80,6 +80,14 @@ public class UserDAOMybatis implements UserDAO{
 	public List<UserDTO> getAlluser() {
 		return sqlSession.selectList("userSQL.getAlluser");
 	}
+	@Override
+	public void deleteUser(String id) {
+		sqlSession.delete("userSQL.deleteUser",id);
+	}
+	@Override
+	public UserDTO checkUser(Map<String, String> map) {
+		return sqlSession.selectOne("userSQL.checkUser",map);
+	}
 	
 	
 

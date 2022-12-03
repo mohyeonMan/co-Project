@@ -31,7 +31,7 @@
  	update usertable set name=#{name}, pwd=#{pwd} where id=#{id}
  	</update>
  --> 	
- 	<delete id="delete" parameterType="user">
+ 	<delete id="deleteUser" parameterType="String">
  	delete from usertable where id=#{id} and name=#{name} and pwd=#{pwd}
  	</delete>
  	
@@ -81,4 +81,9 @@
  	<select id="getAlluser"  resultType="user">
  		select * from usertable
  	</select>
+ 	
+ 	<select id="checkUser" parameterType="map" resultType="user">
+		select * from usertable where id=#{id} and pwd=#{pwd}
+	</select>
 </mapper>
+

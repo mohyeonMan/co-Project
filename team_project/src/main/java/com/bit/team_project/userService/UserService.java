@@ -19,7 +19,6 @@ public interface UserService {
 
 	public List<BidDTO> getMyBidList2(Map<String, String> map);
 
-
 	public void write(UserDTO userDTO);
 
 	public String checkId(String id);
@@ -39,5 +38,9 @@ public interface UserService {
 	public UserDTO adminlogintest(ModelMap modelMap);
 
 	public List<UserDTO> getAlluser();
+
+	public void deleteUser(String id);
+
+	public UserDTO checkUser(Map<String, String> map);
 
 }

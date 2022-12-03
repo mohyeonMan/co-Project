@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="noticeSQL">
+ 
+ <insert id="noticeWrite" parameterType="com.bit.team_project.DTO.NoticeDTO">
+ 	insert into noticetable (no_seq
+ 							,no_title
+ 							,no_writer
+ 							,no_content
+ 							,no_hit
+ 							,no_date) values(notice_seq.nextval
+ 											,#{no_title}
+ 											,#{no_writer}
+ 											,#{no_content}
+ 											,0
+ 											,sysdate)
+ </insert>
+ <select id="getNoticeList" resultType="com.bit.team_project.DTO.NoticeDTO">
+ 	select * from noticetable 
+ </select>
+<select id="count" resultType="int">
+	select count(*) from noticetable
+</select>
+ <select id="noticePage" parameterType="java.util.HashMap" resultType="com.bit.team_project.DTO.NoticeDTO">
+ 	<![CDATA[
+			select * from
+		(select rownum rn, tt.* from 
+		(select * from noticetable order by no_seq desc)tt
+		) where rn >= (#{displayPost} +1)and rn <= (#{displayPost}+#{postNum})
+		]]>
+ </select>
+ <select id="noticeDetail" resultType="com.bit.team_project.DTO.NoticeDTO" parameterType="int">
+ 	select * from noticetable where no_seq = #{no_seq} 	
+ </select>
+ 
+ <update id="updateHit">
+ 	update noticetable set no_hit=no_hit+1 where no_seq=#{no_seq}
+ </update>
+ 
+ <update id="noticeUpdate" parameterType="com.bit.team_project.DTO.NoticeDTO">
+ 	update noticetable set no_title = #{no_title},
+ 						   no_content = #{no_content}
+ 						 where no_seq = #{no_seq}
+ </update>
+ <delete id="noticeDelete" parameterType="int">
+ 	delete from noticetable where no_seq = #{no_seq}
+ </delete>
+ 
+ <!--qna  -->
+ 
+ 
+ <select id="qnaList" resultType="com.bit.team_project.DTO.QnaDTO" >
+ 	select * from qnatable order by qna_seq desc
+ </select>
+ 
+ <insert id="qnaWrite">
+ 	insert into qnatable(qna_seq,qna_title,qna_content,qna_date) 
+ 	values(qna_seq.nextval,#{qna_title},#{qna_content},sysdate)
+ </insert>
+ <select id="qnaDetail" parameterType="int" resultType="com.bit.team_project.DTO.QnaDTO">
+ 	select * from qnatable where qna_seq=#{qna_seq}
+ </select>
+ </mapper>

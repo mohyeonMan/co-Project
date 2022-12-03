@@ -3,6 +3,8 @@ package com.bit.team_project.controller;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -46,6 +48,11 @@ public class UserController {
 		return userService.checkId(id);
 	}
 	
+	@GetMapping(value = "beforeDelete")
+	public String beforeDelete() {
+		return "/user/beforeDelete";
+	}
+	
 	@PostMapping(value = "/login")
 	@ResponseBody
 	public String login(@RequestParam String id, @RequestParam String pwd, HttpSession session) {
@@ -83,6 +90,10 @@ public class UserController {
 	public String myPage() {
 		return "/user/myPage";
 	}
+	@GetMapping(value = "chargePage")
+	public String chargePage() {
+		return "/user/chargePage";
+	}
 	@GetMapping(value = "myBidList")
 	public String myBidList() {
 		return "/user/myBidList";
@@ -95,6 +106,15 @@ public class UserController {
 		map.put("id",id);
 		return userService.getMyBidList(map);
 	}
+	@PostMapping(value = "checkUser")
+	@ResponseBody
+	public UserDTO checkUser(@RequestParam String id, String pwd) {
+		Map<String, String>map = new HashMap<String, String>();
+		map.put("id",id);
+		map.put("pwd",pwd);
+		return userService.checkUser(map);
+	}
+	
 	@PostMapping(value = "getUserDetail")
 	@ResponseBody
 	public UserDTO getUserDetail(@RequestParam String id) {
@@ -167,5 +187,12 @@ public class UserController {
 	@ResponseBody
 	public List<UserDTO> getAlluser(){
 		return userService.getAlluser();
+	}
+	@PostMapping(value="deleteUser")
+	@ResponseBody
+	public void deleteUser(@RequestParam String id,HttpSession session) {
+		userService.deleteUser(id);
+		session.invalidate();
+		
 	}
 }

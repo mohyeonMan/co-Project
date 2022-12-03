@@ -89,8 +89,7 @@ public class ProductController {
 
 	@PostMapping(value = "/updateHit")
 	@ResponseBody
-	public void updateHit(@RequestParam String hit, String product_seq, HttpServletRequest request,
-			HttpServletResponse response) {
+	public void updateHit(@RequestParam String hit, String product_seq, HttpServletRequest request,HttpServletResponse response) {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("hit", hit);
 		map.put("product_seq", product_seq);
@@ -108,7 +107,7 @@ public class ProductController {
 				productService.updateHit(map);
 				oldCookie.setValue(oldCookie.getValue() + "_[" + product_seq + "]");
 				oldCookie.setPath("/");
-				oldCookie.setMaxAge(60 * 60 * 24);
+				oldCookie.setMaxAge(60 * 30);
 				response.addCookie(oldCookie);
 			}
 		} else {

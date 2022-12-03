@@ -16,11 +16,11 @@
 	
 	<div id="headerRight_login">
 		
-		<a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">로그인</a> / <a class="userWriteFormBtn">회원가입</a> / <a>공지사항</a>
+		<a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">로그인</a> / <a class="userWriteFormBtn">회원가입</a> / <a href="/team_project/notice/notice">공지사항</a>
 
 	</div>
 	<div id="headerRight_logout">
-		<a href="#" id="logoutBtn">로그아웃</a>
+		<a href="#" id="logoutBtn">로그아웃</a> / <a href="/team_project/notice/notice">공지사항</a>
 		<div class="messageInput">
 			<input type="hidden" value="${id}" id="msgId">
 			<input type="hidden" id="msgContent">
@@ -42,7 +42,7 @@
 			</dl>
 			<dl>
 				<dt class="on">
-					<a href="/team_project/product/productList?category_1=1&category_2=#"><p class="label-txt"> <i class="bi bi-list-stars"></i> 전체 매물 </p></a>
+					<a href="/team_project/product/productList?category_1=#&category_2=#"><p class="label-txt"> <i class="bi bi-list-stars"></i> 전체 매물 </p></a>
 				</dt>
 			</dl>
 			<dl>
@@ -166,7 +166,7 @@
          <hr width="80%">
       </li>
       <li>
-         <a href="#"> 
+         <a href="#" id="chargePageBtn"> 
             <span class="icon badge-container">
                <i class="bi bi-cash-coin"></i>
             </span> 

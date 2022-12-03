@@ -46,6 +46,7 @@ public class MybatisConfiguration {
 												,new ClassPathResource("com/bit/team_project/mapper/bidMapper.xml")
 												,new ClassPathResource("com/bit/team_project/mapper/userMapper.xml")
 												,new ClassPathResource("com/bit/team_project/mapper/prdCommentMapper.xml")
+												,new ClassPathResource("com/bit/team_project/mapper/noticeMapper.xml")
 												);
 		return sqlSessionFactoryBean.getObject();
 	}

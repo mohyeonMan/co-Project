@@ -14,4 +14,7 @@
 	<context:component-scan base-package="com.bit.team_project.userService"/>
 	<context:component-scan base-package="com.bit.team_project.prdCommentDAO"/>
 	<context:component-scan base-package="com.bit.team_project.prdCommentService"/>
+	<context:component-scan base-package="com.bit.team_project.noticeDAO"/>
+	<context:component-scan base-package="com.bit.team_project.noticeService"/>
+	
 </beans>
