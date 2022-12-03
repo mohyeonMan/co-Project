@@ -35,4 +35,8 @@ public interface UserDAO {
 	public UserDTO adminlogintest(ModelMap modelMap);
 
 	public List<UserDTO> getAlluser();
+
+	public void deleteUser(String id);
+
+	public UserDTO checkUser(Map<String, String> map);
 }

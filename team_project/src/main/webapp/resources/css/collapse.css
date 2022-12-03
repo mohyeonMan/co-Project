@@ -34,7 +34,7 @@ tr td:first-child{
 	text-align: center;
 	font-weight: bold;
 }
-#popupHeader{
+.popupHeader{
 	margin-bottom:30px;
 	height:25px;
 	background: black;

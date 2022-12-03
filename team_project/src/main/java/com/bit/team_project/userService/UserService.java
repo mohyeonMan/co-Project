@@ -40,4 +40,8 @@ public interface UserService {
 
 	public List<UserDTO> getAlluser();
 
+	public void deleteUser(String id);
+
+	public UserDTO checkUser(Map<String, String> map);
+
 }

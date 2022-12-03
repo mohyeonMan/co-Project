@@ -1,10 +1,13 @@
 $('#writeFormBtn').click(function () {
-	window.open('/team_project/product/productWriteForm','productWriteForm','width = 700, height = 700, top = 100, left = 200');
+	window.open('/team_project/product/productWriteForm','productWriteForm','width = 650, height = 700, top = 100, left = 200');
 });
 
 $('#myPageBtn').click(function () {
-	window.open('/team_project/user/myPage','myPage','width = 550, height = 700, top = 100, left = 200');
+	window.open('/team_project/user/myPage','myPage','width = 530, height = 600, top = 100, left = 200');
 });
+$('#chargePageBtn').click(function(){
+	window.open('/team_project/user/chargePage','chargePage','width = 420, height = 540, top = 100, left = 200');
+})
 
 $(document).ready(function() {
     

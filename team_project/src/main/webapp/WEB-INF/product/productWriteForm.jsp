@@ -13,7 +13,7 @@
 </style>
 </head>
 <body>
-	<div id="popupHeader" >
+	<div class="popupHeader" >
 		<span style="color: white; margin-left: 10px; margin-top:10px; font-size: 10pt;">${name}님</span>
 	</div>
 	<h1 style="margin-left: 10px;">매물 등록</h1><br>
