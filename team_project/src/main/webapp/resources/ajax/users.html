@@ -60,28 +60,13 @@
 							<th></th>
 						</tr>
 					</thead>
-					<tbody>
-					<!-- Start: list_row -->
-					<!-- End: list_row -->
-					</tbody>
-					<tfoot>
-						<tr>
-							<th>Rank</th>
-							<th>Name</th>
-							<th>Net Worth</th>
-							<th>Age</th>
-							<th>Source</th>
-							<th>Country of Citizenship</th>
-						</tr>
-					</tfoot>
 				</table>
 			</div>
 		</div>
 	</div>
 </div>
-<script type="text/javascript" src="http://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script type="text/javascript" src="/team_project/resources/js/jquery.tmpl.min.js"></script>
-<script type="text/x-jquery-tmpl" id="userTem">
+<script type="text/x-jquery-tmpl" id="userTmpl">
 		<tr>
 			<td>${name}</td>
 			<td><img class="img-rounded" src="" alt="">${id}</td>
@@ -89,18 +74,19 @@
 			<td>${email1}@${email2}</td>
 			<td>${zipcode} ${addr1} ${addr2}</td>
 			<td>
-				<button type="button" class="btn btn-dark mt-3"  onClick="deleteUser(${id})">삭제</button></td>
+				<button type="button" class="btn btn-dark mt-3"  onClick="deleteUser('${id}')">삭제</button>
+				<button type="button" class="btn btn-dark mt-3"  onClick="sendMessage('${id}')">메세지 보내기</button></td>
 		</tr>
 </script>
 <script type="text/javascript">
-$(function () {
+$(document).ready(function () {
 	$.ajax({
 		url : '/team_project/user/getAlluser',
 		type: 'post',
 		dataType : 'json',
 		success : function(data){
 			$.each(data,function(index,items){
-				var tmpl = $('#userTem').tmpl(data[index])
+				var tmpl = $('#userTmpl').tmpl(data[index])
 				$('#datatable-1').append(tmpl);
  				})
 			
@@ -110,5 +96,9 @@ $(function () {
 		}
 	})
 })
-	
+function sendMessage(data) {
+	console.log(data)
+	window.open('/team_project/test/adminSendMsg?id='+data,'메세지 보내기',"width=400, height=400, toolbar=no, menubar=no, scrollbars=no, resizable=no")
+}
+
 </script>

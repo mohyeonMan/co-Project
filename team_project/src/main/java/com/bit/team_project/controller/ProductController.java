@@ -89,10 +89,10 @@ public class ProductController {
 
 	@PostMapping(value = "/updateHit")
 	@ResponseBody
-	public void updateHit(@RequestParam String hit, int product_seq, HttpServletRequest request,
+	public void updateHit(@RequestParam String hit, String product_seq, HttpServletRequest request,
 			HttpServletResponse response) {
-		Map<String, Integer> map = new HashMap<String, Integer>();
-		map.put("hit", Integer.parseInt(hit));
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("hit", hit);
 		map.put("product_seq", product_seq);
 		Cookie oldCookie = null;
 		Cookie[] cookies = request.getCookies();

@@ -208,6 +208,7 @@
                   <div class="member_login_btn">
                      <input type="button" class="btn btn-secondary" id="btn-login" value="로그인">
                      <input type="button" class="btn btn-secondary" id="userWriteFormBtn" value="회원가입" >
+                     <input type="button" class="btn btn-secondary" onclick="location.href='/team_project/user/adminLogin'" value="관리자 로그인">
                   </div>
                   <div class="find_password">
                      <a href="/forgot-password">아이디 또는 비밀번호를 잊으셨나요?</a>

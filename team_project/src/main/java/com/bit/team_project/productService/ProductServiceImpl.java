@@ -120,7 +120,7 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public void updateHit(Map<String, Integer> map) {
+	public void updateHit(Map<String, String> map) {
 		productDAO.updateHit(map);
 	}
 

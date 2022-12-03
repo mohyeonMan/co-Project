@@ -150,9 +150,15 @@ public class UserController {
 	
 	@PostMapping(value= "adminlogintest")
 	@ResponseBody
-	public UserDTO adminlogintest(@RequestParam String id,  String pwd,ModelMap modelMap){
+	public UserDTO adminlogintest(@RequestParam String id,  String pwd,ModelMap modelMap,HttpSession session){
 		modelMap.put("id", id);
 		modelMap.put("pwd", pwd);
+		UserDTO userDTO = userService.adminlogintest(modelMap);
+		System.out.println(userDTO.getName()+"로그인 ㅇㅇ");
+			if(userDTO.getName().equals("관리자")) {
+				session.setAttribute("id", id);
+				session.setAttribute("name", userDTO.getName());
+			}
 		
 		return userService.adminlogintest(modelMap);
 	}

@@ -541,7 +541,7 @@ $('#minus').click(function () {
 
 /* 응찰하기 버튼 */
 $('#bidBtn').click(function () {
-	if(eval($('#bidprice').val())<eval($('#nowprice').text())){
+	if(eval($('#bidprice').val())<=eval($('#nowprice').text())){
 		alert("응찰가는 현재가보다 높아야 합니다")
 	}
 	else{

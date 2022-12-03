@@ -1140,6 +1140,7 @@ function LoadAjaxContent(url){
 		url: url,
 		type: 'GET',
 		success: function(data) {
+			
 			$('#ajax-content').html(data);
 			$('.preloader').hide();
 		},

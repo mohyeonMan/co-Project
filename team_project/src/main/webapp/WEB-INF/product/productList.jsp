@@ -190,8 +190,6 @@
 <script type="text/javascript" src="/team_project/resources/js/header.js"></script>
 <script type="text/javascript" src="/team_project/resources/js/quick_menu.js"></script>
 <script type="text/javascript" src="/team_project/resources/js/jquery.tmpl.min.js"></script>
-
-
 <script type="text/javascript">
 function CountDownTimer(dt, id){
     var end = new Date(dt);
@@ -240,11 +238,15 @@ function getList(){
 		dataType : 'json',
 		success : function(data){
 			//console.log(JSON.stringify(data));
+			
 			$.each(data,function(index,items){
+				console.log(data[index].prdstatus)
+			if(data[index].prdstatus == null || data[index].prdstatus == '진행중'){
+			
 				var tmpl = $('#itemTemplate').tmpl(data[index]);
 				$('#row').append(tmpl);
-
 				CountDownTimer(items.endDate, items.product_seq)
+				}
  			})
 		
 		},

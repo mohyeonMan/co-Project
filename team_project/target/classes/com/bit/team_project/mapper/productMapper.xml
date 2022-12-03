@@ -80,6 +80,7 @@
 	<select id="getComment" parameterType="map" resultType="comment">
 		select * from prdcomment where product_seq = #{product_seq} order by logtime desc
 	</select>
+	<!-- 시간 지나면 낙찰 -->
 	<update id="setPrdStatus">
 		       update  producttable  
            		 set prdstatus =  case
@@ -109,5 +110,11 @@
 	</select>
 	<delete id="deletePrd" parameterType="map">
 		delete producttable where product_seq = #{product_seq}
+	</delete>
+	<delete id="deletePrdCmt" parameterType="map">
+		delete prdcomment where product_seq = #{product_seq}
+	</delete>
+	<delete id="deletePrdBid" parameterType="map">
+		delete bid where product_seq = #{product_seq}
 	</delete>
   </mapper>

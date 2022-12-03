@@ -43,7 +43,7 @@ public class ProductDAOMybatis implements ProductDAO {
 	}
 
 	@Override
-	public void updateHit(Map<String, Integer> map) {
+	public void updateHit(Map<String, String> map) {
 		sqlSession.update("productSQL.updateHit",map);
 		
 	}
@@ -109,6 +109,8 @@ public class ProductDAOMybatis implements ProductDAO {
 	@Override
 	public void deletePrd(Map<String, String> map) {
 		sqlSession.delete("productSQL.deletePrd",map);
+		sqlSession.delete("productSQL.deletePrdCmt",map);
+		sqlSession.delete("productSQL.deletePrdBid",map);
 	}
 
 	

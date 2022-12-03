@@ -7,6 +7,15 @@
 	<insert id="setBid" parameterType="bid">
 		insert into bid(id,product_seq,bidprice,subject,bidtime) values(#{id},#{product_seq},#{bidprice},#{subject},(SYSDATE+(INTERVAL '9'HOUR)))
 	</insert>
+	<update id="updateUserMoney">
+		update usertable set point = point - #{bidprice} where id = #{id} 
+	</update>
+	<select id="findMyEarlyBid" parameterType="bid" resultType="bid">
+		select bidprice,id  from bid where product_seq = #{product_seq}  order by bidprice desc
+	</select>
+	<update id="paybackUserMoney">
+		update usertable set point = point + #{bidprice} where id = #{id}
+	</update>
 	<update id="updateBid" parameterType="map">
 		update bid set bid_price = #{bid_price} where id = #{id}, product_seq =#{product_seq}
 	</update>
@@ -23,5 +32,18 @@
 		from bid)
 		where rnum = 1 and product_seq = #{product_seq1})
 		where product_seq = #{product_seq2}
+	</update>
+	<select id="findEarlyGetter" parameterType="map" resultType="bid">
+		 (select id,bidprice,subject from(select subject,id,bidprice,product_seq,row_number()
+		over(Partition by product_seq order by bidprice desc)rnum
+		from bid)
+		where product_seq = #{product_seq1})order by bidprice desc
+	</select>
+	<insert id="failBidMsg" parameterType="map">
+		INSERT INTO soket VALUES (#{target},#{content},#{type},#{url},#{msgseq},0)
+	</insert>
+	<!-- //희망가랑 현재가 같을때 낙찰 -->
+	<update id="prdGet">
+		update producttable set prdstatus where hopeprice = nowprice
 	</update>
   </mapper>
