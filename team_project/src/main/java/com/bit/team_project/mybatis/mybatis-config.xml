@@ -12,6 +12,4 @@
 			<typeAlias type="com.bit.team_project.DTO.PrdCommentDTO" alias="comment"/>
 	</typeAliases>
 
-	
-
 </configuration>

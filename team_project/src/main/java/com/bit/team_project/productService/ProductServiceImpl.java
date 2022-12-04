@@ -31,7 +31,7 @@ public class ProductServiceImpl implements ProductService {
 		System.out.println(productDTO.getFile());
 				if(productDTO.getFile()!=null) {
 					//서버에서 저장 할 경로
-					String uploadFolder = "D:\\Projects\\co-Project\\team_project\\src\\main\\webapp\\resources\\img";
+					String uploadFolder = "/Users/leeyongshik/git/team/team_project/src/main/webapp/resources/img";
 					List<MultipartFile> list = productDTO.getFile();
 					System.out.println("파일"+productDTO.getFile());
 					System.out.println(list.size());
@@ -120,7 +120,7 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public void updateHit(Map<String, Integer> map) {
+	public void updateHit(Map<String, String> map) {
 		productDAO.updateHit(map);
 	}
 

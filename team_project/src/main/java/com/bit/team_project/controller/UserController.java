@@ -3,6 +3,7 @@ package com.bit.team_project.controller;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -116,6 +117,7 @@ public class UserController {
 	@PostMapping(value = "getUserDetail")
 	@ResponseBody
 	public UserDTO getUserDetail(@RequestParam String id) {
+		System.out.println("id = "+id);
 		Map<String, String>map = new HashMap<String, String>();
 		map.put("id",id);
 		return userService.getUserDetail(map);
@@ -168,9 +170,15 @@ public class UserController {
 	
 	@PostMapping(value= "adminlogintest")
 	@ResponseBody
-	public UserDTO adminlogintest(@RequestParam String id,  String pwd,ModelMap modelMap){
+	public UserDTO adminlogintest(@RequestParam String id,  String pwd,ModelMap modelMap,HttpSession session){
 		modelMap.put("id", id);
 		modelMap.put("pwd", pwd);
+		UserDTO userDTO = userService.adminlogintest(modelMap);
+		System.out.println(userDTO.getName()+"로그인 ㅇㅇ");
+			if(userDTO.getName().equals("관리자")) {
+				session.setAttribute("id", id);
+				session.setAttribute("name", userDTO.getName());
+			}
 		
 		return userService.adminlogintest(modelMap);
 	}
@@ -187,4 +195,14 @@ public class UserController {
 		session.invalidate();
 		
 	}
+	@PostMapping(value = "/getMyPoint")
+	   @ResponseBody
+	   public String getMyPoint(HttpSession session) {
+	      Map<String, String>map = new HashMap<String, String>();
+	      map.put("id", (String) session.getAttribute("id"));
+	      System.out.println(userService.getMyPoint(map));
+	      return userService.getMyPoint(map);
+	}
+	
+	
 }

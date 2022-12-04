@@ -18,7 +18,7 @@
  											,sysdate)
  </insert>
  <select id="getNoticeList" resultType="com.bit.team_project.DTO.NoticeDTO">
- 	select * from noticetable 
+ 	select * from noticetable  order by no_seq desc
  </select>
 <select id="count" resultType="int">
 	select count(*) from noticetable

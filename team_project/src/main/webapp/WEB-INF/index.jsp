@@ -392,6 +392,7 @@ $(function(){
 	       });
 	    
 	 setInterval(function() {
+		
 	   		$.ajax({
 	   	 		type : 'post',
 	   	 		url : '/team_project/product/showGettingPrd',
@@ -440,7 +441,7 @@ $(function(){
 	   	}, 300);
 	   	
 	   	
-		$.ajax({
+		/* $.ajax({
 			    url : '/team_project/product/getPopularList',
 			    type: 'post',
 			    success : function(data){
@@ -452,13 +453,14 @@ $(function(){
 			   	 }, error : function () {
 					console.log(err)
 					}
-				});
+				}); */
+				
 	        
 	        
 	        
 })
 //인기매물
-	$(function () {
+	 $(function () {
 		$.ajax({
 	 		type : 'post',
 	 		url : '/team_project/product/getHighList',
@@ -472,7 +474,7 @@ $(function(){
 			error : function (err) {
 				console.log(err)
 			}
-	    });
+	    }); 
 
 	    $.ajax({
 	        url : '/team_project/product/getProductList',

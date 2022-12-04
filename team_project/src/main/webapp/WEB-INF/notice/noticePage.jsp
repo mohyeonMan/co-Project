@@ -67,9 +67,6 @@
 	
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.1.min.js"></script>			
 <script type="text/javascript">
-	$('#aa').click(function () {
-		
-	})
 	//리스트 값  가져오기
  	$.ajax({
 		type: 'get',

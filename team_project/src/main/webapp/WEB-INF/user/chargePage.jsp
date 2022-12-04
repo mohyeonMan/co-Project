@@ -55,7 +55,7 @@ $(document).ready(function(){
 		IMP.request_pay({
 			pg: "kakaopay.TC0ONETIME",
 			pay_method: "card",
-			merchant_uid: (user.name)+"21346789011111234123",
+			merchant_uid: (user.name)+"2134678901111123412311",
 			name: "포인트 충전",
 			amount: user.amount,
 			buyer_email : "email@naver.com",

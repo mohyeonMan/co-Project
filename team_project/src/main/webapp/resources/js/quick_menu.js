@@ -36,7 +36,6 @@ $(document).ready(function() {
        data : 'id='+$('#msgid').val(),
        dataType : 'text',
        success : function (data) {
-         console.log(data)
          if(data == 0)$('.badge').text()
          else $('.badge').text(data)
       },
@@ -45,4 +44,3 @@ $(document).ready(function() {
       }
     });
 })
-

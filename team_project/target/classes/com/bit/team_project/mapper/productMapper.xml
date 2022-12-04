@@ -4,6 +4,15 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="productSQL">
+  <resultMap id="map" type="product">
+  		<result column="nowprice" property="nowprice" jdbcType="NVARCHAR" javaType="String"/>
+ 	 	<result column="category_1" property="category_1" jdbcType="NVARCHAR" javaType="String"/>
+  		<result column="category_2" property="category_2" jdbcType="NVARCHAR" javaType="String"/>
+  		<result column="count" property="count" jdbcType="NVARCHAR" javaType="String"/>
+  		<result column="bidcount" property="bidcount" jdbcType="NVARCHAR" javaType="String"/>
+  		<result column="prdstatus" property="prdstatus" jdbcType="NVARCHAR" javaType="String"/>
+	</resultMap>
+  
   <insert id="productWrite" parameterType="product">
 		INSERT INTO producttable(subject, 
 								 category_1, 
@@ -80,6 +89,7 @@
 	<select id="getComment" parameterType="map" resultType="comment">
 		select * from prdcomment where product_seq = #{product_seq} order by logtime desc
 	</select>
+	<!-- 시간 지나면 낙찰 -->
 	<update id="setPrdStatus">
 		       update  producttable  
            		 set prdstatus =  case
@@ -110,4 +120,11 @@
 	<delete id="deletePrd" parameterType="map">
 		delete producttable where product_seq = #{product_seq}
 	</delete>
+	<delete id="deletePrdCmt" parameterType="map">
+		delete prdcomment where product_seq = #{product_seq}
+	</delete>
+	<delete id="deletePrdBid" parameterType="map">
+		delete bid where product_seq = #{product_seq}
+	</delete>
+	<select id="getAllProduct" resultMap="map"></select>
   </mapper>

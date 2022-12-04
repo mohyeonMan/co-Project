@@ -10,7 +10,11 @@
 			</span>
 		</a>
 		<img src="/team_project/resources/img/logo1.jpeg" alt="로고" id="logo">
-		<h1 id="nameTag"> <i class="bi bi-person-circle" style="font-size: 1.1em;"></i> ${name}님 환영합니다. </h1>
+		<h1 id="nameTag"> 
+			<i class="bi bi-person-circle" style="font-size: 1.1em;"></i> ${name}님 환영합니다. <br>
+			<div style="margin-top: 5px; margin-left: 8px;"><font size="1.5pt"><i class="bi bi-cash"></i> 현재 잔액 : <span id="cash"></span>원 입니다.</font></div>
+		</h1>
+		
 		<span id="clock"></span>
 	</div>
 	
@@ -208,6 +212,7 @@
                   <div class="member_login_btn">
                      <input type="button" class="btn btn-secondary" id="btn-login" value="로그인">
                      <input type="button" class="btn btn-secondary" id="userWriteFormBtn" value="회원가입" >
+                     <input type="button" class="btn btn-secondary" onclick="location.href='/team_project/user/adminLogin'" value="관리자 로그인">
                   </div>
                   <div class="find_password">
                      <a href="/forgot-password">아이디 또는 비밀번호를 잊으셨나요?</a>

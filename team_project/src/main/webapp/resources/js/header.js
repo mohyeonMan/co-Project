@@ -49,7 +49,32 @@ printTime();
 		$('.userWriteFormBtn').trigger('click');
 	})
 	
-	
-	
-	
-	
+$(document).ready(function(){
+console.log($('#msgId').val())
+$.ajax({
+	url : '/team_project/user/getUserDetail',
+	type : 'post',
+	data : 'id='+$('#msgId').val(), 
+	success: function(data){
+		$('#cash').text(data.point);
+	},
+	error : function(err){
+		console.log(err);
+	}
+});
+});
+$(function () {
+   if('${id}'!=''){
+   $.ajax({
+      url : '/team_project/user/getMyPoint',
+      type: 'post',
+      dataType : 'json',
+      success : function(data){
+         $('#cash').val(data)
+      },
+      error : function(err){
+         console.log(err)
+      }
+   })
+   } 
+})

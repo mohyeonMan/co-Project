@@ -4,7 +4,6 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>DevOOPS v2</title>
 		<meta name="description" content="description">
 		<meta name="author" content="DevOOPS">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -53,7 +52,7 @@
 	<div class="container-fluid expanded-panel">
 		<div class="row">
 			<div id="logo" class="col-xs-12 col-sm-2">
-				<a href="/team_project/user/adminPage">DevOOPS v2</a>
+				<a href="/team_project/user/adminPage">오늘 안자야지</a>
 			</div>
 			<div id="top-panel" class="col-xs-12 col-sm-10">
 				<div class="row">
@@ -87,13 +86,10 @@
 							</li>
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle account" data-toggle="dropdown">
-									<div class="avatar">
-										<img src="#" class="img-circle" alt="avatar" />
-									</div>
 									<i class="fa fa-angle-down pull-right"></i>
 									<div class="user-mini pull-right">
-										<span class="welcome">Welcome,</span>
-										<span>Jane Devoops</span>
+										<span class="welcome">어서오세요</span>
+										<span>${name } 님^^</span>
 									</div>
 								</a>
 								<ul class="dropdown-menu">
@@ -128,7 +124,7 @@
 										</a>
 									</li>
 									<li>
-										<a href="#">
+										<a href="#" id="logoutBtn">
 											<i class="fa fa-power-off"></i>
 											<span>Logout</span>
 										</a>
@@ -351,8 +347,21 @@
 <script src="../resources/plugins/justified-gallery/jquery.justifiedGallery.min.js"></script>
 <script src="../resources/plugins/tinymce/tinymce.min.js"></script>
 <script src="../resources/plugins/tinymce/jquery.tinymce.min.js"></script>
-
 <!-- All functions for this theme + document.ready processing -->
 <script src="../resources/js/devoops.js"></script>
+<script type="text/javascript">
+$('#logoutBtn').click(function () {
+	$.ajax({
+		url : '/team_project/user/logout',
+		type : 'post',
+		success: function(){
+			location.href = '/team_project/';
+		},
+		error : function(err){
+			console.log(err);
+		}
+	});
+});
+</script>
 </body>
 </html>

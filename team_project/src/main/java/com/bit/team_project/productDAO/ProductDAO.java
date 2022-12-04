@@ -19,7 +19,7 @@ public interface ProductDAO {
 
 	public ProductDTO getProductView(int product_seq);
 	
-	public void updateHit(Map<String, Integer> map);
+	public void updateHit(Map<String, String> map);
 
 	public List<ProductDTO> getIndexGrid();
 

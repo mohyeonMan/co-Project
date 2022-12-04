@@ -37,5 +37,10 @@ public class TestController {
 	public void saveNotify(@ModelAttribute SoketDTO soketDTO) {
 		productService.saveNotify(soketDTO);
 	}
+	
+	@RequestMapping(value = "/adminSendMsg")
+	public String adminSendMsg() {
+		return "/test/adminSendMsg";
+	}
 
 }
