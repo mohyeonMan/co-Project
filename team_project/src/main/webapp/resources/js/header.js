@@ -63,3 +63,18 @@ $.ajax({
 	}
 });
 });
+$(function () {
+   if('${id}'!=''){
+   $.ajax({
+      url : '/team_project/user/getMyPoint',
+      type: 'post',
+      dataType : 'json',
+      success : function(data){
+         $('#cash').val(data)
+      },
+      error : function(err){
+         console.log(err)
+      }
+   })
+   } 
+})

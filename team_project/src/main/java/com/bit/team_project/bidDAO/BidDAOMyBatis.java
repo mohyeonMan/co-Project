@@ -21,8 +21,7 @@ public class BidDAOMyBatis implements BidDAO{
 		Map<String, String> map2 = new HashMap<String, String>();
 		//입찰햇을때 얼마했는지 찾기
 		List<BidDTO> bidDTO2 = sqlSession.selectList("bidSQL.findMyEarlyBid",bidDTO);
-		
-		if(bidDTO2!=null && bidDTO2.get(0).getId()!=null) {
+		if(bidDTO2.size()>1 && bidDTO2.get(0).getId()!=null) {
 			map2.put("id",bidDTO.getId());
 			//바로 이전입찰과 내아이디가 같을때 포인트 다시돌려주기 안하면 포인트 계속나감
 			if(bidDTO2.get(0).getId().equals(map2.get("id"))) {
