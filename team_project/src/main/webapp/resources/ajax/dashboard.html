@@ -482,4 +482,21 @@ $(document).ready(function() {
 	// Run script for stock block
 	CreateStockPage();
 });
+$(document).ready(function () {
+	$.ajax({
+		url : '/team_project/user/allProduct',
+		type: 'post',
+		dataType : 'json',
+		success : function(data){
+			$.each(data,function(index,items){
+				 var tmpl = $('#dashBoardTmpl').tmpl(data[index])
+				$('#categorytest').append(tmpl);
+ 				})
+			
+		},
+		error : function(err){
+			console.log(err);
+		}
+	})
+})
 </script>

@@ -76,7 +76,7 @@ public class NoticeController {
 	}
 	
 	@RequestMapping(value="noticeDetail" ,method=RequestMethod.GET)		
-	public ModelAndView noticeDetail(@RequestParam("no_seq")int no_seq,@RequestParam("num")int num) {
+	public ModelAndView noticeDetail(@RequestParam("no_seq")int no_seq) {
 		NoticeDTO noticeDTO = noticeService.noticeDetail(no_seq);
 		
 		ModelAndView mav = new ModelAndView();

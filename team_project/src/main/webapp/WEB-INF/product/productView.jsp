@@ -421,6 +421,29 @@ function CountDownTimer(dt, id){
                error : function (err) {
                }
             }); 
+	  $.ajax({
+			type : 'post',
+			url : '/team_project/prdComment/getComment',
+			data : 'product_seq='+$('#product_seq').val(),
+			dataType : 'json',
+			success : function (data) {
+				
+				  $.each(data,function(index, items){
+					  var tmpl= $('#commentTemplate').tmpl(data[index]);	
+		 				$('#commentlist').append(tmpl);
+					/*  $('<tr/>',{text: items.comment_id})
+					 .append($('<td>',{text:items.comment_id}))
+					 .append($('<td>',{text:items.comment_content}))
+					 .append($('<td>',{text:items.logtime}))
+					 .append($('<input>',{type:'button',id:items.comment_content, value:"수정" , text:items.comment_id ,height:'30',width :'50', onclick :'updateComment(this.id)' }))
+					 .append($('<input>',{type:'button',id:items.comment_seq,  text :"삭제",height:'30',width :'50', onclick : 'deleteComment(this.id)'}))
+					 .appendTo($('#commentA')) */
+				 }) 
+			},
+			error : function (err) {
+				
+			}
+		})
 	
 </script>
 <script type="text/javascript">
@@ -448,32 +471,54 @@ function updateComment(data) {
 	var up = document.getElementById(id).children[2] 
 	var ch = document.getElementById(id).children[3]
 	var del = document.getElementById(id).children[4]
-	ch.setHTML('수정')
-	del.setHTML('취소')
-	up.removeAttribute('readonly')
-	ch.removeAttribute('onClick')
-	del.removeAttribute('onClick')
-	ch.setAttribute('onClick',"updateSubmit("+data+")")
-	del.setAttribute('onClick',"cancelupdateSubmit("+data+")")
+	var checkId = document.getElementById(id).children[0].innerHTML.substring(6)
+	if ('${id}' == '') {
+			alert('로그인 해야지수정가능')
+	}else{
+			if (checkId!='${id}'){
+				alert('자신의 댓글만 수정 가능합니다')
+			} else {
+				ch.setHTML('수정')
+				del.setHTML('취소')
+				up.removeAttribute('readonly')
+				ch.removeAttribute('onClick')
+				del.removeAttribute('onClick')
+				ch.setAttribute('onClick', "updateSubmit(" + data + ")")
+				del.setAttribute('onClick', "cancelupdateSubmit(" + data + ")")
+			}
+		}
 	}
 function deleteComment(data) {
-	var check = confirm('댓글을 삭제 하시겟습니까?')
-	if(check){
-		$.ajax({
-			url : '/team_project/prdComment/deleteComment',
-			type: 'post',
-			data : 'comment_seq='+data,
-			success : function(){
-					alert('댓글 삭제 완료')
-				location.reload()
-			},
-			error : function(err){
-				console.log(err);
-			}
-		});
-	}else{
-		
+	var id = data + ''
+	var checkId = document.getElementById(id).children[0].innerHTML
+			.substring(6)
+	if ('${id}' == '') {
+		alert('로그인 해야지삭제가능')
 	}
+	else{
+		if (checkId != '${id}'){
+			alert('자신의 댓글만 수정 가능합니다')
+		}else{
+			var check = confirm('댓글을 삭제 하시겟습니까?')
+			if (check) {
+			$.ajax({
+				url : '/team_project/prdComment/deleteComment',
+				type : 'post',
+				data : 'comment_seq=' + data,
+				success : function() {
+					alert('댓글 삭제 완료')
+					location.reload()
+				},
+				error : function(err) {
+					console.log(err);
+				}
+			});
+			} 
+			else {
+			alert('삭제 취소')
+			}
+		}
+		}
 	
 }
 function cancelupdateSubmit(data) {
@@ -541,10 +586,10 @@ $('#minus').click(function () {
 
 /* 응찰하기 버튼 */
 $('#bidBtn').click(function () {
-	if(eval($('#bidprice').val())<=eval($('#nowprice').text())){
-		alert("응찰가는 현재가보다 높아야 합니다")
-	}else if('${id}'=='') {
+	if('${id}'==''){
 		alert("로그인을 해야만 입찰이 가능합니다")
+	}else if(eval($('#bidprice').val())<=eval($('#nowprice').text())) {
+		alert("응찰가는 현재가보다 높아야 합니다")
 	}
 	else{
 	$.ajax({
@@ -565,7 +610,6 @@ $('#bidBtn').click(function () {
 						console.log(err)
 					}
 				})
-
 			})
 			location.reload()
 		},
