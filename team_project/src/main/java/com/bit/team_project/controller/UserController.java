@@ -195,4 +195,12 @@ public class UserController {
 		session.invalidate();
 		
 	}
+	@PostMapping(value = "/getMyPoint")
+	@ResponseBody
+	public String getMyPoint(HttpSession session) {
+		Map<String, String>map = new HashMap<String, String>();
+		map.put("id", (String) session.getAttribute("id"));
+		System.out.println(userService.getMyPoint(map));
+		return userService.getMyPoint(map);
+	}
 }

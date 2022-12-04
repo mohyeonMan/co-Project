@@ -221,4 +221,13 @@ public class UserServiceImpl implements UserService {
 		return userDAO.checkUser(map);
 	}
 
+
+	@Override
+	public String getMyPoint(Map<String, String> map) {
+		// TODO Auto-generated method stub
+		return userDAO.getMyPoint(map);
+	}
+	
+	
+
 }

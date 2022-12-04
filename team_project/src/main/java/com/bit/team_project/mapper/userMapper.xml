@@ -85,5 +85,8 @@
  	<select id="checkUser" parameterType="map" resultType="user">
 		select * from usertable where id=#{id} and pwd=#{pwd}
 	</select>
+	<select id="getMyPoint" parameterType="map" resultType="String">
+		select point from usertable where id = #{id}
+	</select>
 </mapper>
 

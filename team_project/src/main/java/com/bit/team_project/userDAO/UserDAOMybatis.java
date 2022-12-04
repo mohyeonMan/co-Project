@@ -88,6 +88,12 @@ public class UserDAOMybatis implements UserDAO{
 	public UserDTO checkUser(Map<String, String> map) {
 		return sqlSession.selectOne("userSQL.checkUser",map);
 	}
+	@Override
+	public String getMyPoint(Map<String, String> map) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("userSQL.getMyPoint",map);
+		
+	}
 	
 	
 

@@ -39,4 +39,6 @@ public interface UserDAO {
 	public void deleteUser(String id);
 
 	public UserDTO checkUser(Map<String, String> map);
+
+	public String getMyPoint(Map<String, String> map);
 }

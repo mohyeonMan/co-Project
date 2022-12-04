@@ -147,8 +147,8 @@ body{
 <jsp:include page="/WEB-INF/main/header.jsp"></jsp:include>
 
 
-
 <div class="container2">
+<input type="hidden" id="mypoint"> 
 	<input type="hidden" value="${param.product_seq}" name="product_seq" id="product_seq">
 	<input type="hidden" value="" name="hit" id="hit">
 	<input type="hidden" value="${id}" id="msgid">
@@ -582,7 +582,21 @@ $('#minus').click(function () {
 	}
 });
 
-
+$(function () {
+	if('${id}'!=''){
+	$.ajax({
+		url : '/team_project/user/getMyPoint',
+		type: 'post',
+		dataType : 'json',
+		success : function(data){
+			$('#mypoint').val(data)
+		},
+		error : function(err){
+			console.log(err)
+		}
+	})
+	} 
+})
 
 /* 응찰하기 버튼 */
 $('#bidBtn').click(function () {
@@ -590,6 +604,8 @@ $('#bidBtn').click(function () {
 		alert("로그인을 해야만 입찰이 가능합니다")
 	}else if(eval($('#bidprice').val())<=eval($('#nowprice').text())) {
 		alert("응찰가는 현재가보다 높아야 합니다")
+	}else if(eval($('#mypoint').val())<eval($('#bidprice').val())){
+		alert('포인트가 부족합니다')
 	}
 	else{
 	$.ajax({

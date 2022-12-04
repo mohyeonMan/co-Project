@@ -18,12 +18,14 @@ public class BidDAOMyBatis implements BidDAO{
 	@Override
 	public void set(BidDTO bidDTO) {
 		Map<String, String> map = new HashMap<String, String>();
+		Map<String, String> map2 = new HashMap<String, String>();
 		//입찰햇을때 얼마했는지 찾기
 		List<BidDTO> bidDTO2 = sqlSession.selectList("bidSQL.findMyEarlyBid",bidDTO);
 		
-		if(bidDTO2.size()>0) {
+		if(bidDTO2!=null && bidDTO2.get(0).getId()!=null) {
+			map2.put("id",bidDTO.getId());
 			//바로 이전입찰과 내아이디가 같을때 포인트 다시돌려주기 안하면 포인트 계속나감
-			if(bidDTO2.get(0).getId().equals(map.get("id"))) {
+			if(bidDTO2.get(0).getId().equals(map2.get("id"))) {
 			map.put("bidprice",Integer.toString(bidDTO2.get(0).getBidprice()));
 			map.put("id",bidDTO2.get(0).getId());
 			sqlSession.update("bidSQL.paybackUserMoney",map);
@@ -37,7 +39,7 @@ public class BidDAOMyBatis implements BidDAO{
 	public void bidSetHigh(Map<String, String>map) {
 		sqlSession.update("bidSQL.bidSetHigh",map);
 		 List<BidDTO> bidDTO2 = sqlSession.selectList("bidSQL.findEarlyGetter",map); 
-		 if(bidDTO2.size()>1) {
+		 if(bidDTO2.size()>1 &&  bidDTO2.get(0).getId()!=null) {
 			 //최고가 갱신됬을때 이전입찰자한테 포인트돌려주기
 			if(!bidDTO2.get(1).getId().equals(bidDTO2.get(0).getId())) {
 				Map<String, String>map2 = new HashMap<String, String>();
