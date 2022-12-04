@@ -170,7 +170,7 @@ button, input, select, textarea {
 				var status;
 				 if(items.hit == 0){status='읽지 않음'}
 				 else status='읽음'
-				$('<tr>').append($('<td>',{}).append($('<a>',{href:'#',text:items.content}))).append($('<td>',{text:'관리자', align:'center'})).append($('<td>',{text:status, align:'center'})).appendTo($('.list'))
+				$('<tr>').append($('<td>',{}).append($('<a>',{href:'#',text:items.content,id:items.msgseq}))).append($('<td>',{text:'관리자', align:'center'})).append($('<td>',{text:status, align:'center'})).appendTo($('.list'))
 			});
 		}, error : function (err) {
 			console.log(err)

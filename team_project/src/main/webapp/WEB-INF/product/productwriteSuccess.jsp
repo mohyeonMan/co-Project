@@ -12,7 +12,7 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	alert("매물이 정상적으로 등록되었습니다.");
-	opener.location.href='/team_project/product/productList';
+	opener.location.href='/team_project/product/productList?category_1=#&category_2=#';
 	window.close();
 });
 </script>

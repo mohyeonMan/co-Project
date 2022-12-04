@@ -49,7 +49,17 @@ printTime();
 		$('.userWriteFormBtn').trigger('click');
 	})
 	
-	
-	
-	
-	
+$(document).ready(function(){
+console.log($('#msgId').val())
+$.ajax({
+	url : '/team_project/user/getUserDetail',
+	type : 'post',
+	data : 'id='+$('#msgId').val(), 
+	success: function(data){
+		$('#cash').text(data.point);
+	},
+	error : function(err){
+		console.log(err);
+	}
+});
+});

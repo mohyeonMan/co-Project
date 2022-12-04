@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -118,6 +117,7 @@ public class UserController {
 	@PostMapping(value = "getUserDetail")
 	@ResponseBody
 	public UserDTO getUserDetail(@RequestParam String id) {
+		System.out.println("id = "+id);
 		Map<String, String>map = new HashMap<String, String>();
 		map.put("id",id);
 		return userService.getUserDetail(map);
@@ -196,11 +196,13 @@ public class UserController {
 		
 	}
 	@PostMapping(value = "/getMyPoint")
-	@ResponseBody
-	public String getMyPoint(HttpSession session) {
-		Map<String, String>map = new HashMap<String, String>();
-		map.put("id", (String) session.getAttribute("id"));
-		System.out.println(userService.getMyPoint(map));
-		return userService.getMyPoint(map);
+	   @ResponseBody
+	   public String getMyPoint(HttpSession session) {
+	      Map<String, String>map = new HashMap<String, String>();
+	      map.put("id", (String) session.getAttribute("id"));
+	      System.out.println(userService.getMyPoint(map));
+	      return userService.getMyPoint(map);
 	}
+	
+	
 }

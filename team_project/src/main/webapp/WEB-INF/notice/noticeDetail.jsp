@@ -72,7 +72,7 @@
 	
 	<div style="margin-top: 5px;">
 	
-		<button type="button" class="btn btn-outline-danger" id="listBtn" onclick="location.href= '/team_project/notice/getNoticePage?num='+${param.num}">목록</button>
+		<button type="button" class="btn btn-outline-danger" id="listBtn" onclick="location.href= '/team_project/notice/notice'">목록</button>
 	<span id = "noticeDetailSpan">
 		
 		<button type="button" class="btn btn-outline-danger" id="noticeUpdateBtn">수정</button>
