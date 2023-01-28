@@ -1,0 +1,94 @@
+<div class="row">
+	<div id="breadcrumb" class="col-xs-12">
+		<a href="#" class="show-sidebar">
+			<i class="fa fa-bars"></i>
+		</a>
+		<ol class="breadcrumb pull-left">
+			<li><a href="#">Dashboard</a></li>
+			<li><a href="#">Tables</a></li>
+			<li><a href="#">Data Tables</a></li>
+		</ol>
+		<div id="social" class="pull-right">
+			<a href="#"><i class="fa fa-google-plus"></i></a>
+			<a href="#"><i class="fa fa-facebook"></i></a>
+			<a href="#"><i class="fa fa-twitter"></i></a>
+			<a href="#"><i class="fa fa-linkedin"></i></a>
+			<a href="#"><i class="fa fa-youtube"></i></a>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-xs-12">
+		<div class="box">
+			<div class="box-header">
+				<div class="box-name">
+					<i class="fa fa-usd"></i>
+					<span>The World's billionaries</span>
+				</div>
+				<div class="box-icons">
+					<a class="collapse-link">
+						<i class="fa fa-chevron-up"></i>
+					</a>
+					<a class="expand-link">
+						<i class="fa fa-expand"></i>
+					</a>
+					<a class="close-link">
+						<i class="fa fa-times"></i>
+					</a>
+				</div>
+				<div class="no-move"></div>
+			</div>
+			<div class="box-content no-padding">
+				<table class="table table-bordered table-striped table-hover table-heading table-datatable" id="datatable-1">
+					<thead>
+						<tr>
+							<th>이름</th>
+							<th>id</th>
+							<th>비밀번호</th>
+							<th>email</th>
+							<th>주소</th>
+							<th></th>
+						</tr>
+					</thead>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="/team_project/resources/js/jquery.tmpl.min.js"></script>
+<script type="text/x-jquery-tmpl" id="userTmpl">
+		<tr>
+			<td>${name}</td>
+			<td><img class="img-rounded" src="" alt="">${id}</td>
+			<td>${pwd}</td>
+			<td>${email1}@${email2}</td>
+			<td>${zipcode} ${addr1} ${addr2}</td>
+			<td>
+				<button type="button" class="btn btn-dark mt-3"  onClick="deleteUser('${id}')">삭제</button>
+				<button type="button" class="btn btn-dark mt-3"  onClick="sendMessage('${id}')">메세지 보내기</button></td>
+		</tr>
+</script>
+<script type="text/javascript">
+$(document).ready(function () {
+	$.ajax({
+		url : '/team_project/user/getAlluser',
+		type: 'post',
+		dataType : 'json',
+		success : function(data){
+			$.each(data,function(index,items){
+				var tmpl = $('#userTmpl').tmpl(data[index])
+				$('#datatable-1').append(tmpl);
+ 				})
+			
+		},
+		error : function(err){
+			console.log(err);
+		}
+	})
+})
+function sendMessage(data) {
+	console.log(data)
+	window.open('/team_project/test/adminSendMsg?id='+data,'메세지 보내기',"width=400, height=400, toolbar=no, menubar=no, scrollbars=no, resizable=no")
+}
+
+</script>
