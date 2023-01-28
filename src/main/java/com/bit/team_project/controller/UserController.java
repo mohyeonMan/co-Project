@@ -199,9 +199,12 @@ public class UserController {
 	   @ResponseBody
 	   public String getMyPoint(HttpSession session) {
 	      Map<String, String>map = new HashMap<String, String>();
-	      map.put("id", (String) session.getAttribute("id"));
-	      System.out.println(userService.getMyPoint(map));
-	      return userService.getMyPoint(map);
+	      String id = (String) session.getAttribute("id");
+	      if(id!=null) {
+		      map.put("id",id);
+		      return userService.getMyPoint(map);
+	      }else
+	    	  return null;
 	}
 	
 	

@@ -50,7 +50,6 @@ printTime();
 	})
 	
 $(document).ready(function(){
-console.log($('#msgId').val())
 $.ajax({
 	url : '/team_project/user/getUserDetail',
 	type : 'post',
@@ -63,8 +62,8 @@ $.ajax({
 	}
 });
 });
-$(function () {
-   if('${id}'!=''){
+$(function() {
+   if($('#msgId').val()!=''){
    $.ajax({
       url : '/team_project/user/getMyPoint',
       type: 'post',
